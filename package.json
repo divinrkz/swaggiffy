@@ -6,7 +6,8 @@
   "main": "build/compiled/index.js",
   "types": "build/compiled/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "rimraf ./build && tsc && mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
+    "test:fast": "mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
     "dev": "ts-node ./src/index.ts",
     "compile": "rimraf ./build && tsc",
     "watch": "./node_modules/.bin/tsc -w",
