@@ -37,7 +37,6 @@ class App {
      * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */
     private async run(swaggerDefinitionFile: string, swaggerEndPoint: PathString) {
-        // Runner.execute();
         this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
     }
 }
