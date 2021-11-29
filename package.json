@@ -1,0 +1,22 @@
+{
+  "name": "swaggify",
+  "version": "1.0.0",
+  "description": "A zero-config Node.js Swagger Documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ts",
+    "js",
+    "swagger",
+    "docs",
+    "nest"
+  ],
+  "author": "Divin Irakiza",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "typescript": "^4.5.2"
+  }
+}
