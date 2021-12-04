@@ -33,14 +33,12 @@ export class InitRunner {
     static async cacheGlobalConfigurations(): Promise<void> {
         return new Promise<void>(async (ok, fail) => {
             const config: ConfigurationProps = await this.extractConfigurations();
-            
+
             if (!FileUtils.fileOrDirectoryExists(config.outFile)) {
-                if (config.openApiVersion.includes('2.'))
-                  await SetupRunner.generateSpecFile(Templates.getOSA2Template());
-                else if (config.openApiVersion.includes('3.'))
-                  await SetupRunner.generateSpecFile(Templates.getOSA3Template())
+                if (config.openApiVersion.includes('2.')) await SetupRunner.generateSpecFile(Templates.getOSA2Template());
+                else if (config.openApiVersion.includes('3.')) await SetupRunner.generateSpecFile(Templates.getOSA3Template());
             }
-            
+
             setConfigMetadataStorage(config);
             ok();
         });

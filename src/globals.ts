@@ -3,14 +3,12 @@ import { SchemaMetadataStorage } from './storage/schema-metadata-storage';
 import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
 import { ConfigurationProps } from './typings';
 
-
 /**
  * Global string method reversed for paths
  */
 // String.prototype.getAbsolutePath = function() {
 // 		return process.cwd() + '/' + this;
 // }
-
 
 declare global {
     namespace Express {
@@ -19,13 +17,10 @@ declare global {
         interface Request {}
         interface Response {}
         interface Application {
-            use: any
+            use: any;
         }
     }
 }
-
-
-
 
 /**
  * Returns globals schemametadata storage
@@ -36,8 +31,6 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
 
     return globalScope.schemaMetadataStorage;
 }
-
-
 
 /**
  * Returns Config Metadata Storage

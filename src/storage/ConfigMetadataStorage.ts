@@ -1,4 +1,3 @@
-
 import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from '../typings';
 
 /**
