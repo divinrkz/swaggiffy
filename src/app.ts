@@ -1,7 +1,9 @@
-import * as express from 'express';
+import express from 'express';
 
 
 class App {
+
+    private PORT: number = 4008;
 
     public app: express.Application;
 
@@ -9,8 +11,10 @@ class App {
         this.app = express();
     }
 
+
     public listen() {
-        this.app.listen(4008, () => {
+        console.log('Running')
+        this.app.listen(this.PORT, () => {
             console.log(`App listening on the port ${process.env.PORT}`);
         })
     }  
