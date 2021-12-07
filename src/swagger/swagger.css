@@ -1,0 +1,27 @@
+body {
+    background-color: #e0e0e0
+}
+
+.swagger-ui .topbar {
+    background-color: rgb(65, 26, 238);
+}
+
+.swagger-ui .info .base-url {
+    font-size: 25px;
+}
+
+.swagger-ui .markdown p {
+    font-size: 40px;
+}
+
+.swagger-ui .btn.execute {
+    background-color: green;
+}
+
+.swagger-ui button {
+    background: orange;
+}
+
+.swagger-ui .scheme-container {
+    background-color: rgb(238, 176, 61);
+}
