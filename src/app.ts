@@ -13,18 +13,18 @@ class App extends Config {
         this.serveRoutes();
     }
 
-    public listen() {
+    public listen(): void {
         this.app.listen(this.PORT, () => {
             console.log(`App listening on the port ${process.env.PORT}`);
         })
     }  
     
 
-    public getServer(): express {
+    public getServer(): Express {
         return this.app;
     }
 
-    public serveRoutes() {
+    public serveRoutes(): void {
         this.app.get('/', (req, res) => {
             res.status(200).send(`Server made up and running!`)
         });
