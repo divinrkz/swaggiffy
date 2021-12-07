@@ -3,7 +3,7 @@ import express from 'express';
 
 class App {
 
-    private PORT: number = 4008;
+    private PORT: number = parseInt(process.env.PORT as string);
 
     public app: express.Application;
 
