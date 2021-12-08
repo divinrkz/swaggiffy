@@ -5,6 +5,7 @@ import  swaggerJsdoc from "swagger-jsdoc";
 import fs from 'fs';
 import swaggerDocument from './swagger/swagger.json';
 import Utility from './utils/Utility';
+import { Route } from './decorators/Route.decorator';
 class App extends Config {
 
 
