@@ -4,7 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import  swaggerJsdoc from "swagger-jsdoc";
 import fs from 'fs';
 import swaggerDocument from './swagger/swagger.json';
-
+import Utility from './utils/Utility';
 class App extends Config {
 
 
@@ -25,8 +25,8 @@ class App extends Config {
 
     constructor() {
         super();
-        console.log(swaggerDocument);
 
+        this.navigateDirectory();
         this.app = express();
         this.routes();
     }
@@ -43,13 +43,19 @@ class App extends Config {
     }
 
     public routes(): void {
-        this.app.get('/', (req, res) => {
+        this.app.get('/', (req: any, res: any) => {
             res.status(200).send(`Server made up and running!`)
         });   
         
         const specs = swaggerJsdoc(swaggerDocument);
 
         this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs, this.swaggerFile));
+    }
+
+
+    public navigateDirectory() {
+        console.log(__dirname);
+        console.log(Utility._getAllFilesFromFolder(__dirname));
     }
 
 };
