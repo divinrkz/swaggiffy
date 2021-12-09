@@ -7,6 +7,7 @@ import swaggerDocument from './swagger/swagger.json';
 import Utility from './utils/Utility';
 import { Route } from './decorators/Route.decorator';
 import { APIRoute } from './routes/express.route';
+import SwaggifyModel from './models/swaggify.model';
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
@@ -19,8 +20,6 @@ class App extends Config {
 
     private swaggerFile: any = (process.cwd() + "/src/swagger/swagger.json");
     private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
-    private customCss: any = fs.readFileSync((process.cwd() + "/src/swagger/swagger.css"), 'utf8');
-    // private swaggerDocument = JSON.parse(this.swaggerFile);
 
 
     constructor() {
@@ -30,10 +29,16 @@ class App extends Config {
         this.app = express();
         this.routes();
 
-        new APIRoute();
+        // new APIRoute();
+
+        // console.log(new SwaggifyModel());
+        const man: any = new SwaggifyModel();
+        console.log(man.age)
     }
 
     public listen(): void {
+
+
         this.app.listen(this.PORT, () => {
             console.log(`App listening on the port ${process.env.PORT}`);
         })
@@ -46,6 +51,8 @@ class App extends Config {
 
     public routes(): void {
         this.app.get('/', (req: any, res: any) => {
+                const man: any = new SwaggifyModel();
+
             res.status(200).send(`Server made up and running!`)
         });   
         
