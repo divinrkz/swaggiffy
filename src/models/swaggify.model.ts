@@ -2,12 +2,15 @@ import { Model } from "../decorators/Model.decorator";
 import { Route } from "../decorators/Route.decorator";
 
 
-@Route
+// @Route
 class SwaggifyModel {
   
-    private name!: string;
-    private size!: number;
+    private name: string = 'sd';
+    private size: number = 2;
 
+    public getName() {
+        console.log('dsfa')
+    }
 };
 
 

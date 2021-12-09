@@ -29,11 +29,7 @@ class App extends Config {
         this.app = express();
         this.routes();
 
-        // new APIRoute();
-
-        // console.log(new SwaggifyModel());
-        const man: any = new SwaggifyModel();
-        console.log(man.age)
+        console.log(Utility.getClassProps(SwaggifyModel));
     }
 
     public listen(): void {
