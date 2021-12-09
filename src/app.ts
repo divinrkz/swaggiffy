@@ -25,11 +25,12 @@ class App extends Config {
     constructor() {
         super();
 
-        this.navigateDirectory();
+        // this.navigateDirectory();
         this.app = express();
         this.routes();
 
-        console.log(Utility.getClassProps(SwaggifyModel));
+        new SwaggifyModel();
+
     }
 
     public listen(): void {
@@ -47,8 +48,6 @@ class App extends Config {
 
     public routes(): void {
         this.app.get('/', (req: any, res: any) => {
-                const man: any = new SwaggifyModel();
-
             res.status(200).send(`Server made up and running!`)
         });   
         
@@ -58,10 +57,10 @@ class App extends Config {
     }
 
 
-    public navigateDirectory() {
-        console.log(__dirname);
-        console.log(Utility._getAllFilesFromFolder(__dirname));
-    }
+    // public navigateDirectory() {
+    //     console.log(__dirname);
+    //     console.log(Utility._getAllFilesFromFolder(__dirname));
+    // }
 
 };
 

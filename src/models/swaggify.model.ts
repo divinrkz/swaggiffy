@@ -2,7 +2,7 @@ import { Model } from "../decorators/Model.decorator";
 import { Route } from "../decorators/Route.decorator";
 
 
-// @Route
+@Route
 class SwaggifyModel {
   
     private name: string = 'sd';

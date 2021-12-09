@@ -1,30 +1,40 @@
+import Utility from "../utils/Utility";
+
 function Route(target: any) {
     console.log('Consoling target', target);
 
+
+    console.log(Utility.getClassProps(target));
  
     // save a reference to the original constructor
     var original = target;
    
     // a utility function to generate instances of a class
-    function construct(constructor: any, args: any) {
-      var c : any = function (this: any) {
-        return constructor.apply(this, args);
+    return function  (target: any): any {
+      // Save a reference to the original constructor
+      var original = target;
+      
+      // An utility function to generate instances of a class
+      function construct(constructor, args) {
+          var c: any = function () {
+              return constructor.apply(this, args);
+          }
+          c.prototype = constructor.prototype;
+          return new c();
       }
-      c.prototype = constructor.prototype;
-      return new c();
-    }
-   
-    // the new constructor behaviour
-    var f : any = function (...args:any) {
-      console.log("New: " + original.name);
-      return construct(original, args);
-    }
-   
-    // copy prototype so intanceof operator still works
-    f.prototype = original.prototype;
-   
-    // return new constructor (will override original)
-    return f;
+      
+      // The new constructor behaviour
+      var f: any = function (...args) {
+          console.log(`${prefix}${ts}${msgTrace} ${original.name}`);
+          return construct(original, args);
+      }
+      
+      // Copy prototype so intanceof operator still works
+      f.prototype = original.prototype;
+      
+      // Return new constructor (will override original)
+      return f;
+  };
   }
 
 
