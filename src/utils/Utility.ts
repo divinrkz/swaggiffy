@@ -46,10 +46,17 @@ class Utility {
     }
 
 
-    static writeToContentFile() {
-        console.log(__dirname);
+    static getSwagger() {
         const json: Buffer =  readFileSync(__dirname + '/swagger.json');
-        console.log(JSON.parse(json.toString()));        
+        const swagger = JSON.parse(json.toString());
+        console.info('Swagger APIS', swagger.apis);   
+        return swagger;  
+    }
+
+
+    static writeSwagger() {
+        const swagger = this.getSwagger();
+        console.info(swagger.swaggerDefinition.definitions);
     }
 
 

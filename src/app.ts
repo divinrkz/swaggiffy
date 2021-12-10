@@ -3,11 +3,12 @@ import Config from './config';
 import swaggerUi from 'swagger-ui-express';
 import  swaggerJsdoc from "swagger-jsdoc";
 import fs from 'fs';
-import swaggerDocument from './swagger/swagger.json';
+import swaggerDocument from './utils/swagger.json';
 import Utility from './utils/Utility';
 import { Route } from './decorators/Route.decorator';
 import { APIRoute } from './routes/express.route';
 import SwaggifyModel from './models/swaggify.model';
+
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
@@ -18,7 +19,7 @@ class App extends Config {
      * Swagger files
      */
 
-    private swaggerFile: any = (process.cwd() + "/src/swagger/swagger.json");
+    private swaggerFile: any = (process.cwd() + "/src/utils/swagger.json");
     private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
 
 

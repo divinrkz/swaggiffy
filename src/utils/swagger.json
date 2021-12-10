@@ -1,5 +1,5 @@
-
-           {"swaggerDefinition": {
+{
+    "swaggerDefinition": {
             "swagger": "2.0",
             "info": {
                 "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
@@ -17,176 +17,8 @@
             "host": "localhost:3080",
             "basePath": "/api",
             
-            "paths" : {
-                "/todos" : {
-                    "get" : {
-                        "summary" : "Get all the tasks added",
-                        "description": "Get all the tasks",
-                        "tags": ["test"],
-                        "produces": ["application/json"],
-                        "parameters": [],
-                        "responses": {
-                            "200": {
-                                "description": "successful operation",
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/todosResponse"
-                                    }
-                                }
-                            },
-                            "400": {
-                                "description": "Invalid status value",
-                                "schema": {
-                                    "$ref": "#/definitions/InvalidResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "/todo" : {
-                    "post" : {
-                        "summary" : "Save the task",
-                        "description": "Save the task",
-                        "produces": ["application/json"],
-                        "consumes": ["application/json"],
-                        "parameters": [
-                            {
-                                "in": "body",
-                                "name": "body",
-                                "description": "task object",
-                                "required": true,
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "task" : {
-                                            "type": "object",
-                                            "$ref": "#/definitions/Task"
-                                        } 
-                                    }
-                                }
-                            }
-                        ],
-                        "responses": {
-                            "200": {
-                                "description": "successful operation",
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/todosResponse"
-                                    }
-                                }
-                            },
-                            "400": {
-                                "description": "Invalid status value",
-                                "schema": {
-                                    "$ref": "#/definitions/InvalidResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "/todos/{id}" : {
-                    "put" : {
-                        "summary" : "Update the tasks",
-                        "description": "Update the tasks",
-                        "produces": ["application/json"],
-                        "parameters": [
-                            {
-                                "name": "id",
-                                "in": "path",
-                                "description": "task id that needs to be deleted",
-                                "required": true,
-                                "type": "string"
-                            },
-                            {
-                                "in": "body",
-                                "name": "body",
-                                "description": "task object",
-                                "required": true,
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "task" : {
-                                            "type": "object",
-                                            "$ref": "#/definitions/Task"
-                                        } 
-                                    }
-                                }
-                            }
-                        ],
-                        "responses": {
-                            "200": {
-                                "description": "successful operation",
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/todosResponse"
-                                    }
-                                }
-                            },
-                            "400": {
-                                "description": "Invalid status value",
-                                "schema": {
-                                    "$ref": "#/definitions/InvalidResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "/todo/{id}" : {
-                    "delete" : {
-                        "summary" : "Delete the task",
-                        "description": "Delete the task",
-                        "produces": ["application/json"],
-                        "parameters": [
-                            {
-                                "name": "id",
-                                "in": "path",
-                                "description": "task id that needs to be deleted",
-                                "required": true,
-                                "type": "string"
-                            }
-                        ],
-                        "responses": {
-                            "200": {
-                                "description": "successful operation",
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/todosResponse"
-                                    }
-                                }
-                            },
-                            "400": {
-                                "description": "Invalid status value",
-                                "schema": {
-                                    "$ref": "#/definitions/InvalidResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
+            "paths": {},
             "definitions": {
-                "todosResponse": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                             "type": "integer"
-                        },
-                        "task": {
-                            "type": "string"
-                        },
-                        "assignee": {
-                            "type": "string"
-                        },
-                        "status": {
-                            "type": "string"
-                        }
-                    }
-                },
                 "Task": {
                     "type": "object",
                     "properties": {
@@ -200,19 +32,8 @@
                             "type": "string"
                         }
                     }
-                },
-                "InvalidResponse": {
-                    "type": "object",
-                    "properties": {
-                        "statusCode": {
-                            "type": "string"
-                        },
-                        "message": {
-                            "type": "string"
-                        }
-                    }
-        
                 }
-            },
-            "apis": []
-           }
+            }
+        },
+        "apis": []
+}
