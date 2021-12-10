@@ -1,4 +1,5 @@
 import { Class } from "../typings";
+import {readFileSync} from 'fs';
 
 
 class Utility {
@@ -40,8 +41,19 @@ class Utility {
         }
     }
 
+    static compileSwagger() {
 
-    
+    }
+
+
+    static writeToContentFile() {
+        console.log(__dirname);
+        const json: Buffer =  readFileSync(__dirname + '/swagger.json');
+        console.log(JSON.parse(json.toString()));        
+    }
+
+
+
 }
 
 
