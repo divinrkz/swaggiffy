@@ -20,13 +20,11 @@
     "basePath": "/api",
     "paths": {},
     "definitions": {
-      "Function": {
+      "SwaggifyModel": {
         "type": "object",
         "properties": {
           "name": {
-            "type": [
-              "name"
-            ]
+            "type": "string"
           }
         }
       }

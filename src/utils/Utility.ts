@@ -37,9 +37,9 @@ class Utility {
             props.push({type: typeof obj[prop], prop: prop});
         }
 
+
         return {
-            class: _class,
-            className: _class.constructor.name,
+            class: _class.name,
             props
         }
     }
@@ -85,11 +85,11 @@ class Utility {
 
     static formatClassProps(obj: any) {
           return {
-              [obj.className]: {
+              [obj.class]: {
                   type: 'object',
                   properties: {
                       [obj.props[0].prop]: {
-                          type: [obj.props[0].prop]
+                          type: obj.props[0].type
                       }
                   }
               }
