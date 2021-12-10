@@ -1,39 +1,36 @@
 {
-    "swaggerDefinition": {
-            "swagger": "2.0",
-            "info": {
-                "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
-                "version": "1.0.0",
-                "title": "Tasks API",
-                "contact": {
-                    "email": "abc@gmail.com"
-                },
-                "license": {
-                    "name": "Apache 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-                }
-            },
-            "schemes": ["http"],
-            "host": "localhost:3080",
-            "basePath": "/api",
-            
-            "paths": {},
-            "definitions": {
-                "Task": {
-                    "type": "object",
-                    "properties": {
-                        "task": {
-                            "type": "string"
-                        },
-                        "assignee": {
-                            "type": "string"
-                        },
-                        "status": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "apis": []
+  "swaggerDefinition": {
+    "swagger": "2.0",
+    "info": {
+      "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
+      "version": "1.0.0",
+      "title": "Tasks API",
+      "contact": {
+        "email": "abc@gmail.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "schemes": [
+      "http"
+    ],
+    "host": "localhost:3080",
+    "basePath": "/api",
+    "paths": {},
+    "definitions": {
+      "Function": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "name"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "apis": []
 }

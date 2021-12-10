@@ -1,8 +1,10 @@
 import { Class } from "../typings";
-import {readFileSync} from 'fs';
+import {readFileSync, writeFile, readFile} from 'fs';
 
 
 class Utility {
+
+    private static __path: string = __dirname + '/swagger.json';
 
     static _getAllFilesFromFolder(dir: any) {
 
@@ -37,6 +39,7 @@ class Utility {
 
         return {
             class: _class,
+            className: _class.constructor.name,
             props
         }
     }
@@ -54,12 +57,45 @@ class Utility {
     }
 
 
-    static writeSwagger() {
+    static writeSwagger(obj: any) {
         const swagger = this.getSwagger();
         console.info(swagger.swaggerDefinition.definitions);
+
+        const test = {name: 'divin'};
+
+        readFile(this.__path, (error, data) => {
+            if (error) {
+              console.error(error);
+              return;
+            }
+
+    
+            const parsedData = JSON.parse(data.toString());
+            parsedData.swaggerDefinition.definitions = this.formatClassProps(obj);
+            writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
+              if (err) {
+                console.log('Failed to write updated data to file');
+                return;
+              }
+              console.log('Updated file successfully');
+            });
+          });
     }
 
 
+    static formatClassProps(obj: any) {
+          return {
+              [obj.className]: {
+                  type: 'object',
+                  properties: {
+                      [obj.props[0].prop]: {
+                          type: [obj.props[0].prop]
+                      }
+                  }
+              }
+          }
+
+    }
 
 }
 
