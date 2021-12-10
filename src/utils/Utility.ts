@@ -1,3 +1,6 @@
+import { Class } from "../typings";
+
+
 class Utility {
 
     static _getAllFilesFromFolder(dir: any) {
@@ -21,13 +24,13 @@ class Utility {
         return results;
     };
 
+
     static getClassProps(_class: any) {
-        console.log('Type of Class', typeof _class);
+      
         const obj = new _class();
-        console.log(obj);
         const props = [];
+
         for (const prop of Object.keys(obj)) {
-            console.log(typeof obj[prop]);
             props.push({type: typeof obj[prop], prop: prop});
         }
 
@@ -36,6 +39,9 @@ class Utility {
             props
         }
     }
+
+
+    
 }
 
 

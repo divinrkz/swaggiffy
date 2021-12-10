@@ -1,11 +1,10 @@
-const Model = (target: any) => {
-    console.log(target);
-    // "target" is the constructor of the previous class
+import Utility from "../utils/Utility";
 
-    return (target: Function) => {
-    console.log(Object.getOwnPropertyNames(target))
-        
-    }
+function Model() {
+  return (_class: Function) => {
+      console.log(Utility.getClassProps(_class));
   }
+}
+
 
 export {Model};

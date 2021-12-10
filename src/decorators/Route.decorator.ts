@@ -1,6 +1,6 @@
 import Utility from "../utils/Utility";
 
-function Route(target: any) {
+function Route(target) {
     console.log('Consoling target', target);
 
 
@@ -10,13 +10,13 @@ function Route(target: any) {
     var original = target;
    
     // a utility function to generate instances of a class
-    return function  (target: any): any {
+    return function  (target) {
       // Save a reference to the original constructor
       var original = target;
       
       // An utility function to generate instances of a class
       function construct(constructor, args) {
-          var c: any = function () {
+          var c = function () {
               return constructor.apply(this, args);
           }
           c.prototype = constructor.prototype;
@@ -24,7 +24,7 @@ function Route(target: any) {
       }
       
       // The new constructor behaviour
-      var f: any = function (...args) {
+      var f = function (...args) {
           console.log(`${prefix}${ts}${msgTrace} ${original.name}`);
           return construct(original, args);
       }
