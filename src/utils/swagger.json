@@ -4,9 +4,9 @@
     "info": {
       "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
       "version": "1.0.0",
-      "title": "Tasks API",
+      "title": "Swaggify",
       "contact": {
-        "email": "abc@gmail.com"
+        "email": "irakizadivin@gmail.com"
       },
       "license": {
         "name": "Apache 2.0",
@@ -16,7 +16,7 @@
     "schemes": [
       "http"
     ],
-    "host": "localhost:3080",
+    "host": "localhost:4008",
     "basePath": "/api",
     "paths": {},
     "definitions": {
