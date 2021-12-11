@@ -49,7 +49,9 @@
     "prettier": "^2.5.0",
     "typescript": "^4.5.2"
   },
-  "bin": "./cli.js",
+  "bin": {
+    "swaggify": "./cli.js"
+  },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
