@@ -2,7 +2,7 @@
   "swaggerDefinition": {
     "swagger": "2.0",
     "info": {
-      "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
+      "description": "Swaggify documentation",
       "version": "1.0.0",
       "title": "Swaggify",
       "contact": {
