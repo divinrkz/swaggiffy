@@ -61,7 +61,6 @@ class Utility {
         const swagger = this.getSwagger();
         console.info(swagger.swaggerDefinition.definitions);
 
-        const test = {name: 'divin'};
 
         readFile(this.__path, (error, data) => {
             if (error) {
@@ -71,14 +70,18 @@ class Utility {
 
     
             const parsedData = JSON.parse(data.toString());
-            const definitions = parsedData.swaggerDefinition.definitions;
-            
+            const definition = parsedData.swaggerDefinition.definitions;
 
-            let wholeArray = Object.keys(definitions).map(key => obj[key]);
-            console.log('Definitions object', definitions);
+            const swaggifyModel: any = this.formatClassProps(obj);
+            const modelName = Object.keys(swaggifyModel)[0];
 
-            this.arrayize(definitions);
+            console.log('Definition1', definition);
+
+            const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, definition);
             
+            console.log('Definition2', tester);
+
+            // parsedData.swaggerDefinition.definitions = tester;
 
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
@@ -107,11 +110,32 @@ class Utility {
 
 
     static arrayize(obj: any) {
+        const obj1 = { SwaggifyModel1: { type: 'object', properties: { name: [] } } };
+        const obj2 = { SwaggifyModel2: { type: 'object', properties: { name: [] } } };
 
-        const arr = [obj];
+        const arr = [];
+        arr.push(obj1);
+        arr.push(obj2);
 
-        console.log('arrized', arr);
+        console.log('Array', Object.values(arr));
 
+        
+        this.getSwaggerObject(arr);
+
+        
+
+        return arr;
+
+
+
+    }
+
+    static getSwaggerObject(arr: any) {
+        console.log('Get swagger object', arr);
+
+        for (const a of arr) {
+            console.log(Object.keys(a)[0]);
+        }
 
 
     }

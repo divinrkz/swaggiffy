@@ -28,9 +28,11 @@ class App extends Config {
 
         // this.navigateDirectory();
         this.app = express();
-        this.routes();
 
         new SwaggifyModel();
+
+        this.routes();
+
 
     }
 

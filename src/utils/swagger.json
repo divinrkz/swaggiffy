@@ -27,6 +27,14 @@
             "type": "string"
           }
         }
+      },
+      "SwaggifyModel1": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
       }
     }
   },
