@@ -85,10 +85,10 @@ class Utility {
 
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
-                console.log('Failed to write updated data to file');
+                console.error('Failed to write updated data to file');
                 return;
               }
-              console.log('Updated file successfully');
+              console.error('Updated file successfully');
             });
           });
     }
