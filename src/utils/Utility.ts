@@ -71,7 +71,15 @@ class Utility {
 
     
             const parsedData = JSON.parse(data.toString());
-            parsedData.swaggerDefinition.definitions = this.formatClassProps(obj);
+            const definitions = parsedData.swaggerDefinition.definitions;
+            
+
+            let wholeArray = Object.keys(definitions).map(key => obj[key]);
+            console.log('Definitions object', definitions);
+
+            this.arrayize(definitions);
+            
+
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
                 console.log('Failed to write updated data to file');
@@ -94,6 +102,17 @@ class Utility {
                   }
               }
           }
+
+    }
+
+
+    static arrayize(obj: any) {
+
+        const arr = [obj];
+
+        console.log('arrized', arr);
+
+
 
     }
 

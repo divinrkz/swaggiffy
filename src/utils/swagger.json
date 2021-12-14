@@ -17,7 +17,7 @@
       "http"
     ],
     "host": "localhost:4008",
-    "basePath": "/api",
+    "basePath": "/",
     "paths": {},
     "definitions": {
       "SwaggifyModel": {
