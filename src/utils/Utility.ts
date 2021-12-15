@@ -1,4 +1,3 @@
-import { Class } from "../typings";
 import {readFileSync, writeFile, readFile} from 'fs';
 
 

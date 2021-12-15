@@ -1,4 +1,4 @@
-import Utility from "../utils/Utility";
+import Utility from "./utils/Utility";
 
 function SwaggifyModel(): Function {
   return (_class: Function) => {

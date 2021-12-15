@@ -1,8 +1,8 @@
-import { SwaggifyModel } from "../decorators/Model.decorator";
+import { SwaggifyModel } from "./models/User";
 
 
 @SwaggifyModel()
-class User {
+export class User {
   
     name: string;
     age: number;
@@ -10,7 +10,3 @@ class User {
     active: boolean;
     
 };
-
-
-
-export default User;
