@@ -5,12 +5,21 @@ import { Route } from "../decorators/Route.decorator";
 @Model()
 class UserModel {
   
-    private name: string = 'sd';
-    private size: number = 2;
-    private age: number = 2;
-    private gender: number = 2;
-    private numberOfAge: number = 2;
-    private numberOfSize: number = 2;
+    private _name: string;
+    private age: number;
+    private birthDate: Date;
+    private active: boolean;
+
+
+
+    get name(): string {
+        return this._name;
+    }
+
+    set name(name: string) {
+        this._name = name;
+    }
+
     
 };
 
