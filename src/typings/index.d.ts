@@ -15,16 +15,9 @@ export type TClassDef = {
 
 export type TSwaggerType = {
     type: 'object',
-    properties: 
+    properties: {}
 
 }
 export type SwaggerDefinition = {
-    type: 
-}
-
-return {
-    [obj.class]: {
-        type: 'object',
-        properties: props
-    }
+    type: 'string'
 }
