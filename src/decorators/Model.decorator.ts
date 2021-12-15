@@ -1,6 +1,6 @@
 import Utility from "../utils/Utility";
 
-function Model(): Function {
+function SwaggifyModel(): Function {
   return (_class: Function) => {
       const obj: any = Utility.getClassProps(_class);
       Utility.writeSwagger(obj);
@@ -8,4 +8,4 @@ function Model(): Function {
 }
 
 
-export {Model};
+export {SwaggifyModel};
