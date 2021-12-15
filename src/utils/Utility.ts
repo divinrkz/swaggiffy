@@ -29,13 +29,13 @@ class Utility {
 
     static getClassProps(_class: any) {
       
-        const obj = new _class();
+        const instance: typeof _class = new _class();
+        
         const props = [];
 
-        for (const prop of Object.keys(obj)) {
-            props.push({type: typeof obj[prop], prop: prop});
+        for (const prop of Object.keys(instance)) {
+            props.push({type: typeof instance[prop], prop: prop});
         }
-
 
         return {
             class: _class.name,
@@ -56,24 +56,21 @@ class Utility {
 
 
     static writeSwagger(obj: any) {
-
         readFile(this.__path, (error, data) => {
             if (error) {
               console.error(error);
               return;
             }
 
-    
             const parsedData = JSON.parse(data.toString());
             const definition = parsedData.swaggerDefinition.definitions;
 
-            const swaggifyModel: any = this.formatClassProps(obj);
+            const swaggifyModel: any = obj;
             const modelName = Object.keys(swaggifyModel)[0];
 
 
             const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, definition);
         
-
             parsedData.swaggerDefinition.definitions = tester;
 
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
@@ -95,7 +92,6 @@ class Utility {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
-
           return {
               [obj.class]: {
                   type: 'object',
@@ -104,7 +100,6 @@ class Utility {
           }
 
     }
-
 
 
 }

@@ -1,4 +1,4 @@
-import { SwaggifyModel } from "../SwaggifyModel.ts";
+import { SwaggifyModel } from "../SwaggifyModel";
 
 
 @SwaggifyModel()
