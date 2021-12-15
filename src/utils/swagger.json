@@ -20,6 +20,10 @@
     "basePath": "/",
     "paths": {},
     "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {}
+      },
       "UserModel": {
         "type": "object",
         "properties": {

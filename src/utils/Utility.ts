@@ -1,4 +1,5 @@
 import {readFileSync, writeFile, readFile} from 'fs';
+import { TClassProps } from '../typings';
 
 
 class Utility {
@@ -30,8 +31,8 @@ class Utility {
     static getClassProps(_class: any) {
       
         const instance: typeof _class = new _class();
-        
-        const props = [];
+      
+        const props: TClassProps = [];
 
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
@@ -45,13 +46,6 @@ class Utility {
 
     static compileSwagger() {
 
-    }
-
-
-    static getSwagger() {
-        const json: Buffer =  readFileSync(__dirname + '/swagger.json');
-        const swagger = JSON.parse(json.toString());
-        return swagger;  
     }
 
 
