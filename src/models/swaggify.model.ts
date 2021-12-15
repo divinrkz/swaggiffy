@@ -2,7 +2,7 @@ import { Model } from "../decorators/Model.decorator";
 import { Route } from "../decorators/Route.decorator";
 
 
-@Model()
+// @Model()
 class SwaggifyModel {
   
     private name: string = 'sd';
@@ -12,6 +12,7 @@ class SwaggifyModel {
         console.log('dsfa')
     }
 };
+
 
 
 export default SwaggifyModel;

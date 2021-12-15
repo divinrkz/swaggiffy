@@ -52,15 +52,11 @@ class Utility {
     static getSwagger() {
         const json: Buffer =  readFileSync(__dirname + '/swagger.json');
         const swagger = JSON.parse(json.toString());
-        console.info('Swagger APIS', swagger.apis);   
         return swagger;  
     }
 
 
     static writeSwagger(obj: any) {
-        const swagger = this.getSwagger();
-        console.info(swagger.swaggerDefinition.definitions);
-
 
         readFile(this.__path, (error, data) => {
             if (error) {
@@ -75,13 +71,11 @@ class Utility {
             const swaggifyModel: any = this.formatClassProps(obj);
             const modelName = Object.keys(swaggifyModel)[0];
 
-            console.log('Definition1', definition);
 
             const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, definition);
-            
-            console.log('Definition2', tester);
+        
 
-            // parsedData.swaggerDefinition.definitions = tester;
+            parsedData.swaggerDefinition.definitions = tester;
 
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
@@ -95,50 +89,24 @@ class Utility {
 
 
     static formatClassProps(obj: any) {
+
+        let props = {};
+
+        for (const prop of obj.props) {
+          props = Object.assign({[prop.prop]: { type: prop.type}}, props);
+        }
+
+
           return {
               [obj.class]: {
                   type: 'object',
-                  properties: {
-                      [obj.props[0].prop]: {
-                          type: obj.props[0].type
-                      }
-                  }
+                  properties: props
               }
           }
 
     }
 
 
-    static arrayize(obj: any) {
-        const obj1 = { SwaggifyModel1: { type: 'object', properties: { name: [] } } };
-        const obj2 = { SwaggifyModel2: { type: 'object', properties: { name: [] } } };
-
-        const arr = [];
-        arr.push(obj1);
-        arr.push(obj2);
-
-        console.log('Array', Object.values(arr));
-
-        
-        this.getSwaggerObject(arr);
-
-        
-
-        return arr;
-
-
-
-    }
-
-    static getSwaggerObject(arr: any) {
-        console.log('Get swagger object', arr);
-
-        for (const a of arr) {
-            console.log(Object.keys(a)[0]);
-        }
-
-
-    }
 
 }
 

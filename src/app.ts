@@ -8,6 +8,7 @@ import Utility from './utils/Utility';
 import { Route } from './decorators/Route.decorator';
 import { APIRoute } from './routes/express.route';
 import SwaggifyModel from './models/swaggify.model';
+import UserModel from './models/user.model';
 
 class App extends Config {
 
@@ -29,7 +30,8 @@ class App extends Config {
         // this.navigateDirectory();
         this.app = express();
 
-        new SwaggifyModel();
+        // new SwaggifyModel();
+        new UserModel();
 
         this.routes();
 

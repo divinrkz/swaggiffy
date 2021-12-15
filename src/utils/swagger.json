@@ -20,17 +20,24 @@
     "basePath": "/",
     "paths": {},
     "definitions": {
-      "SwaggifyModel": {
+      "UserModel": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "SwaggifyModel1": {
-        "type": "object",
-        "properties": {
+          "numberOfSize": {
+            "type": "number"
+          },
+          "numberOfAge": {
+            "type": "number"
+          },
+          "gender": {
+            "type": "number"
+          },
+          "age": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
+          },
           "name": {
             "type": "string"
           }
