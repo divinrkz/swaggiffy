@@ -10,5 +10,21 @@ export type TClassProps = Array<TClassProp>;
 
 export type TClassDef = {
     class: string,
-    props: Array<TClassProps>
+    props: TClassProps
+}
+
+export type TSwaggerType = {
+    type: 'object',
+    properties: 
+
+}
+export type SwaggerDefinition = {
+    type: 
+}
+
+return {
+    [obj.class]: {
+        type: 'object',
+        properties: props
+    }
 }

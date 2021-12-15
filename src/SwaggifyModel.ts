@@ -1,12 +1,13 @@
+import { TClassDef } from "./typings";
 import Utility from "./utils/Utility";
 
 function SwaggifyModel(): Function {
   return (_class: Function) => {
     
-    console.log('swaggify');
-    const obj: any = Utility.getClassProps(_class);
 
-      const format: any = Utility.formatClassProps(obj);
+      const classDef: TClassDef = Utility.getClassProps(_class);
+
+      const format: any = Utility.formatClassProps(classDef);
 
       Utility.writeSwagger(format);
       

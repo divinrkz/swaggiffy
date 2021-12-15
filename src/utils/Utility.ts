@@ -1,5 +1,5 @@
 import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassProps } from '../typings';
+import { TClassDef, TClassProps } from '../typings';
 
 
 class Utility {
@@ -28,27 +28,19 @@ class Utility {
     };
 
 
-    static getClassProps(_class: any) {
+    static getClassProps(_class: any): TClassDef {
       
         const instance: typeof _class = new _class();
-      
         const props: TClassProps = [];
 
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
         }
 
-        return {
-            class: _class.name,
-            props
-        }
+        return { class: _class.name, props }
     }
 
-    static compileSwagger() {
-
-    }
-
-
+    
     static writeSwagger(obj: any) {
         readFile(this.__path, (error, data) => {
             if (error) {
