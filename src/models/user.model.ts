@@ -2,7 +2,7 @@ import { SwaggifyModel } from "../SwaggifyModel";
 
 
 @SwaggifyModel()
-export class User {
+class User {
   
     name: string;
     age: number;
@@ -10,3 +10,5 @@ export class User {
     active: boolean;
     
 };
+
+export {User};

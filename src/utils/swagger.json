@@ -2,9 +2,9 @@
   "swaggerDefinition": {
     "swagger": "2.0",
     "info": {
-      "description": "Swaggify documentation",
+      "description": "Swaggify Documentation",
       "version": "1.0.0",
-      "title": "Swaggify",
+      "title": "Swaggify Docs",
       "contact": {
         "email": "irakizadivin@gmail.com"
       },
@@ -23,29 +23,6 @@
       "User": {
         "type": "object",
         "properties": {}
-      },
-      "UserModel": {
-        "type": "object",
-        "properties": {
-          "numberOfSize": {
-            "type": "number"
-          },
-          "numberOfAge": {
-            "type": "number"
-          },
-          "gender": {
-            "type": "number"
-          },
-          "age": {
-            "type": "number"
-          },
-          "size": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
       }
     }
   },

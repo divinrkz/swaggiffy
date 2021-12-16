@@ -1,5 +1,5 @@
 import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassDef, TClassProps } from '../typings';
+import { TClassDef, TClassProp, TClassProps } from '../typings';
 
 
 class Utility {
@@ -29,11 +29,15 @@ class Utility {
 
 
     static getClassProps(_class: any): TClassDef {
+        console.log(_class);
       
         const instance: typeof _class = new _class();
         const props: TClassProps = [];
 
+        console.log(Object.keys(instance));
+
         for (const prop of Object.keys(instance)) {
+            console.log(prop);
             props.push({type: typeof instance[prop], prop: prop});
         }
 
@@ -70,9 +74,12 @@ class Utility {
     }
 
 
-    static formatClassProps(obj: any) {
+    static formatClassProps(obj: TClassDef) {
 
-        let props = {};
+        let props: TClassProp = {
+            prop: '',
+            type: ''
+        };
 
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
