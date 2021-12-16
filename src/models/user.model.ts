@@ -4,10 +4,10 @@ import { SwaggifyModel } from "../SwaggifyModel";
 @SwaggifyModel()
 class User {
   
-    name: string;
-    age: number;
-    birthDate: Date;
-    active: boolean;
+     name: string = "User";
+     age: number = 16;
+     birthDate: Date = new Date(); 
+     active: boolean = false;
     
 };
 

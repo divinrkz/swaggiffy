@@ -34,7 +34,8 @@ class Utility {
         const instance: typeof _class = new _class();
         const props: TClassProps = [];
 
-        console.log(Object.keys(instance));
+        console.log('Object entries', Object.entries(instance));
+        
 
         for (const prop of Object.keys(instance)) {
             console.log(prop);
