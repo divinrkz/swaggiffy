@@ -4,10 +4,7 @@ import Utility from "./utils/Utility";
 function SwaggifyModel(): Function {
   return (_class: Function) => {
 
-      const classDef: TClassDef = Utility.getClassProps(_class);
-
-      console.log(classDef);
-      
+      const classDef: TClassDef = Utility.getClassProps(_class);      
       const format: any = Utility.formatClassProps(classDef);
       Utility.writeSwagger(format);
       

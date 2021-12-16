@@ -34,7 +34,7 @@ class Utility {
         const instance: typeof _class = new _class();
         const props: TClassProps = [];
 
-        console.log('Object entries', Object.entries(instance));
+        console.log('Object entries', Object.keys(instance));
         
 
         for (const prop of Object.keys(instance)) {
@@ -63,6 +63,7 @@ class Utility {
             const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, definition);
         
             parsedData.swaggerDefinition.definitions = tester;
+
 
             writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
