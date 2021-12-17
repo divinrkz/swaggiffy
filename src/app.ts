@@ -25,7 +25,6 @@ class App {
      * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */
     public serveSwagger(swaggerDefinitionFile: string, swaggerEndPoint: PathString): void {
-        const basePath: string = process.cwd();
         import(swaggerDefinitionFile).then((file) => {
             const specs: JsonObject = swaggerJsdoc(file);
             this.app.use(swaggerEndPoint, swaggerUi.serve, swaggerUi.setup(specs));
