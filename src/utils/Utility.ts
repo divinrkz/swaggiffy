@@ -29,16 +29,10 @@ class Utility {
 
 
     static getClassProps(_class: any): TClassDef {
-        console.log(_class);
-      
         const instance: typeof _class = new _class();
         const props: TClassProps = [];
 
-        console.log('Object entries', Object.keys(instance));
-        
-
         for (const prop of Object.keys(instance)) {
-            console.log(prop);
             props.push({type: typeof instance[prop], prop: prop});
         }
 
@@ -56,12 +50,17 @@ class Utility {
             const parsedData = JSON.parse(data.toString());
             const definition = parsedData.swaggerDefinition.definitions;
 
+            
             const swaggifyModel: any = obj;
             const modelName = Object.keys(swaggifyModel)[0];
 
-
-            const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, definition);
-        
+            console.log(swaggifyModel);
+            console.log('Modelling', swaggifyModel[modelName]);
+            const tes = {};
+            const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, tes);
+    
+            console.log('testing obj', tes);
+            
             parsedData.swaggerDefinition.definitions = tester;
 
 
@@ -78,10 +77,7 @@ class Utility {
 
     static formatClassProps(obj: TClassDef) {
 
-        let props: TClassProp = {
-            prop: '',
-            type: ''
-        };
+        let props: TClassProp = <TClassProp>{};
 
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
