@@ -36,7 +36,7 @@ class Utility {
             props.push({type: typeof instance[prop], prop: prop});
         }
 
-        return { class: _class.name, props }
+        return <TClassDef>{ class: _class.name, props }
     }
 
     

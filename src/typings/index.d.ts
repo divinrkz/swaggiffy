@@ -13,10 +13,17 @@ export type TClassDef = {
 }
 
 export type TSwaggerType = {
-    type: 'object',
-    properties: {}
-
+    type: string,
+    properties: Record<string, string>
 }
+
+export type TSwaggerSchema = {
+    [type: string]: TSwaggerType
+}
+
+
+
 export type SwaggerDefinition = {
     type: 'string'
 }
+
