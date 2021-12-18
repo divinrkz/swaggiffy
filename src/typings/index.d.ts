@@ -1,6 +1,5 @@
 export type Class<T> = {new (): T};
 
-
 export type TClassProp = {
     prop: string
     type: string

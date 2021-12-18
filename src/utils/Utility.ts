@@ -1,11 +1,10 @@
 import {readFileSync, writeFile, readFile} from 'fs';
 import { TClassDef, TClassProp, TClassProps } from '../typings';
-
-
+import {Constants} from './Constants';
 class Utility {
 
-    private static __path: string = __dirname + '/swagger.json';
-
+  
+    
     static _getAllFilesFromFolder(dir: any) {
 
         var filesystem = require("fs");
@@ -29,6 +28,7 @@ class Utility {
 
 
     static getClassProps(_class: any): TClassDef {
+
         const instance: typeof _class = new _class();
         const props: TClassProps = [];
 
@@ -41,7 +41,7 @@ class Utility {
 
     
     static writeSwagger(obj: any) {
-        readFile(this.__path, (error, data) => {
+        readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
               return;
@@ -54,17 +54,12 @@ class Utility {
             const swaggifyModel: any = obj;
             const modelName = Object.keys(swaggifyModel)[0];
 
-            console.log(swaggifyModel);
-            console.log('Modelling', swaggifyModel[modelName]);
-            const tes = {};
-            const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, tes);
-    
-            console.log('testing obj', tes);
+            const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, {});
             
             parsedData.swaggerDefinition.definitions = tester;
 
 
-            writeFile(this.__path, JSON.stringify(parsedData, null, 2), (err) => {
+            writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
                 console.error('Failed to write updated data to file');
                 return;

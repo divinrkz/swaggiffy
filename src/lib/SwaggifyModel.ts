@@ -1,5 +1,5 @@
-import { TClassDef } from "./typings";
-import Utility from "./utils/Utility";
+import { TClassDef } from "../typings";
+import Utility from "../utils/Utility";
 
 function SwaggifyModel(): Function {
   return (_class: Function) => {
