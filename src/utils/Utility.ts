@@ -1,5 +1,5 @@
 import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassDef, TClassProp, TClassProps } from '../typings';
+import { TClassDef, TClassProp, TClassProps, TSwaggerSchema, TSwaggerType } from '../typings';
 import {Constants} from './Constants';
 class Utility {
 
@@ -70,7 +70,7 @@ class Utility {
     }
 
 
-    static formatClassProps(obj: TClassDef) {
+    static formatClassProps(obj: TClassDef): TSwaggerSchema {
 
         let props: TClassProp = <TClassProp>{};
 
@@ -78,12 +78,21 @@ class Utility {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
-          return {
-              [obj.class]: {
-                  type: 'object',
-                  properties: props
-              }
-          }
+        //   return {
+        //       [obj.class]: {
+        //           type: 'object',
+        //           properties: props
+        //       }
+        //   }
+
+        console.log(props);
+
+        return <TSwaggerSchema>{};
+        // return {
+        //     [obj.class]: {
+        //         type: 'object',
+        //         properties: props
+        // };
 
     }
 

@@ -25,7 +25,3 @@ export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 }
 
-export type SwaggerDefinition = {
-    type: 'string'
-}
-
