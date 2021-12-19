@@ -87,14 +87,13 @@ class Utility {
 
         console.log(props);
 
-        return <TSwaggerSchema>{};
-        // return {
-        //     [obj.class]: {
-        //         type: 'object',
-        //         properties: props
-        // };
-
-    }
+        // return <TSwaggerSchema>{};
+        return {
+            [obj.class]: {
+                type: 'object',
+                properties: {props} }
+            }
+        };
 
 
 }
