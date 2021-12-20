@@ -1,10 +1,9 @@
 import {readFileSync, writeFile, readFile} from 'fs';
 import { TClassDef, TClassProp, TClassProps, TSwaggerSchema, TSwaggerType } from '../typings';
 import {Constants} from './Constants';
-class Utility {
+export class Utility {
 
   
-    
     static _getAllFilesFromFolder(dir: any) {
 
         var filesystem = require("fs");
@@ -36,12 +35,33 @@ class Utility {
             props.push({type: typeof instance[prop], prop: prop});
         }
 
-        return <TClassDef>{ class: _class.name, props }
+        return <TClassDef>{ class: _class.name, props };
+    }
+
+
+    static genDef(obj: TClassDef): TSwaggerSchema {
+
+        let props: TClassProp = <TClassProp>{};
+
+        for (const prop of obj.props) {
+          props = Object.assign({[prop.prop]: { type: prop.type}}, props);
+        }
+
+
+        console.log(props);
+
+
+        return <TSwaggerSchema>{
+            [obj.class]: {
+                type: 'object',
+                properties: {}
+            } 
+        };
+
     }
 
     
     static swaggify(obj: TSwaggerSchema): void {
-
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
@@ -67,24 +87,5 @@ class Utility {
           });
     }
 
-
-    static genDef(obj: TClassDef): TSwaggerSchema {
-
-        let props: TClassProp = <TClassProp>{};
-
-        for (const prop of obj.props) {
-          props = Object.assign({[prop.prop]: { type: prop.type}}, props);
-        }
-
-        return <TSwaggerSchema>{
-            [obj.class]: {
-                type: 'object',
-                properties: {props} 
-            } 
-        };
-
-    }
 }
 
-
-export default Utility;

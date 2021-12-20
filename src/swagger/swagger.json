@@ -1,6 +1,6 @@
 {
   "swaggerDefinition": {
-    "openapi": "3.0.0",
+    "swagger": "2.0",
     "info": {
       "description": "Swaggify Documentation",
       "version": "1.0.0",
@@ -19,32 +19,14 @@
     "host": "localhost:4008",
     "basePath": "/",
     "paths": {},
+    "components": {
+      "schemas": {}
+    },
     "definitions": {
       "User": {
         "type": "object",
         "properties": {
           "props": {
-            "active": {
-              "type": "boolean"
-            },
-            "birthDate": {
-              "type": "object"
-            },
-            "age": {
-              "type": "number"
-            },
-            "name": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    "components": {
-      "schemas": {
-        "User": {
-          "type": "object",
-          "properties": {
             "active": {
               "type": "boolean"
             },
