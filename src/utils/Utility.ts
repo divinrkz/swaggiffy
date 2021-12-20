@@ -40,7 +40,8 @@ class Utility {
     }
 
     
-    static writeSwagger(obj: any) {
+    static swaggify(obj: TSwaggerSchema): void {
+        
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
@@ -48,16 +49,13 @@ class Utility {
             }
 
             const parsedData = JSON.parse(data.toString());
-            const definition = parsedData.swaggerDefinition.definitions;
 
-            
             const swaggifyModel: any = obj;
             const modelName = Object.keys(swaggifyModel)[0];
 
             const tester = Object.assign({[modelName]: swaggifyModel[modelName]}, {});
             
             parsedData.swaggerDefinition.definitions = tester;
-
 
             writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
@@ -78,24 +76,14 @@ class Utility {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
-        //   return {
-        //       [obj.class]: {
-        //           type: 'object',
-        //           properties: props
-        //       }
-        //   }
-
-        console.log(props);
-
-        // return <TSwaggerSchema>{};
-        return {
+        return <TSwaggerSchema>{
             [obj.class]: {
                 type: 'object',
-                properties: {props} }
-            }
+                properties: {props} 
+            } 
         };
 
-
+    }
 }
 
 
