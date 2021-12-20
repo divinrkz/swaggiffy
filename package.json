@@ -1,6 +1,6 @@
 {
   "name": "swaggify",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
   "main": "index.js",
   "scripts": {
