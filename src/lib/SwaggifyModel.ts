@@ -6,7 +6,7 @@ function SwaggifyModel(): Function {
 
       const classDef: TClassDef = Utility.getClassProps(_class);    
 
-      const swaggerDef: TSwaggerSchema = Utility.formatClassProps(classDef);
+      const swaggerDef: TSwaggerSchema = Utility.genDef(classDef);
 
       Utility.swaggify(swaggerDef);
       

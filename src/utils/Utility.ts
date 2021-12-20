@@ -41,7 +41,7 @@ class Utility {
 
     
     static swaggify(obj: TSwaggerSchema): void {
-        
+
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
@@ -68,7 +68,7 @@ class Utility {
     }
 
 
-    static formatClassProps(obj: TClassDef): TSwaggerSchema {
+    static genDef(obj: TClassDef): TSwaggerSchema {
 
         let props: TClassProp = <TClassProp>{};
 
