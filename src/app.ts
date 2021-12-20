@@ -9,7 +9,6 @@ import { User } from './models/user.model';
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
-
     private app: Express;
 
     constructor() {
@@ -32,12 +31,10 @@ class App extends Config {
     }
 
     private swaggify(): void {    
-
         new User();
         const specs: JsonObject = swaggerJsdoc(swaggerDocument);
         this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
     }
-
 };
 
 export default App;
