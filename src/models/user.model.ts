@@ -1,4 +1,4 @@
-import { SwaggifyModel } from "../lib/SwaggifyModel";
+import { SwaggifyModel } from ".././lib";
 
 
 @SwaggifyModel()
