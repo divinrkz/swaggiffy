@@ -1,3 +1,3 @@
-import {SwaggifyModel} from './SwaggifyModel';
+import {SwaggifyModel} from './swaggify-model';
 
 export {SwaggifyModel};
