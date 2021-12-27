@@ -4,7 +4,7 @@ import { SwaggifyModel } from ".././lib";
 @SwaggifyModel()
 class User {
   
-     name: string = "User";
+     name: string = "User Model";
      age: number = 16;
      birthDate: Date = new Date(); 
      active: boolean = false;
@@ -12,3 +12,4 @@ class User {
 };
 
 export {User};
+ 

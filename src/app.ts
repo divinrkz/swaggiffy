@@ -20,7 +20,7 @@ class App extends Config {
 
     public listen(): void {
         this.app.listen(this.PORT, () => {
-            console.log(`App listening on the port ${process.env.PORT}`);
+            console.log(`App listening on PORT ${process.env.PORT}`);
         });
     }  
     
