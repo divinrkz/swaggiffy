@@ -31,17 +31,19 @@ export class Utility {
     }
 
 
-    static genDef(obj: TClassDef): TSwaggerSchema {
+    static genSchemaDef(obj: TClassDef): TSwaggerSchema {
         let props: TClassProp = <TClassProp>{};
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
         console.log(props);
+        const s = {s: 'ds'}
+        console.log({active: {type: 'boolean'}, d: {type: 'boolean'}, sd: {type: 'boolean'}, ds: {type: 'boolean'}})
         return <TSwaggerSchema>{
             [obj.class]: {
                 type: 'object',
-                properties: {active: {type: 'boolean'}}
+                properties: {props}
             } 
         };
     }

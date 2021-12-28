@@ -21,7 +21,23 @@
     "paths": {},
     "definitions": {
       "User": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "props": {
+            "active": {
+              "type": "boolean"
+            },
+            "birthDate": {
+              "type": "object"
+            },
+            "age": {
+              "type": "number"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
       }
     }
   },

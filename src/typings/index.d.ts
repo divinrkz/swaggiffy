@@ -25,5 +25,4 @@ export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 }
 
-
-export type TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
+const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
