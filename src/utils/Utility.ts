@@ -1,4 +1,4 @@
-import {readFileSync, writeFile, readFile} from 'fs';
+import {readFileSync, writeFile, readFile} from 'fs/promises';
 import { TClassDef, TClassProp, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaProp, TSwaggerType } from '../typings';
 import {Constants} from './Constants';
 export class Utility {
