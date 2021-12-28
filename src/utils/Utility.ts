@@ -25,8 +25,6 @@ export class Utility {
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
         }
-
-    
         return <TClassDef>{ class: _class.name, props: props.reverse() };
     }
 
