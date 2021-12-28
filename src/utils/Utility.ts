@@ -38,7 +38,14 @@ export class Utility {
         }
 
         console.log(props);
-        console.log({active: {type: 'boolean'}, d: {type: 'boolean'}, sd: {type: 'boolean'}, ds: {type: 'boolean'}})
+      
+        console.log({
+            active: { type: 'boolean' },
+            birthDate: { type: 'object' },
+            age: { type: 'number' },
+            name: { type: 'string' }
+          });
+          
         return <TSwaggerSchema>{
             [obj.class]: {
                 type: 'object',
