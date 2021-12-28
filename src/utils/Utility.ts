@@ -36,10 +36,12 @@ export class Utility {
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
+
+        console.log(props);
         return <TSwaggerSchema>{
             [obj.class]: {
                 type: 'object',
-                properties: {}
+                properties: {active: {type: 'boolean'}}
             } 
         };
     }

@@ -4,6 +4,7 @@
   "description": "A zero-config Node.js Swagger Documentation",
   "main": "index.js",
   "scripts": {
+    "dev-stage": "npx nodemon ./src/server.ts",
     "dev": "ts-node ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",

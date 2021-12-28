@@ -19,13 +19,9 @@
     "host": "localhost:4008",
     "basePath": "/",
     "paths": {},
-    "components": {
-      "schemas": {}
-    },
     "definitions": {
       "User": {
-        "type": "object",
-        "properties": {}
+        "type": "object"
       }
     }
   },

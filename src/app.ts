@@ -14,6 +14,10 @@ class App extends Config {
     constructor() {
         super();
         this.app = express();
+        this.init();
+    }
+
+    public init(): void {
         this.routes();
         this.swaggify();
     }
