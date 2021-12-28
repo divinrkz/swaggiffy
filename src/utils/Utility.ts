@@ -1,4 +1,4 @@
-import {readFileSync, writeFile, readFile} from 'fs/promises';
+import {readFileSync, writeFile, readFile} from 'fs';
 import { TClassDef, TClassProp, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaProp, TSwaggerType } from '../typings';
 import {Constants} from './Constants';
 export class Utility {
@@ -28,6 +28,7 @@ export class Utility {
             props.push({type: typeof instance[prop], prop: prop});
         }
 
+    
         return <TClassDef>{ class: _class.name, props: props.reverse() };
     }
 
