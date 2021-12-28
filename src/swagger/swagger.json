@@ -19,27 +19,7 @@
     "host": "localhost:4008",
     "basePath": "/",
     "paths": {},
-    "definitions": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "props": {
-            "active": {
-              "type": "boolean"
-            },
-            "birthDate": {
-              "type": "object"
-            },
-            "age": {
-              "type": "number"
-            },
-            "name": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    }
+    "definitions": {}
   },
   "apis": []
 }

@@ -1,5 +1,5 @@
 import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassDef, TClassProp, TClassProps, TSwaggerSchema, TSwaggerType } from '../typings';
+import { TClassDef, TClassProp, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaProp, TSwaggerType } from '../typings';
 import {Constants} from './Constants';
 export class Utility {
 
@@ -32,24 +32,16 @@ export class Utility {
 
 
     static genSchemaDef(obj: TClassDef): TSwaggerSchema {
-        let props: TClassProp = <TClassProp>{};
+        let props: TSchemaProp = {};
+
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
-        console.log(props);
-      
-        console.log({
-            active: { type: 'boolean' },
-            birthDate: { type: 'object' },
-            age: { type: 'number' },
-            name: { type: 'string' }
-          });
-
         return <TSwaggerSchema> {
             [obj.class]: {
                 type: 'object',
-                // properties: props
+                properties: props
             } 
         };
     }

@@ -1,5 +1,8 @@
 export type Class<T> = {new (): T};
 
+
+export type TSchemaProp = Record<String, TSwaggerSchemaProp>;
+
 export type TClassProp = {
     prop: string
     type: TDataType
@@ -14,7 +17,7 @@ export type TClassDef = {
 
 export type TSwaggerType = {
     type: TDataType,
-    properties: Record<string, TSwaggerSchemaProp>
+    properties: Record<string, TSchemaProp>
 }
 
 export type TSwaggerSchemaProp = {
