@@ -38,7 +38,6 @@ export class Utility {
         }
 
         console.log(props);
-        const s = {s: 'ds'}
         console.log({active: {type: 'boolean'}, d: {type: 'boolean'}, sd: {type: 'boolean'}, ds: {type: 'boolean'}})
         return <TSwaggerSchema>{
             [obj.class]: {
