@@ -9,19 +9,22 @@ import { User } from './models/user.model';
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
-
     private app: Express;
 
     constructor() {
         super();
         this.app = express();
+        this.init();
+    }
+
+    public init(): void {
         this.routes();
         this.swaggify();
     }
 
     public listen(): void {
         this.app.listen(this.PORT, () => {
-            console.log(`App listening on the port ${process.env.PORT}`);
+            console.log(`App listening on PORT ${process.env.PORT}`);
         });
     }  
     
@@ -32,12 +35,10 @@ class App extends Config {
     }
 
     private swaggify(): void {    
-
         new User();
         const specs: JsonObject = swaggerJsdoc(swaggerDocument);
         this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
     }
-
 };
 
 export default App;
