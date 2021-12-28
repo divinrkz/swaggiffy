@@ -1,9 +1,7 @@
-import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassDef, TClassProp, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaProp, TSwaggerType } from '../typings';
+import {writeFile, readFile} from 'fs';
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema } from '../typings';
 import {Constants} from './Constants';
-export class Utility {
-
-  
+export class Utility {  
     static _getAllFilesFromFolder(dir: any) {
         var filesystem = require("fs");
         var results: any[] = [];
