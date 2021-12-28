@@ -45,11 +45,11 @@ export class Utility {
             age: { type: 'number' },
             name: { type: 'string' }
           });
-          
-        return <TSwaggerSchema>{
+
+        return <TSwaggerSchema> {
             [obj.class]: {
                 type: 'object',
-                properties: {props}
+                // properties: props
             } 
         };
     }
