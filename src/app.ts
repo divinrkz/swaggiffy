@@ -5,7 +5,6 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerDocument from './swagger/swagger.json';
 import { User } from './models/user.model';
 
-
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);

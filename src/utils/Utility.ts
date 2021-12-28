@@ -27,7 +27,8 @@ export class Utility {
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
         }
-        return <TClassDef>{ class: _class.name, props };
+
+        return <TClassDef>{ class: _class.name, props: props.reverse() };
     }
 
 
@@ -37,7 +38,7 @@ export class Utility {
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
-        
+
         return <TSwaggerSchema> {
             [obj.class]: {
                 type: 'object',

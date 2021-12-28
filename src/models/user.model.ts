@@ -1,15 +1,10 @@
-import { SwaggifyModel } from ".././lib";
-
+import { SwaggifyModel } from "../lib";
 
 @SwaggifyModel()
-class User {
-  
-     name: string = "User Model";
-     age: number = 16;
-     birthDate: Date = new Date(); 
-     active: boolean = false;
-    
+export class User {
+    firstName: string = '';
+    lastName: string = '';
+    phone: number = 0;
+    birthDate: Date = new Date();
+    isActive: boolean = false;
 };
-
-export {User};
- 
