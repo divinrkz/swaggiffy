@@ -37,7 +37,7 @@ export class Utility {
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
-
+        
         return <TSwaggerSchema> {
             [obj.class]: {
                 type: 'object',
