@@ -3,6 +3,7 @@ import Config from './config';
 import swaggerUi, {JsonObject} from 'swagger-ui-express';
 import swaggerJsdoc from "swagger-jsdoc";
 import { User } from './models/user.model';
+import { Phone } from './models/phone.model';
 
 class App extends Config {
 
@@ -34,7 +35,10 @@ class App extends Config {
 
     private swaggify(): void {    
         new User();
+        new Phone();
 
+        
+        
         import('./swagger/swagger.json').then((file: any) =>  {
                 const specs: JsonObject = swaggerJsdoc(file);
                 this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
