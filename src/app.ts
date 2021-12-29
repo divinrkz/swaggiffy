@@ -42,8 +42,6 @@ class App extends Config {
                 this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
             }
         );
-
-
     }
 };
 
