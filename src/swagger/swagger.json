@@ -20,6 +20,26 @@
     "basePath": "/",
     "paths": {},
     "definitions": {
+      "Phone": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "number"
+          },
+          "birthDate": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      }
     }
   },
   "apis": []
