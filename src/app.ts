@@ -2,13 +2,14 @@ import express, {Express} from 'express';
 import Config from './config';
 import swaggerUi, {JsonObject} from 'swagger-ui-express';
 import swaggerJsdoc from "swagger-jsdoc";
-import swaggerDocument from './swagger/swagger.json';
 import { User } from './models/user.model';
 
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
     private app: Express;
+    private swaggerDocument: any;
+    private swaggerSpecs: JsonObject;
 
     constructor() {
         super();
@@ -35,8 +36,14 @@ class App extends Config {
 
     private swaggify(): void {    
         new User();
-        const specs: JsonObject = swaggerJsdoc(swaggerDocument);
-        this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+        import('./swagger/swagger.json').then((file: any) =>  {
+                const specs = swaggerJsdoc(file);
+                this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
+            }
+        );
+
+
     }
 };
 
