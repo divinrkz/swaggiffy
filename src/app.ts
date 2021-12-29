@@ -8,8 +8,6 @@ class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
     private app: Express;
-    private swaggerDocument: any;
-    private swaggerSpecs: JsonObject;
 
     constructor() {
         super();
@@ -38,7 +36,7 @@ class App extends Config {
         new User();
 
         import('./swagger/swagger.json').then((file: any) =>  {
-                const specs = swaggerJsdoc(file);
+                const specs: JsonObject = swaggerJsdoc(file);
                 this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
             }
         );
