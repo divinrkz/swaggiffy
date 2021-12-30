@@ -34,10 +34,9 @@ class App extends Config {
     }
 
     private swaggify(): void {    
-        new User();
-        new Phone();
 
-        
+        new Phone();
+        new User();
         
         import('./swagger/swagger.json').then((file: any) =>  {
                 const specs: JsonObject = swaggerJsdoc(file);

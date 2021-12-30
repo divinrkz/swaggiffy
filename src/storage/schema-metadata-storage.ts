@@ -11,12 +11,4 @@ export class SchemaMetadataStorage {
     readonly schemas: TSwaggerSchema[] = [];
 
 
-    /**
-     * Get all swagger schemas
-     * @returns schema
-     */
-    getSchema(): Array<TSwaggerSchema> {
-        return this.schemas;
-    }
-
 }
