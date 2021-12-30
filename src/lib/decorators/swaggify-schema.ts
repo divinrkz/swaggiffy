@@ -10,7 +10,7 @@ import {ISchemaMetadata} from '../../storage/types/ISchemaMetadata';
  */
 export function SwaggifySchema(name?: string): ClassDecorator  {
   return (target: Function) => {
-    
+
       const classDef: TClassDef = Utility.getClassProps(target, name);    
       const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
@@ -19,6 +19,8 @@ export function SwaggifySchema(name?: string): ClassDecorator  {
           name: classDef.name,
           swaggerDefinition: swaggerDefinition
       } as ISchemaMetadata);
+
+      console.log(getSchemaMetadataStorage());
   }
 }
 

@@ -1,6 +1,6 @@
-import { SwaggifyModel } from "../lib/decorators";
+import { SwaggifySchema } from "../lib/decorators";
 
-@SwaggifyModel()
+@SwaggifySchema('UserModel')
 export class User {
     firstName: string = '';
     lastName: string = '';
