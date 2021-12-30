@@ -4,16 +4,20 @@ import {Utility} from "../../utils/Utility";
 import {getSchemaMetadataStorage} from '../../globals';
 import {ISchemaMetaData} from '../../storage/types/ISchemaMetaData';
 
-export const SwaggifyModel = (): ClassDecorator => {
+/**
+ * Constructs a standard swagger definition from decorated class
+ * @param name Optional swagger schema name
+ */
+export const SwaggifyModel = (name?: string): ClassDecorator => {
   return (target: Function) => {
 
       const classDef: TClassDef = Utility.getClassProps(target);    
       const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
       getSchemaMetadataStorage().schemas.push({
-        target,
-        name: classDef.class,
-        swaggerDefinition
+          target: target,
+          name: name || target.name,
+          swaggerDefinition: swaggerDefinition
       } as ISchemaMetaData);
   }
 }

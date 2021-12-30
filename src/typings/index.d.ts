@@ -11,7 +11,6 @@ export type TClassProp = {
 export type TClassProps = Array<TClassProp>;
 
 export type TClassDef = {
-    class: string,
     props: TClassProps
 }
 
