@@ -8,7 +8,7 @@ import {ISchemaMetaData} from '../../storage/types/ISchemaMetaData';
  * Constructs a standard swagger definition from decorated class
  * @param name Optional swagger schema name
  */
-export const SwaggifyModel = (name?: string): ClassDecorator => {
+export function SwaggifyModel(name?: string): ClassDecorator  {
   return (target: Function) => {
 
       const classDef: TClassDef = Utility.getClassProps(target);    
