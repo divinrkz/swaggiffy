@@ -1,5 +1,5 @@
 import { TSwaggerSchema } from "../typings";
-import {ISchemaMetaData} from './types/ISchemaMetaData';
+import {ISchemaMetadata} from './types/ISchemaMetadata';
 
 
 /**
@@ -9,6 +9,6 @@ export class SchemaMetadataStorage {
     /**
      * Swagger schemas
      */
-    readonly schemas: ISchemaMetaData[] = [];
+    readonly schemas: ISchemaMetadata[] = [];
 }
 

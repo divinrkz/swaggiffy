@@ -1,6 +1,6 @@
 import {TSwaggerSchema} from '../../typings';
 
-export interface ISchemaMetaData {
+export interface ISchemaMetadata {
     /**
      * Class which owns the schema
      */
