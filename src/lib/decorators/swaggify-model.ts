@@ -1,5 +1,5 @@
-import { TClassDef, TSwaggerSchema } from "../typings";
-import {Utility} from "../utils/Utility";
+import { TClassDef, TSwaggerSchema } from "../../typings";
+import {Utility} from "../../utils/Utility";
 
 export const SwaggifyModel = (): Function => {
   return (_class: Function) => {

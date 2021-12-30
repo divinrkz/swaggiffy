@@ -1,4 +1,4 @@
-import { SwaggifyModel } from "../lib";
+import { SwaggifyModel } from "../lib/decorators";
 
 @SwaggifyModel()
 export class User {
