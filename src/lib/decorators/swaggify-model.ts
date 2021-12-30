@@ -17,7 +17,7 @@ export const SwaggifyModel = (): Function => {
       // PlatformTools.getGlobalVariable();
       const data = getSchemaMetadataStorage().schemas.push(swaggerDef);
   
-      console.log(data);
+      console.log(getSchemaMetadataStorage());
       // Utility.swaggify(swaggerDef);
   }
 }
