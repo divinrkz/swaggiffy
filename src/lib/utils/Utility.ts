@@ -1,5 +1,5 @@
 import {writeFile, readFile} from 'fs';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema } from '../typings';
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema } from '../../typings';
 import {Constants} from './Constants';
 
 export class Utility {  
@@ -25,13 +25,13 @@ export class Utility {
      * @param _class 
      * @returns Target class properties
      */
-    static getClassProps(target: any): TClassDef {
+    static getClassProps(target: any, name?: string): TClassDef {
         const instance: typeof target = new target();
         const props: TClassProps = [];
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
         }
-        return <TClassDef>{ props: props.reverse() };
+        return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }
 
 
@@ -43,7 +43,7 @@ export class Utility {
         }
 
         return <TSwaggerSchema> {
-            [obj.class]: {
+            [obj.name]: {
                 type: 'object',
                 properties: props
             } 
