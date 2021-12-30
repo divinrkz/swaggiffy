@@ -8,7 +8,7 @@ export class SchemaMetadataStorage {
     /**
      * Swagger schemas
      */
-    private readonly schemas: TSwaggerSchema[] = [];
+    readonly schemas: TSwaggerSchema[] = [];
 
 
     /**

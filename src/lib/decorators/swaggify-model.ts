@@ -1,6 +1,7 @@
 import { PlatformTools } from "../platform/PlatformTools";
 import { TClassDef, TSwaggerSchema } from "../../typings";
 import {Utility} from "../../utils/Utility";
+import {getSchemaMetadataStorage} from '../../globals';
 
 export const SwaggifyModel = (): Function => {
   return (target: Function) => {
@@ -11,10 +12,13 @@ export const SwaggifyModel = (): Function => {
       const classDef: TClassDef = Utility.getClassProps(target);    
       const swaggerDef: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
-      console.log('swagger Definiction', swaggerDef);
+      // console.log('swagger Definiction', swaggerDef);
 
       // PlatformTools.getGlobalVariable();
-      Utility.swaggify(swaggerDef);
+      const data = getSchemaMetadataStorage().schemas.push(swaggerDef);
+  
+      console.log(data);
+      // Utility.swaggify(swaggerDef);
   }
 }
 
