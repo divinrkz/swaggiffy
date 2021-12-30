@@ -20,8 +20,13 @@ export class Utility {
     };
 
 
-    static getClassProps(_class: any): TClassDef {
-        const instance: typeof _class = new _class();
+    /**
+     * Returns target Class properties
+     * @param _class 
+     * @returns Target class properties
+     */
+    static getClassProps(target: any): TClassDef {
+        const instance: typeof target = new target();
         const props: TClassProps = [];
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
