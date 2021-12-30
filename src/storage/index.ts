@@ -1,3 +1,1 @@
-import {SchemaMetadataStorage} from './schema-metadata-storage';
-
-export {SchemaMetadataStorage};
+export * from './schema-metadata-storage';
