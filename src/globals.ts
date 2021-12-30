@@ -10,4 +10,5 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
     if (!globalScope.schemaMetadataStorage) 
         globalScope.schemaMetadataStorage = new SchemaMetadataStorage();
 
+    return globalScope.schemaMetadataStorage;
 }
