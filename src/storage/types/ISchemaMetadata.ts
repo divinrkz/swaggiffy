@@ -1,16 +1,18 @@
+import {TSwaggerSchema} from '../../typings';
+
 export interface ISchemaMetadata {
     /**
      * Class which owns the schema
      */
-    target: Function;
+    readonly target: Function;
 
     /**
      * Name of Class owning the schema 
      */
-    name: string;
+    readonly name: string;
 
     /**
      * Swagger Definition for the schema
      */
-    swaggish: any;
+    readonly swaggerDefinition: TSwaggerSchema;
 }

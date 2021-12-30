@@ -52,8 +52,8 @@ export class Utility {
             }
             const parsedData = JSON.parse(data.toString());
             const modelName = Object.keys(obj)[0];
-            const tester = Object.assign({[modelName]: obj[modelName]}, {});
-            console.log(tester);
+            const tester: TSwaggerSchema = Object.assign({[modelName]: obj[modelName]}, {});
+           
             parsedData.swaggerDefinition.definitions = tester;
             writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {

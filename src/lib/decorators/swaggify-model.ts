@@ -11,8 +11,10 @@ export const SwaggifyModel = (): Function => {
       const classDef: TClassDef = Utility.getClassProps(target);    
       const swaggerDef: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
-      PlatformTools.getGlobalVariable();
-      // Utility.swaggify(swaggerDef);
+      console.log('swagger Definiction', swaggerDef);
+
+      // PlatformTools.getGlobalVariable();
+      Utility.swaggify(swaggerDef);
   }
 }
 

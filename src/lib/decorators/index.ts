@@ -1,8 +1,1 @@
-import {SwaggifyModel} from './swaggify-model';
-
-
-
-
-
-
-export {SwaggifyModel};
+export * from './swaggify-model';
