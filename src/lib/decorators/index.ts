@@ -1,1 +1,1 @@
-export * from './swaggify-model';
+export * from './swaggify-schema';
