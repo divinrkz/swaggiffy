@@ -50,17 +50,15 @@ export class Utility {
             } 
         };
     }
-    static swaggify(obj: TSwaggerSchema): void {
+    static swaggify(obj: TSwaggerSchemaDef): void {
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
               return;
             }
             const parsedData = JSON.parse(data.toString());
-            const modelName = Object.keys(obj)[0];
-            const tester: TSwaggerSchema = Object.assign({[modelName]: obj[modelName]}, {});
            
-            parsedData.swaggerDefinition.definitions = tester;
+            parsedData.swaggerDefinition.definitions = obj;
 
             writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
@@ -77,7 +75,7 @@ export class Utility {
      * @param array SchemaMetadata array
      * @returns JSON defined SwaggerSchema
      */
-    static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchema {
+    static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchemaDef {
 
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
         for (const item of array) {
