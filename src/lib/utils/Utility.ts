@@ -94,7 +94,7 @@ export class Utility {
         
         Object.entries(add).forEach(([key,value]) => { obj[key] = value })
 
-console.log('Object', obj);
+// console.log('Object', obj);
 
         for (const item of array) {
             Object.entries(item).forEach(([key, value]) => {definition[key] = value});
