@@ -42,11 +42,14 @@ class App extends Config {
         
         Runner.generateSchemas();
 
-        import('./swagger/swagger.json').then((file: any) =>  {
+        setTimeout(() => {
+            import('./swagger/swagger.json').then((file: any) =>  {
                 const specs: JsonObject = swaggerJsdoc(file);
                 this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
             }
         );
+        }, 2000);
+
     }
 };
 
