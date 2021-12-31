@@ -1,6 +1,6 @@
 import {writeFile, readFile} from 'fs';
 import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema } from '../../typings';
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
 import {Constants} from './Constants';
 
 export class Utility {  
@@ -73,39 +73,18 @@ export class Utility {
     }
 
     /**
-     * Compress an array to an object JSON type
+     * Converts SchemaMetadata[] to plain JSON Object
+     * @param array SchemaMetadata array
+     * @returns JSON defined SwaggerSchema
      */
     static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchema {
 
-        // console.log('Compress', arr);
-
-        // let obj: any = <TSwaggerSchema>{};
-
-        // for (const item of arr) {
-
-        //     obj = {...obj, ...{[item.name]: item.swaggerDefinition}};
-        //     // Object.assign({[prop.prop]: { type: prop.type}}, props);
-        // }
-
-
-        const definition: any = {};
-        const obj:any = { a:1, b:2 }
-        const add = { c:3, d:4, e: ['x','y','z'] }
-        
-        Object.entries(add).forEach(([key,value]) => { obj[key] = value })
-
-// console.log('Object', obj);
-
+        let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
         for (const item of array) {
-            Object.entries(item).forEach(([key, value]) => {definition[key] = value});
+            definition = {...definition, ...{[item.name]: item.swaggerDefinition[item.name]}};
         }
-
-        console.log('Definition', definition)
-
-        // console.log(obj);
-        return <TSwaggerSchema> {
-            
-        };
+        
+        return definition;
     }
 }
 

@@ -28,4 +28,6 @@ export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 }
 
+export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
+
 const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
