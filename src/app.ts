@@ -5,6 +5,8 @@ import swaggerJsdoc from "swagger-jsdoc";
 import { User } from './models/user.model';
 import { Phone } from './models/phone.model';
 import {getSchemaMetadataStorage} from './globals';
+import {Runner} from './lib/runners/runner';
+
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
@@ -38,9 +40,7 @@ class App extends Config {
         new Phone();
         new User();
         
-        console.log(getSchemaMetadataStorage());
-
-        
+        Runner.generateSchemas();
 
         import('./swagger/swagger.json').then((file: any) =>  {
                 const specs: JsonObject = swaggerJsdoc(file);

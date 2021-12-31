@@ -1,4 +1,5 @@
 import {writeFile, readFile} from 'fs';
+import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
 import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema } from '../../typings';
 import {Constants} from './Constants';
 
@@ -60,6 +61,7 @@ export class Utility {
             const tester: TSwaggerSchema = Object.assign({[modelName]: obj[modelName]}, {});
            
             parsedData.swaggerDefinition.definitions = tester;
+
             writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
                 console.error('Failed to write updated data to file');
@@ -70,5 +72,38 @@ export class Utility {
           });
     }
 
+    /**
+     * Compress an array to an object JSON type
+     */
+    static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchema {
+
+        // console.log('Compress', arr);
+
+        // let obj: any = <TSwaggerSchema>{};
+
+        // for (const item of arr) {
+
+        //     obj = {...obj, ...{[item.name]: item.swaggerDefinition}};
+        //     // Object.assign({[prop.prop]: { type: prop.type}}, props);
+        // }
+
+
+        const definition: any = {};
+        const obj:any = { a:1, b:2 }
+        const add = { c:3, d:4, e: ['x','y','z'] }
+        
+        Object.entries(add).forEach(([key,value]) => { obj[key] = value })
+
+console.log('Object', obj);
+
+        for (const item of array) {
+            Object.entries()
+        }
+
+        // console.log(obj);
+        return <TSwaggerSchema> {
+            
+        };
+    }
 }
 
