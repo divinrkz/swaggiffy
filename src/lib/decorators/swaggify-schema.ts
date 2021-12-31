@@ -20,7 +20,6 @@ export function SwaggifySchema(name?: string): ClassDecorator  {
           swaggerDefinition: swaggerDefinition
       } as ISchemaMetadata);
 
-      console.log(getSchemaMetadataStorage());
   }
 }
 

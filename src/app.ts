@@ -4,7 +4,7 @@ import swaggerUi, {JsonObject} from 'swagger-ui-express';
 import swaggerJsdoc from "swagger-jsdoc";
 import { User } from './models/user.model';
 import { Phone } from './models/phone.model';
-
+import {getSchemaMetadataStorage} from './globals';
 class App extends Config {
 
     private PORT: number = parseInt(process.env.PORT as string);
@@ -38,6 +38,10 @@ class App extends Config {
         new Phone();
         new User();
         
+        console.log(getSchemaMetadataStorage());
+
+        
+
         import('./swagger/swagger.json').then((file: any) =>  {
                 const specs: JsonObject = swaggerJsdoc(file);
                 this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
