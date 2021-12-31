@@ -97,8 +97,10 @@ export class Utility {
 console.log('Object', obj);
 
         for (const item of array) {
-            Object.entries()
+            Object.entries(item).forEach(([key, value]) => {definition[key] = value});
         }
+
+        console.log('Definition', definition)
 
         // console.log(obj);
         return <TSwaggerSchema> {
