@@ -11,7 +11,7 @@ export type TClassProp = {
 export type TClassProps = Array<TClassProp>;
 
 export type TClassDef = {
-    class: string,
+    name: string,
     props: TClassProps
 }
 
@@ -27,5 +27,7 @@ export type TSwaggerSchemaProp = {
 export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 }
+
+export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
 
 const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';

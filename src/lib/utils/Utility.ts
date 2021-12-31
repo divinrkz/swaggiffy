@@ -1,9 +1,9 @@
-import {readFileSync, writeFile, readFile} from 'fs';
-import { TClassDef, TClassProp, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaProp, TSwaggerType } from '../typings';
+import {writeFile, readFile} from 'fs';
+import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
 import {Constants} from './Constants';
-export class Utility {
 
-  
+export class Utility {  
     static _getAllFilesFromFolder(dir: any) {
         var filesystem = require("fs");
         var results: any[] = [];
@@ -21,13 +21,18 @@ export class Utility {
     };
 
 
-    static getClassProps(_class: any): TClassDef {
-        const instance: typeof _class = new _class();
+    /**
+     * Returns target Class properties
+     * @param _class 
+     * @returns Target class properties
+     */
+    static getClassProps(target: any, name?: string): TClassDef {
+        const instance: typeof target = new target();
         const props: TClassProps = [];
         for (const prop of Object.keys(instance)) {
             props.push({type: typeof instance[prop], prop: prop});
         }
-        return <TClassDef>{ class: _class.name, props };
+        return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }
 
 
@@ -39,22 +44,22 @@ export class Utility {
         }
 
         return <TSwaggerSchema> {
-            [obj.class]: {
+            [obj.name]: {
                 type: 'object',
                 properties: props
             } 
         };
     }
-    static swaggify(obj: TSwaggerSchema): void {
+    static swaggify(obj: TSwaggerSchemaDef): void {
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
               return;
             }
             const parsedData = JSON.parse(data.toString());
-            const modelName = Object.keys(obj)[0];
-            const tester = Object.assign({[modelName]: obj[modelName]}, {});
-            parsedData.swaggerDefinition.definitions = tester;
+           
+            parsedData.swaggerDefinition.definitions = obj;
+
             writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
               if (err) {
                 console.error('Failed to write updated data to file');
@@ -65,5 +70,19 @@ export class Utility {
           });
     }
 
+    /**
+     * Converts SchemaMetadata[] to plain JSON Object
+     * @param array SchemaMetadata array
+     * @returns JSON defined SwaggerSchema
+     */
+    static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchemaDef {
+
+        let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
+        for (const item of array) {
+            definition = {...definition, ...{[item.name]: item.swaggerDefinition[item.name]}};
+        }
+        
+        return definition;
+    }
 }
 
