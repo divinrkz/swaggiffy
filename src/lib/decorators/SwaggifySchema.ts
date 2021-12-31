@@ -4,6 +4,7 @@ import {Utility} from "../utils/Utility";
 import {getSchemaMetadataStorage} from '../../globals';
 import {ISchemaMetadata} from '../../storage/types/ISchemaMetadata';
 
+
 /**
  * Constructs a standard swagger definition from decorated class
  * @param name Optional swagger schema name
