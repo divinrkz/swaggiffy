@@ -1,7 +1,5 @@
 export class Runner {
-
-
-    generateSchema(): Promise<string> {
+    generateSchemas(): Promise<string> {
         return new Promise<string> ((resolve, reject) => {
 
         })
