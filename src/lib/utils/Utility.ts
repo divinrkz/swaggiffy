@@ -1,6 +1,7 @@
-import { promises as fs} from 'fs';
+import {writeFile, readFile} from 'fs';
 import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
 import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
+import { PlatformTools } from '../platform/PlatformTools';
 import {Constants} from './Constants';
 
 export class Utility {  
@@ -51,11 +52,10 @@ export class Utility {
         };
     }
     static swaggify(obj: TSwaggerSchemaDef): void {
-        try {
-            await fs.readFile(Constants.SWAGGER_CONFIG, ())
-        } catch (error) {
-            
-        }
+
+        console.log(PlatformTools.getFileContents(Constants.SWAGGER_CONFIG));
+
+        return ;
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);

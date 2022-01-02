@@ -41,6 +41,7 @@ class App extends Config {
         new Person();
         new User();
         
+        
         Runner.generateSchemas();
 
         setTimeout(() => {

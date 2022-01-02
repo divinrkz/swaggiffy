@@ -14,7 +14,6 @@ export class PlatformTools {
         return global;
     }
 
-
     /**
      * Read and return all file contents
      */
