@@ -3,7 +3,7 @@ import Config from './config';
 import swaggerUi, {JsonObject} from 'swagger-ui-express';
 import swaggerJsdoc from "swagger-jsdoc";
 import { User } from './models/user.model';
-import { Phone } from './models/phone.model';
+import { Phone, Person } from './models/phone.model';
 import {getSchemaMetadataStorage} from './globals';
 import {Runner} from './lib/runners/runner';
 
@@ -38,6 +38,7 @@ class App extends Config {
     private swaggify(): void {    
 
         new Phone();
+        new Person();
         new User();
         
         Runner.generateSchemas();
