@@ -1,4 +1,4 @@
-import {writeFile, readFile} from 'fs';
+import { promises as fs} from 'fs';
 import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
 import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
 import {Constants} from './Constants';
@@ -51,6 +51,11 @@ export class Utility {
         };
     }
     static swaggify(obj: TSwaggerSchemaDef): void {
+        try {
+            await fs.readFile(Constants.SWAGGER_CONFIG, ())
+        } catch (error) {
+            
+        }
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {
             if (error) {
               console.error(error);
