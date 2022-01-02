@@ -51,9 +51,32 @@ export class Utility {
             } 
         };
     }
-    static swaggify(obj: TSwaggerSchemaDef): void {
 
-        console.log(PlatformTools.getFileContents(Constants.SWAGGER_CONFIG));
+    /**
+     * Extracts Swagger Schema Object from JSON
+     * @param swagger JSON Document
+     * @params schema: new swaggified schemas
+     * @returns schema object
+     */
+    static updateSchema(swaggerDoc: Buffer, schema: TSwaggerSchemaDef) {
+        const parsed = JSON.parse(swaggerDoc.toString());
+        parsed.swaggerDefinition.definitions = schema;
+    }
+
+
+    static swaggify(schema: TSwaggerSchemaDef): void {
+
+        console.log();
+
+        const swaggerDoc: Buffer = PlatformTools.getFileContents(Constants.SWAGGER_CONFIG);
+
+        this.updateSchema(swaggerDoc, schema);
+ 
+
+        swaggerSchema = {};
+        console.log(swaggerSchema);
+
+        console.log(JSON.parse(swaggerDoc.toString()).swaggerDefinition.definitions);
 
         return ;
         readFile(Constants.SWAGGER_CONFIG, (error, data) => {

@@ -1,4 +1,4 @@
-import {existsSync, readFileSync} from 'fs';
+import {existsSync, readFileSync, writeFile} from 'fs';
 
 
 /**
@@ -24,6 +24,19 @@ export class PlatformTools {
 
         return readFileSync(path);
     }
+
+
+    /**
+     * Write content to a file 
+     */
+    static writeToFile(path: string, content: any): Promise<void> {
+        return new Promise<void>((ok: Function, fail: Function) => {
+            writeFile(path, content, (err) => {
+                if (err) fail(err);
+                ok();
+            }).
+        });
+    }   
 
     /**
      * Check if file exists
