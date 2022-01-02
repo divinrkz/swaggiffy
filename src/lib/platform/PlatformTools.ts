@@ -29,12 +29,13 @@ export class PlatformTools {
     /**
      * Write content to a file 
      */
-    static writeToFile(path: string, content: any): Promise<void> {
+    static writeToFile(path: string, content: string): Promise<void> {
         return new Promise<void>((ok: Function, fail: Function) => {
             writeFile(path, content, (err) => {
                 if (err) fail(err);
                 ok();
-            }).
+                console.log('alright')
+            })
         });
     }   
 

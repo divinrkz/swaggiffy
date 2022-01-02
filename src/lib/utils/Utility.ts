@@ -37,6 +37,9 @@ export class Utility {
     }
 
 
+    /**
+     * Generate Swagger Schema Definition
+     */
     static genSchemaDef(obj: TClassDef): TSwaggerSchema {
         let props: TSchemaProp = {};
 
@@ -58,44 +61,26 @@ export class Utility {
      * @params schema: new swaggified schemas
      * @returns schema object
      */
-    static updateSchema(swaggerDoc: Buffer, schema: TSwaggerSchemaDef) {
+    static updateSchema(swaggerDoc: Buffer, schema: TSwaggerSchemaDef): string {
         const parsed = JSON.parse(swaggerDoc.toString());
         parsed.swaggerDefinition.definitions = schema;
+        return JSON.stringify(parsed);
     }
 
 
-    static swaggify(schema: TSwaggerSchemaDef): void {
+    /**
+     * Generates swagger file from schemas
+     * @params schema
+     * @returns Promise<void>
+     */
+    static async swaggify(schema: TSwaggerSchemaDef) {
+        return new Promise<void>((ok, fail) => {
+            const swaggerDoc: Buffer = PlatformTools.getFileContents(Constants.SWAGGER_CONFIG);
+            const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
+    
+            PlatformTools.writeToFile(Constants.SWAGGER_CONFIG, updatedSchema);
+        })
 
-        console.log();
-
-        const swaggerDoc: Buffer = PlatformTools.getFileContents(Constants.SWAGGER_CONFIG);
-
-        this.updateSchema(swaggerDoc, schema);
- 
-
-        swaggerSchema = {};
-        console.log(swaggerSchema);
-
-        console.log(JSON.parse(swaggerDoc.toString()).swaggerDefinition.definitions);
-
-        return ;
-        readFile(Constants.SWAGGER_CONFIG, (error, data) => {
-            if (error) {
-              console.error(error);
-              return;
-            }
-            const parsedData = JSON.parse(data.toString());
-           
-            parsedData.swaggerDefinition.definitions = obj;
-
-            writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
-              if (err) {
-                console.error('Failed to write updated data to file');
-                return;
-              }
-              console.error('Updated file successfully');
-            });
-          });
     }
 
     /**
