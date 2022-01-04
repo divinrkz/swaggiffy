@@ -35,23 +35,18 @@ class App extends Config {
         });      
     }
 
-    private swaggify(): void {    
+    private async swaggify() {    
 
         new Phone();
         new Person();
         new User();
         
-        
-        Runner.generateSchemas();
+        Runner.execute();
 
-        setTimeout(() => {
-            import('./swagger/swagger.json').then((file: any) =>  {
-                const specs: JsonObject = swaggerJsdoc(file);
-                this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
-            }
-        );
-        }, 2000);
-
+        import('./swagger/swagger.json').then((file: any) =>  {
+            const specs: JsonObject = swaggerJsdoc(file);
+            this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
+        }
     }
 };
 
