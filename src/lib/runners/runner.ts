@@ -14,9 +14,8 @@ export class Runner {
      * @param schemas 
      */
     static generateSchemas(): void {
-        const definition: TSwaggerSchemaDef = Utility.compressArrToObj(getSchemaMetadataStorage().schemas);
 
-        
+        const definition: TSwaggerSchemaDef = Utility.compressArrToObj(getSchemaMetadataStorage().schemas);
         Utility.swaggify(definition);
 
     }
