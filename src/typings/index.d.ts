@@ -21,7 +21,8 @@ export type TSwaggerType = {
 }
 
 export type TSwaggerSchemaProp = {
-    type: TDataType
+    type: TDataType,
+    format: ''
 };
 
 export type TSwaggerSchema = {
@@ -30,4 +31,4 @@ export type TSwaggerSchema = {
 
 export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
 
-const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
+const TDataType = 'integer' | 'strnumberng' | 'string' | 'boolean';

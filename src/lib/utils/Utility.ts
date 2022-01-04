@@ -64,7 +64,7 @@ export class Utility {
     static updateSchema(swaggerDoc: Buffer, schema: TSwaggerSchemaDef): string {
         const parsed = JSON.parse(swaggerDoc.toString());
         parsed.swaggerDefinition.definitions = schema;
-        return JSON.stringify(parsed);
+        return JSON.stringify(parsed, null, 2);
     }
 
 
