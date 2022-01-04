@@ -1,5 +1,27 @@
 export type Class<T> = {new (): T};
 
+/**
+ * The OpenSpecification 3.0 types
+ */
+const TDataType = 'integer' | 'number' | 'string' | 'boolean';
+
+/**
+ * The OpenSpecification 3.0 integer type formats
+ */
+const TIntegerFormat = 'int32' | 'int64';
+
+/**
+ * The OpenSpecification 3.0 number type formats
+ */
+const TNumberFormat = 'float' | 'double';
+
+/**
+ * The OpenSpecification 3.0 string type formats
+ */
+const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password'; 
+
+
+
 
 export type TSchemaProp = Record<String, TSwaggerSchemaProp>;
 
@@ -22,7 +44,8 @@ export type TSwaggerType = {
 
 export type TSwaggerSchemaProp = {
     type: TDataType,
-    format: ''
+    test: TDataType extends 'string' ? 'number' | 'string';
+    format?: 'int32' | 'int64' | 'float' | 'double' | 'byte' | 'binary' | 'date' | 'date-time' | 'password';
 };
 
 export type TSwaggerSchema = {
@@ -30,5 +53,3 @@ export type TSwaggerSchema = {
 }
 
 export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
-
-const TDataType = 'integer' | 'strnumberng' | 'string' | 'boolean';
