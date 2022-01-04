@@ -46,7 +46,7 @@ class App extends Config {
         import('./swagger/swagger.json').then((file: any) =>  {
             const specs: JsonObject = swaggerJsdoc(file);
             this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
-        }
+        });
     }
 };
 
