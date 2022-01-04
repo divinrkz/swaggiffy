@@ -22,34 +22,61 @@ const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password';
 
 
 
-
+/**
+ * 
+ */
 export type TSchemaProp = Record<String, TSwaggerSchemaProp>;
 
+
+/**
+ * TS Class Property Type
+ */
 export type TClassProp = {
     prop: string
     type: TDataType
 };
 
+
+/**
+ * TS Class Property[] Type
+ */
 export type TClassProps = Array<TClassProp>;
 
+
+/**
+ * TS Class Definition Type
+ */
 export type TClassDef = {
     name: string,
     props: TClassProps
 }
 
+
+/**
+ * Swagger Components/Definitions Type
+ */
 export type TSwaggerType = {
     type: TDataType,
     properties: Record<string, TSchemaProp>
 }
 
+/**
+ * Swagger Schema Properties Type
+ */
 export type TSwaggerSchemaProp = {
     type: TDataType,
-    test: TDataType extends 'string' ? 'number' | 'string';
-    format?: 'int32' | 'int64' | 'float' | 'double' | 'byte' | 'binary' | 'date' | 'date-time' | 'password';
+    format?: TDataType extends 'integer' ? TIntegerFormat :  TDataType extends 'number' ? TNumberFormat : TDataType extends 'string' ? TStringFormat : string;
 };
 
+
+/**
+ * Swagger Schema Object Type
+ */
 export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 }
 
+/**
+ * Swagger Components/Definitions Record<Type>
+ */
 export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
