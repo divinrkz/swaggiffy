@@ -19,13 +19,13 @@
     "host": "localhost:4008",
     "basePath": "/",
     "paths": {},
-    "consumes":[
-        "application/json",
-        "multipart/form-data"
-     ],
-     "produces":[
-        "application/json"
-     ],
+    "consumes": [
+      "application/json",
+      "multipart/form-data"
+    ],
+    "produces": [
+      "application/json"
+    ],
     "tags": [
       {
         "name": "academies",

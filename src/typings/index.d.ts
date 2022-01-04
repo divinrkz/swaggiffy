@@ -1,9 +1,14 @@
 export type Class<T> = {new (): T};
 
+
 /**
  * The OpenSpecification 3.0 types
  */
-const TDataType = 'integer' | 'number' | 'string' | 'boolean';
+ const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
+/**
+ * The OpenSpecification 3.0 types
+ */
+const TOSAType = 'integer' | 'number' | 'string' | 'boolean';
 /**
  * The OpenSpecification 3.0 integer type formats
  */
@@ -53,16 +58,16 @@ export type TClassDef = {
  * Swagger Components/Definitions Type
  */
 export type TSwaggerType = {
-    type: TDataType,
+    type: 'object',
     properties: Record<string, TSchemaProp>
 }
 
 /**
  * Swagger Schema Properties Type
  */
-export type TSwaggerSchemaProp = {
-    type: TDataType,
-    format?: TDataType extends 'integer' ? TIntegerFormat :  TDataType extends 'number' ? TNumberFormat : TDataType extends 'string' ? TStringFormat : string;
+export type TSwaggerSchemaProp<T> = {
+    type: TOSAType,
+    format?: TOSAType extends 'integer' ? TOSAType :  TOSAType extends 'number' ? TNumberFormat : TOSAType extends 'string' ? TStringFormat : string;
 };
 
 
