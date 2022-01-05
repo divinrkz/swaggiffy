@@ -23,6 +23,20 @@ const TNumberFormat = 'float' | 'double';
 const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password'; 
 
 
+/**
+ * Path String Type
+ * Checks for a path starting with /{path} 
+ * Examples: /pets
+ */
+ type PathString = `/${string| ''}`;
+
+ /**
+  * Ref String Type
+  * Checks for a ref starting with /#/definitions/{schema} 
+  * Examples: /p
+  */
+type RefString = `/#/definitions/${string}`;
+ 
 
 /**
  * 
@@ -68,7 +82,7 @@ export type TSwaggerType = {
 export type TSwaggerSchemaObject<T> = {
     type: TOSAType;
     format?: TOSAType extends 'integer' ? TOSAType :  TOSAType extends 'number' ? TNumberFormat : TOSAType extends 'string' ? TStringFormat : string;
-    $ref?: string;
+    $ref?: RefString;
     title?: string;
     description?: string;
     default?: any;
@@ -108,14 +122,15 @@ export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
 /**
  * The OpenAPI specification definition
  */
-export interface SwaggerSpecification = {
+export interface SwaggerSpecification {
     swagger: '2.0' | '3.0';
     info: SwaggerInfo;
-    host: string;
-    basePath: string;
-    schemes: Array<ESchemes>
-
-
+    host?: string;
+    basePath?: string;
+    schemes?: Array<ESchemes>;
+    consumes?: Array<EMimeTypes>;
+    produces?: Array<EMimeTypes>;
+    paths: PathObject
 }
 
 
@@ -123,6 +138,18 @@ enum ESchemes {
     http='http', https='https', ws='ws', wss='wss'
 }
 
+enum EMimeTypes {
+    'text/plain; charset=utf-8'='text/plain; charset=utf-8',
+    'application/json'='application/json',
+    'application/vnd.github+json','application/vnd.github+json',
+    'application/vnd.github.v3+json'='application/vnd.github.v3+json',
+    'application/vnd.github.v3.raw+json'='application/vnd.github.v3.raw+json',
+    'application/vnd.github.v3.text+json'='application/vnd.github.v3.text+json',
+    'application/vnd.github.v3.html+json'='application/vnd.github.v3.html+json',
+    'application/vnd.github.v3.full+json'='application/vnd.github.v3.full+json',
+    'application/vnd.github.v3.diff'='application/vnd.github.v3.diff',
+    'application/vnd.github.v3.patch'='application/vnd.github.v3.patch'
+}
 
 /**
  * Swagger Info Object
@@ -142,3 +169,13 @@ type SwaggerInfo = {
     }
     readonly version: string
 }   
+
+
+type PathObject = {
+    [path: PathString]:  PathItemObject
+}
+
+type PathItemObject = {
+    $ref?: RefString
+}
+
