@@ -49,8 +49,8 @@ export type TClassProps = Array<TClassProp>;
  * TS Class Definition Type
  */
 export type TClassDef = {
-    name: string,
-    props: TClassProps
+    name: string;
+    props: TClassProps;
 }
 
 
@@ -58,7 +58,7 @@ export type TClassDef = {
  * Swagger Components/Definitions Type
  */
 export type TSwaggerType = {
-    type: 'object',
+    type: 'object';
     properties: Record<string, TSchemaProp>
 }
 
@@ -66,26 +66,26 @@ export type TSwaggerType = {
  * Swagger Schema Object Type
  */
 export type TSwaggerSchemaObject<T> = {
-    type: TOSAType,
+    type: TOSAType;
     format?: TOSAType extends 'integer' ? TOSAType :  TOSAType extends 'number' ? TNumberFormat : TOSAType extends 'string' ? TStringFormat : string;
-    $ref?: string,
-    title?: string,
-    description?: string,
-    default?: any,
-    multipleOf?: any,
-    maximum?: any,
-    exclusiveMaximum?: any,
-    minimum?: any,
-    exclusiveMinimum?: any,
-    maxLength?: any,
-    minLength?: any,
-    pattern?: any,
-    maxItems?: any,
-    minItems?: any,
-    uniqueItems?: any,
-    maxProperties?: any,
-    minProperties?: any,
-    required?: boolean,
+    $ref?: string;
+    title?: string;
+    description?: string;
+    default?: any;
+    multipleOf?: any;
+    maximum?: any;
+    exclusiveMaximum?: any;
+    minimum?: any;
+    exclusiveMinimum?: any;
+    maxLength?: any;
+    minLength?: any;
+    pattern?: any;
+    maxItems?: any;
+    minItems?: any;
+    uniqueItems?: any;
+    maxProperties?: any;
+    minProperties?: any;
+    required?: boolean;
     enum?: boolean
 };
 
@@ -108,6 +108,37 @@ export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
 /**
  * The OpenAPI specification definition
  */
-export type Definition = {
+export interface SwaggerSpecification = {
+    swagger: '2.0' | '3.0';
+    info: SwaggerInfo;
+    host: string;
+    basePath: string;
+    schemes: Array<ESchemes>
+    
 
 }
+
+
+enum ESchemes {
+    http, https, ws, wss
+}
+
+
+/**
+ * Swagger Info Object
+ */
+type SwaggerInfo = {
+    readonly title: string;
+    readonly description?: string
+    readonly termsOfService?: string
+    readonly contact?: {
+        name?: string
+        url?: string
+        email?: string
+    }
+    readonly license?: {
+        name: string,
+        url?: string
+    }
+    readonly version: string
+}   
