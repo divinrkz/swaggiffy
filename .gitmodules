@@ -1,0 +1,3 @@
+[submodule "swaggify-samples"]
+	path = swaggify-samples
+	url = https://github.com/divinirakiza/swaggify-samples
