@@ -114,13 +114,13 @@ export interface SwaggerSpecification = {
     host: string;
     basePath: string;
     schemes: Array<ESchemes>
-    
+
 
 }
 
 
 enum ESchemes {
-    http, https, ws, wss
+    http='http', https='https', ws='ws', wss='wss'
 }
 
 
