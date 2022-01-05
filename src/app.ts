@@ -40,10 +40,6 @@ class App extends Config {
         new Person();
         new User();
         
-        type MarkerTime = `${number| ''}${number}:${number}${number}`
-
-const d: MarkerTime = 'dsk';
-
         Runner.execute();
 
        setTimeout(() => {

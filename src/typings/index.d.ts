@@ -183,7 +183,11 @@ type APIOperation = {
     operationId?: string;
     consumes?: string;
     produces?: string;
-    parameters?
+    parameters?: any;
+    responses?: any;
+    schemes?: Array<Schema>;
+    deprecated?: boolean;
+    security?: any;
 }
 
 
