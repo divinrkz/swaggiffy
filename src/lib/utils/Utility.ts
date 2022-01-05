@@ -1,25 +1,25 @@
-import {writeFile, readFile} from 'fs';
-import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
-import { PlatformTools } from '../platform/PlatformTools';
-import {Constants} from './Constants';
+import {writeFile, readFile} from "fs";
+import { SchemaMetadata } from "../../storage/types/SchemaMetadata";
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../../typings";
+import { PlatformTools } from "../platform/PlatformTools";
+import {Constants} from "./Constants";
 
 export class Utility {  
     static _getAllFilesFromFolder(dir: any) {
-        var filesystem = require("fs");
-        var results: any[] = [];
+        const filesystem = require("fs");
+        let results: any[] = [];
         filesystem.readdirSync(dir).forEach(function(file: any) {
-            file = dir+'/'+file;
-            var stat = filesystem.statSync(file);
+            file = dir+"/"+file;
+            const stat = filesystem.statSync(file);
             if (stat && stat.isDirectory()) {
-                results = results.concat(Utility._getAllFilesFromFolder(file))
+                results = results.concat(Utility._getAllFilesFromFolder(file));
             } else {
-                if (file.endsWith('route.ts' || 'route.js'))
+                if (file.endsWith("route.ts" || "route.js"))
                     results.push(file);
             }    
         });
         return results;
-    };
+    }
 
 
     /**
@@ -49,7 +49,7 @@ export class Utility {
 
         return <TSwaggerSchema> {
             [obj.name]: {
-                type: 'object',
+                type: "object",
                 properties: props
             } 
         };
@@ -79,7 +79,7 @@ export class Utility {
             const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
     
             PlatformTools.writeToFile(Constants.SWAGGER_CONFIG, updatedSchema);
-        })
+        });
 
     }
 

@@ -1,11 +1,10 @@
-import express, {Express} from 'express';
-import Config from './config';
-import swaggerUi, {JsonObject} from 'swagger-ui-express';
+import express, {Express} from "express";
+import Config from "./config";
+import swaggerUi, {JsonObject} from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
-import { User } from './models/user.model';
-import { Phone, Person } from './models/phone.model';
-import {getSchemaMetadataStorage} from './globals';
-import {Runner} from './lib/runners/runner';
+import { User } from "./models/user.model";
+import { Phone, Person } from "./models/phone.model";
+import {Runner} from "./lib/runners/runner";
 
 class App extends Config {
 
@@ -30,8 +29,8 @@ class App extends Config {
     }  
     
     private routes(): void {
-        this.app.get('/', (req: any, res: any) => {
-            res.status(200).send(`Server made up and running!`)
+        this.app.get("/", (req: any, res: any) => {
+            res.status(200).send(`Server made up and running!`);
         });      
     }
 
@@ -43,12 +42,12 @@ class App extends Config {
         Runner.execute();
 
        setTimeout(() => {
-        import('./swagger/swagger.json').then((file: any) =>  {
+        import("./swagger/swagger.json").then((file: any) =>  {
             const specs: JsonObject = swaggerJsdoc(file);
-            this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
+            this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
         });
        }, 2000); 
     }
-};
+}
 
 export default App;

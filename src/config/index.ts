@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-import { Logger } from 'pino';
+import dotenv from "dotenv";
 
 export default abstract class Config {
 

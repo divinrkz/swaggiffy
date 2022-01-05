@@ -1,8 +1,7 @@
-import { PlatformTools } from "../platform/PlatformTools";
 import { TClassDef, TSwaggerSchema } from "../../typings";
 import {Utility} from "../utils/Utility";
-import {getSchemaMetadataStorage} from '../../globals';
-import {SchemaMetadata} from '../../storage/types/SchemaMetadata';
+import {getSchemaMetadataStorage} from "../../globals";
+import {SchemaMetadata} from "../../storage/types/SchemaMetadata";
 
 
 /**
@@ -21,6 +20,6 @@ export function SwaggifySchema(name?: string): ClassDecorator  {
           swaggerDefinition: swaggerDefinition
       } as SchemaMetadata);
 
-  }
+  };
 }
 

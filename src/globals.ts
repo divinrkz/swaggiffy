@@ -1,5 +1,5 @@
-import {PlatformTools} from './lib/platform/PlatformTools';
-import { SchemaMetadataStorage } from './storage';
+import {PlatformTools} from "./lib/platform/PlatformTools";
+import { SchemaMetadataStorage } from "./storage";
 
 /**
  * Returns globals schemametadata storage

@@ -1,1 +1,1 @@
-export * from './schema-metadata-storage';
+export * from "./schema-metadata-storage";

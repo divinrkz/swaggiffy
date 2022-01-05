@@ -1,7 +1,7 @@
-import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
-import { getSchemaMetadataStorage } from '../../globals';
-import { Utility } from '../utils/Utility';
-import { TSwaggerSchemaDef } from '../../typings';
+import { SchemaMetadata } from "../../storage/types/SchemaMetadata";
+import { getSchemaMetadataStorage } from "../../globals";
+import { Utility } from "../utils/Utility";
+import { TSwaggerSchemaDef } from "../../typings";
 
 
 /**
@@ -13,9 +13,9 @@ export class Runner {
      * Generating schemas from global SchemaMetadataStorage
      * @param schemas 
      */
-    static generateSchemas():void {
+    static generateSchemas(): void {
         const definition: TSwaggerSchemaDef = Utility.compressArrToObj(getSchemaMetadataStorage().schemas);
-        Utility.swaggify(definition)
+        Utility.swaggify(definition);
     }
 
     static execute(): void {

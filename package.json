@@ -1,5 +1,6 @@
 {
   "name": "swaggify",
+  "displayName": "swaggify",
   "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
   "main": "index.js",
@@ -10,7 +11,7 @@
     "dev": "ts-node ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "lint": "eslint src/**/*.ts --fix",
+    "lint": "npx eslint . --ext .ts --fix",
     "prepare": "husky install"
   },
   "keywords": [
@@ -27,9 +28,17 @@
   "bugs": {
     "url": "https://github.com/divinirakiza/swaggify/issues"
   },
+  "files": [
+    "build",
+    "src"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
   "homepage": "https://github.com/divinirakiza/swaggify#readme",
   "author": "Divin Irakiza",
   "license": "MIT",
+  "module": "dist/string-method.esm.js",
   "devDependencies": {
     "@types/node": "^16.11.10",
     "@types/pino": "^7.0.5",

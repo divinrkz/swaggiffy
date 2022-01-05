@@ -1,4 +1,4 @@
-import {existsSync, readFileSync, writeFile} from 'fs';
+import {existsSync, readFileSync, writeFile} from "fs";
 
 
 /**
@@ -20,7 +20,7 @@ export class PlatformTools {
     static getFileContents(path: string): Buffer {
 
         if (!this.fileExists(path)) 
-            throw new Error('File doesnot exist')
+            throw new Error("File doesnot exist");
 
         return readFileSync(path);
     }
@@ -34,8 +34,8 @@ export class PlatformTools {
             writeFile(path, content, (err) => {
                 if (err) fail(err);
                 ok();
-                console.log('alright')
-            })
+                console.log("alright");
+            });
         });
     }   
 

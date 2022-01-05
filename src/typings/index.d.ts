@@ -4,23 +4,23 @@ export type Class<T> = {new (): T};
 /**
  * The OpenSpecification 3.0 types
  */
- const TDataType = 'string' | 'boolean' | 'object' | 'number' | 'date' | 'bigint';
+ const TDataType = "string" | "boolean" | "object" | "number" | "date" | "bigint";
 /**
  * The OpenSpecification 3.0 types
  */
-const TOSAType = 'integer' | 'number' | 'string' | 'boolean' | 'file';
+const TOSAType = "integer" | "number" | "string" | "boolean" | "file";
 /**
  * The OpenSpecification 3.0 integer type formats
  */
-const TIntegerFormat = 'int32' | 'int64';
+const TIntegerFormat = "int32" | "int64";
 /**
  * The OpenSpecification 3.0 number type formats
  */
-const TNumberFormat = 'float' | 'double';
+const TNumberFormat = "float" | "double";
 /**
  * The OpenSpecification 3.0 string type formats
  */
-const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password'; 
+const TStringFormat = "byte" | "binary" | "date" | "date-time" | "password"; 
 
 
 /**
@@ -28,7 +28,7 @@ const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password';
  * Checks for a path starting with /{path} 
  * Examples: /pets
  */
- type PathString = `/${string| ''}`;
+ type PathString = `/${string| ""}`;
 
  /**
   * Ref String Type
@@ -41,7 +41,7 @@ type RefString = `/#/definitions/${string}`;
 /**
  * 
  */
-export type TSchemaProp = Record<String, TSwaggerSchemaObject>;
+export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
 
 
 /**
@@ -65,23 +65,23 @@ export type TClassProps = Array<TClassProp>;
 export type TClassDef = {
     name: string;
     props: TClassProps;
-}
+};
 
 
 /**
  * Swagger Components/Definitions Type
  */
 export type TSwaggerType = {
-    type: 'object';
+    type: "object";
     properties: Record<string, TSchemaProp>
-}
+};
 
 /**
  * Swagger Schema Object Type
  */
 export type TSwaggerSchemaObject<T> = {
     type: TOSAType;
-    format?: TOSAType extends 'integer' ? TOSAType :  TOSAType extends 'number' ? TNumberFormat : TOSAType extends 'string' ? TStringFormat : string;
+    format?: TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
     title?: string;
     description?: string;
@@ -109,7 +109,7 @@ export type TSwaggerSchemaObject<T> = {
  */
 export type TSwaggerSchema = {
     [type: string]: TSwaggerType
-}
+};
 
 /**
  * Swagger Components/Definitions Record<Type>
@@ -123,7 +123,7 @@ export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
  * The OpenAPI specification definition
  */
 export interface SwaggerSpecification {
-    swagger: '2.0' | '3.0';
+    swagger: "2.0" | "3.0";
     info: SwaggerInfo;
     host?: string;
     basePath?: string;
@@ -141,20 +141,20 @@ export interface SwaggerSpecification {
 
 
 enum ESchemes {
-    http='http', https='https', ws='ws', wss='wss'
+    http="http", https="https", ws="ws", wss="wss"
 }
 
 enum EMimeTypes {
-    'text/plain; charset=utf-8'='text/plain; charset=utf-8',
-    'application/json'='application/json',
-    'application/vnd.github+json','application/vnd.github+json',
-    'application/vnd.github.v3+json'='application/vnd.github.v3+json',
-    'application/vnd.github.v3.raw+json'='application/vnd.github.v3.raw+json',
-    'application/vnd.github.v3.text+json'='application/vnd.github.v3.text+json',
-    'application/vnd.github.v3.html+json'='application/vnd.github.v3.html+json',
-    'application/vnd.github.v3.full+json'='application/vnd.github.v3.full+json',
-    'application/vnd.github.v3.diff'='application/vnd.github.v3.diff',
-    'application/vnd.github.v3.patch'='application/vnd.github.v3.patch'
+    "text/plain; charset=utf-8"="text/plain; charset=utf-8",
+    "application/json"="application/json",
+    "application/vnd.github+json","application/vnd.github+json",
+    "application/vnd.github.v3+json"="application/vnd.github.v3+json",
+    "application/vnd.github.v3.raw+json"="application/vnd.github.v3.raw+json",
+    "application/vnd.github.v3.text+json"="application/vnd.github.v3.text+json",
+    "application/vnd.github.v3.html+json"="application/vnd.github.v3.html+json",
+    "application/vnd.github.v3.full+json"="application/vnd.github.v3.full+json",
+    "application/vnd.github.v3.diff"="application/vnd.github.v3.diff",
+    "application/vnd.github.v3.patch"="application/vnd.github.v3.patch"
 }
 
 /**
@@ -174,12 +174,12 @@ type SwaggerInfo = {
         url?: string
     }
     readonly version: string
-}   
+};   
 
 
 type PathObject = {
     [path: PathString]:  PathItemObject
-}
+};
 
 type APIOperation = {
     tags?: Array<string>;
@@ -194,23 +194,23 @@ type APIOperation = {
     schemes?: Array<Schema>;
     deprecated?: boolean;
     security?: any;
-}
+};
 
 
 type TagObject = {
     name: string,
     description?: string
-}
+};
 
 /**
  * API Parameters for APIOperation
  */
 type APIParameters = {
-    in: 'query' | 'header' | 'path' | 'formData' | 'body';
+    in: "query" | "header" | "path" | "formData" | "body";
     name: string;
     description?: string;
     required?: boolean;
-}
+};
 
 
 /**
@@ -221,5 +221,5 @@ type APIParametersInBody = APIParameters & {schema: TSwaggerSchemaObject | refSt
 
 type PathItemObject = {
     $ref?: RefString
-}
+};
 

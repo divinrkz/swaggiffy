@@ -1,4 +1,4 @@
-import {Express} from 'express';
+import {Express} from "express";
 
 
 class APIRoute {
@@ -6,7 +6,7 @@ class APIRoute {
         this.test();
     }
     public test(): void {
-        console.log('Express testing')
+        console.log("Express testing");
     }
 }
 
