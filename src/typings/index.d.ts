@@ -27,7 +27,7 @@ const TStringFormat = 'byte' | 'binary' | 'date' | 'date-time' | 'password';
 /**
  * 
  */
-export type TSchemaProp = Record<String, TSwaggerSchemaProp>;
+export type TSchemaProp = Record<String, TSwaggerSchemaObject>;
 
 
 /**
@@ -63,11 +63,30 @@ export type TSwaggerType = {
 }
 
 /**
- * Swagger Schema Properties Type
+ * Swagger Schema Object Type
  */
-export type TSwaggerSchemaProp<T> = {
+export type TSwaggerSchemaObject<T> = {
     type: TOSAType,
     format?: TOSAType extends 'integer' ? TOSAType :  TOSAType extends 'number' ? TNumberFormat : TOSAType extends 'string' ? TStringFormat : string;
+    $ref?: string,
+    title?: string,
+    description?: string,
+    default?: any,
+    multipleOf?: any,
+    maximum?: any,
+    exclusiveMaximum?: any,
+    minimum?: any,
+    exclusiveMinimum?: any,
+    maxLength?: any,
+    minLength?: any,
+    pattern?: any,
+    maxItems?: any,
+    minItems?: any,
+    uniqueItems?: any,
+    maxProperties?: any,
+    minProperties?: any,
+    required?: boolean,
+    enum?: boolean
 };
 
 
