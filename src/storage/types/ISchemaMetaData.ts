@@ -4,7 +4,7 @@ export interface ISchemaMetaData {
     /**
      * Class which owns the schema
      */
-    readonly target: Function;
+    readonly target;
 
     /**
      * Name of Class owning the schema 
