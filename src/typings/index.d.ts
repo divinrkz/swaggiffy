@@ -1,41 +1,16 @@
-export type Class<T> = {new (): T};
-
-
-/**
- * The OpenSpecification 3.0 types
- */
- const TDataType = "string" | "boolean" | "object" | "number" | "date" | "bigint";
-/**
- * The OpenSpecification 3.0 types
- */
-const TOSAType = "integer" | "number" | "string" | "boolean" | "file";
-/**
- * The OpenSpecification 3.0 integer type formats
- */
-const TIntegerFormat = "int32" | "int64";
-/**
- * The OpenSpecification 3.0 number type formats
- */
-const TNumberFormat = "float" | "double";
-/**
- * The OpenSpecification 3.0 string type formats
- */
-const TStringFormat = "byte" | "binary" | "date" | "date-time" | "password"; 
-
-
 /**
  * Path String Type
  * Checks for a path starting with /{path} 
  * Examples: /pets
  */
- type PathString = `/${string| ""}`;
+export type PathString = `/${string| ""}`;
 
  /**
   * Ref String Type
   * Checks for a ref starting with /#/definitions/{schema} 
   * Examples: /p
   */
-type RefString = `/#/definitions/${string}`;
+export type RefString = `/#/definitions/${string}`;
  
 
 /**
@@ -49,7 +24,7 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  */
 export type TClassProp = {
     prop: string
-    type: TDataType
+    type: "string" | "boolean" | "object" | "number" | "date" | "bigint"
 };
 
 
@@ -79,9 +54,10 @@ export type TSwaggerType = {
 /**
  * Swagger Schema Object Type
  */
-export type TSwaggerSchemaObject<T> = {
-    type: TOSAType;
-    format?: TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
+export type TSwaggerSchemaObject = {
+    type: "integer" | "number" | "string" | "boolean" | "file";
+    format?: any;
+    // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
     title?: string;
     description?: string;
