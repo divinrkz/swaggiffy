@@ -1,25 +1,9 @@
-import {writeFile, readFile} from "fs";
 import { SchemaMetadata } from "../../storage/types/SchemaMetadata";
 import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../../typings";
 import { PlatformTools } from "../platform/PlatformTools";
 import {Constants} from "./Constants";
 
 export class Utility {  
-    static _getAllFilesFromFolder(dir: any) {
-        const filesystem = require("fs");
-        let results: any[] = [];
-        filesystem.readdirSync(dir).forEach(function(file: any) {
-            file = dir+"/"+file;
-            const stat = filesystem.statSync(file);
-            if (stat && stat.isDirectory()) {
-                results = results.concat(Utility._getAllFilesFromFolder(file));
-            } else {
-                if (file.endsWith("route.ts" || "route.js"))
-                    results.push(file);
-            }    
-        });
-        return results;
-    }
 
 
     /**

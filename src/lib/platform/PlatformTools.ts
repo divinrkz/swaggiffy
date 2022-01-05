@@ -30,7 +30,7 @@ export class PlatformTools {
      * Write content to a file 
      */
     static writeToFile(path: string, content: string): Promise<void> {
-        return new Promise<void>((ok: Function, fail: Function) => {
+        return new Promise<void>((ok, fail) => {
             writeFile(path, content, (err) => {
                 if (err) fail(err);
                 ok();

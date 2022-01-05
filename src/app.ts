@@ -29,7 +29,7 @@ class App extends Config {
     }  
     
     private routes(): void {
-        this.app.get("/", (req: any, res: any) => {
+        this.app.get("/", (req, res) => {
             res.status(200).send(`Server made up and running!`);
         });      
     }
@@ -42,7 +42,7 @@ class App extends Config {
         Runner.execute();
 
        setTimeout(() => {
-        import("./swagger/swagger.json").then((file: any) =>  {
+        import("./swagger/swagger.json").then((file) =>  {
             const specs: JsonObject = swaggerJsdoc(file);
             this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
         });

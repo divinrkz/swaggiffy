@@ -13,6 +13,6 @@
    "strictPropertyInitialization": false,            
     "skipLibCheck": true                                 
   },
-  "include": ["src/**/*.ts", "*.ts",],
+  "include": ["*.ts"],
   "exclude": ["node_modules"]
 }

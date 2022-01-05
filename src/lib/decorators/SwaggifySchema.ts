@@ -9,8 +9,7 @@ import {SchemaMetadata} from "../../storage/types/SchemaMetadata";
  * @param name Optional swagger schema name
  */
 export function SwaggifySchema(name?: string): ClassDecorator  {
-  return (target: Function) => {
-
+  return (target) => {
       const classDef: TClassDef = Utility.getClassProps(target, name);    
       const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
