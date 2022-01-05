@@ -103,7 +103,7 @@ export interface SwaggerSpecification {
     info: SwaggerInfo;
     host?: string;
     basePath?: string;
-    schemes?: Array<ESchemes>;
+    schemes?: Array<ESchemas>;
     consumes?: Array<EMimeTypes>;
     produces?: Array<EMimeTypes>;
     paths: PathObject;
@@ -116,11 +116,11 @@ export interface SwaggerSpecification {
 }
 
 
-enum ESchemes {
+export enum ESchemas {
     http="http", https="https", ws="ws", wss="wss"
 }
 
-enum EMimeTypes {
+export enum EMimeTypes {
     "text/plain; charset=utf-8"="text/plain; charset=utf-8",
     "application/json"="application/json",
     "application/vnd.github+json","application/vnd.github+json",
@@ -167,7 +167,7 @@ type APIOperation = {
     produces?: string;
     parameters?: any;
     responses?: any;
-    schemes?: Array<Schema>;
+    schemes?: Array<ESchemas>;
     deprecated?: boolean;
     security?: any;
 };
@@ -192,7 +192,7 @@ type APIParameters = {
 /**
  * API Parameters when in prop is 'body'
  */
-type APIParametersInBody = APIParameters & {schema: TSwaggerSchemaObject | refString};
+type APIParametersInBody = APIParameters & {schema: TSwaggerSchemaObject | RefString};
 
 
 type PathItemObject = {
