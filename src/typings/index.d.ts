@@ -175,6 +175,35 @@ type PathObject = {
     [path: PathString]:  PathItemObject
 }
 
+type APIOperation = {
+    tags?: Array<string>;
+    summary?: string;
+    description?: string;
+    externalDocs?: string;
+    operationId?: string;
+    consumes?: string;
+    produces?: string;
+    parameters?
+}
+
+
+/**
+ * API Parameters for APIOperation
+ */
+type APIParameters = {
+    in: 'query' | 'header' | 'path' | 'formData' | 'body';
+    name: string;
+    description?: string;
+    required?: boolean;
+}
+
+
+/**
+ * API Parameters when in prop is 'body'
+ */
+type APIParametersInBody = APIParameters & {schema: TSwaggerSchemaObject | refString};
+
+
 type PathItemObject = {
     $ref?: RefString
 }
