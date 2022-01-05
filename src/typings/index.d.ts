@@ -130,7 +130,13 @@ export interface SwaggerSpecification {
     schemes?: Array<ESchemes>;
     consumes?: Array<EMimeTypes>;
     produces?: Array<EMimeTypes>;
-    paths: PathObject
+    paths: PathObject;
+    definitions?: TSwaggerSchemaDef;
+    parameters?: APIParameters;
+    responses?: any;
+    securityDefinitions?: any;
+    security?: any;
+    tags: Array<TagObject>;    
 }
 
 
@@ -190,6 +196,11 @@ type APIOperation = {
     security?: any;
 }
 
+
+type TagObject = {
+    name: string,
+    description?: string
+}
 
 /**
  * API Parameters for APIOperation
