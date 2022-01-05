@@ -19,6 +19,19 @@
     "host": "localhost:4008",
     "basePath": "/",
     "paths": {},
+    "consumes": [
+      "application/json",
+      "multipart/form-data"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "tags": [
+      {
+        "name": "academies",
+        "description": "Academies"
+      }
+    ],
     "definitions": {
       "UserModel": {
         "type": "object",
@@ -41,6 +54,26 @@
         }
       },
       "Phone": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "number"
+          },
+          "birthDate": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PersonDTO": {
         "type": "object",
         "properties": {
           "firstName": {

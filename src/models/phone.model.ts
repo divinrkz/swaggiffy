@@ -2,9 +2,19 @@ import { SwaggifySchema } from "../lib/decorators";
 
 @SwaggifySchema()
 export class Phone {
-    firstName: string = '';
-    lastName: string = '';
-    phone: number = 0;
+    firstName = "";
+    lastName = "";
+    phone = 0;
     birthDate: Date = new Date();
-    isActive: boolean = false;
-};
+    isActive = false;
+}
+
+
+@SwaggifySchema("PersonDTO")
+export class Person {
+    firstName = "";
+    lastName = "";
+    phone = 0;
+    birthDate: Date = new Date();
+    isActive = false;
+}

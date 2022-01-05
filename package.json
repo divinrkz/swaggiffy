@@ -1,15 +1,18 @@
 {
   "name": "swaggify",
+  "displayName": "swaggify",
   "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
   "main": "index.js",
+  "types": "",
+
   "scripts": {
     "dev-stage": "npx nodemon ./src/server.ts",
     "dev": "ts-node ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "compile": "tsc",
+    "lint": "npx eslint . --ext .ts --fix",
+    "prepare": "husky install"
   },
   "keywords": [
     "ts",
@@ -18,8 +21,24 @@
     "docs",
     "nest"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divinirakiza/swaggify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/divinirakiza/swaggify/issues"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "homepage": "https://github.com/divinirakiza/swaggify#readme",
   "author": "Divin Irakiza",
   "license": "MIT",
+  "module": "dist/string-method.esm.js",
   "devDependencies": {
     "@types/node": "^16.11.10",
     "@types/pino": "^7.0.5",
@@ -45,5 +64,13 @@
     "hooks": {
       "pre-commit": "pnpm lint"
     }
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
   }
 }

@@ -1,24 +1,9 @@
-import {writeFile, readFile} from 'fs';
-import { SchemaMetadata } from '../../storage/types/SchemaMetadata';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../../typings';
-import {Constants} from './Constants';
+import { SchemaMetadata } from "../../storage/types/SchemaMetadata";
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../../typings";
+import { PlatformTools } from "../platform/PlatformTools";
+import {Constants} from "./Constants";
 
 export class Utility {  
-    static _getAllFilesFromFolder(dir: any) {
-        var filesystem = require("fs");
-        var results: any[] = [];
-        filesystem.readdirSync(dir).forEach(function(file: any) {
-            file = dir+'/'+file;
-            var stat = filesystem.statSync(file);
-            if (stat && stat.isDirectory()) {
-                results = results.concat(Utility._getAllFilesFromFolder(file))
-            } else {
-                if (file.endsWith('route.ts' || 'route.js'))
-                    results.push(file);
-            }    
-        });
-        return results;
-    };
 
 
     /**
@@ -36,6 +21,9 @@ export class Utility {
     }
 
 
+    /**
+     * Generate Swagger Schema Definition
+     */
     static genSchemaDef(obj: TClassDef): TSwaggerSchema {
         let props: TSchemaProp = {};
 
@@ -45,29 +33,38 @@ export class Utility {
 
         return <TSwaggerSchema> {
             [obj.name]: {
-                type: 'object',
+                type: "object",
                 properties: props
             } 
         };
     }
-    static swaggify(obj: TSwaggerSchemaDef): void {
-        readFile(Constants.SWAGGER_CONFIG, (error, data) => {
-            if (error) {
-              console.error(error);
-              return;
-            }
-            const parsedData = JSON.parse(data.toString());
-           
-            parsedData.swaggerDefinition.definitions = obj;
 
-            writeFile(Constants.SWAGGER_CONFIG, JSON.stringify(parsedData, null, 2), (err) => {
-              if (err) {
-                console.error('Failed to write updated data to file');
-                return;
-              }
-              console.error('Updated file successfully');
-            });
-          });
+    /**
+     * Extracts Swagger Schema Object from JSON
+     * @param swagger JSON Document
+     * @params schema: new swaggified schemas
+     * @returns schema object
+     */
+    static updateSchema(swaggerDoc: Buffer, schema: TSwaggerSchemaDef): string {
+        const parsed = JSON.parse(swaggerDoc.toString());
+        parsed.swaggerDefinition.definitions = schema;
+        return JSON.stringify(parsed, null, 2);
+    }
+
+
+    /**
+     * Generates swagger file from schemas
+     * @params schema
+     * @returns Promise<void>
+     */
+    static async swaggify(schema: TSwaggerSchemaDef) {
+        return new Promise<void>((ok, fail) => {
+            const swaggerDoc: Buffer = PlatformTools.getFileContents(Constants.SWAGGER_CONFIG);
+            const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
+    
+            PlatformTools.writeToFile(Constants.SWAGGER_CONFIG, updatedSchema);
+        });
+
     }
 
     /**

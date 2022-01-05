@@ -1,8 +1,7 @@
-import { PlatformTools } from "../platform/PlatformTools";
 import { TClassDef, TSwaggerSchema } from "../../typings";
 import {Utility} from "../utils/Utility";
-import {getSchemaMetadataStorage} from '../../globals';
-import {SchemaMetadata} from '../../storage/types/SchemaMetadata';
+import {getSchemaMetadataStorage} from "../../globals";
+import {SchemaMetadata} from "../../storage/types/SchemaMetadata";
 
 
 /**
@@ -10,8 +9,7 @@ import {SchemaMetadata} from '../../storage/types/SchemaMetadata';
  * @param name Optional swagger schema name
  */
 export function SwaggifySchema(name?: string): ClassDecorator  {
-  return (target: Function) => {
-
+  return (target) => {
       const classDef: TClassDef = Utility.getClassProps(target, name);    
       const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
 
@@ -21,6 +19,6 @@ export function SwaggifySchema(name?: string): ClassDecorator  {
           swaggerDefinition: swaggerDefinition
       } as SchemaMetadata);
 
-  }
+  };
 }
 

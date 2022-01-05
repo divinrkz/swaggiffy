@@ -1,5 +1,4 @@
-import { TSwaggerSchema } from "../typings";
-import {SchemaMetadata} from './types/SchemaMetadata';
+import {SchemaMetadata} from "./types/SchemaMetadata";
 
 
 /**

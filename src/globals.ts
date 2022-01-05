@@ -1,8 +1,8 @@
-import {PlatformTools} from './lib/platform/PlatformTools';
-import { SchemaMetadataStorage } from './storage';
+import {PlatformTools} from "./lib/platform/PlatformTools";
+import { SchemaMetadataStorage } from "./storage";
 
 /**
- * Returns globacl schemametadata storage
+ * Returns globals schemametadata storage
  */
 export function getSchemaMetadataStorage(): SchemaMetadataStorage {
     

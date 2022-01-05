@@ -1,6 +1,8 @@
+import {existsSync, readFileSync, writeFile} from "fs";
+
 
 /**
- * Platform specified 
+ * Platform specific
  */
 export class PlatformTools {
 
@@ -11,4 +13,38 @@ export class PlatformTools {
     static getGlobalVariable(): any {
         return global;
     }
+
+    /**
+     * Read and return all file contents
+     */
+    static getFileContents(path: string): Buffer {
+
+        if (!this.fileExists(path)) 
+            throw new Error("File doesnot exist");
+
+        return readFileSync(path);
+    }
+
+
+    /**
+     * Write content to a file 
+     */
+    static writeToFile(path: string, content: string): Promise<void> {
+        return new Promise<void>((ok, fail) => {
+            writeFile(path, content, (err) => {
+                if (err) fail(err);
+                ok();
+                console.log("alright");
+            });
+        });
+    }   
+
+    /**
+     * Check if file exists
+     */
+    static fileExists(path: string): boolean {
+        return existsSync(path);
+    }
+
+
 }
