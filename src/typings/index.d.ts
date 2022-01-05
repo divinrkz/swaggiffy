@@ -8,7 +8,7 @@ export type Class<T> = {new (): T};
 /**
  * The OpenSpecification 3.0 types
  */
-const TOSAType = 'integer' | 'number' | 'string' | 'boolean';
+const TOSAType = 'integer' | 'number' | 'string' | 'boolean' | 'file';
 /**
  * The OpenSpecification 3.0 integer type formats
  */
@@ -82,3 +82,13 @@ export type TSwaggerSchema = {
  * Swagger Components/Definitions Record<Type>
  */
 export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
+
+
+
+
+/**
+ * The OpenAPI specification definition
+ */
+export type Definition = {
+
+}

@@ -1,0 +1,6 @@
+{
+    "swaggerVersion": "2.0",
+    "swaggerDefinitionPath": "src/docs/swagger.json",
+    "allowSchemas": true,
+    "schemasPaths": []
+}
