@@ -6,7 +6,7 @@
     "module": "commonjs",                                
     "resolveJsonModule": true,                       
     "sourceMap": true,                               
-    "outDir": "dist",                                   
+    "outDir": "build/compiled",                                   
     "esModuleInterop": true,                             
     "forceConsistentCasingInFileNames": true,            
     "strict": true,                                      
