@@ -15,7 +15,8 @@ export class Utility {
         const instance: typeof target = new target();
         const props: TClassProps = [];
         for (const prop of Object.keys(instance)) {
-            props.push({type: typeof instance[prop], prop: prop});
+            console.log(typeof instance[prop]);
+            // props.push({type: typeof instance[prop], prop: prop});
         }
         return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }
@@ -32,10 +33,10 @@ export class Utility {
         }
 
         return <TSwaggerSchema> {
-            [obj.name]: {
-                type: "object",
-                properties: props
-            } 
+            // [obj.name]: {
+            //     type: "object",
+            //     properties: props
+            // } 
         };
     }
 

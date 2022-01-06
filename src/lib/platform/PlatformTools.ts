@@ -1,10 +1,16 @@
 import {existsSync, readFileSync, writeFile} from "fs";
-
+import chalk from 'chalk';
 
 /**
  * Platform specific
  */
 export class PlatformTools {
+
+    /**
+     * Type of current running platform 
+     */
+    static platform: 'browser'|'cli' = 'cli';
+
 
     /**
      * Get global variable where global scope stuff can be stored
@@ -45,6 +51,12 @@ export class PlatformTools {
     static fileExists(path: string): boolean {
         return existsSync(path);
     }
+
+
+    static logInfo(message: string, info: any) {
+        console.log(chalk.blue('Testing info'), info);
+    }
+
 
 
 }

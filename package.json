@@ -3,8 +3,7 @@
   "displayName": "swaggify",
   "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
-  "main": "index.js",
-  "types": "",
+  "main": "src/server.ts",
 
   "scripts": {
     "dev-stage": "npx nodemon ./src/server.ts",
@@ -38,7 +37,7 @@
   "homepage": "https://github.com/divinirakiza/swaggify#readme",
   "author": "Divin Irakiza",
   "license": "MIT",
-  "module": "dist/string-method.esm.js",
+  
   "devDependencies": {
     "@types/node": "^16.11.10",
     "@types/pino": "^7.0.5",
@@ -56,6 +55,7 @@
   "dependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
+    "chalk": "^5.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
     "express": "^4.17.1"
