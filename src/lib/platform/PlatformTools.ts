@@ -2,7 +2,7 @@ import {existsSync, readFileSync, writeFile} from "fs";
 import chalk from 'chalk';
 
 /**
- * Platform specific
+ * Platform specific tools
  */
 export class PlatformTools {
 
