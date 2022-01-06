@@ -5,6 +5,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import { User } from "./models/user.model";
 import { Phone, Person } from "./models/phone.model";
 import {Runner} from "./lib/runners/runner";
+import { PlatformTools } from './lib/platform/PlatformTools';
 
 class App extends Config {
 
@@ -18,8 +19,9 @@ class App extends Config {
     }
 
     public init(): void {
-        this.routes();
-        this.swaggify();
+        // this.routes();
+        PlatformTools.logInfo("Testing", {});
+        // this.swaggify();
     }
 
     public listen(): void {
