@@ -21,7 +21,22 @@
     "schemes": [
       "https"
     ],
-    "paths": "\n                            /: {\n                                get: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        \n                            /recent: {\n                                get: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        \n                            /:id: {\n                                get: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        \n                            /: {\n                                post: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        \n                            /:id: {\n                                put: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        \n                            /:id: {\n                                delete: {\n                                    tags: ,\n                                    operationId: generator,\n                                    summary: ,\n                                    description: ,\n                                    ,\n                                    consumes: generator,\n                                    produces: generator,                            \n                        ",
+    "paths": {
+      "/:id": {
+        "delete": {
+          "tags": [],
+          "operationId": "operation60.91781405651231",
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ]
+        }
+      }
+    },
     "definitions": {}
   },
   "apis": []

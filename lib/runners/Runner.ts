@@ -1,6 +1,6 @@
 import { getAPIDefinitionMetadataStorage, getSchemaMetadataStorage } from '../globals';
 import { Utility } from '../utils/Utility';
-import { APIPathDefinition, TSwaggerSchemaDef } from '../typings';
+import { APIPathDefinition, SwaggerAPIDefinition, TSwaggerSchemaDef } from '../typings';
 import * as path from 'path';
 
 /**
@@ -21,9 +21,8 @@ export class Runner {
      * @param schemas
      */
     static generateAPIDefinitions(): void {
-        const pathDefinition: string = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
-        console.log(JSON.parse(pathDefinition), 'Path definition');
-        Utility.swaggifyD(pathDefinition.toString());
+        const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
+        Utility.swaggifyD(pathDefinition);
     }
 
     static execute(): void {

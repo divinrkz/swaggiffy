@@ -40,6 +40,6 @@ export function createDefinition(router: express.Router) {
 }
 
 // Runner.execute();
-function getRandomArbitrary(min=0, max=100) {
+function getRandomArbitrary(min = 0, max = 100) {
     return Math.random() * (max - min) + min;
-  }
+}

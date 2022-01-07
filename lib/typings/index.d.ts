@@ -236,9 +236,8 @@ export type ApiPathDescription = {
     responses: Record<string, { description: string }>;
 };
 
-
 export type SwaggerAPIDefinition = {
     [x: string]: {
-        [x: 'get' | 'post' | 'put' | 'delete']: ApiPathDescription
+        [x: 'get' | 'post' | 'put' | 'delete']: ApiPathDescription;
     };
-}
+};

@@ -60,7 +60,7 @@ export class Utility {
      * @params schema: new swaggified schemas
      * @returns schema object
      */
-    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: string): string {
+    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: SwaggerAPIDefinition): string {
         const parsed = JSON.parse(swaggerDoc.toString());
         parsed.swaggerDefinition.paths = apiDefinition;
         return JSON.stringify(parsed, null, 2);
@@ -86,7 +86,7 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggifyD(schema: string) {
+    static async swaggifyD(schema: SwaggerAPIDefinition) {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
             const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
@@ -125,16 +125,16 @@ export class Utility {
             apiDefinition = {
                 [item.apiDefinition.pathString]: {
                     [item.apiDefinition.method]: {
-                            tags: item.apiDefinition.tags,
+                        tags: item.apiDefinition.tags,
                         operationId: item.apiDefinition.meta.operationId,
                         summary: item.apiDefinition.meta.summary,
                         description: item.apiDefinition.meta.description,
                         parameters: item.apiDefinition.meta.parameters,
-                        consumes: item.apiDefinition.meta.operationId,
-                        produces: item.apiDefinition.meta.operationId
-                    }, 
-                } 
-            }
+                        consumes: item.apiDefinition.meta.consumes,
+                        produces: item.apiDefinition.meta.produces,
+                    },
+                },
+            };
         }
         return apiDefinition;
     }
