@@ -3,29 +3,6 @@ import { APIPathDefinition } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 
-const router = express.Router();
-
-router.get('/', (req: any, res: any) => {
-    res.send('get all');
-});
-router.get('/recent', (req: any, res: any) => {
-    res.send('recents');
-});
-router.get('/:id', (req: any, res: any) => {
-    res.send('Get by Id');
-});
-
-router.post('/', (req: any, res: any) => {
-    res.send('Created');
-});
-
-router.put('/:id', (req: any, res: any) => {
-    res.send('Update');
-});
-
-router.delete('/:id', (req: any, res: any) => {
-    res.send('Delete');
-});
 
 /**
  * Create swagger path definition
@@ -40,10 +17,12 @@ export function createDefinition(router: express.Router) {
 
         const pathDefinition: APIPathDefinition = {
             pathString: path,
+            tags: [],
             method: method,
             meta: {
                 summary: '',
                 description: '',
+                operationId: 'generator',
                 produces: ['application/json'],
                 consumes: ['application/json'],
                 responses: {
@@ -61,6 +40,6 @@ export function createDefinition(router: express.Router) {
     });
 }
 
-createDefinition(router);
+
 
 // Runner.execute();

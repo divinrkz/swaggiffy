@@ -21,7 +21,7 @@
     "schemes": [
       "https"
     ],
-    "paths": {},
+    "paths": "[object Object]",
     "definitions": {}
   },
   "apis": []

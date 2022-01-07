@@ -222,11 +222,13 @@ export type ConfigurationProps = {
 export type APIPathDefinition = {
     pathString: string;
     method: 'get' | 'post' | 'put' | 'delete';
+    tags: string[]
     meta: ApiPathDescription;
 };
 
 export type ApiPathDescription = {
     summary: string;
+    operationId: string;
     description: string;
     parameters?: APIParameters;
     produces: Array<EMimeTypes>;

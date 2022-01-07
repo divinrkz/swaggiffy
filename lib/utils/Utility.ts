@@ -60,9 +60,8 @@ export class Utility {
      * @params schema: new swaggified schemas
      * @returns schema object
      */
-    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: APIPathDefinition): string {
+    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: string): string {
         const parsed = JSON.parse(swaggerDoc.toString());
-        console.log('Parsed', parsed);
         parsed.swaggerDefinition.paths = apiDefinition;
         return JSON.stringify(parsed, null, 2);
     }
@@ -87,11 +86,11 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggifyD(schema: APIPathDefinition) {
+    static async swaggifyD(schema: string) {
         return new Promise<void>((ok, fail) => {
-            
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
             const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
+            console.log(updatedSchema);
 
             PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
             ok();
@@ -120,13 +119,22 @@ export class Utility {
      * @param array APIDefinitionMetadata array
      * @returns JSON defined SwaggerSchema
      */
-    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): APIPathDefinition {
-        let definition: APIPathDefinition = <APIPathDefinition>{};
+    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): string {
+        let apiDefinition: string = '';
         for (const item of array) {
-            definition = {
-                ...item.apiDefinition,
-            };
+            apiDefinition += `
+                            ${item.apiDefinition.pathString}: {
+                                ${item.apiDefinition.method}: {
+                                    tags: ${item.apiDefinition.tags},
+                                    operationId: ${item.apiDefinition.meta.operationId},
+                                    summary: ${item.apiDefinition.meta.summary},
+                                    description: ${item.apiDefinition.meta.description},
+                                    ${(item.apiDefinition.meta.parameters) ?
+                                        `parameters: ${item.apiDefinition.meta.parameters}` :  ''},
+                                    consumes: ${item.apiDefinition.meta.operationId},
+                                    produces: ${item.apiDefinition.meta.operationId},                            
+                        `
         }
-        return definition;
+        return apiDefinition;
     }
 }

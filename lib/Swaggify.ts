@@ -57,8 +57,9 @@ export class Swaggify {
                 throw new SwaggifyError('Express Application instance is undefined.');
 
             await InitRunner.cacheGlobalConfigurations();
-
+            
             this.app.init(this.configStore);
+
         } catch (err: unknown) {
             throw new SwaggifyError();
         }
