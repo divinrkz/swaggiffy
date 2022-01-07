@@ -39,6 +39,14 @@ export function registerDefinition(router: express.Router) {
     });
 }
 
+
+export function registerDefinitions(routers: express.Router[]) {
+    routers.forEach((router) => {
+        registerDefinition(router);
+    });
+}
+
+
 function getRandomArbitrary(min = 0, max = 100) {
     return Math.random() * (max - min) + min;
 }
