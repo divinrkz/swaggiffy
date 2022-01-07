@@ -10,7 +10,7 @@ export class Phone {
 }
 
 
-@SwaggifySchema("PersonDTO")
+@SwaggifySchema("PersonDto")
 export class Person {
     firstName = "";
     lastName = "";
