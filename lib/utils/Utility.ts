@@ -1,5 +1,5 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { APIPathDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
+import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
@@ -119,21 +119,22 @@ export class Utility {
      * @param array APIDefinitionMetadata array
      * @returns JSON defined SwaggerSchema
      */
-    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): string {
-        let apiDefinition: string = '';
+    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): SwaggerAPIDefinition {
+        let apiDefinition: SwaggerAPIDefinition = <SwaggerAPIDefinition>{};
         for (const item of array) {
-            apiDefinition += `
-                            ${item.apiDefinition.pathString}: {
-                                ${item.apiDefinition.method}: {
-                                    tags: ${item.apiDefinition.tags},
-                                    operationId: ${item.apiDefinition.meta.operationId},
-                                    summary: ${item.apiDefinition.meta.summary},
-                                    description: ${item.apiDefinition.meta.description},
-                                    ${(item.apiDefinition.meta.parameters) ?
-                                        `parameters: ${item.apiDefinition.meta.parameters}` :  ''},
-                                    consumes: ${item.apiDefinition.meta.operationId},
-                                    produces: ${item.apiDefinition.meta.operationId},                            
-                        `
+            apiDefinition = {
+                [item.apiDefinition.pathString]: {
+                    [item.apiDefinition.method]: {
+                            tags: item.apiDefinition.tags,
+                        operationId: item.apiDefinition.meta.operationId,
+                        summary: item.apiDefinition.meta.summary,
+                        description: item.apiDefinition.meta.description,
+                        parameters: item.apiDefinition.meta.parameters,
+                        consumes: item.apiDefinition.meta.operationId,
+                        produces: item.apiDefinition.meta.operationId
+                    }, 
+                } 
+            }
         }
         return apiDefinition;
     }

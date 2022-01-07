@@ -22,7 +22,7 @@ export class Runner {
      */
     static generateAPIDefinitions(): void {
         const pathDefinition: string = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
-        console.log(pathDefinition, 'Path definition')
+        console.log(JSON.parse(pathDefinition), 'Path definition');
         Utility.swaggifyD(pathDefinition.toString());
     }
 

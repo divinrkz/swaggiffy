@@ -41,6 +41,6 @@ router.delete('/:id', (req: any, res: any) => {
     res.send('Delete');
 });
 
-createDefinition(router)
+createDefinition(router);
 
 new Swaggify().setupExpress(app).swaggify();
