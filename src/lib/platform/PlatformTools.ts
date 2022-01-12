@@ -40,7 +40,6 @@ export class PlatformTools {
             writeFile(path, content, (err) => {
                 if (err) fail(err);
                 ok();
-                console.log("alright");
             });
         });
     }   

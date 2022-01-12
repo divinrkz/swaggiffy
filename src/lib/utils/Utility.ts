@@ -5,7 +5,6 @@ import {Constants} from "./Constants";
 
 export class Utility {  
 
-
     /**
      * Returns target Class properties
      * @param _class 
@@ -14,9 +13,9 @@ export class Utility {
     static getClassProps(target: any, name?: string): TClassDef {
         const instance: typeof target = new target();
         const props: TClassProps = [];
+
         for (const prop of Object.keys(instance)) {
-            console.log(typeof instance[prop]);
-            // props.push({type: typeof instance[prop], prop: prop});
+            props.push({prop, type: typeof instance[prop]});
         }
         return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }

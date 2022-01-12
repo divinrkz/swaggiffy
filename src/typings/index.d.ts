@@ -23,8 +23,8 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  * TS Class Property Type
  */
 export type TClassProp = {
-    prop: string
-    type: "string" | "boolean" | "object" | "number" | "date" | "bigint"
+    prop: string;
+    type: "string" | "number" | "bigint" | "boolean" | "symbol" | "object" | "date" | 'undefined' | 'function';
 };
 
 
@@ -120,10 +120,13 @@ export enum ESchemas {
     http="http", https="https", ws="ws", wss="wss"
 }
 
+/**
+ * Mime Type Enum
+ */
 export enum EMimeTypes {
     "text/plain; charset=utf-8"="text/plain; charset=utf-8",
     "application/json"="application/json",
-    "application/vnd.github+json","application/vnd.github+json",
+    "application/vnd.github+json"="application/vnd.github+json",
     "application/vnd.github.v3+json"="application/vnd.github.v3+json",
     "application/vnd.github.v3.raw+json"="application/vnd.github.v3.raw+json",
     "application/vnd.github.v3.text+json"="application/vnd.github.v3.text+json",
