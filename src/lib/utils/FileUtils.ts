@@ -25,16 +25,18 @@ export class FileUtils {
    }
 
     /**
-    * Creates a file in current working directory
+    * Creates a file if not exists in current working directory.
+    * @param pathStr: Path 
     */
-    static createFileInWorkspace(pathStr: string): string {
-        if (!this.fileOrDirectoryExists(pathStr)) { 
-           open(pathStr, 'w', function (err, file) {
-                if (err) throw err;
-            });
-        }
-
-        return path.resolve(pathStr);
+    static createFileInWorkspace(pathStr: string): Promise<void> {
+        return new Promise<void>((ok, fail) => {
+            if (!this.fileOrDirectoryExists(pathStr)) { 
+            open(pathStr, 'w', function (err, file) {
+                    if (err) fail(err);
+                    ok();
+                });
+            }
+        });
     }
 
     /**
