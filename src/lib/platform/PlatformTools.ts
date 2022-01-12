@@ -25,7 +25,7 @@ export class PlatformTools {
      */
     static getFileContents(path: string): Buffer {
 
-        if (!this.fileExists(path)) 
+        if (!this.fileOrDirectoryExists(path)) 
             throw new Error("File doesnot exist");
 
         return readFileSync(path);
@@ -44,10 +44,11 @@ export class PlatformTools {
         });
     }   
 
+
     /**
-     * Check if file exists
+     * Check if file or directory exists
      */
-    static fileExists(path: string): boolean {
+    static fileOrDirectoryExists(path: string): boolean {
         return existsSync(path);
     }
 

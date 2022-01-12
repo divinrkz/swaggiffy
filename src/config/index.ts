@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
+import { PlatformTools } from "../lib/platform/PlatformTools";
 
-export default abstract class Config {
+export  abstract class Config {
 
     constructor() {
         dotenv.config();

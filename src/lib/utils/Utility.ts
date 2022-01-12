@@ -26,16 +26,16 @@ export class Utility {
      */
     static genSchemaDef(obj: TClassDef): TSwaggerSchema {
         let props: TSchemaProp = {};
-
+        
         for (const prop of obj.props) {
           props = Object.assign({[prop.prop]: { type: prop.type}}, props);
         }
 
         return <TSwaggerSchema> {
-            // [obj.name]: {
-            //     type: "object",
-            //     properties: props
-            // } 
+            [obj.name]: {
+                type: "object",
+                properties: props
+            } 
         };
     }
 
@@ -74,6 +74,7 @@ export class Utility {
      */
     static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchemaDef {
 
+    
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
         for (const item of array) {
             definition = {...definition, ...{[item.name]: item.swaggerDefinition[item.name]}};

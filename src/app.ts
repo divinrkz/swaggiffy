@@ -1,11 +1,12 @@
 import express, {Express} from "express";
-import Config from "./config";
+import {Config} from "./config";
 import swaggerUi, {JsonObject} from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import { User } from "./models/user.model";
 import { Phone, Person } from "./models/phone.model";
 import {Runner} from "./lib/runners/runner";
 import { PlatformTools } from './lib/platform/PlatformTools';
+import { FileUtils } from "./lib/utils/FileUtils";
 
 class App extends Config {
 
@@ -19,9 +20,9 @@ class App extends Config {
     }
 
     public init(): void {
-        // this.routes();
-        PlatformTools.logInfo("Testing", {});
+        // PlatformTools.logInfo("Testing", {});
         // this.swaggify();
+        console.log(FileUtils.createFileInWorkspace('swagger.json'));
     }
 
     public listen(): void {
@@ -30,11 +31,6 @@ class App extends Config {
         });
     }  
     
-    private routes(): void {
-        this.app.get("/", (req, res) => {
-            res.status(200).send(`Server made up and running!`);
-        });      
-    }
 
     private async swaggify() {    
         new Phone();

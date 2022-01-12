@@ -32,7 +32,68 @@
         "description": "Academies"
       }
     ],
-    "definitions": {}
+    "definitions": {
+      "UserModel": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "number"
+          },
+          "birthDate": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Phone": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "number"
+          },
+          "birthDate": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PersonDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "number"
+          },
+          "birthDate": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
   },
   "apis": []
 }

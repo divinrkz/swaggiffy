@@ -48,14 +48,15 @@ export type TClassDef = {
  */
 export type TSwaggerType = {
     type: "object";
-    properties: Record<string, TSchemaProp>
+    properties: TSchemaProp
 };
 
 /**
  * Swagger Schema Object Type
  */
 export type TSwaggerSchemaObject = {
-    type: "integer" | "number" | "string" | "boolean" | "file";
+    // type: "integer" | "number" | "string" | "boolean" | "file";
+    type: "string" | "number" | "bigint" | "boolean" | "symbol" | "object" | "date" | 'undefined' | 'function';
     format?: any;
     // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
@@ -86,7 +87,7 @@ export type TSwaggerSchemaObject = {
 export type TSwaggerSchema = {
     [type: string]: TSwaggerType
 };
-
+ 
 /**
  * Swagger Components/Definitions Record<Type>
  */
