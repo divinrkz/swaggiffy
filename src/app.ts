@@ -2,11 +2,9 @@ import express, {Express} from "express";
 import {Config} from "./config";
 import swaggerUi, {JsonObject} from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
-import { User } from "./models/user.model";
-import { Phone, Person } from "./models/phone.model";
-import {Runner} from "./lib/runners/runner";
-import { PlatformTools } from './lib/platform/PlatformTools';
-import { FileUtils } from "./lib/utils/FileUtils";
+import {Runner} from "./runners/runner";
+import { PlatformTools } from './platform/PlatformTools';
+import { FileUtils } from "./utils/FileUtils";
 import { PathString } from "./typings";
 import { SwaggifyException } from "./exceptions/SwaggifyException";
 
@@ -55,9 +53,6 @@ class App extends Config {
      */
     private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {    
        
-        new Phone();
-        new Person();
-        new User();
         
         Runner.execute();
 

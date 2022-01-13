@@ -1,6 +1,6 @@
-import { getSchemaMetadataStorage } from "../../globals";
+import { getSchemaMetadataStorage } from "../globals";
 import { Utility } from "../utils/Utility";
-import { TSwaggerSchemaDef } from "../../typings";
+import { TSwaggerSchemaDef } from "../typings";
 
 
 /**

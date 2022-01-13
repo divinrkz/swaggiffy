@@ -1,7 +1,7 @@
-import { TClassDef, TSwaggerSchema } from "../../typings";
+import { TClassDef, TSwaggerSchema } from "../typings";
 import {Utility} from "../utils/Utility";
-import {getSchemaMetadataStorage} from "../../globals";
-import {SchemaMetadata} from "../../storage/types/SchemaMetadata";
+import {getSchemaMetadataStorage} from "../globals";
+import {SchemaMetadata} from "../storage/types/SchemaMetadata";
 
 
 /**

@@ -3,7 +3,8 @@
   "displayName": "swaggify",
   "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
-  "main": "src/server.ts",
+  "main": "build/compiled/index.js",
+  "types": "build/compiled/index.d.ts",
   "scripts": {
     "dev-stage": "npx nodemon ./src/server.ts",
     "dev": "ts-node ./src/server.ts",

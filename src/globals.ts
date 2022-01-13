@@ -1,4 +1,4 @@
-import {PlatformTools} from "./lib/platform/PlatformTools";
+import {PlatformTools} from "./platform/PlatformTools";
 import { SchemaMetadataStorage } from "./storage";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
 

@@ -4,7 +4,7 @@ import { PathString } from "./typings";
 import { getConfigMetadataStorage } from "./globals";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
 import { SwaggifyException } from "./exceptions/SwaggifyException";
-import { Defaults } from "./lib/utils/Defaults";
+import { Defaults } from "./utils/Defaults";
 
 
 /**

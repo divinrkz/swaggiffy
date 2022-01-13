@@ -1,6 +1,8 @@
 import { Runner } from '../lib/runners/runner';
 
-
+/**
+ * Logger class
+ */
 export interface Logger {
      /**
      * Perform logging using given logger, or by default to the console.
