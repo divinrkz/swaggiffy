@@ -1,5 +1,5 @@
 {
-  "name": "swaggify",
+  "name": "@divinirakiza/swaggify",
   "displayName": "swaggify",
   "version": "0.0.1",
   "description": "A zero-config Node.js Swagger Documentation",
