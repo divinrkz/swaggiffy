@@ -1,5 +1,4 @@
 import express, {Express} from "express";
-import {Config} from "./config";
 import swaggerUi, {JsonObject} from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import {Runner} from "./runners/runner";
@@ -11,15 +10,12 @@ import { SwaggifyException } from "./exceptions/SwaggifyException";
 /**
  * Implicit Express Server.
  */
-class App extends Config {
+class App {
 
     private app: Express;
 
     constructor() {
-        super();
     }
-
-
 
     /**
      * Initialize and Setup the server.

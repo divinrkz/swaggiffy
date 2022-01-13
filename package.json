@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
     "lint": "npx eslint . --ext .ts --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "tsc"
   },
   "keywords": [
     "ts",
