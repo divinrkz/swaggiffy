@@ -5,7 +5,7 @@ import { Runner } from './runners/runner'
 import { PlatformTools } from './platform/PlatformTools'
 import { FileUtils } from './utils/FileUtils'
 import { PathString } from './typings'
-import { SwaggifyException } from './exceptions/SwaggifyException'
+import { SwaggifyError } from './errors/SwaggifyError'
 
 /**
  * Implicit Express Server.

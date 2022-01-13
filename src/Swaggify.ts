@@ -3,7 +3,7 @@ import App from './app'
 import { PathString } from './typings'
 import { getConfigMetadataStorage } from './globals'
 import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage'
-import { SwaggifyException } from './exceptions/SwaggifyException'
+import { SwaggifyError } from './errors/SwaggifyError'
 import { Defaults } from './utils/Defaults'
 
 /**
@@ -55,7 +55,7 @@ export class Swaggify {
       this.configStore.expressApplication == undefined ||
       this.configStore.expressApplication == null
     )
-      throw SwaggifyException('Express Application instance is undefined')
+      throw new SwaggifyError('Express Application instance is undefined')
 
     if (
       this.configStore.swaggerEndPointUrl == undefined ||

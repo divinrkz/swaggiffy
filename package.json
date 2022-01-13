@@ -30,8 +30,7 @@
     "url": "https://github.com/divinirakiza/swaggify/issues"
   },
   "files": [
-    "build",
-    "src"
+    "build/**/*"
   ],
   "engines": {
     "node": ">=8"
