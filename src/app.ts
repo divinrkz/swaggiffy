@@ -7,6 +7,7 @@ import { Phone, Person } from "./models/phone.model";
 import {Runner} from "./lib/runners/runner";
 import { PlatformTools } from './lib/platform/PlatformTools';
 import { FileUtils } from "./lib/utils/FileUtils";
+import { PathString } from "./typings";
 
 class App extends Config {
 
@@ -15,14 +16,17 @@ class App extends Config {
 
     constructor() {
         super();
-        this.app = express();
-        this.init();
     }
 
-    public init(): void {
-        // PlatformTools.logInfo("Testing", {});
-        // this.swaggify();
-        console.log(FileUtils.createFileInWorkspace('swagger.json'));
+    public init(expressApp: Express): void {
+        this.app = expressApp;
+    }
+
+    public serveRoute(routeUrl: PathString): void {
+        import("./swagger/swagger.json").then((file) =>  {
+            const specs: JsonObject = swaggerJsdoc(file);
+            this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
+        });
     }
 
     public listen(): void {
@@ -31,6 +35,8 @@ class App extends Config {
         });
     }  
     
+
+
 
     private async swaggify() {    
         new Phone();
