@@ -1,1 +1,1 @@
-export * from "./SwaggifySchema";
+export * from './SwaggifySchema'
