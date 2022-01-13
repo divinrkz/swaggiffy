@@ -64,13 +64,5 @@
     "hooks": {
       "pre-commit": "pnpm lint"
     }
-  },
-  "prettier": {
-    "semi": false,
-    "trailingComma": "none",
-    "singleQuote": true,
-    "printWidth": 80,
-    "bracketSpacing": true,
-    "arrowParens": "avoid"
   }
 }

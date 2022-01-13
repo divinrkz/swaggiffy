@@ -1,2 +1,2 @@
-export * from './decorators'
-export * from './Swaggify'
+export * from './decorators';
+export * from './Swaggify';
