@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2018",                                 
+    "target": "es2018",         
+    "incremental": true,                        
     "experimentalDecorators": true,                   
     "emitDecoratorMetadata": true,                   
     "module": "commonjs",                                
