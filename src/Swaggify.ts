@@ -3,8 +3,7 @@ import App from "./app";
 import { PathString } from "./typings";
 import { getConfigMetadataStorage } from "./globals";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
-
-
+import { CustomException } from "./exceptions/SwaggifyException";
 
 
 export class Swaggify {
@@ -53,7 +52,12 @@ export class Swaggify {
      * @returns Swaggify
      */
     public swaggify(): typeof this {
+        const store: ConfigMetadataStorage = this.configStore;
 
+        if (store.expressApplication == undefined || store.expressApplication == null)
+            throw CustomException(); 
+            
+        this.app.init(this.configStore.expressApplication);
         return this;
     }
 

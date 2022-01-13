@@ -8,6 +8,7 @@ import {Runner} from "./lib/runners/runner";
 import { PlatformTools } from './lib/platform/PlatformTools';
 import { FileUtils } from "./lib/utils/FileUtils";
 import { PathString } from "./typings";
+import { SwaggifyException } from "./exceptions/SwaggifyException";
 
 class App extends Config {
 
@@ -16,6 +17,7 @@ class App extends Config {
 
     constructor() {
         super();
+        throw  SwaggifyException(); 
     }
 
     public init(expressApp: Express): void {
@@ -55,3 +57,4 @@ class App extends Config {
 }
 
 export default App;
+
