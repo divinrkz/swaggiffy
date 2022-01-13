@@ -4,7 +4,7 @@ export interface SchemaMetadata {
     /**
      * Class which owns the schema
      */
-    readonly target;
+    readonly target: any;
 
     /**
      * Name of Class owning the schema 

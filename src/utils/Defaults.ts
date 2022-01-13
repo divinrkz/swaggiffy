@@ -1,4 +1,4 @@
-import { PathString } from "../../typings";
+import { PathString } from "../typings";
 
 /**
  * Class containing all global Defaults and Constants

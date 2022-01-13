@@ -1,5 +1,5 @@
-import { SchemaMetadata } from "../../storage/types/SchemaMetadata";
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../../typings";
+import { SchemaMetadata } from "../storage/types/SchemaMetadata";
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
 import { PlatformTools } from "../platform/PlatformTools";
 import {Constants} from "./Constants";
 

@@ -23,7 +23,7 @@ export class Swaggify {
      * Setups expressApplication with swaggify.
      * @returns Swaggify
      */
-    public setupExpress(expressApp: Express): typeof this {         
+    public setupExpress(expressApp: Express): this {         
         // this.configStore expressApplication in ConfigMetadataStorage.
         this.configStore.expressApplication = expressApp;
         
@@ -34,7 +34,7 @@ export class Swaggify {
      * Setups route endpoint url with swaggify.
      * @returns Swaggify
      */
-    public setupRoute(routeEndPointUrl: PathString): typeof this {
+    public setupRoute(routeEndPointUrl: PathString): this {
         this.configStore.swaggerEndPointUrl = routeEndPointUrl;
         return this;
     } 
@@ -44,7 +44,7 @@ export class Swaggify {
      * Setups and Builds a swagger config file template in the specified directory and file.
      * @returns Swaggify
      */
-    public setupSwagger(filePath: string): typeof this {
+    public setupSwagger(filePath: string): this {
         this.configStore.swaggerConfigPath = filePath;
         return this;
     }
@@ -54,7 +54,7 @@ export class Swaggify {
      * Swaggifies your application.
      * @returns Swaggify
      */
-    public swaggify(): typeof this {
+    public swaggify(): this {
 
         if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
             throw SwaggifyException('Express Application instance is undefined'); 
