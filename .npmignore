@@ -1,0 +1,11 @@
+src/
+.husky
+.vscode
+docs/
+tsconfig.json
+__tests__/
+.prettierrc
+swaggify-samples/
+.eslintrc
+pnpm-lock.yaml
+todos.md

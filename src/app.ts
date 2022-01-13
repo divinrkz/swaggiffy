@@ -1,55 +1,62 @@
-import express, {Express} from "express";
-import Config from "./config";
-import swaggerUi, {JsonObject} from "swagger-ui-express";
-import swaggerJsdoc from "swagger-jsdoc";
-import { User } from "./models/user.model";
-import { Phone, Person } from "./models/phone.model";
-import {Runner} from "./lib/runners/runner";
-import { PlatformTools } from './lib/platform/PlatformTools';
+import express, { Express } from 'express'
+import swaggerUi, { JsonObject } from 'swagger-ui-express'
+import swaggerJsdoc from 'swagger-jsdoc'
+import { Runner } from './runners/runner'
+import { PlatformTools } from './platform/PlatformTools'
+import { FileUtils } from './utils/FileUtils'
+import { PathString } from './typings'
+import { SwaggifyError } from './errors/SwaggifyError'
 
-class App extends Config {
+/**
+ * Implicit Express Server.
+ */
+class App {
+  private app: Express
 
-    private PORT: number = parseInt(process.env.PORT as string);
-    private app: Express;
+  constructor() {}
 
-    constructor() {
-        super();
-        this.app = express();
-        this.init();
-    }
+  /**
+   * Initialize and Setup the server.
+   * @param expressApp expressApplication
+   * @param swaggerEndpoint  swaggerEndpointUrl
+   * @param swaggerConfigFile swaggerConfigFilePath
+   */
+  public init(
+    expressApp: Express,
+    swaggerConfigFile: string,
+    swaggerEndpoint: PathString
+  ): void {
+    this.app = expressApp
+    this.run(swaggerConfigFile, swaggerEndpoint)
+  }
 
-    public init(): void {
-        // this.routes();
-        PlatformTools.logInfo("Testing", {});
-        // this.swaggify();
-    }
+  /**
+   * Serves swagger file in specified file and endpoint
+   * @param swaggerEndpoint  swaggerEndpointUrl
+   * @param swaggerConfigFile swaggerConfigFilePath
+   */
+  public serveSwagger(
+    swaggerConfigFile: string,
+    swaggerEndpoint: PathString
+  ): void {
+    import(swaggerEndpoint).then(file => {
+      const specs: JsonObject = swaggerJsdoc(file)
+      this.app.use(swaggerConfigFile, swaggerUi.serve, swaggerUi.setup(specs))
+    })
+  }
 
-    public listen(): void {
-        this.app.listen(this.PORT, () => {
-            console.log(`App listening on PORT ${process.env.PORT}`);
-        });
-    }  
-    
-    private routes(): void {
-        this.app.get("/", (req, res) => {
-            res.status(200).send(`Server made up and running!`);
-        });      
-    }
+  /**
+   * Runs and executes swaggify
+   * @param swaggerEndpoint  swaggerEndpointUrl
+   * @param swaggerConfigFile swaggerConfigFilePath
+   */
+  private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {
+    Runner.execute()
 
-    private async swaggify() {    
-        new Phone();
-        new Person();
-        new User();
-        
-        Runner.execute();
-
-       setTimeout(() => {
-        import("./swagger/swagger.json").then((file) =>  {
-            const specs: JsonObject = swaggerJsdoc(file);
-            this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
-        });
-       }, 2000); 
-    }
+    setTimeout(() => {
+      this.serveSwagger(swaggerConfigFile, swaggerEndpoint)
+    }, 2000)
+  }
 }
 
-export default App;
+export default App

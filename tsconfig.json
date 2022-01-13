@@ -6,16 +6,17 @@
     "module": "commonjs",                                
     "resolveJsonModule": true,                       
     "sourceMap": true,                               
-    "outDir": "build/compiled",                                   
+    "outDir": "./build/compiled",                                   
     "esModuleInterop": true,                             
     "forceConsistentCasingInFileNames": true,            
     "strict": true,                                      
    "strictPropertyInitialization": false,            
-    "skipLibCheck": true                                 
+    "skipLibCheck": true,
+    "declaration": true                              
   },
-  "include": ["*.ts"],
+  "include": ["src"],
   "exclude": [
-    "build",
-    "node_modules"
+    "node_modules",
+    "**/__tests__/*"
   ]
 }
