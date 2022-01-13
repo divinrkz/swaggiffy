@@ -3,12 +3,15 @@ import App from "./app";
 import { PathString } from "./typings";
 import { getConfigMetadataStorage } from "./globals";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
-import { CustomException } from "./exceptions/SwaggifyException";
+import { SwaggifyException } from "./exceptions/SwaggifyException";
+import { Defaults } from "./lib/utils/Defaults";
 
 
+/**
+ * Swaggify base class
+ */
 export class Swaggify {
     
-
     private app: App;
     private configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
@@ -21,7 +24,7 @@ export class Swaggify {
      * @returns Swaggify
      */
     public setupExpress(expressApp: Express): typeof this {         
-        // Store expressApplication in ConfigMetadataStorage.
+        // this.configStore expressApplication in ConfigMetadataStorage.
         this.configStore.expressApplication = expressApp;
         
         return this;
@@ -52,16 +55,23 @@ export class Swaggify {
      * @returns Swaggify
      */
     public swaggify(): typeof this {
-        const store: ConfigMetadataStorage = this.configStore;
 
-        if (store.expressApplication == undefined || store.expressApplication == null)
-            throw CustomException(); 
+        if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
+            throw SwaggifyException('Express Application instance is undefined'); 
+
+        if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
+            this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
             
-        this.app.init(this.configStore.expressApplication);
+        if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
+            this.configStore.swaggerConfigPath = Defaults.SWAGGER_CONFIG_FILE;
+            
+        this.app.init(
+            this.configStore.expressApplication,
+            this.configStore.swaggerConfigPath,
+            this.configStore.swaggerEndPointUrl);
+
         return this;
     }
-
-    this.app.init(this.expressApp);
 
 }
 

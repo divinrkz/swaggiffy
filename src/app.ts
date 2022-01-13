@@ -10,37 +10,51 @@ import { FileUtils } from "./lib/utils/FileUtils";
 import { PathString } from "./typings";
 import { SwaggifyException } from "./exceptions/SwaggifyException";
 
+/**
+ * Implicit Express Server.
+ */
 class App extends Config {
 
-    private PORT: number = parseInt(process.env.PORT as string);
     private app: Express;
 
     constructor() {
         super();
-        throw  SwaggifyException(); 
     }
 
-    public init(expressApp: Express): void {
+
+
+    /**
+     * Initialize and Setup the server.
+     * @param expressApp expressApplication
+     * @param swaggerEndpoint  swaggerEndpointUrl
+     * @param swaggerConfigFile swaggerConfigFilePath
+     */
+    public init(expressApp: Express, swaggerConfigFile: string,  swaggerEndpoint: PathString, ): void {
         this.app = expressApp;
+        this.run(swaggerConfigFile, swaggerEndpoint);
     }
 
-    public serveRoute(routeUrl: PathString): void {
-        import("./swagger/swagger.json").then((file) =>  {
+
+    /**
+     * Serves swagger file in specified file and endpoint
+     * @param swaggerEndpoint  swaggerEndpointUrl
+     * @param swaggerConfigFile swaggerConfigFilePath
+     */
+    public serveSwagger(swaggerConfigFile: string, swaggerEndpoint: PathString): void {
+        import(swaggerEndpoint).then((file) =>  {
             const specs: JsonObject = swaggerJsdoc(file);
-            this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
+            this.app.use(swaggerConfigFile, swaggerUi.serve, swaggerUi.setup(specs));
         });
-    }
-
-    public listen(): void {
-        this.app.listen(this.PORT, () => {
-            console.log(`App listening on PORT ${process.env.PORT}`);
-        });
-    }  
-    
+    }    
 
 
-
-    private async swaggify() {    
+    /**
+     * Runs and executes swaggify
+     * @param swaggerEndpoint  swaggerEndpointUrl
+     * @param swaggerConfigFile swaggerConfigFilePath
+     */
+    private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {    
+       
         new Phone();
         new Person();
         new User();
@@ -48,10 +62,7 @@ class App extends Config {
         Runner.execute();
 
        setTimeout(() => {
-        import("./swagger/swagger.json").then((file) =>  {
-            const specs: JsonObject = swaggerJsdoc(file);
-            this.app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
-        });
+            this.serveSwagger(swaggerConfigFile, swaggerEndpoint);
        }, 2000); 
     }
 }
