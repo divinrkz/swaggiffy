@@ -1,2 +1,2 @@
-export * from './decorators';
+export * from './decorators/SwaggifySchema';
 export * from './Swaggify';
