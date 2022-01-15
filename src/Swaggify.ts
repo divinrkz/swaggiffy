@@ -58,7 +58,7 @@ export class Swaggify {
             this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
 
         if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
-            this.configStore.swaggerConfigPath = Defaults.SWAGGER_CONFIG_FILE;
+            this.configStore.swaggerConfigPath = Defaults.SWAGGER_DEFINITION_FILE;
 
         this.app.init(this.configStore.expressApplication, this.configStore.swaggerConfigPath, this.configStore.swaggerEndPointUrl);
 

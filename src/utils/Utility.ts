@@ -56,10 +56,10 @@ export class Utility {
      */
     static async swaggify(schema: TSwaggerSchemaDef) {
         return new Promise<void>((ok, fail) => {
-            const swaggerDoc: Buffer = PlatformTools.getFileContents(Defaults.SWAGGER_CONFIG_FILE);
+            const swaggerDoc: Buffer = PlatformTools.getFileContents(Defaults.SWAGGER_DEFINITION_FILE);
             const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
 
-            PlatformTools.writeToFile(Defaults.SWAGGER_CONFIG_FILE, updatedSchema);
+            PlatformTools.writeToFile(Defaults.SWAGGER_DEFINITION_FILE, updatedSchema);
         });
     }
 

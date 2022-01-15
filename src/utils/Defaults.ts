@@ -12,5 +12,10 @@ export class Defaults {
     /**
      * Default Swagger Config File Path
      */
-    public static SWAGGER_CONFIG_FILE: string = './swagger/swagger.json';
+    public static SWAGGER_DEFINITION_FILE: string = './swagger/swagger.json';
+
+        /**
+     * Default Swaggify Configuration File
+     */
+    public static SWAGGIFY_CONFIG_FILE: string = './swagger.config.json';    
 }
