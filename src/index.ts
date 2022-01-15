@@ -1,5 +1,6 @@
 import { FileUtils } from './utils/FileUtils';
+import { SetupRunner } from './runners/SetupRunner';
 export * from './decorators/SwaggifySchema';
 export * from './Swaggify';
 
-FileUtils.createFileInWorkspace('src/swagger/config/swagger.json');
+SetupRunner.generateConfigFile();
