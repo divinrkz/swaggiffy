@@ -6,8 +6,6 @@
   "main": "build/compiled/index.js",
   "types": "build/compiled/index.d.ts",
   "scripts": {
-    "dev-stage": "npx nodemon ./src/server.ts",
-    "dev": "ts-node ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
     "lint": "npx eslint . --ext .ts --fix",
