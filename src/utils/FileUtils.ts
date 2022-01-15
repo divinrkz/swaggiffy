@@ -1,5 +1,9 @@
 import { existsSync, readFileSync, writeFile, open } from 'fs';
 import * as path from 'path';
+import { ValidationUtils } from './ValidationUtils';
+
+
+
 
 /**
  * File Utils
@@ -21,6 +25,25 @@ export class FileUtils {
         return path.resolve(pathStr);
     }
 
+
+    /**
+     * Extract Directory from file Path String
+     * @param pathStr Path string
+     */
+    static extractDirectoryFromFilePath(pathStr: string): string {
+
+        ValidationUtils.validateSwaggerFilePath(pathStr);
+
+        const iFirst:number = pathStr.indexOf('/');
+        const iLast:number = pathStr.lastIndexOf('/');
+        
+        if (iFirst == iLast) {
+            return ''
+            
+        }
+        return '';
+    }
+
     /**
      * Creates a file if not exists in current working directory.
      * @param pathStr: Path
@@ -28,6 +51,7 @@ export class FileUtils {
     static createFileInWorkspace(pathStr: string): Promise<void> {
         return new Promise<void>((ok, fail) => {
             if (!this.fileOrDirectoryExists(pathStr)) {
+                this.extractDirectoryFromFilePath(pathStr);
                 open(pathStr, 'w', function (err, file) {
                     if (err) fail(err);
                     ok();
