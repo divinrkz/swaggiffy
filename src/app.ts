@@ -44,8 +44,8 @@ class App {
      * @param swaggerConfigFile swaggerConfigFilePath
      */
     private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {
-        Runner.execute();
-
+        // Runner.execute();
+        
         setTimeout(() => {
             this.serveSwagger(swaggerConfigFile, swaggerEndpoint);
         }, 2000);

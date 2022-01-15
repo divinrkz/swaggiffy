@@ -1,7 +1,7 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
 import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
-import { Constants } from './Constants';
+import { Defaults } from './Defaults';
 
 export class Utility {
     /**
@@ -56,10 +56,10 @@ export class Utility {
      */
     static async swaggify(schema: TSwaggerSchemaDef) {
         return new Promise<void>((ok, fail) => {
-            const swaggerDoc: Buffer = PlatformTools.getFileContents(Constants.SWAGGER_CONFIG);
+            const swaggerDoc: Buffer = PlatformTools.getFileContents(Defaults.SWAGGER_CONFIG_FILE);
             const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
 
-            PlatformTools.writeToFile(Constants.SWAGGER_CONFIG, updatedSchema);
+            PlatformTools.writeToFile(Defaults.SWAGGER_CONFIG_FILE, updatedSchema);
         });
     }
 

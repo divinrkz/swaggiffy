@@ -1,5 +1,5 @@
 import { PlatformTools } from './platform/PlatformTools';
-import { SchemaMetadataStorage } from './storage';
+import { SchemaMetadataStorage } from './storage/schema-metadata-storage';
 import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
 
 /**
