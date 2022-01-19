@@ -3,4 +3,4 @@ import { SetupRunner } from './runners/SetupRunner';
 export * from './decorators/SwaggifySchema';
 export * from './Swaggify';
 
-SetupRunner.generateConfigFile();
+// SetupRunner.generateConfigFile();
