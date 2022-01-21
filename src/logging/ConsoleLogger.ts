@@ -1,4 +1,4 @@
-import { Runner } from '../runners/runner';
+import { Runner } from '../runners/Runner';
 import { Logger } from './Logger';
 
 export class ConsoleLogger implements Logger {
@@ -6,3 +6,4 @@ export class ConsoleLogger implements Logger {
         throw new Error('Method not implemented.');
     }
 }
+

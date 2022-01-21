@@ -5,8 +5,8 @@ export class SetupRunner {
     /**
      * Generate Swaggify Configuration File Template
      */
-    static generateConfigFile() {
-        FileUtils.createFileInWorkspace(Defaults.SWAGGIFY_CONFIG_FILE);
+    static async generateConfigFile() {
+       return FileUtils.createFileInWorkspace(Defaults.SWAGGIFY_CONFIG_FILE);
     }   
 
 }

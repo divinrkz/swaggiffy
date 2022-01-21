@@ -1,4 +1,4 @@
-import { Runner } from '../runners/runner';
+import { Runner } from '../runners/Runner';
 
 /**
  * Logger class
