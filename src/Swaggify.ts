@@ -55,7 +55,6 @@ export class Swaggify {
         try {
             
             const res = await SetupRunner.generateConfigFile();
-
             console.log(res);
 
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
