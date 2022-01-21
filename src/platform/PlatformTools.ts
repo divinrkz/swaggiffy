@@ -49,4 +49,9 @@ export class PlatformTools {
     static logInfo(message: string, info: any) {
         console.log(chalk.blue('Testing info'), info);
     }
+
+    static logCmdErr(message: string, err?: any) {
+        console.log(chalk.black.bgRed(message));
+        if (err) console.error(err);
+    }
 }

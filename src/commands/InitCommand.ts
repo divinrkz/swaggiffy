@@ -1,4 +1,5 @@
 import * as yargs from 'yargs';
+import { PlatformTools } from '../platform/PlatformTools';
 
 /**
  * Swaggify generator
@@ -15,6 +16,17 @@ export class InitCommand implements yargs.CommandModule {
                 default: 'npm',
                 describe: 'Install packages, expected values are npm, yarn, pnpm'
             })
+    }
+
+
+    async handler(args: yargs.Arguments) {
+        try {
+            const swaggerVersion = args.swaggerVersion; 
+        } catch(e) {
+            PlatformTools.logInfo();
+            console.error(err);
+            process.exit(1);
+        }
     }
 
 
