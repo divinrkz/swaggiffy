@@ -1,5 +1,5 @@
-import { existsSync, readFileSync, writeFile } from 'fs';
-import chalk from 'chalk';
+import { existsSync, readFileSync, writeFile } from "fs";
+import chalk from "chalk";
 
 /**
  * Platform specific tools
@@ -8,7 +8,7 @@ export class PlatformTools {
     /**
      * Type of current running platform
      */
-    static platform: 'browser' | 'cli' = 'cli';
+    static platform: "browser" | "cli" = "cli";
 
     /**
      * Get global variable where global scope stuff can be stored
@@ -22,7 +22,7 @@ export class PlatformTools {
      * Read and return all file contents
      */
     static getFileContents(path: string): Buffer {
-        if (!this.fileOrDirectoryExists(path)) throw new Error('File doesnot exist');
+        if (!this.fileOrDirectoryExists(path)) throw new Error("File doesnot exist");
 
         return readFileSync(path);
     }
@@ -47,7 +47,11 @@ export class PlatformTools {
     }
 
     static logInfo(message: string, info: any) {
-        console.log(chalk.blue('Testing info'), info);
+        console.log(chalk.blue("Testing info"), info);
+    }
+
+    static logSuccess(message: string) {
+        console.log(chalk.green(message));
     }
 
     static logCmdErr(message: string, err?: any) {

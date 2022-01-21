@@ -1,10 +1,10 @@
-import { Express } from 'express';
-import swaggerUi, { JsonObject } from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
-import { PlatformTools } from './platform/PlatformTools';
-import { FileUtils } from './utils/FileUtils';
-import { PathString } from './typings';
-import { SwaggifyError } from './errors/SwaggifyError';
+import { Express } from "express";
+import swaggerUi, { JsonObject } from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
+import { PlatformTools } from "./platform/PlatformTools";
+import { FileUtils } from "./utils/FileUtils";
+import { PathString } from "./typings";
+import { SwaggifyError } from "./errors/SwaggifyError";
 
 /**
  * Implicit Express Server.
@@ -44,7 +44,7 @@ class App {
      */
     private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {
         // Runner.execute();
-        
+
         setTimeout(() => {
             this.serveSwagger(swaggerConfigFile, swaggerEndpoint);
         }, 2000);

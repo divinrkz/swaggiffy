@@ -1,4 +1,4 @@
-import { SchemaMetadata } from './types/SchemaMetadata';
+import { SchemaMetadata } from "./types/SchemaMetadata";
 
 /**
  * Global storage for registered schemas

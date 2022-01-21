@@ -1,10 +1,10 @@
-import App from './app';
-import { PathString } from './typings';
-import { getConfigMetadataStorage } from './globals';
-import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
-import { SwaggifyError } from './errors/SwaggifyError';
-import { Defaults } from './utils/Defaults';
-import { SetupRunner } from './runners/SetupRunner';
+import App from "./app";
+import { PathString } from "./typings";
+import { getConfigMetadataStorage } from "./globals";
+import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
+import { SwaggifyError } from "./errors/SwaggifyError";
+import { Defaults } from "./utils/Defaults";
+import { SetupRunner } from "./runners/SetupRunner";
 
 /**
  * Swaggify base class
@@ -29,7 +29,7 @@ export class Swaggify {
 
     /**
      * dsfa
-     * 
+     *
      * Setups route endpoint url with swaggify.
      * @returns Swaggify
      */
@@ -51,14 +51,12 @@ export class Swaggify {
      * Swaggifies your application.
      * @returns Swaggify
      */
-    public async swaggify(): Promise<this> {  
+    public async swaggify(): Promise<this> {
         try {
-            
             const res = await SetupRunner.generateConfigFile();
-            console.log(res);
 
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
-            throw new SwaggifyError('Express Application instance is undefined');
+                throw new SwaggifyError("Express Application instance is undefined");
 
             if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
                 this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
@@ -67,13 +65,10 @@ export class Swaggify {
                 this.configStore.swaggerConfigPath = Defaults.SWAGGER_DEFINITION_FILE;
 
             this.app.init(this.configStore.expressApplication, this.configStore.swaggerConfigPath, this.configStore.swaggerEndPointUrl);
-
-        }
-        catch(err: unknown) {
+        } catch (err: unknown) {
             throw new SwaggifyError();
         }
 
-       return this;
-
+        return this;
     }
 }

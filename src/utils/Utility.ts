@@ -1,7 +1,7 @@
-import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
-import { PlatformTools } from '../platform/PlatformTools';
-import { Defaults } from './Defaults';
+import { SchemaMetadata } from "../storage/types/SchemaMetadata";
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
+import { PlatformTools } from "../platform/PlatformTools";
+import { Defaults } from "./Defaults";
 
 export class Utility {
     /**
@@ -31,7 +31,7 @@ export class Utility {
 
         return <TSwaggerSchema>{
             [obj.name]: {
-                type: 'object',
+                type: "object",
                 properties: props,
             },
         };
