@@ -1,7 +1,6 @@
-import express, { Express } from 'express';
+import { Express } from 'express';
 import swaggerUi, { JsonObject } from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
-import { Runner } from './runners/Runner';
 import { PlatformTools } from './platform/PlatformTools';
 import { FileUtils } from './utils/FileUtils';
 import { PathString } from './typings';

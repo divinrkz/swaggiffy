@@ -5,12 +5,8 @@ export class SetupRunner {
     /**
      * Generate Swaggify Configuration File Template
      */
-    static async generateConfigFile() {
-       await FileUtils.createFileInWorkspace(Defaults.SWAGGIFY_CONFIG_FILE);
-
-       
-       
-    //    FileUtils.writeToFile(Defaults.SWAGGIFY_CONFIG_FILE, );
+    static async generateConfigFile(configFile?: string) {
+       await FileUtils.createFileInWorkspace(configFile || Defaults.SWAGGIFY_CONFIG_FILE);       
     }   
 
 }

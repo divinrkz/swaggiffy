@@ -1,0 +1,6 @@
+{
+    "projectName": "new sample",
+    "swaggerVersion": "0.0.1",
+    "outFile": "src/swagger.json",
+    "apiRoute": "/api-docs"
+}

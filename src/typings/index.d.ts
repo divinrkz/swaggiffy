@@ -193,3 +193,6 @@ type APIParametersInBody = APIParameters & {
 type PathItemObject = {
     $ref?: RefString;
 };
+
+
+export type TOpenApiVersion = '2.0' | '3.0';

@@ -1,11 +1,13 @@
 import yargs from 'yargs';
 import { InitCommand } from './commands/InitCommand';
+import { VersionCommand } from './commands/VersionCommand';
 
 
 
 yargs
     .usage('Usage: $0 <command> [options]')
-    .command(new InitCommand());
+    .command(new InitCommand())
+    .command(new VersionCommand())
     .recommendCommands()
     .demandCommand(1)
     .strict()

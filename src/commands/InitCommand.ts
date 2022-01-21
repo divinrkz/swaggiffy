@@ -1,5 +1,8 @@
 import * as yargs from 'yargs';
 import { PlatformTools } from '../platform/PlatformTools';
+import { SetupRunner } from '../runners/SetupRunner';
+import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
+import { getConfigMetadataStorage } from '../globals';
 
 /**
  * Swaggify generator
@@ -10,24 +13,29 @@ export class InitCommand implements yargs.CommandModule {
      
     builder(args: yargs.Argv) {
         return args 
-            .option('pm', {
-                alias: 'manager',
-                choices: ['npm', 'yarn', 'pnpm'],
-                default: 'npm',
-                describe: 'Install packages, expected values are npm, yarn, pnpm'
+            .option('oa', {
+                alias: 'openapiVersion',
+                choices: ['2.0', '3.0', ],
+                default: '2.0',
+                describe: 'Choose OpenAPI version, expected values are 2.0, 3.0'
+            })
+            .option('n', {
+                alias: 'name',
+                describe: 'Name of project'
             })
     }
 
 
     async handler(args: yargs.Arguments) {
         try {
-            const swaggerVersion = args.swaggerVersion; 
-        } catch(e) {
-            PlatformTools.logInfo();
-            console.error(err);
+            if (args.name) getConfigMetadataStorage().appName = args.n;
+            if (args.openapiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion;
+
+        } catch (err) {
+            PlatformTools.logCmdErr('Error when initializing swaggify.', err);
             process.exit(1);
         }
-    }
+    }   
 
 
 }
