@@ -1,8 +1,7 @@
 import * as yargs from 'yargs';
 import { PlatformTools } from '../platform/PlatformTools';
-import { SetupRunner } from '../runners/SetupRunner';
-import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
 import { getConfigMetadataStorage } from '../globals';
+import { TOpenApiVersion } from '../typings';
 
 /**
  * Swaggify generator
@@ -28,8 +27,8 @@ export class InitCommand implements yargs.CommandModule {
 
     async handler(args: yargs.Arguments) {
         try {
-            if (args.name) getConfigMetadataStorage().appName = args.n;
-            if (args.openapiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion;
+            if (args.name) getConfigMetadataStorage().appName = args.n as string;
+            if (args.openapiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
 
         } catch (err) {
             PlatformTools.logCmdErr('Error when initializing swaggify.', err);

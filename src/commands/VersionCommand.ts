@@ -13,7 +13,7 @@ export class VersionCommand implements yargs.CommandModule {
         const SWAGGIFY_PATTERN:RegExp = / @divinirakiza@swaggify@(.*)\n/;
 
         const localNpmList:string = await VersionCommand.executeCommand("npm list --depth=0");
-        const localMatches:string[] = localNpmList.match(SWAGGIFY_PATTERN);
+        const localMatches:RegExpMatchArray | null = localNpmList.match(SWAGGIFY_PATTERN);
         const localNpmVersion:string = (localMatches && localMatches[1] ? localMatches[1] : "").replace(/"invalid"/gi, "").trim();
 
         const globalNpmList = await VersionCommand.executeCommand("npm list -g --depth=0");
