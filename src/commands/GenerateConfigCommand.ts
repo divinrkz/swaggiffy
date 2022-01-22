@@ -12,18 +12,24 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     aliases = "g:config";
 
     builder(args: yargs.Argv) {
-        return args.option("p", {
-            alias: "configFile",
+        return args.option("path", {
+            alias: "configFilePath",
             type: "string",
             describe: "File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .",
+        }).option("r", {
+            alias: "refresh",
+            type: "boolean",
+            describe: "Re-generate and overwrite existing config file.",
         });
     }
 
     async handler(args: yargs.Arguments) {
         try {
-            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getTemplate(), args.configFile as string | undefined);
+            const override: boolean | undefined = (args.refresh) ? true : false;
+            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getTemplate(), args.configFilePath as string | undefined, override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
             PlatformTools.logSuccess("Successfully generated");
+
         } catch (err: any) {
             PlatformTools.logCmdErr("Error when generating config file: ", err);
         }
