@@ -4,18 +4,18 @@ import { SetupRunner } from "../runners/SetupRunner";
 import { FileUtils } from "../utils/FileUtils";
 
 /**
- * Generate Config Command
+ * Generate Spec Command
  */
-export class GenerateConfigCommand implements yargs.CommandModule {
-    command = "generate:config";
-    describe = "Generate swaggify config file.";
-    aliases = "g:config";
+export class GenerateSpecCommand implements yargs.CommandModule {
+    command = "generate:spec";
+    describe = "Generate swaggify specifications file.";
+    aliases = "g:spec";
 
     builder(args: yargs.Argv) {
         return args.option("path", {
-            alias: "configFilePath",
+            alias: "specFilePath",
             type: "string",
-            describe: "File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .",
+            describe: "File where the swagger specifications will be be created. Defaults to BASE_DIR/swagger/swagger.json .",
         }).option("r", {
             alias: "refresh",
             type: "boolean",
@@ -26,8 +26,8 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = (args.refresh) ? true : false;
-            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), args.configFilePath as string | undefined, override as boolean);
-            console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
+            const specFile: string = await SetupRunner.generateSpecFile(GenerateSpecCommand.getOSA2Template(), args.specFilePath as string | undefined, override as boolean);
+            console.log(`Created: ${FileUtils.cleanPath(specFile)}`);
             PlatformTools.logSuccess("Successfully generated");
 
         } catch (err: any) {
@@ -43,12 +43,34 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     protected static getOSA2Template(projectName?: string): string {
         return JSON.stringify(
             {
-                projectName: projectName || "new project",
-                swaggerVersion: "0.0.1",
-                outFile: "src/swagger.json",
-                apiRoute: "/api-docs",
-                format: 'json'
-            },
+                "swagger": "2.0",
+                "info": {
+                  "title": "Sample API",
+                  "description": "API description in Markdown.",
+                  "version": "1.0.0"
+                },
+                "host": "api.example.com",
+                "basePath": "/v1",
+                "schemes": [
+                  "https"
+                ],
+                "paths": {
+                  "/users": {
+                    "get": {
+                      "summary": "Returns a list of users.",
+                      "description": "Optional extended description in Markdown.",
+                      "produces": [
+                        "application/json"
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "OK"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
             undefined,
             3,
         );

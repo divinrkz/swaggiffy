@@ -8,4 +8,14 @@ export class SetupRunner {
         const filePath: string = await FileUtils.createFileInWorkspace(configFile || Defaults.SWAGGIFY_CONFIG_FILE, override);
         return await FileUtils.writeToFile(filePath, template);
     }
+
+        /**
+     * Generate Swaggify Configuration File Template
+     */
+         static async generateSpecFile(template: string, specFile?: string, override?: boolean): Promise<string> {
+            const filePath: string = await FileUtils.createFileInWorkspace(specFile || Defaults.SWAGGER_DEFINITION_FILE, override);
+            return await FileUtils.writeToFile(filePath, template);
+        }
+
+
 }
