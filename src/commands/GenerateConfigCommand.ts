@@ -26,7 +26,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = (args.refresh) ? true : false;
-            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getTemplate(), args.configFilePath as string | undefined, override as boolean);
+            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), args.configFilePath as string | undefined, override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
             PlatformTools.logSuccess("Successfully generated");
 
@@ -36,11 +36,32 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     }
 
     /**
-     * Generate Config template
+     * Generate Config 0SA2 template
      * @param projectName Project Name
      * @returns template
      */
-    protected static getTemplate(projectName?: string): string {
+    protected static getOSA2Template(projectName?: string): string {
+        return JSON.stringify(
+            {
+                projectName: projectName || "new project",
+                swaggerVersion: "0.0.1",
+                outFile: "src/swagger.json",
+                apiRoute: "/api-docs",
+                format: 'json'
+            },
+            undefined,
+            3,
+        );
+    }
+
+
+    
+    /**
+     * Generate Config 0SA3 template
+     * @param projectName Project Name
+     * @returns template
+     */
+     protected static getOSA3Template(projectName?: string): string {
         return JSON.stringify(
             {
                 projectName: projectName || "new project",

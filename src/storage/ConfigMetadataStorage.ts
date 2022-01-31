@@ -16,6 +16,10 @@ export class ConfigMetadataStorage {
     expressApplication: Express;
 
     /**
+     * Format Type
+     */
+    format: 'json' | 'yaml';
+    /**
      * Open API Version
      */
     openApiVersion: TOpenApiVersion;

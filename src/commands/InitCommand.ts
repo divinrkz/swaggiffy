@@ -1,8 +1,10 @@
 import * as yargs from "yargs";
-import { PlatformTools } from "../platform/PlatformTools";
+import { PlatformTools } from '../platform/PlatformTools';
 import { getConfigMetadataStorage } from "../globals";
 import { TOpenApiVersion } from "../typings";
 import { SetupRunner } from "../runners/SetupRunner";
+
+
 
 /**
  * Swaggify generator
@@ -21,16 +23,23 @@ export class InitCommand implements yargs.CommandModule {
             })
             .option("n", {
                 alias: "name",
+                default: '',
                 describe: "Name of project",
+            }).option('fmt', {
+                alias: 'format',
+                choices: ['json', 'yaml'],
+                default: 'json',
+                describe: 'Swagger Specification Format, expected values are 2.0, 3.0'
             });
     }
 
     async handler(args: yargs.Arguments) {
         try {
+            PlatformTools.getProjectName();
             if (args.name) getConfigMetadataStorage().appName = args.n as string;
-            if (args.openapiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
-
-            console.log(getConfigMetadataStorage());
+            if (args.openApiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
+            if (args.format) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
+        
             // SetupRunner.generateConfigFile();
         } catch (err) {
             PlatformTools.logCmdErr("Error when initializing swaggify.", err);

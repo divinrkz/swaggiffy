@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, writeFile } from "fs";
 import chalk from "chalk";
+import { FileUtils } from "../utils/FileUtils";
 
 /**
  * Platform specific tools
@@ -37,6 +38,18 @@ export class PlatformTools {
                 ok();
             });
         });
+    }
+
+
+    /**
+     * Read the name property from package.json
+     * @returns Project Name
+     */
+    static getProjectName(): string {
+        const path: string = process.cwd() + '/package.json';
+        console.log(path);
+        FileUtils.getFileContents(path);
+        return ''
     }
 
     /**
