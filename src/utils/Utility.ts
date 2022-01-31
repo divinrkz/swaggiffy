@@ -1,5 +1,5 @@
 import { SchemaMetadata } from "../storage/types/SchemaMetadata";
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
+import { TClassDef, TClassProps, TemplateOptions, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
 import { PlatformTools } from "../platform/PlatformTools";
 import { Defaults } from "./Defaults";
 
@@ -78,5 +78,17 @@ export class Utility {
         }
 
         return definition;
+    }
+
+
+    static getTemplateOptionsFromStorage() {
+        const options: TemplateOptions = {
+            projectName: '',
+            outFile: '',
+            apiRouteUrl: '',
+            configFile: '',
+            openApiVersion: '',
+            format: 'json'
+        };
     }
 }

@@ -48,7 +48,8 @@ export class PlatformTools {
     static getProjectName(): string {
         const path: string = process.cwd() + '/package.json';
         console.log(path);
-        FileUtils.getFileContents(path);
+        console.log(FileUtils.getFileContents(path));
+
         return ''
     }
 
