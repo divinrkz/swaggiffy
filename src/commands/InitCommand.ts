@@ -3,6 +3,7 @@ import { PlatformTools } from '../platform/PlatformTools';
 import { getConfigMetadataStorage } from "../globals";
 import { TOpenApiVersion } from "../typings";
 import { SetupRunner } from "../runners/SetupRunner";
+import { Templates } from "../utils/Templates";
 
 
 
@@ -40,7 +41,7 @@ export class InitCommand implements yargs.CommandModule {
             if (args.openApiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
             if (args.format) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
         
-            // SetupRunner.generateConfigFile();
+            SetupRunner.generateConfigFile(Templates.getOSA2Template());
         } catch (err) {
             PlatformTools.logCmdErr("Error when initializing swaggify.", err);
             process.exit(1);

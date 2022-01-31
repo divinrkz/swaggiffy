@@ -2,6 +2,7 @@ import * as yargs from "yargs";
 import { PlatformTools } from "../platform/PlatformTools";
 import { SetupRunner } from "../runners/SetupRunner";
 import { FileUtils } from "../utils/FileUtils";
+import { Templates } from "../utils/Templates";
 
 /**
  * Generate Spec Command
@@ -26,7 +27,7 @@ export class GenerateSpecCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = (args.refresh) ? true : false;
-            const specFile: string = await SetupRunner.generateSpecFile(GenerateSpecCommand.getOSA2Template(), args.specFilePath as string | undefined, override as boolean);
+            const specFile: string = await SetupRunner.generateSpecFile(Templates.getOSA2Template(), args.specFilePath as string | undefined, override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(specFile)}`);
             PlatformTools.logSuccess("Successfully generated");
 
@@ -35,64 +36,5 @@ export class GenerateSpecCommand implements yargs.CommandModule {
         }
     }
 
-    /**
-     * Generate Config 0SA2 template
-     * @param projectName Project Name
-     * @returns template
-     */
-    protected static getOSA2Template(projectName?: string): string {
-        return JSON.stringify(
-            {
-                "swagger": "2.0",
-                "info": {
-                  "title": "Sample API",
-                  "description": "API description in Markdown.",
-                  "version": "1.0.0"
-                },
-                "host": "api.example.com",
-                "basePath": "/v1",
-                "schemes": [
-                  "https"
-                ],
-                "paths": {
-                  "/users": {
-                    "get": {
-                      "summary": "Returns a list of users.",
-                      "description": "Optional extended description in Markdown.",
-                      "produces": [
-                        "application/json"
-                      ],
-                      "responses": {
-                        "200": {
-                          "description": "OK"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-            undefined,
-            3,
-        );
-    }
 
-
-
-    /**
-     * Generate Config 0SA3 template
-     * @param projectName Project Name
-     * @returns template
-     */
-     protected static getOSA3Template(projectName?: string): string {
-        return JSON.stringify(
-            {
-                projectName: projectName || "new project",
-                swaggerVersion: "0.0.1",
-                outFile: "src/swagger.json",
-                apiRoute: "/api-docs",
-            },
-            undefined,
-            3,
-        );
-    }
 }
