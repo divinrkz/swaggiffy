@@ -51,15 +51,11 @@ export class InitCommand implements yargs.CommandModule {
             getConfigMetadataStorage().appName = (args.name as string) || (PlatformTools.getProjectName());
             getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || Defaults.OPENAPI_VERSION;
             getConfigMetadataStorage().format = (args.format as TFormat) || Defaults.SWAGGER_DEFINITION_FORMAT;
-            getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) || Defaults.SWAGGER_DEFINITION_FILE;
-            getConfigMetadataStorage().swaggerConfigFilePath = (args.configFile as string) || Defaults.SWAGGIFY_CONFIG_FILE;
-          
-            if (args.apiRoute)
-                getConfigMetadataStorage().swaggerEndPointUrl = (args.configFile as PathString) || Defaults.SWAGGER_ENDPOINT_URL;
+            getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) ? ValidationUtils.validateFilePath((args.defFile as string), args.format) : Defaults.SWAGGER_DEFINITION_FILE;
+            getConfigMetadataStorage().swaggerConfigFilePath = (args.confFile as string) ? ValidationUtils.validateFilePath(args.configFile as string) : Defaults.SWAGGIFY_CONFIG_FILE;
+            getConfigMetadataStorage().swaggerEndPointUrl = (args.apiRoute as PathString) ? ValidationUtils.validateAPIRoute(args.apiRoute as string) : Defaults.SWAGGER_ENDPOINT_URL;
 
-            if (args.defFile)
-               getConfigMetadataStorage().swaggerDefinitionFilePath = ValidationUtils.validateFilePath((args.defFile as string), args.format);
-            
+        
             SetupRunner.generateConfigFile(
                 Templates.getConfigTemplate({
                     projectName: getConfigMetadataStorage().appName,
