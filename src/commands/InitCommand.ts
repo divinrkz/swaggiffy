@@ -22,7 +22,7 @@ export class InitCommand implements yargs.CommandModule {
                 alias: "name",
                 describe: "Name of project",
             })
-            .option("osa", {
+            .option("o", {
                 alias: "openApiVersion",
                 choices: ["2.0", "3.0"],
                 describe: "Choose OpenAPI version, expected values are 2.0, 3.0",
@@ -49,7 +49,6 @@ export class InitCommand implements yargs.CommandModule {
             getConfigMetadataStorage().format = (args.format as TFormat) || Defaults.SWAGGER_DEFINITION_FORMAT;
             getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) ? ValidationUtils.validateFilePath((args.defFile as string), args.format as TFormat) : Defaults.SWAGGER_DEFINITION_FILE;
             getConfigMetadataStorage().swaggerEndPointUrl = (args.apiRoute as PathString) ? ValidationUtils.validateAPIRoute(args.apiRoute as string) : Defaults.SWAGGER_ENDPOINT_URL;
-
         
             SetupRunner.generateConfigFile(
                 Templates.getConfigTemplate({

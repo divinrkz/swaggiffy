@@ -36,14 +36,12 @@ export class ValidationUtils {
 
         /**
      * Validates API Route Urls
-     * @param filePath File Path
+     * @param routeUrl Route Url
      */
-    static validateAPIRoute(routeUrl: string): PathString {
-            try {
-                return routeUrl as PathString;
-            }
-            catch (e) {
-                throw new SwaggifyError('Invalid API route url format. Start with /route');
-            }
+    static validateAPIRoute(routeUrl: string): PathString {            
+        if (!routeUrl.startsWith('/'))
+            throw new SwaggifyError(`Invalid API route url format. Start with a '/'`);
+
+        return routeUrl as PathString;           
     }
 }
