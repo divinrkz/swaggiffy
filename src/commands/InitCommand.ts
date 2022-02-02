@@ -47,8 +47,6 @@ export class InitCommand implements yargs.CommandModule {
             if (args.openApiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
             if (args.format) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
             if (args.f) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
-        
-    
 
             SetupRunner.generateConfigFile(Templates.getConfigTemplate());
         } catch (err) {
