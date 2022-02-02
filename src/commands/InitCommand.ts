@@ -1,6 +1,6 @@
 import * as yargs from "yargs";
 import { PlatformTools } from '../platform/PlatformTools';
-import { getConfigMetadataStorage } from "../globals";
+import { getConfigMetadataStorage, getSchemaMetadataStorage } from "../globals";
 import { TemplateOptions, TFormat, TOpenApiVersion } from "../typings";
 import { SetupRunner } from "../runners/SetupRunner";
 import { Templates } from "../utils/Templates";
@@ -21,7 +21,7 @@ export class InitCommand implements yargs.CommandModule {
                 alias: "name",
                 describe: "Name of project",
             })
-            .option("OSA", {
+            .option("osa", {
                 alias: "openApiVersion",
                 choices: ["2.0", "3.0"],
                 describe: "Choose OpenAPI version, expected values are 2.0, 3.0",
@@ -31,9 +31,13 @@ export class InitCommand implements yargs.CommandModule {
                 choices: ['json', 'yaml'],
                 describe: 'Swagger Specification Format, expected values are JSON, YAML'
             })
-            .option('out', {
-                alias: 'outputFile',
-                describe: 'Swagger Specification output file path'
+            .option('d', {
+                alias: 'defFile',
+                describe: 'Swagger Definition output file path'
+            })
+            .option('c', {
+                alias: 'configFile',
+                describe: 'Swagger Config output file path'
             });
     }
 
@@ -42,19 +46,17 @@ export class InitCommand implements yargs.CommandModule {
             getConfigMetadataStorage().appName = (args.name as string) || (PlatformTools.getProjectName());
             getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || '3.0';
             getConfigMetadataStorage().format = (args.format as TFormat) || 'json';
-
-            if (args.outputFile) {
-                ValidationUtils.validateFilePath((args.outputFile as string), args.format);
-            }
-
             getConfigMetadataStorage().format = (args.format as TFormat) || 'json';
+
+            if (args.defFile)
+               getConfigMetadataStorage().swaggerDefinitionFilePath = ValidationUtils.validateFilePath((args.defFile as string), args.format);
             
             SetupRunner.generateConfigFile(
                 Templates.getConfigTemplate({
                     projectName: getConfigMetadataStorage().appName,
-                    outFile: '',
-                    apiRouteUrl: '',
-                    configFile: '',
+                    outFile: getConfigMetadataStorage().swaggerDefinitionFilePath,
+                    apiRouteUrl: getConfigMetadataStorage().swaggerEndPointUrl,
+                    configFile: getConfigMetadataStorage().swaggerConfigFilePath,
                     openApiVersion: getConfigMetadataStorage().openApiVersion,
                     format: getConfigMetadataStorage().format
             } as TemplateOptions));
