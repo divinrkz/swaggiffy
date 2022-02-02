@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { PathString, TOpenApiVersion } from "../typings";
+import { PathString, TFormat, TOpenApiVersion } from "../typings";
 
 /**
  * Global storage for registered schemas
@@ -18,7 +18,7 @@ export class ConfigMetadataStorage {
     /**
      * Format Type
      */
-    format: 'json' | 'yaml';
+    format: TFormat;
     /**
      * Open API Version
      */

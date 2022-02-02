@@ -195,6 +195,7 @@ type PathItemObject = {
 };
 
 export type TOpenApiVersion = "2.0" | "3.0";
+export type TFormat = "json" | "yaml";
 
 
 
