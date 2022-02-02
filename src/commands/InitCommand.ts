@@ -36,9 +36,13 @@ export class InitCommand implements yargs.CommandModule {
                 alias: 'defFile',
                 describe: 'Swagger Definition output file path'
             })
-            .option('r', {
+            .option('a', {
                 alias: 'apiRoute',
                 describe: 'Swagger Documentation API Route'
+            })
+            .option('r', {
+                alias: 'refresh',
+                describe: 'Regenerates new Swagger Config file'
             });
     }
 
@@ -57,7 +61,7 @@ export class InitCommand implements yargs.CommandModule {
                     apiRouteUrl: getConfigMetadataStorage().swaggerEndPointUrl,
                     openApiVersion: getConfigMetadataStorage().openApiVersion,
                     format: getConfigMetadataStorage().format
-            } as TemplateOptions));
+            } as TemplateOptions), ((args.refresh) ? true : false));
 
             PlatformTools.logSuccess("Generated config file");
             
