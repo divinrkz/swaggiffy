@@ -26,7 +26,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = (args.refresh) ? true : false;
-            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), args.configFilePath as string | undefined, override as boolean);
+            const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
             PlatformTools.logSuccess("Successfully generated");
 

@@ -48,6 +48,7 @@ export class FileUtils {
         const openFile = (ok: any, fail: any) => {
             open(pathStr, "w", function (err, file) {
                 if (err) fail(err);
+                PlatformTools.logSuccess(`Generated ${pathStr}`);
                 ok(pathStr);
             });
         };

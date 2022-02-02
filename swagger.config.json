@@ -2,6 +2,6 @@
    "projectName": "testing",
    "openApiVersion": "3.0",
    "outFile": "swagger/test.json",
-   "apiRoute": "apis",
+   "apiRoute": "/apis",
    "format": "json"
 }

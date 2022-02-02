@@ -42,6 +42,7 @@ export class InitCommand implements yargs.CommandModule {
             })
             .option('r', {
                 alias: 'refresh',
+                type: 'boolean',
                 describe: 'Regenerates new Swagger Config file'
             });
     }
@@ -61,10 +62,7 @@ export class InitCommand implements yargs.CommandModule {
                     apiRouteUrl: getConfigMetadataStorage().swaggerEndPointUrl,
                     openApiVersion: getConfigMetadataStorage().openApiVersion,
                     format: getConfigMetadataStorage().format
-            } as TemplateOptions), ((args.refresh) ? true : false));
-
-            PlatformTools.logSuccess("Generated config file");
-            
+            } as TemplateOptions), ((args.refresh) ? true : false));            
         } catch (err) {
             PlatformTools.logCmdErr("Error when initializing swaggify.", err);
             process.exit(1);
