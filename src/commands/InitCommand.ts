@@ -1,10 +1,11 @@
 import * as yargs from "yargs";
 import { PlatformTools } from '../platform/PlatformTools';
 import { getConfigMetadataStorage, getSchemaMetadataStorage } from "../globals";
-import { TemplateOptions, TFormat, TOpenApiVersion } from "../typings";
+import { PathString, TemplateOptions, TFormat, TOpenApiVersion } from "../typings";
 import { SetupRunner } from "../runners/SetupRunner";
 import { Templates } from "../utils/Templates";
 import { ValidationUtils } from "../utils/ValidationUtils";
+import { Defaults } from '../utils/Defaults';
 
 
 
@@ -38,15 +39,23 @@ export class InitCommand implements yargs.CommandModule {
             .option('c', {
                 alias: 'configFile',
                 describe: 'Swagger Config output file path'
+            })
+            .option('r', {
+                alias: 'apiRoute',
+                describe: 'Swagger Documentation API Route'
             });
     }
 
     async handler(args: yargs.Arguments) {
         try {
             getConfigMetadataStorage().appName = (args.name as string) || (PlatformTools.getProjectName());
-            getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || '3.0';
-            getConfigMetadataStorage().format = (args.format as TFormat) || 'json';
-            getConfigMetadataStorage().format = (args.format as TFormat) || 'json';
+            getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || Defaults.OPENAPI_VERSION;
+            getConfigMetadataStorage().format = (args.format as TFormat) || Defaults.SWAGGER_DEFINITION_FORMAT;
+            getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) || Defaults.SWAGGER_DEFINITION_FILE;
+            getConfigMetadataStorage().swaggerConfigFilePath = (args.configFile as string) || Defaults.SWAGGIFY_CONFIG_FILE;
+          
+            if (args.apiRoute)
+                getConfigMetadataStorage().swaggerEndPointUrl = (args.configFile as PathString) || Defaults.SWAGGER_ENDPOINT_URL;
 
             if (args.defFile)
                getConfigMetadataStorage().swaggerDefinitionFilePath = ValidationUtils.validateFilePath((args.defFile as string), args.format);

@@ -1,4 +1,4 @@
-import { PathString } from "../typings";
+import { PathString, TFormat, TOpenApiVersion } from "../typings";
 
 /**
  * Class containing all global Defaults and Constants
@@ -12,10 +12,20 @@ export class Defaults {
     /**
      * Default Swagger Config File Path
      */
-    public static SWAGGER_DEFINITION_FILE = "./swagger/swagger.json";
+    public static SWAGGER_DEFINITION_FILE: string = "./swagger/swagger.json";
 
     /**
      * Default Swaggify Configuration File
      */
-    public static SWAGGIFY_CONFIG_FILE = "./swagger.config.json";
+    public static SWAGGIFY_CONFIG_FILE: string = "./swagger.config.json";
+
+    /**
+     * Default Swagger Definition File Format
+     */
+    public static SWAGGER_DEFINITION_FORMAT: TFormat = "json";
+
+    /**
+     * Default Swagger Definition File Format
+     */
+    public static OPENAPI_VERSION: TOpenApiVersion = "3.0";
 }

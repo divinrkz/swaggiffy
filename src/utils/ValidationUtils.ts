@@ -1,5 +1,5 @@
 import { SwaggifyError } from "../errors/SwaggifyError";
-import { TFormat } from "../typings";
+import { PathString, TFormat } from "../typings";
 
 /**
  * Validation Utility Class
@@ -32,5 +32,18 @@ export class ValidationUtils {
             throw new SwaggifyError('Invalid file type provided, file extensions other than [json, yaml, yml] are not allowed');
 
         return filePath;
+    }
+
+        /**
+     * Validates API Route Urls
+     * @param filePath File Path
+     */
+    static validateAPIRoute(routeUrl: string): PathString {
+            try {
+                return routeUrl as PathString;
+            }
+            catch (e) {
+                throw new SwaggifyError('Invalid API route url format. Start with /route');
+            }
     }
 }
