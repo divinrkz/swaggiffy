@@ -1,6 +1,6 @@
 {
-   "projectName": "new project",
-   "swaggerVersion": "0.0.1",
+   "projectName": "swaggify",
+   "openApiVersion": "0.0.1",
    "outFile": "src/swagger.json",
    "apiRoute": "/api-docs",
    "format": "json"

@@ -30,7 +30,6 @@ export class InitCommand implements yargs.CommandModule {
             })
             .option("n", {
                 alias: "name",
-                default: '',
                 describe: "Name of project",
             }).option('fmt', {
                 alias: 'format',
@@ -42,13 +41,16 @@ export class InitCommand implements yargs.CommandModule {
 
     async handler(args: yargs.Arguments) {
         try {
-            PlatformTools.getProjectName();
-            if (args.name) getConfigMetadataStorage().appName = args.n as string;
+            getConfigMetadataStorage().appName = (args.name as string) || (PlatformTools.getProjectName());
             if (args.openApiVersion) getConfigMetadataStorage().openApiVersion = args.openApiVersion as TOpenApiVersion;
             if (args.format) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
             if (args.f) getConfigMetadataStorage().format = args.format as 'json' | 'yaml';
+            
+            SetupRunner.generateConfigFile(
+                Templates.getConfigTemplate({
+                    projectName: getConfigMetadataStorage().appName
+            } as TemplateOptions));
 
-            SetupRunner.generateConfigFile(Templates.getConfigTemplate());
         } catch (err) {
             PlatformTools.logCmdErr("Error when initializing swaggify.", err);
             process.exit(1);

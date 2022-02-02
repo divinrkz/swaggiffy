@@ -47,10 +47,9 @@ export class PlatformTools {
      */
     static getProjectName(): string {
         const path: string = process.cwd() + '/package.json';
-        console.log(path);
-        console.log(FileUtils.getFileContents(path));
+        const npmConfig: any = JSON.parse(FileUtils.getFileContents(path).toString());
 
-        return ''
+        return npmConfig['displayName'] || npmConfig['name'];
     }
 
     /**

@@ -13,7 +13,7 @@ export class Templates {
     static getConfigTemplate(options?: TemplateOptions): string {
         return JSON.stringify(
             {
-                "projectName": options?.projectName || "new project",
+                "projectName": options?.projectName,
                 "openApiVersion": options?.openApiVersion || "0.0.1",
                 "outFile": options?.outFile || "src/swagger.json",
                 "apiRoute": options?.apiRouteUrl || "/api-docs",

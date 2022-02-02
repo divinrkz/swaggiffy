@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@types/js-yaml': ^4.0.5
   '@types/node': ^16.11.10
   '@types/swagger-jsdoc': ^6.0.1
   '@types/swagger-ui-express': ^4.1.3
@@ -10,7 +9,6 @@ specifiers:
   '@typescript-eslint/parser': ^5.5.0
   eslint: ^8.3.0
   husky: ^7.0.4
-  js-yaml: ^4.1.0
   prettier: ^2.5.0
   swagger-jsdoc: ^6.1.0
   swagger-ui-express: ^4.2.0
@@ -18,13 +16,11 @@ specifiers:
   yargs: ^17.3.1
 
 dependencies:
-  js-yaml: 4.1.0
   swagger-jsdoc: 6.1.0
   swagger-ui-express: 4.2.0
   yargs: 17.3.1
 
 devDependencies:
-  '@types/js-yaml': 4.0.5
   '@types/node': 16.11.10
   '@types/swagger-jsdoc': 6.0.1
   '@types/swagger-ui-express': 4.1.3
@@ -154,10 +150,6 @@ packages:
       '@types/express-serve-static-core': 4.17.26
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
-    dev: true
-
-  /@types/js-yaml/4.0.5:
-    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
     dev: true
 
   /@types/json-schema/7.0.9:
