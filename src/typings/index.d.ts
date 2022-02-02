@@ -203,7 +203,6 @@ export type TemplateOptions = {
     projectName: string?;
     outFile: string?;
     apiRouteUrl: string?;
-    configFile: string?;
     openApiVersion: '2.0' | '3.0';
     format: 'json' | 'yaml'
 }

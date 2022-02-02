@@ -31,12 +31,6 @@ export class ConfigMetadataStorage {
     
 
     /**
-     * Swagger Config File Path
-     */
-    swaggerConfigFilePath: string;
-
-
-    /**
      * Swagger Definition File Path
      */
      swaggerDefinitionFilePath: string;

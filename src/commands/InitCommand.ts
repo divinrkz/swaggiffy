@@ -36,10 +36,6 @@ export class InitCommand implements yargs.CommandModule {
                 alias: 'defFile',
                 describe: 'Swagger Definition output file path'
             })
-            .option('c', {
-                alias: 'configFile',
-                describe: 'Swagger Config output file path'
-            })
             .option('r', {
                 alias: 'apiRoute',
                 describe: 'Swagger Documentation API Route'
@@ -51,8 +47,7 @@ export class InitCommand implements yargs.CommandModule {
             getConfigMetadataStorage().appName = (args.name as string) || (PlatformTools.getProjectName());
             getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || Defaults.OPENAPI_VERSION;
             getConfigMetadataStorage().format = (args.format as TFormat) || Defaults.SWAGGER_DEFINITION_FORMAT;
-            getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) ? ValidationUtils.validateFilePath((args.defFile as string), args.format) : Defaults.SWAGGER_DEFINITION_FILE;
-            getConfigMetadataStorage().swaggerConfigFilePath = (args.confFile as string) ? ValidationUtils.validateFilePath(args.configFile as string) : Defaults.SWAGGIFY_CONFIG_FILE;
+            getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string) ? ValidationUtils.validateFilePath((args.defFile as string), args.format as TFormat) : Defaults.SWAGGER_DEFINITION_FILE;
             getConfigMetadataStorage().swaggerEndPointUrl = (args.apiRoute as PathString) ? ValidationUtils.validateAPIRoute(args.apiRoute as string) : Defaults.SWAGGER_ENDPOINT_URL;
 
         
@@ -61,10 +56,11 @@ export class InitCommand implements yargs.CommandModule {
                     projectName: getConfigMetadataStorage().appName,
                     outFile: getConfigMetadataStorage().swaggerDefinitionFilePath,
                     apiRouteUrl: getConfigMetadataStorage().swaggerEndPointUrl,
-                    configFile: getConfigMetadataStorage().swaggerConfigFilePath,
                     openApiVersion: getConfigMetadataStorage().openApiVersion,
                     format: getConfigMetadataStorage().format
             } as TemplateOptions));
+
+            PlatformTools.logSuccess("Generated config file");
             
         } catch (err) {
             PlatformTools.logCmdErr("Error when initializing swaggify.", err);
