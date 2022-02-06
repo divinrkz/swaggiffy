@@ -1,6 +1,6 @@
 {
-  "name": "@divinirakiza/swaggify",
-  "displayName": "swaggify",
+  "name": "swaggiffy",
+  "displayName": "swaggiffy",
   "version": "0.1.0",
   "description": "A zero-config Node.js Swagger Documentation",
   "main": "build/compiled/index.js",
@@ -26,7 +26,7 @@
     "url": "git+https://github.com/divinirakiza/swaggify.git"
   },
   "bugs": {
-    "url": "https://github.com/divinirakiza/swaggify/issues"
+    "url": "https://github.com/divinirakiza/swaggiffy/issues"
   },
   "files": [
     "build/**/*"
@@ -34,7 +34,7 @@
   "engines": {
     "node": ">=8"
   },
-  "homepage": "https://github.com/divinirakiza/swaggify#readme",
+  "homepage": "https://github.com/divinirakiza/swaggiffy#readme",
   "author": "Divin Irakiza",
   "license": "MIT",
   "devDependencies": {
