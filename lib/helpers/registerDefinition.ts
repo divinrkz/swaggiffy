@@ -16,7 +16,7 @@ export function registerDefinition(registerMeta: APIRegisterMeta) {
 
         const pathDefinition: APIPathDefinition = {
             pathString: path,
-            tags: (registerMeta.tags?.split(' ')) || [],
+            tags: registerMeta.tags?.split(' ') || [],
             method: method,
             meta: {
                 summary: registerMeta.summary || '',

@@ -1,6 +1,6 @@
 // import 'reflect-metadata';
 import { Swaggify } from './Swaggify';
-import { registerDefinition } from './helpers/registerDefinition';
+import { registerDefinition, registerDefinitions } from './helpers/registerDefinition';
 // export * from './globals';
 // export * from './decorators/Schema';
 // export * from './errors/SwaggifyError';
@@ -41,6 +41,7 @@ router.delete('/:id', (req: any, res: any) => {
     res.send('Delete');
 });
 
-registerDefinition(router);
+console.log(router);
+registerDefinition({ router });
 
 new Swaggify().setupExpress(app).swaggify();

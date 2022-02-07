@@ -1,6 +1,5 @@
 import * as express from 'express';
 
-
 /**
  * Path String Type
  * Checks for a path starting with /{path}
@@ -236,7 +235,7 @@ export type ApiPathDescription = {
     parameters?: APIParameters;
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
-    responses: APIDocResponse
+    responses: APIDocResponse;
 };
 
 export type SwaggerAPIDefinition = {
@@ -245,16 +244,14 @@ export type SwaggerAPIDefinition = {
     };
 };
 
-
 export type APIDocResponse = Record<string, { description: string }>;
 
-
 export type APIRegisterMeta = {
-    router: express.Router,
-    summary?: string,
-    description?: string,
-    tags?: string
-    produces?: Array<EMimeTypes>,
-    consumes?: Array<EMimeTypes>,
-    responses: APIDocResponse
-}
+    router: express.Router;
+    summary?: string;
+    description?: string;
+    tags?: string;
+    produces?: Array<EMimeTypes>;
+    consumes?: Array<EMimeTypes>;
+    responses?: APIDocResponse;
+};
