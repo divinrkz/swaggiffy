@@ -1,4 +1,6 @@
+import { PlatformTools } from "../platform/PlatformTools";
 import { TemplateOptions } from "../typings";
+import { Defaults } from "./Defaults";
 
 /**
  * Swaggify Templates class
@@ -13,11 +15,11 @@ export class Templates {
     static getConfigTemplate(options?: TemplateOptions): string {
         return JSON.stringify(
             {
-                "projectName": options?.projectName,
-                "openApiVersion": options?.openApiVersion || "0.0.1",
-                "outFile": options?.outFile || "src/swagger.json",
-                "apiRoute": options?.apiRouteUrl || "/api-docs",
-                "format": options?.format || 'json'
+                "projectName": options?.projectName || PlatformTools.getProjectName(),
+                "openApiVersion": options?.openApiVersion || Defaults.OPENAPI_VERSION,
+                "outFile": options?.outFile || Defaults.SWAGGER_DEFINITION_FILE,
+                "apiRoute": options?.apiRouteUrl || Defaults.SWAGGER_ENDPOINT_URL,
+                "format": options?.format || Defaults.SWAGGER_DEFINITION_FORMAT
             }, undefined, 3,
         );
     }
