@@ -21,3 +21,13 @@ export function getConfigMetadataStorage(): ConfigMetadataStorage {
 
     return globalScope.configMetadataStorage;
 }
+
+
+export function setConfigMetadataStorage(config: ConfigMetadataStorage): void {
+    const storage: ConfigMetadataStorage = getConfigMetadataStorage();
+    storage.appName = config.appName;
+    storage.format = config.format;
+    storage.openApiVersion = config.openApiVersion;
+    storage.swaggerDefinitionFilePath = config.swaggerDefinitionFilePath;
+    storage.swaggerEndPointUrl = config.swaggerEndPointUrl;
+}

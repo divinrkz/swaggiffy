@@ -6,6 +6,7 @@ import { SwaggifyError } from "./errors/SwaggifyError";
 import { Defaults } from "./utils/Defaults";
 import { SetupRunner } from "./runners/SetupRunner";
 import { Templates } from "./utils/Templates";
+import { InitRunner } from "./runners/InitRunner";
 
 /**
  * Swaggify base class
@@ -54,16 +55,22 @@ export class Swaggify {
      */
     public async swaggify(): Promise<this> {
         try {
-            const res = await SetupRunner.generateConfigFile(Templates.getConfigTemplate());
-
+            await InitRunner.cacheGlobalConfigurations();
+            
+      
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
                 throw new SwaggifyError("Express Application instance is undefined");
+                
+            // const res = await SetupRunner.generateConfigFile(Templates.getConfigTemplate());
 
-            if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
-                this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
+            // if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
+            //     throw new SwaggifyError("Express Application instance is undefined");
 
-            if (this.configStore.swaggerDefinitionFilePath == undefined || this.configStore.swaggerDefinitionFilePath == null)
-                this.configStore.swaggerDefinitionFilePath = Defaults.SWAGGER_DEFINITION_FILE;
+            // if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
+            //     this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
+
+            // if (this.configStore.swaggerDefinitionFilePath == undefined || this.configStore.swaggerDefinitionFilePath == null)
+            //     this.configStore.swaggerDefinitionFilePath = Defaults.SWAGGER_DEFINITION_FILE;
 
             this.app.init(this.configStore.expressApplication, this.configStore.swaggerDefinitionFilePath, this.configStore.swaggerEndPointUrl);
         } catch (err: unknown) {

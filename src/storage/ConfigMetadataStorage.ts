@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { PathString, TFormat, TOpenApiVersion } from "../typings";
+import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from "../typings";
 
 /**
  * Global storage for registered schemas
@@ -34,4 +34,14 @@ export class ConfigMetadataStorage {
      * Swagger Definition File Path
      */
      swaggerDefinitionFilePath: string;
+
+    init(config: ConfigurationProps) {
+         this.appName = config.projectName;
+         this.openApiVersion = config.openApiVersion;
+         this.swaggerEndPointUrl = config.apiRoute;
+         this.swaggerDefinitionFilePath = config.outFile;
+         this.format = config.format;
+
+         return this;
+     }
 }

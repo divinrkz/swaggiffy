@@ -1,3 +1,4 @@
+import { ConfigMetadataStorage } from "../storage/ConfigMetadataStorage";
 import { ConfigurationProps } from "../typings";
 import { Defaults } from "../utils/Defaults";
 import { FileUtils } from "../utils/FileUtils"
@@ -21,4 +22,12 @@ export class InitRunner {
           ok(configuration);
         })
     }   
+
+    static async cacheGlobalConfigurations(): Promise<void> {
+        return new Promise<void>(async (ok, fail) => {
+            const config: ConfigurationProps = await this.extractConfigurations();
+            new ConfigMetadataStorage().init(config);
+            ok();
+        })
+    }
 }

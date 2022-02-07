@@ -82,14 +82,14 @@ export class Utility {
     }
 
 
-    static getTemplateOptionsFromStorage() {
-        const options: TemplateOptions = {
-            projectName: getConfigMetadataStorage(),
-            outFile: '',
-            apiRouteUrl: '',
-            configFile: '',
-            openApiVersion: '',
-            format: 'json'
-        };
-    }
+    // static getTemplateOptionsFromStorage() {
+    //     const options: TemplateOptions = {
+    //         projectName: getConfigMetadataStorage(),
+    //         outFile: '',
+    //         apiRouteUrl: '',
+    //         configFile: '',
+    //         openApiVersion: '',
+    //         format: 'json'
+    //     };
+    // }
 }

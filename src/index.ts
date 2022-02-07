@@ -6,4 +6,6 @@ import { InitRunner } from "./runners/InitRunner";
 
 // SetupRunner.generateConfigFile();
 
-InitRunner.extractConfigurations();
+// InitRunner.extractConfigurations();
+
+
