@@ -22,10 +22,38 @@
       "https"
     ],
     "paths": {
+      "/": {
+        "post": {
+          "tags": [],
+          "operationId": "operation79.23979967588568",
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
+      "/recent": {
+        "get": {
+          "tags": [],
+          "operationId": "operation98.37983665220453",
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
       "/:id": {
         "delete": {
           "tags": [],
-          "operationId": "operation60.91781405651231",
+          "operationId": "operation41.93152840687793",
           "summary": "",
           "description": "",
           "consumes": [

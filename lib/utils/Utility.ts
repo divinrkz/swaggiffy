@@ -71,21 +71,17 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggify(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION'|'SCHEMA') {
+    static async swaggify(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION' | 'SCHEMA') {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
             let definition: string = '';
-            if (type === 'DEFINITION')
-                definition = this.updateAPIDefinition(swaggerDoc, schema as SwaggerAPIDefinition);
-            else if (type === 'SCHEMA')
-                definition = this.updateSchema(swaggerDoc, schema as TSwaggerSchemaDef);
+            if (type === 'DEFINITION') definition = this.updateAPIDefinition(swaggerDoc, schema as SwaggerAPIDefinition);
+            else if (type === 'SCHEMA') definition = this.updateSchema(swaggerDoc, schema as TSwaggerSchemaDef);
 
             PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, definition);
             ok();
         });
     }
-
-
 
     /**
      * Converts SchemaMetadata[] to plain JSON Object
@@ -113,7 +109,8 @@ export class Utility {
         let apiDefinition: SwaggerAPIDefinition = <SwaggerAPIDefinition>{};
         for (const item of array) {
             apiDefinition = {
-                [item.apiDefinition.pathString]: {
+                ...apiDefinition,
+                ...{[item.apiDefinition.pathString]: {
                     [item.apiDefinition.method]: {
                         tags: item.apiDefinition.tags,
                         operationId: item.apiDefinition.meta.operationId,
@@ -123,7 +120,7 @@ export class Utility {
                         consumes: item.apiDefinition.meta.consumes,
                         produces: item.apiDefinition.meta.produces,
                     },
-                },
+                }}
             };
         }
         return apiDefinition;
