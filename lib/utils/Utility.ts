@@ -71,31 +71,21 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggify(schema: TSwaggerSchemaDef) {
+    static async swaggify(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION'|'SCHEMA') {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
-            const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
+            let definition: string = '';
+            if (type === 'DEFINITION')
+                definition = this.updateAPIDefinition(swaggerDoc, schema as SwaggerAPIDefinition);
+            else if (type === 'SCHEMA')
+                definition = this.updateSchema(swaggerDoc, schema as TSwaggerSchemaDef);
 
-            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
+            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, definition);
             ok();
         });
     }
 
-    /**
-     * Generates swagger file from schemas
-     * @params schema
-     * @returns Promise<void>
-     */
-    static async swaggifyD(schema: SwaggerAPIDefinition) {
-        return new Promise<void>((ok, fail) => {
-            const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
-            const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
-            console.log(updatedSchema);
 
-            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
-            ok();
-        });
-    }
 
     /**
      * Converts SchemaMetadata[] to plain JSON Object

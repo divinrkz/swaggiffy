@@ -13,7 +13,7 @@ export class Runner {
      */
     static generateSchemas(): void {
         const swaggerSchemaDefinition: TSwaggerSchemaDef = Utility.toSwaggerSchema(getSchemaMetadataStorage().schemas);
-        Utility.swaggify(swaggerSchemaDefinition);
+        Utility.swaggify(swaggerSchemaDefinition, 'SCHEMA');
     }
 
     /**
@@ -22,7 +22,7 @@ export class Runner {
      */
     static generateAPIDefinitions(): void {
         const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
-        Utility.swaggifyD(pathDefinition);
+        Utility.swaggify(pathDefinition, 'DEFINITION');
     }
 
     static execute(): void {
