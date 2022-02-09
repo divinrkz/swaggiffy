@@ -13,10 +13,11 @@ export class SetupRunner {
         /**
      * Generate Swaggify Configuration File Template
      */
-         static async generateSpecFile(template: string, specFile?: string, override?: boolean): Promise<string> {
-            const filePath: string = await FileUtils.createFileInWorkspace(specFile || Defaults.SWAGGER_DEFINITION_FILE, override);
-            return await FileUtils.writeToFile(filePath, template);
-        }
+    static async generateSpecFile(template: string, specFile?: string, override?: boolean): Promise<string> {
+        const filePath: string = await FileUtils.createFileInWorkspace(specFile || Defaults.SWAGGER_DEFINITION_FILE, override);
+        return await FileUtils.writeToFile(filePath, template);
+    }
 
+    static async extractConfigurations
 
 }

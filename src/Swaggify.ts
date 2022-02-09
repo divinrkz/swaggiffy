@@ -5,6 +5,7 @@ import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
 import { SwaggifyError } from "./errors/SwaggifyError";
 import { Defaults } from "./utils/Defaults";
 import { SetupRunner } from "./runners/SetupRunner";
+import { Templates } from "./utils/Templates";
 
 /**
  * Swaggify base class
@@ -43,7 +44,7 @@ export class Swaggify {
      * @returns Swaggify
      */
     public setupSwagger(filePath: string): this {
-        this.configStore.swaggerConfigPath = filePath;
+        this.configStore.swaggerDefinitionFilePath = filePath;
         return this;
     }
 
@@ -53,7 +54,7 @@ export class Swaggify {
      */
     public async swaggify(): Promise<this> {
         try {
-            const res = await SetupRunner.generateConfigFile();
+            const res = await SetupRunner.generateConfigFile(Templates.getConfigTemplate());
 
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
                 throw new SwaggifyError("Express Application instance is undefined");
@@ -61,10 +62,10 @@ export class Swaggify {
             if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
                 this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
 
-            if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
-                this.configStore.swaggerConfigPath = Defaults.SWAGGER_DEFINITION_FILE;
+            if (this.configStore.swaggerDefinitionFilePath == undefined || this.configStore.swaggerDefinitionFilePath == null)
+                this.configStore.swaggerDefinitionFilePath = Defaults.SWAGGER_DEFINITION_FILE;
 
-            this.app.init(this.configStore.expressApplication, this.configStore.swaggerConfigPath, this.configStore.swaggerEndPointUrl);
+            this.app.init(this.configStore.expressApplication, this.configStore.swaggerDefinitionFilePath, this.configStore.swaggerEndPointUrl);
         } catch (err: unknown) {
             throw new SwaggifyError();
         }
