@@ -8,17 +8,17 @@ import { SetupRunner } from "./SetupRunner";
  * Swaggify Initialization Runner
  */
 export class InitRunner {
-    static async extractConfigurations(): Promise<string> {
-        return new Promise<string>(async (ok, fail) => {
+    static async extractConfigurations(): Promise<ConfigurationProps> {
+        return new Promise<ConfigurationProps>(async (ok, fail) => {
           const configFile: string = process.cwd() + '/' +  FileUtils.cleanPath(Defaults.SWAGGIFY_CONFIG_FILE);
-          let configuration: ConfigurationProps | boolean = JSON.parse(await FileUtils.getFileContents(configFile, {type: 'Configuration', throwable: false}).toString()) as ConfigurationProps | boolean;  
-         
+          let configuration: ConfigurationProps | boolean = JSON.parse(
+                            await FileUtils.getFileContents(configFile, {type: 'Configuration', throwable: false})
+                            .toString())  as ConfigurationProps | boolean;  
           if (typeof configuration === 'boolean') {
               await SetupRunner.generateConfigFile(Templates.getConfigTemplate());   
-
               configuration = JSON.parse(await FileUtils.getFileContents(configFile).toString()) as ConfigurationProps;  
-
-            }
+          }
+          ok(configuration);
         })
     }   
 }
