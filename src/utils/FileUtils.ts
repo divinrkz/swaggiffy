@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, mkdirSync, writeFile, open } from "fs";
 import * as path from "path";
+import { SwaggifyError } from "../errors/SwaggifyError";
 import { PlatformTools } from "../platform/PlatformTools";
 import { ValidationUtils } from "./ValidationUtils";
 
@@ -10,8 +11,8 @@ export class FileUtils {
     /**
      * Read and return all file contents
      */
-    static getFileContents(path: string): Buffer {
-        if (!this.fileOrDirectoryExists(path)) throw new Error("File doesnot exist");
+    static getFileContents(path: string, extra?: { type: string; }): Buffer {
+        if (!this.fileOrDirectoryExists(path)) throw new SwaggifyError(`${(extra) ? extra.type : ''} File not found`);
 
         return readFileSync(path);
     }

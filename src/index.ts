@@ -2,7 +2,7 @@
 // export * from "./Swaggify";
 
 import { InitCommand } from "./commands/InitCommand";
-import { InitRunner } from "./runners/InitializationRunner";
+import { InitRunner } from "./runners/InitRunner";
 
 // SetupRunner.generateConfigFile();
 

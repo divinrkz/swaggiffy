@@ -107,6 +107,7 @@ export interface SwaggerSpecification {
     tags: Array<TagObject>;
 }
 
+
 export enum ESchemas {
     http = "http",
     https = "https",
@@ -206,3 +207,14 @@ export type TemplateOptions = {
     openApiVersion: '2.0' | '3.0';
     format: 'json' | 'yaml'
 }
+
+/**
+ * Configuration Properties
+ */
+export type ConfigurationProps = {
+    projectName: string,
+    openApiVersion: TOpenApiVersion,
+    outFile: string,
+    apiRoute: PathString,
+    format: TFormat
+};
