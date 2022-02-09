@@ -18,6 +18,6 @@ export class SetupRunner {
         return await FileUtils.writeToFile(filePath, template);
     }
 
-    static async extractConfigurations
+    // static async extractConfigurations
 
 }
