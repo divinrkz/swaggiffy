@@ -55,12 +55,14 @@ export class Swaggify {
      */
     public async swaggify(): Promise<this> {
         try {
-            await InitRunner.cacheGlobalConfigurations();
+
             
       
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
                 throw new SwaggifyError("Express Application instance is undefined");
                 
+            await InitRunner.cacheGlobalConfigurations();
+
             // const res = await SetupRunner.generateConfigFile(Templates.getConfigTemplate());
 
             // if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)

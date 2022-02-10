@@ -1,6 +1,7 @@
 import { PlatformTools } from "./platform/PlatformTools";
 import { SchemaMetadataStorage } from "./storage/schema-metadata-storage";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
+import { ConfigurationProps } from "./typings";
 
 /**
  * Returns globals schemametadata storage
@@ -23,11 +24,11 @@ export function getConfigMetadataStorage(): ConfigMetadataStorage {
 }
 
 
-export function setConfigMetadataStorage(config: ConfigMetadataStorage): void {
+export function setConfigMetadataStorage(config: ConfigurationProps): void {
     const storage: ConfigMetadataStorage = getConfigMetadataStorage();
-    storage.appName = config.appName;
+    storage.appName = config.projectName;
     storage.format = config.format;
     storage.openApiVersion = config.openApiVersion;
-    storage.swaggerDefinitionFilePath = config.swaggerDefinitionFilePath;
-    storage.swaggerEndPointUrl = config.swaggerEndPointUrl;
+    storage.swaggerDefinitionFilePath = config.outFile;
+    storage.swaggerEndPointUrl = config.apiRoute;
 }

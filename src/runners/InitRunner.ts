@@ -1,3 +1,4 @@
+import { getConfigMetadataStorage, setConfigMetadataStorage } from "../globals";
 import { ConfigMetadataStorage } from "../storage/ConfigMetadataStorage";
 import { ConfigurationProps } from "../typings";
 import { Defaults } from "../utils/Defaults";
@@ -9,6 +10,10 @@ import { SetupRunner } from "./SetupRunner";
  * Swaggify Initialization Runner
  */
 export class InitRunner {
+    /**
+     * Extract Configurations from Swaggify config file
+     * @returns Promise<ConfigurationProps>
+     */
     static async extractConfigurations(): Promise<ConfigurationProps> {
         return new Promise<ConfigurationProps>(async (ok, fail) => {
           const configFile: string = process.cwd() + '/' +  FileUtils.cleanPath(Defaults.SWAGGIFY_CONFIG_FILE);
@@ -22,11 +27,14 @@ export class InitRunner {
           ok(configuration);
         })
     }   
-
+    /**
+     * Caches Global Configurations.
+     * @returns Promise<void>
+     */
     static async cacheGlobalConfigurations(): Promise<void> {
         return new Promise<void>(async (ok, fail) => {
             const config: ConfigurationProps = await this.extractConfigurations();
-            new ConfigMetadataStorage().init(config);
+            setConfigMetadataStorage(config);
             ok();
         })
     }
