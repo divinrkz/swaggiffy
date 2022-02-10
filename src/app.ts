@@ -5,6 +5,7 @@ import { PlatformTools } from "./platform/PlatformTools";
 import { FileUtils } from "./utils/FileUtils";
 import { PathString } from "./typings";
 import { SwaggifyError } from "./errors/SwaggifyError";
+import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
 
 /**
  * Implicit Express Server.
@@ -16,37 +17,34 @@ class App {
 
     /**
      * Initialize and Setup the server.
-     * @param expressApp expressApplication
-     * @param swaggerEndpoint  swaggerEndpointUrl
-     * @param swaggerConfigFile swaggerConfigFilePath
+     * @param config ConfigMetadataStorage
      */
-    public init(expressApp: Express, swaggerConfigFile: string, swaggerEndpoint: PathString): void {
-        this.app = expressApp;
-        this.run(swaggerConfigFile, swaggerEndpoint);
+    public init(config: ConfigMetadataStorage): void {
+        this.app = config.expressApplication;
+        this.run(config.swaggerDefinitionFilePath, config.swaggerEndPointUrl);
     }
 
     /**
      * Serves swagger file in specified file and endpoint
-     * @param swaggerEndpoint  swaggerEndpointUrl
-     * @param swaggerConfigFile swaggerConfigFilePath
+     * @param swaggerEndPoint  swaggerEndPointUrl
+     * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */
-    public serveSwagger(swaggerConfigFile: string, swaggerEndpoint: PathString): void {
-        import(swaggerEndpoint).then((file) => {
+    public serveSwagger(swaggerDefinitionFile: string, swaggerEndPoint: PathString): void {
+        import(swaggerDefinitionFile).then((file) => {
             const specs: JsonObject = swaggerJsdoc(file);
-            this.app.use(swaggerConfigFile, swaggerUi.serve, swaggerUi.setup(specs));
+            this.app.use(swaggerEndPoint, swaggerUi.serve, swaggerUi.setup(specs));
         });
     }
 
     /**
      * Runs and executes swaggify
-     * @param swaggerEndpoint  swaggerEndpointUrl
-     * @param swaggerConfigFile swaggerConfigFilePath
+     * @param swaggerEndPoint  swaggerEndPointUrl
+     * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */
-    private async run(swaggerConfigFile: string, swaggerEndpoint: PathString) {
+    private async run(swaggerDefinitionFile: string, swaggerEndPoint: PathString) {
         // Runner.execute();
         setTimeout(() => {
-            console.log(swaggerConfigFile, swaggerEndpoint);
-            this.serveSwagger(swaggerConfigFile, swaggerEndpoint);
+            this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
         }, 2000);
     }
 }

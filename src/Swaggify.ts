@@ -54,27 +54,13 @@ export class Swaggify {
      * @returns Swaggify
      */
     public async swaggify(): Promise<this> {
-        try {
-
-            
-      
+        try {      
             if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
                 throw new SwaggifyError("Express Application instance is undefined");
                 
             await InitRunner.cacheGlobalConfigurations();
 
-            // const res = await SetupRunner.generateConfigFile(Templates.getConfigTemplate());
-
-            // if (this.configStore.expressApplication == undefined || this.configStore.expressApplication == null)
-            //     throw new SwaggifyError("Express Application instance is undefined");
-
-            // if (this.configStore.swaggerEndPointUrl == undefined || this.configStore.swaggerEndPointUrl == null)
-            //     this.configStore.swaggerEndPointUrl = Defaults.SWAGGER_ENDPOINT_URL;
-
-            // if (this.configStore.swaggerDefinitionFilePath == undefined || this.configStore.swaggerDefinitionFilePath == null)
-            //     this.configStore.swaggerDefinitionFilePath = Defaults.SWAGGER_DEFINITION_FILE;
-
-            this.app.init(this.configStore.expressApplication, this.configStore.swaggerDefinitionFilePath, this.configStore.swaggerEndPointUrl);
+            this.app.init(this.configStore);
         } catch (err: unknown) {
             throw new SwaggifyError();
         }
