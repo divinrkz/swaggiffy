@@ -43,9 +43,11 @@ class App {
      */
     private async run(swaggerDefinitionFile: string, swaggerEndPoint: PathString) {
         // Runner.execute();
-        setTimeout(() => {
-            this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
-        }, 2000);
+        this.app.listen(4008, () => {
+            console.log('Listening');
+        })
+        this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
+
     }
 }
 
