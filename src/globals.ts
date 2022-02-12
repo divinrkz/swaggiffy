@@ -23,7 +23,6 @@ export function getConfigMetadataStorage(): ConfigMetadataStorage {
     return globalScope.configMetadataStorage;
 }
 
-
 export function setConfigMetadataStorage(config: ConfigurationProps): void {
     const storage: ConfigMetadataStorage = getConfigMetadataStorage();
     storage.appName = config.projectName;

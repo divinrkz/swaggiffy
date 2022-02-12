@@ -1,19 +1,14 @@
 import { Express } from "express";
 import swaggerUi, { JsonObject } from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
-import { PlatformTools } from "./platform/PlatformTools";
-import { FileUtils } from "./utils/FileUtils";
 import { PathString } from "./typings";
-import { SwaggifyError } from "./errors/SwaggifyError";
-import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
+import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
 
 /**
  * Implicit Express Server.
  */
 class App {
     private app: Express;
-
-    constructor() {}
 
     /**
      * Initialize and Setup the server.
@@ -44,10 +39,9 @@ class App {
     private async run(swaggerDefinitionFile: string, swaggerEndPoint: PathString) {
         // Runner.execute();
         this.app.listen(4008, () => {
-            console.log('Listening');
-        })
+            console.log("Listening");
+        });
         this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
-
     }
 }
 

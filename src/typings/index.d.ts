@@ -52,13 +52,13 @@ export type TSwaggerType = {
 export type TSwaggerSchemaObject = {
     // type: "integer" | "number" | "string" | "boolean" | "file";
     type: "string" | "number" | "bigint" | "boolean" | "symbol" | "object" | "date" | "undefined" | "function";
-    format?: any;
+    // format?: any;
     // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
     title?: string;
     description?: string;
-    default?: any;
-    multipleOf?: any;
+    // default?: any;
+    // multipleOf?: any;
     maximum?: number;
     exclusiveMaximum?: number;
     minimum?: number;
@@ -68,7 +68,7 @@ export type TSwaggerSchemaObject = {
     pattern?: string;
     maxItems?: number;
     minItems?: number;
-    uniqueItems?: any;
+    // uniqueItems?: any;
     maxProperties?: number;
     minProperties?: number;
     required?: boolean;
@@ -101,12 +101,11 @@ export interface SwaggerSpecification {
     paths: PathObject;
     definitions?: TSwaggerSchemaDef;
     parameters?: APIParameters;
-    responses?: any;
-    securityDefinitions?: any;
-    security?: any;
+    // responses?: any;
+    // securityDefinitions?: any;
+    // security?: any;
     tags: Array<TagObject>;
 }
-
 
 export enum ESchemas {
     http = "http",
@@ -162,11 +161,11 @@ type APIOperation = {
     operationId?: string;
     consumes?: string;
     produces?: string;
-    parameters?: any;
-    responses?: any;
+    // parameters?: any;
+    // responses?: any;
     schemes?: Array<ESchemas>;
     deprecated?: boolean;
-    security?: any;
+    // security?: any;
 };
 
 type TagObject = {
@@ -198,23 +197,21 @@ type PathItemObject = {
 export type TOpenApiVersion = "2.0" | "3.0";
 export type TFormat = "json" | "yaml";
 
-
-
 export type TemplateOptions = {
-    projectName: string?;
-    outFile: string?;
-    apiRouteUrl: string?;
-    openApiVersion: '2.0' | '3.0';
-    format: 'json' | 'yaml'
-}
+    projectName: ?string;
+    outFile: ?string;
+    apiRouteUrl: ?string;
+    openApiVersion: "2.0" | "3.0";
+    format: "json" | "yaml";
+};
 
 /**
  * Configuration Properties
  */
 export type ConfigurationProps = {
-    projectName: string,
-    openApiVersion: TOpenApiVersion,
-    outFile: string,
-    apiRoute: PathString,
-    format: TFormat
+    projectName: string;
+    openApiVersion: TOpenApiVersion;
+    outFile: string;
+    apiRoute: PathString;
+    format: TFormat;
 };

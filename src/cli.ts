@@ -16,5 +16,3 @@ yargs
     .alias("v", "version")
     .help("h")
     .alias("h", "help").argv;
-
-

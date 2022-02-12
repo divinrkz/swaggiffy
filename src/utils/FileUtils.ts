@@ -11,14 +11,12 @@ export class FileUtils {
     /**
      * Read and return all file contents
      */
-    static getFileContents(path: string, extra?: { throwable: boolean, type: string; }): Buffer | boolean {
-        
+    static getFileContents(path: string, extra?: { throwable: boolean; type: string }): Buffer | boolean {
         if (!this.fileOrDirectoryExists(path)) {
             if (extra) {
-                if (!extra.throwable)
-                    return false;
+                if (!extra.throwable) return false;
             }
-            throw new SwaggifyError(`${(extra) ? extra.type : ''} File not found.`);
+            throw new SwaggifyError(`${extra ? extra.type : ""} File not found.`);
         }
         return readFileSync(path);
     }

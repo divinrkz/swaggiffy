@@ -40,7 +40,7 @@ export class VersionCommand implements yargs.CommandModule {
 
     protected static executeCommand(command: string) {
         return new Promise<string>((ok, fail) => {
-            exec(command, (err: any, stdout: any, stderr: any) => {
+            exec(command, (err, stdout, stderr) => {
                 if (stdout) return ok(stdout);
                 if (stderr) return ok(stderr);
                 if (err) return fail(err);

@@ -1,8 +1,7 @@
 import { SchemaMetadata } from "../storage/types/SchemaMetadata";
-import { TClassDef, TClassProps, TemplateOptions, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
+import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from "../typings";
 import { PlatformTools } from "../platform/PlatformTools";
 import { Defaults } from "./Defaults";
-import { getConfigMetadataStorage } from '../globals';
 
 export class Utility {
     /**
@@ -80,7 +79,6 @@ export class Utility {
 
         return definition;
     }
-
 
     // static getTemplateOptionsFromStorage() {
     //     const options: TemplateOptions = {

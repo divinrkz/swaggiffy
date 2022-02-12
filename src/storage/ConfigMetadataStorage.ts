@@ -28,20 +28,19 @@ export class ConfigMetadataStorage {
      * Swagger Documentation EndPoint Url
      */
     swaggerEndPointUrl: PathString;
-    
 
     /**
      * Swagger Definition File Path
      */
-     swaggerDefinitionFilePath: string;
+    swaggerDefinitionFilePath: string;
 
     init(config: ConfigurationProps) {
-         this.appName = config.projectName;
-         this.openApiVersion = config.openApiVersion;
-         this.swaggerEndPointUrl = config.apiRoute;
-         this.swaggerDefinitionFilePath = config.outFile;
-         this.format = config.format;
+        this.appName = config.projectName;
+        this.openApiVersion = config.openApiVersion;
+        this.swaggerEndPointUrl = config.apiRoute;
+        this.swaggerDefinitionFilePath = config.outFile;
+        this.format = config.format;
 
-         return this;
-     }
+        return this;
+    }
 }

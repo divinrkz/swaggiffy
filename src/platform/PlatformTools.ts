@@ -40,16 +40,15 @@ export class PlatformTools {
         });
     }
 
-
     /**
      * Read the name property from package.json
      * @returns Project Name
      */
     static getProjectName(): string {
-        const path: string = process.cwd() + '/package.json';
-        const npmConfig: any = JSON.parse(FileUtils.getFileContents(path).toString());
+        const path: string = process.cwd() + "/package.json";
+        const npmConfig = JSON.parse(FileUtils.getFileContents(path).toString());
 
-        return npmConfig['displayName'] || npmConfig['name'];
+        return npmConfig["displayName"] || npmConfig["name"];
     }
 
     /**
@@ -59,14 +58,11 @@ export class PlatformTools {
         return existsSync(path);
     }
 
-    static logInfo(message: string, info: any) {
-        console.log(chalk.blue("Testing info"), info);
-    }
-
     static logSuccess(message: string) {
         console.log(chalk.green(message));
     }
 
+    // eslint-ignore/no-explicit-any
     static logCmdErr(message: string, err?: any) {
         console.log(chalk.black.bgRed(message));
         if (err) console.error(err);

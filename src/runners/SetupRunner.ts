@@ -1,4 +1,3 @@
-import { PlatformTools } from "../platform/PlatformTools";
 import { Defaults } from "../utils/Defaults";
 import { FileUtils } from "../utils/FileUtils";
 export class SetupRunner {
@@ -10,7 +9,7 @@ export class SetupRunner {
         return await FileUtils.writeToFile(filePath, template);
     }
 
-        /**
+    /**
      * Generate Swaggify Configuration File Template
      */
     static async generateSpecFile(template: string, specFile?: string, override?: boolean): Promise<string> {
@@ -19,5 +18,4 @@ export class SetupRunner {
     }
 
     // static async extractConfigurations
-
 }

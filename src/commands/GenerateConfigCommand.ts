@@ -12,25 +12,26 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     aliases = "g:config";
 
     builder(args: yargs.Argv) {
-        return args.option("path", {
-            alias: "configFilePath",
-            type: "string",
-            describe: "File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .",
-        }).option("r", {
-            alias: "refresh",
-            type: "boolean",
-            describe: "Re-generate and overwrite existing config file.",
-        });
+        return args
+            .option("path", {
+                alias: "configFilePath",
+                type: "string",
+                describe: "File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .",
+            })
+            .option("r", {
+                alias: "refresh",
+                type: "boolean",
+                describe: "Re-generate and overwrite existing config file.",
+            });
     }
 
     async handler(args: yargs.Arguments) {
         try {
-            const override: boolean | undefined = (args.refresh) ? true : false;
+            const override: boolean | undefined = args.refresh ? true : false;
             const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
             PlatformTools.logSuccess("Successfully generated");
-
-        } catch (err: any) {
+        } catch (err) {
             PlatformTools.logCmdErr("Error when generating config file: ", err);
         }
     }
@@ -47,21 +48,19 @@ export class GenerateConfigCommand implements yargs.CommandModule {
                 swaggerVersion: "0.0.1",
                 outFile: "src/swagger.json",
                 apiRoute: "/api-docs",
-                format: 'json'
+                format: "json",
             },
             undefined,
             3,
         );
     }
 
-
-
     /**
      * Generate Config 0SA3 template
      * @param projectName Project Name
      * @returns template
      */
-     protected static getOSA3Template(projectName?: string): string {
+    protected static getOSA3Template(projectName?: string): string {
         return JSON.stringify(
             {
                 projectName: projectName || "new project",
