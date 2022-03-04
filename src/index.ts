@@ -1,4 +1,4 @@
-import 'reflect-metdata';
+import 'reflect-metadata';
 
 export * from "./globals";
 export * from './cli';

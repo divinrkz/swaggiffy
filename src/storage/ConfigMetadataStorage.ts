@@ -1,4 +1,4 @@
-import { Express } from 'express';
+
 import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from '../typings';
 
 /**
@@ -13,7 +13,7 @@ export class ConfigMetadataStorage {
     /**
      * Express Application Storage
      */
-    expressApplication: Express;
+    expressApplication: Express.Application;
 
     /**
      * Format Type

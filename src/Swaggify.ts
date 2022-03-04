@@ -1,4 +1,3 @@
-import { Express } from 'express';
 import App from './app';
 import { PathString } from './typings';
 import { getConfigMetadataStorage } from './globals';
@@ -21,7 +20,7 @@ export class Swaggify {
      * Setups expressApplication with swaggify.
      * @returns Swaggify
      */
-    public setupExpress(expressApp: Express): this {
+    public setupExpress(expressApp: Express.Application): this {
         // this.configStore expressApplication in ConfigMetadataStorage.
         this.configStore.expressApplication = expressApp;
         return this;
