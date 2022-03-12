@@ -1,12 +1,12 @@
-// export * from "./decorators/Schema";
-// export * from "./Swaggify";
-import { Swaggify } from './Swaggify';
-import express, { Express } from 'express';
+export * from "./decorators/Schema";
+export * from "./Swaggify";
+// import { Swaggify } from './Swaggify';
+// import express, { Express } from 'express';
 
-// SetupRunner.generateConfigFile();
+// // SetupRunner.generateConfigFile();
 
-const expressApp: Express = express();
+// const expressApp: Express = express();
 
-new Swaggify().setupExpress(expressApp).swaggify();
+// new Swaggify().setupExpress(expressApp).swaggify();
 
 // InitRunner.extractConfigurations();
