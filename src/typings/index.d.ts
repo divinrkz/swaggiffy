@@ -3,7 +3,7 @@
  * Checks for a path starting with /{path}
  * Examples: /pets
  */
-export type PathString = `/${string | ""}`;
+export type PathString = `/${string | ''}`;
 
 /**
  * Ref String Type
@@ -22,7 +22,7 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  */
 export type TClassProp = {
     prop: string;
-    type: "string" | "number" | "bigint" | "boolean" | "symbol" | "object" | "date" | "undefined" | "function";
+    type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
 };
 
 /**
@@ -42,7 +42,7 @@ export type TClassDef = {
  * Swagger Components/Definitions Type
  */
 export type TSwaggerType = {
-    type: "object";
+    type: 'object';
     properties: TSchemaProp;
 };
 
@@ -51,7 +51,7 @@ export type TSwaggerType = {
  */
 export type TSwaggerSchemaObject = {
     // type: "integer" | "number" | "string" | "boolean" | "file";
-    type: "string" | "number" | "bigint" | "boolean" | "symbol" | "object" | "date" | "undefined" | "function";
+    type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
     // format?: any;
     // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
@@ -91,7 +91,7 @@ export type TSwaggerSchemaDef = Record<string, TSwaggerType>;
  * The OpenAPI specification definition
  */
 export interface SwaggerSpecification {
-    swagger: "2.0" | "3.0";
+    swagger: '2.0' | '3.0';
     info: SwaggerInfo;
     host?: string;
     basePath?: string;
@@ -108,26 +108,26 @@ export interface SwaggerSpecification {
 }
 
 export enum ESchemas {
-    http = "http",
-    https = "https",
-    ws = "ws",
-    wss = "wss",
+    http = 'http',
+    https = 'https',
+    ws = 'ws',
+    wss = 'wss',
 }
 
 /**
  * Mime Type Enum
  */
 export enum EMimeTypes {
-    "text/plain; charset=utf-8" = "text/plain; charset=utf-8",
-    "application/json" = "application/json",
-    "application/vnd.github+json" = "application/vnd.github+json",
-    "application/vnd.github.v3+json" = "application/vnd.github.v3+json",
-    "application/vnd.github.v3.raw+json" = "application/vnd.github.v3.raw+json",
-    "application/vnd.github.v3.text+json" = "application/vnd.github.v3.text+json",
-    "application/vnd.github.v3.html+json" = "application/vnd.github.v3.html+json",
-    "application/vnd.github.v3.full+json" = "application/vnd.github.v3.full+json",
-    "application/vnd.github.v3.diff" = "application/vnd.github.v3.diff",
-    "application/vnd.github.v3.patch" = "application/vnd.github.v3.patch",
+    'text/plain; charset=utf-8' = 'text/plain; charset=utf-8',
+    'application/json' = 'application/json',
+    'application/vnd.github+json' = 'application/vnd.github+json',
+    'application/vnd.github.v3+json' = 'application/vnd.github.v3+json',
+    'application/vnd.github.v3.raw+json' = 'application/vnd.github.v3.raw+json',
+    'application/vnd.github.v3.text+json' = 'application/vnd.github.v3.text+json',
+    'application/vnd.github.v3.html+json' = 'application/vnd.github.v3.html+json',
+    'application/vnd.github.v3.full+json' = 'application/vnd.github.v3.full+json',
+    'application/vnd.github.v3.diff' = 'application/vnd.github.v3.diff',
+    'application/vnd.github.v3.patch' = 'application/vnd.github.v3.patch',
 }
 
 /**
@@ -177,7 +177,7 @@ type TagObject = {
  * API Parameters for APIOperation
  */
 type APIParameters = {
-    in: "query" | "header" | "path" | "formData" | "body";
+    in: 'query' | 'header' | 'path' | 'formData' | 'body';
     name: string;
     description?: string;
     required?: boolean;
@@ -194,15 +194,15 @@ type PathItemObject = {
     $ref?: RefString;
 };
 
-export type TOpenApiVersion = "2.0" | "3.0";
-export type TFormat = "json" | "yaml";
+export type TOpenApiVersion = '2.0' | '3.0';
+export type TFormat = 'json' | 'yaml';
 
 export type TemplateOptions = {
     projectName: ?string;
     outFile: ?string;
     apiRouteUrl: ?string;
-    openApiVersion: "2.0" | "3.0";
-    format: "json" | "yaml";
+    openApiVersion: '2.0' | '3.0';
+    format: 'json' | 'yaml';
 };
 
 /**

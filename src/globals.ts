@@ -1,7 +1,7 @@
-import { PlatformTools } from "./platform/PlatformTools";
-import { SchemaMetadataStorage } from "./storage/schema-metadata-storage";
-import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
-import { ConfigurationProps } from "./typings";
+import { PlatformTools } from './platform/PlatformTools';
+import { SchemaMetadataStorage } from './storage/schema-metadata-storage';
+import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
+import { ConfigurationProps } from './typings';
 
 /**
  * Returns globals schemametadata storage

@@ -1,27 +1,27 @@
-import * as yargs from "yargs";
-import { PlatformTools } from "../platform/PlatformTools";
-import { SetupRunner } from "../runners/SetupRunner";
-import { FileUtils } from "../utils/FileUtils";
+import * as yargs from 'yargs';
+import { PlatformTools } from '../platform/PlatformTools';
+import { SetupRunner } from '../runners/SetupRunner';
+import { FileUtils } from '../utils/FileUtils';
 
 /**
  * Generate Config Command
  */
 export class GenerateConfigCommand implements yargs.CommandModule {
-    command = "generate:config";
-    describe = "Generate swaggify config file.";
-    aliases = "g:config";
+    command = 'generate:config';
+    describe = 'Generate swaggify config file.';
+    aliases = 'g:config';
 
     builder(args: yargs.Argv) {
         return args
-            .option("path", {
-                alias: "configFilePath",
-                type: "string",
-                describe: "File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .",
+            .option('path', {
+                alias: 'configFilePath',
+                type: 'string',
+                describe: 'File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .',
             })
-            .option("r", {
-                alias: "refresh",
-                type: "boolean",
-                describe: "Re-generate and overwrite existing config file.",
+            .option('r', {
+                alias: 'refresh',
+                type: 'boolean',
+                describe: 'Re-generate and overwrite existing config file.',
             });
     }
 
@@ -30,9 +30,9 @@ export class GenerateConfigCommand implements yargs.CommandModule {
             const override: boolean | undefined = args.refresh ? true : false;
             const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
-            PlatformTools.logSuccess("Successfully generated");
+            PlatformTools.logSuccess('Successfully generated');
         } catch (err) {
-            PlatformTools.logCmdErr("Error when generating config file: ", err);
+            PlatformTools.logCmdErr('Error when generating config file: ', err);
         }
     }
 
@@ -44,11 +44,11 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     protected static getOSA2Template(projectName?: string): string {
         return JSON.stringify(
             {
-                projectName: projectName || "new project",
-                swaggerVersion: "0.0.1",
-                outFile: "src/swagger.json",
-                apiRoute: "/api-docs",
-                format: "json",
+                projectName: projectName || 'new project',
+                swaggerVersion: '0.0.1',
+                outFile: 'src/swagger.json',
+                apiRoute: '/api-docs',
+                format: 'json',
             },
             undefined,
             3,
@@ -63,10 +63,10 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     protected static getOSA3Template(projectName?: string): string {
         return JSON.stringify(
             {
-                projectName: projectName || "new project",
-                swaggerVersion: "0.0.1",
-                outFile: "src/swagger.json",
-                apiRoute: "/api-docs",
+                projectName: projectName || 'new project',
+                swaggerVersion: '0.0.1',
+                outFile: 'src/swagger.json',
+                apiRoute: '/api-docs',
             },
             undefined,
             3,

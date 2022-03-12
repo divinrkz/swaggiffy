@@ -1,4 +1,4 @@
-import { TSwaggerSchema } from "../../typings";
+import { TSwaggerSchema } from '../../typings';
 
 export interface SchemaMetadata {
     /**

@@ -1,5 +1,5 @@
-import { Express } from "express";
-import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from "../typings";
+import { Express } from 'express';
+import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from '../typings';
 
 /**
  * Global storage for registered schemas

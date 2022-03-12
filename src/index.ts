@@ -1,7 +1,7 @@
 // export * from "./decorators/Schema";
 // export * from "./Swaggify";
-import { Swaggify } from "./Swaggify";
-import express, { Express } from "express";
+import { Swaggify } from './Swaggify';
+import express, { Express } from 'express';
 
 // SetupRunner.generateConfigFile();
 

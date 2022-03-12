@@ -1,10 +1,10 @@
-import { Express } from "express";
-import App from "./app";
-import { PathString } from "./typings";
-import { getConfigMetadataStorage } from "./globals";
-import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
-import { SwaggifyError } from "./errors/SwaggifyError";
-import { InitRunner } from "./runners/InitRunner";
+import { Express } from 'express';
+import App from './app';
+import { PathString } from './typings';
+import { getConfigMetadataStorage } from './globals';
+import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
+import { SwaggifyError } from './errors/SwaggifyError';
+import { InitRunner } from './runners/InitRunner';
 
 /**
  * Swaggify base class
@@ -54,7 +54,7 @@ export class Swaggify {
     public async swaggify(): Promise<this> {
         try {
             if (this.configStore.expressApplication === undefined || this.configStore.expressApplication === null)
-                throw new SwaggifyError("Express Application instance is undefined");
+                throw new SwaggifyError('Express Application instance is undefined');
 
             await InitRunner.cacheGlobalConfigurations();
 
