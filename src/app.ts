@@ -25,6 +25,7 @@ class App {
      * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */
     public serveSwagger(swaggerDefinitionFile: string, swaggerEndPoint: PathString): void {
+        const basePath: string = process.cwd();
         import(swaggerDefinitionFile).then((file) => {
             const specs: JsonObject = swaggerJsdoc(file);
             this.app.use(swaggerEndPoint, swaggerUi.serve, swaggerUi.setup(specs));
@@ -38,9 +39,6 @@ class App {
      */
     private async run(swaggerDefinitionFile: string, swaggerEndPoint: PathString) {
         // Runner.execute();
-        this.app.listen(4008, () => {
-            console.log('Listening');
-        });
         this.serveSwagger(swaggerDefinitionFile, swaggerEndPoint);
     }
 }

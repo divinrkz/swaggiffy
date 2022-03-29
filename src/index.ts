@@ -1,5 +1,6 @@
 export * from "./decorators/Schema";
 export * from "./Swaggify";
+export * from './cli';
 // import { Swaggify } from './Swaggify';
 // import express, { Express } from 'express';
 
