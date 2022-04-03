@@ -1,4 +1,3 @@
-import { Express } from 'express';
 import swaggerUi, { JsonObject } from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { PathString } from './typings';
@@ -8,7 +7,7 @@ import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
  * Implicit Express Server.
  */
 class App {
-    private app: Express;
+    private app: Express.Application;
 
     /**
      * Initialize and Setup the server.
