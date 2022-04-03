@@ -29,6 +29,8 @@ export class ConfigMetadataStorage {
      */
     swaggerEndPointUrl: PathString;
 
+    relativePath?: boolean;
+
     /**
      * Swagger Definition File Path
      */
@@ -40,6 +42,7 @@ export class ConfigMetadataStorage {
         this.swaggerEndPointUrl = config.apiRoute;
         this.swaggerDefinitionFilePath = config.outFile;
         this.format = config.format;
+        this.relativePath = config.relativePath;
 
         return this;
     }

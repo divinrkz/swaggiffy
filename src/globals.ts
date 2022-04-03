@@ -7,11 +7,9 @@ import { ConfigurationProps } from './typings';
 /**
  * Global string method reversed for paths
  */
- Object.defineProperty( String.prototype, 'getAbsolutePath', {
-	value: function () {
-		process.cwd() + '/' + this;
-	}
-} )
+// String.prototype.getAbsolutePath = function() {
+// 		return process.cwd() + '/' + this;
+// }
 
 
 declare global {
@@ -25,6 +23,8 @@ declare global {
 }
 
 
+
+
 /**
  * Returns globals schemametadata storage
  */
@@ -35,6 +35,8 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
     return globalScope.schemaMetadataStorage;
 }
 
+
+
 /**
  * Returns Config Metadata Storage
  */
@@ -42,7 +44,6 @@ export function getConfigMetadataStorage(): ConfigMetadataStorage {
     const globalScope = PlatformTools.getGlobalVariable();
     if (!globalScope.configMetadataStorage) globalScope.configMetadataStorage = new ConfigMetadataStorage();
 
-    globalScope.configMetadataStorage.swaggerDefinitionFilePath.getAbsolutePath();
     return globalScope.configMetadataStorage;
 }
 

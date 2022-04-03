@@ -42,7 +42,7 @@ export class Swaggify {
      * @returns Swaggify
      */
     public setupSwagger(filePath: string): this {
-        this.configStore.swaggerDefinitionFilePath = filePath;
+        this.configStore.swaggerDefinitionFilePath = (this.configStore.relativePath) ? process.cwd() + '/' + filePath: filePath;
         return this;
     }
 

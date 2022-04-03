@@ -214,4 +214,5 @@ export type ConfigurationProps = {
     outFile: string;
     apiRoute: PathString;
     format: TFormat;
+    relativePath?: boolean;
 };
