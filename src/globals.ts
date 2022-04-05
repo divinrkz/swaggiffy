@@ -1,7 +1,7 @@
-import { PlatformTools } from './platform/PlatformTools';
-import { SchemaMetadataStorage } from './storage/SchemaMetadataStorage';
-import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
-import { ConfigurationProps } from './typings';
+import { PlatformTools } from "./platform/PlatformTools";
+import { SchemaMetadataStorage } from "./storage/SchemaMetadataStorage";
+import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
+import { ConfigurationProps } from "./typings";
 
 /**
  * Global string method reversed for paths

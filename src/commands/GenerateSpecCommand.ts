@@ -1,28 +1,28 @@
-import * as yargs from 'yargs';
-import { PlatformTools } from '../platform/PlatformTools';
-import { SetupRunner } from '../runners/SetupRunner';
-import { FileUtils } from '../utils/FileUtils';
-import { Templates } from '../utils/Templates';
+import * as yargs from "yargs";
+import { PlatformTools } from "../platform/PlatformTools";
+import { SetupRunner } from "../runners/SetupRunner";
+import { FileUtils } from "../utils/FileUtils";
+import { Templates } from "../utils/Templates";
 
 /**
  * Generate Spec Command
  */
 export class GenerateSpecCommand implements yargs.CommandModule {
-    command = 'generate:spec';
-    describe = 'Generate swaggify specifications file.';
-    aliases = 'g:spec';
+    command = "generate:spec";
+    describe = "Generate swaggify specifications file.";
+    aliases = "g:spec";
 
     builder(args: yargs.Argv) {
         return args
-            .option('path', {
-                alias: 'specFilePath',
-                type: 'string',
-                describe: 'File where the swagger specifications will be be created. Defaults to BASE_DIR/swagger/swagger.json .',
+            .option("path", {
+                alias: "specFilePath",
+                type: "string",
+                describe: "File where the swagger specifications will be be created. Defaults to BASE_DIR/swagger/swagger.json .",
             })
-            .option('r', {
-                alias: 'refresh',
-                type: 'boolean',
-                describe: 'Re-generate and overwrite existing config file.',
+            .option("r", {
+                alias: "refresh",
+                type: "boolean",
+                describe: "Re-generate and overwrite existing config file.",
             });
     }
 
@@ -35,9 +35,9 @@ export class GenerateSpecCommand implements yargs.CommandModule {
                 override as boolean,
             );
             console.log(`Created: ${FileUtils.cleanPath(specFile)}`);
-            PlatformTools.logSuccess('Successfully generated');
+            PlatformTools.logSuccess("Successfully generated");
         } catch (err) {
-            PlatformTools.logCmdErr('Error when generating config file: ', err);
+            PlatformTools.logCmdErr("Error when generating config file: ", err);
         }
     }
 }

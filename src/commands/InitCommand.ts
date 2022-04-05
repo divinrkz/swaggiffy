@@ -1,47 +1,47 @@
-import * as yargs from 'yargs';
-import { PlatformTools } from '../platform/PlatformTools';
-import { getConfigMetadataStorage } from '../globals';
-import { PathString, TemplateOptions, TFormat, TOpenApiVersion } from '../typings';
-import { SetupRunner } from '../runners/SetupRunner';
-import { Templates } from '../utils/Templates';
-import { ValidationUtils } from '../utils/ValidationUtils';
-import { Defaults } from '../utils/Defaults';
+import * as yargs from "yargs";
+import { PlatformTools } from "../platform/PlatformTools";
+import { getConfigMetadataStorage } from "../globals";
+import { PathString, TemplateOptions, TFormat, TOpenApiVersion } from "../typings";
+import { SetupRunner } from "../runners/SetupRunner";
+import { Templates } from "../utils/Templates";
+import { ValidationUtils } from "../utils/ValidationUtils";
+import { Defaults } from "../utils/Defaults";
 
 /**
  * Swaggify generator
  */
 export class InitCommand implements yargs.CommandModule {
-    command = 'init';
-    describe = 'Builds and Generates necessarly config files for Swaggify inside the current directory.';
+    command = "init";
+    describe = "Builds and Generates necessarly config files for Swaggify inside the current directory.";
 
     builder(args: yargs.Argv) {
         return args
-            .option('n', {
-                alias: 'name',
-                describe: 'Name of project',
+            .option("n", {
+                alias: "name",
+                describe: "Name of project",
             })
-            .option('o', {
-                alias: 'openApiVersion',
-                choices: ['2.0', '3.0'],
-                describe: 'Choose OpenAPI version, expected values are 2.0, 3.0',
+            .option("o", {
+                alias: "openApiVersion",
+                choices: ["2.0", "3.0"],
+                describe: "Choose OpenAPI version, expected values are 2.0, 3.0",
             })
-            .option('f', {
-                alias: 'format',
-                choices: ['json', 'yaml'],
-                describe: 'Swagger Specification Format, expected values are JSON, YAML',
+            .option("f", {
+                alias: "format",
+                choices: ["json", "yaml"],
+                describe: "Swagger Specification Format, expected values are JSON, YAML",
             })
-            .option('d', {
-                alias: 'defFile',
-                describe: 'Swagger Definition output file path',
+            .option("d", {
+                alias: "defFile",
+                describe: "Swagger Definition output file path",
             })
-            .option('a', {
-                alias: 'apiRoute',
-                describe: 'Swagger Documentation API Route',
+            .option("a", {
+                alias: "apiRoute",
+                describe: "Swagger Documentation API Route",
             })
-            .option('r', {
-                alias: 'refresh',
-                type: 'boolean',
-                describe: 'Regenerates new Swagger Config file',
+            .option("r", {
+                alias: "refresh",
+                type: "boolean",
+                describe: "Regenerates new Swagger Config file",
             });
     }
 
@@ -68,7 +68,7 @@ export class InitCommand implements yargs.CommandModule {
                 args.refresh ? true : false,
             );
         } catch (err) {
-            PlatformTools.logCmdErr('Error when initializing swaggify.', err);
+            PlatformTools.logCmdErr("Error when initializing swaggify.", err);
             process.exit(1);
         }
     }

@@ -1,6 +1,6 @@
-import { existsSync, readFileSync, writeFile } from 'fs';
-import chalk from 'chalk';
-import { FileUtils } from '../utils/FileUtils';
+import { existsSync, readFileSync, writeFile } from "fs";
+import chalk from "chalk";
+import { FileUtils } from "../utils/FileUtils";
 
 /**
  * Platform specific tools
@@ -9,7 +9,7 @@ export class PlatformTools {
     /**
      * Type of current running platform
      */
-    static platform: 'browser' | 'cli' = 'cli';
+    static platform: "browser" | "cli" = "cli";
 
     /**
      * Get global variable where global scope stuff can be stored
@@ -23,7 +23,7 @@ export class PlatformTools {
      * Read and return all file contents
      */
     static getFileContents(path: string): Buffer {
-        if (!this.fileOrDirectoryExists(path)) throw new Error('File doesnot exist');
+        if (!this.fileOrDirectoryExists(path)) throw new Error("File doesnot exist");
 
         return readFileSync(path);
     }
@@ -45,10 +45,10 @@ export class PlatformTools {
      * @returns Project Name
      */
     static getProjectName(): string {
-        const path: string = process.cwd() + '/package.json';
+        const path: string = process.cwd() + "/package.json";
         const npmConfig = JSON.parse(FileUtils.getFileContents(path).toString());
 
-        return npmConfig['displayName'] || npmConfig['name'];
+        return npmConfig["displayName"] || npmConfig["name"];
     }
 
     /**

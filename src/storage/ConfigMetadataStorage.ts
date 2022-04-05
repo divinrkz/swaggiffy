@@ -1,4 +1,4 @@
-import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from '../typings';
+import { ConfigurationProps, PathString, TFormat, TOpenApiVersion } from "../typings";
 
 /**
  * Global storage for registered schemas

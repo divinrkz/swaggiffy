@@ -1,6 +1,6 @@
-import { PlatformTools } from '../platform/PlatformTools';
-import { TemplateOptions } from '../typings';
-import { Defaults } from './Defaults';
+import { PlatformTools } from "../platform/PlatformTools";
+import { TemplateOptions } from "../typings";
+import { Defaults } from "./Defaults";
 
 /**
  * Swaggify Templates class
@@ -33,24 +33,24 @@ export class Templates {
     static getOSA2Template(projectName?: string): string {
         return JSON.stringify(
             {
-                swagger: '2.0',
+                swagger: "2.0",
                 info: {
-                    title: 'Sample API',
-                    description: 'API description in Markdown.',
-                    version: '1.0.0',
+                    title: "Sample API",
+                    description: "API description in Markdown.",
+                    version: "1.0.0",
                 },
-                host: 'api.example.com',
-                basePath: '/v1',
-                schemes: ['https'],
+                host: "api.example.com",
+                basePath: "/v1",
+                schemes: ["https"],
                 paths: {
-                    '/users': {
+                    "/users": {
                         get: {
-                            summary: 'Returns a list of users.',
-                            description: 'Optional extended description in Markdown.',
-                            produces: ['application/json'],
+                            summary: "Returns a list of users.",
+                            description: "Optional extended description in Markdown.",
+                            produces: ["application/json"],
                             responses: {
-                                '200': {
-                                    description: 'OK',
+                                "200": {
+                                    description: "OK",
                                 },
                             },
                         },
@@ -70,24 +70,24 @@ export class Templates {
     static getOSA3Template(projectName?: string): string {
         return JSON.stringify(
             {
-                swagger: '3.0',
+                swagger: "3.0",
                 info: {
-                    title: 'Sample API',
-                    description: 'API description in Markdown.',
-                    version: '1.0.0',
+                    title: "Sample API",
+                    description: "API description in Markdown.",
+                    version: "1.0.0",
                 },
-                host: 'api.example.com',
-                basePath: '/v1',
-                schemes: ['https'],
+                host: "api.example.com",
+                basePath: "/v1",
+                schemes: ["https"],
                 paths: {
-                    '/users': {
+                    "/users": {
                         get: {
-                            summary: 'Returns a list of users.',
-                            description: 'Optional extended description in Markdown.',
-                            produces: ['application/json'],
+                            summary: "Returns a list of users.",
+                            description: "Optional extended description in Markdown.",
+                            produces: ["application/json"],
                             responses: {
-                                '200': {
-                                    description: 'OK',
+                                "200": {
+                                    description: "OK",
                                 },
                             },
                         },
