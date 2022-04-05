@@ -52,6 +52,7 @@
   },
   "bin": "./cli.js",
   "dependencies": {
+    "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.2.0",
     "yargs": "^17.3.1"

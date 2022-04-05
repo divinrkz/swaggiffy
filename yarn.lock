@@ -34,15 +34,6 @@
     call-me-maybe "^1.0.1"
     z-schema "^4.2.3"
 
-"@divinirakiza/swaggify@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@divinirakiza/swaggify/-/swaggify-0.0.6.tgz#5a206e073517a0cffae53c88d416675c80883223"
-  integrity sha512-xaKqWiEn1XEqsWBx2emECIyP18XxD/ufdNRJwTX2K91bXB7c8/JmAgEChzKgs5s4H2dnxSKOFMcgkR/olhiNDA==
-  dependencies:
-    swagger-jsdoc "^6.1.0"
-    swagger-ui-express "^4.2.0"
-    yargs "^17.3.1"
-
 "@eslint/eslintrc@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.1.tgz#8b5e1c49f4077235516bc9ec7d41378c0f69b8c6"
@@ -900,6 +891,11 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regexpp@^3.2.0:
   version "3.2.0"
