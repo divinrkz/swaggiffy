@@ -15,7 +15,8 @@ class App {
      */
     public init(config: ConfigMetadataStorage): void {
         this.app = config.expressApplication;
-        this.run(config.swaggerDefinitionFilePath, config.swaggerEndPointUrl);
+        const swaggerDefinition: string = (config.relativePath) ? config.swaggerDefinitionFilePath : process.cwd() + '/' + config.swaggerDefinitionFilePath;
+        this.run(swaggerDefinition, config.swaggerEndPointUrl);
     }
 
     /**
