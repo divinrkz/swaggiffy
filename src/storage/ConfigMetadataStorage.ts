@@ -28,7 +28,7 @@ export class ConfigMetadataStorage {
      */
     swaggerEndPointUrl: PathString;
 
-    relativePath?: boolean;
+    relativePath?: boolean = true;
 
     /**
      * Swagger Definition File Path
