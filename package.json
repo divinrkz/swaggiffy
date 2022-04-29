@@ -52,7 +52,7 @@
     "typescript": "^4.5.2"
   },
   "bin": {
-    "swaggify": "./cli.js"
+    "swaggify": "./build/compiled/cli.js"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
