@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import yargs from "yargs";
 import { GenerateConfigCommand } from "./commands/GenerateConfigCommand";
 import { GenerateSpecCommand } from "./commands/GenerateSpecCommand";
