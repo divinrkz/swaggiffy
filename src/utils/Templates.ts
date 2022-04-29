@@ -34,36 +34,32 @@ export class Templates {
         return JSON.stringify(
             {
                 swaggerDefinition: {
-                   swagger: "2.0",
-                   info: {
-                      title: projectName,
-                      description: "API description in Markdown.",
-                      version: "1.0.0"
-                   },
-                   host: "api.example.com",
-                   basePath: "/v1",
-                   schemes: [
-                      "https"
-                   ],
-                   paths: {
-                      "/users": {
-                         get: {
-                            summary: "Returns a list of users.",
-                            description: "Optional extended description in Markdown.",
-                            produces: [
-                               "application/json"
-                            ],
-                            responses: {
-                               200: {
-                                  description: "OK"
-                               }
-                            }
-                         }
-                      }
-                   }
+                    swagger: "2.0",
+                    info: {
+                        title: projectName,
+                        description: "API description in Markdown.",
+                        version: "1.0.0",
+                    },
+                    host: "api.example.com",
+                    basePath: "/v1",
+                    schemes: ["https"],
+                    paths: {
+                        "/users": {
+                            get: {
+                                summary: "Returns a list of users.",
+                                description: "Optional extended description in Markdown.",
+                                produces: ["application/json"],
+                                responses: {
+                                    200: {
+                                        description: "OK",
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                apis: []
-             },
+                apis: [],
+            },
             undefined,
             3,
         );
@@ -78,36 +74,32 @@ export class Templates {
         return JSON.stringify(
             {
                 swaggerDefinition: {
-                   openapi: "3.0.0",
-                   info: {
-                      title: projectName,
-                      description: "API description in Markdown.",
-                      version: "1.0.0"
-                   },
-                   host: "api.example.com",
-                   basePath: "/v1",
-                   schemes: [
-                      "https"
-                   ],
-                   paths: {
-                      "/users": {
-                         get: {
-                            summary: "Returns a list of users.",
-                            description: "Optional extended description in Markdown.",
-                            produces: [
-                               "application/json"
-                            ],
-                            responses: {
-                               200: {
-                                  description: "OK"
-                               }
-                            }
-                         }
-                      }
-                   }
+                    openapi: "3.0.0",
+                    info: {
+                        title: projectName,
+                        description: "API description in Markdown.",
+                        version: "1.0.0",
+                    },
+                    host: "api.example.com",
+                    basePath: "/v1",
+                    schemes: ["https"],
+                    paths: {
+                        "/users": {
+                            get: {
+                                summary: "Returns a list of users.",
+                                description: "Optional extended description in Markdown.",
+                                produces: ["application/json"],
+                                responses: {
+                                    200: {
+                                        description: "OK",
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                apis: []
-             },
+                apis: [],
+            },
             undefined,
             3,
         );
