@@ -12,7 +12,6 @@ export class Runner {
      */
     static generateSchemas(): void {
         const definition: TSwaggerSchemaDef = Utility.compressArrToObj(getSchemaMetadataStorage().schemas);
-        console.log(definition);
         Utility.swaggify(definition);
     }
 

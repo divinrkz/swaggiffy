@@ -4,6 +4,7 @@ import { getConfigMetadataStorage } from "./globals";
 import { ConfigMetadataStorage } from "./storage/ConfigMetadataStorage";
 import { SwaggifyError } from "./errors/SwaggifyError";
 import { InitRunner } from "./runners/InitRunner";
+import { Runner } from './runners/Runner';
 
 /**
  * Swaggify base class
@@ -63,5 +64,14 @@ export class Swaggify {
         }
 
         return this;
+    }
+
+    public async test(): Promise<void> {
+        try {
+            await Runner.generateSchemas();
+        }
+        catch (err: unknown) {
+            throw new SwaggifyError();
+        }
     }
 }
