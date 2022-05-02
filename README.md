@@ -1,6 +1,5 @@
 # SWAGGIFY
-An zero-config API documentation tool built on top Swagger. <br>
-Heavily inspired by ```typeorm```.
+A zero-config API documentation tool built on top Swagger. <br>
 
 ## Install
 NPM
