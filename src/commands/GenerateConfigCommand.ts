@@ -45,7 +45,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
         return JSON.stringify(
             {
                 projectName: projectName || 'new project',
-                swaggerVersion: '0.0.1',
+                openApiVersion: '2.0.0',
                 outFile: 'src/swagger.json',
                 apiRoute: '/api-docs',
                 format: 'json',
@@ -64,7 +64,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
         return JSON.stringify(
             {
                 projectName: projectName || 'new project',
-                swaggerVersion: '0.0.1',
+                openApiVersion: '3.0',
                 outFile: 'src/swagger.json',
                 apiRoute: '/api-docs',
             },
