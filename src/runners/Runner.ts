@@ -1,6 +1,6 @@
-import { getSchemaMetadataStorage } from "../globals";
-import { Utility } from "../utils/Utility";
-import { TSwaggerSchemaDef } from "../typings";
+import { getSchemaMetadataStorage } from '../globals';
+import { Utility } from '../utils/Utility';
+import { TSwaggerSchemaDef } from '../typings';
 
 /**
  * Runner Class

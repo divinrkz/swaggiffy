@@ -1,7 +1,7 @@
-import { PlatformTools } from "../platform/PlatformTools";
-import { TemplateOptions } from "../typings";
-import { OSA2 } from "../typings/swagger/openapi.types";
-import { Defaults } from "./Defaults";
+import { PlatformTools } from '../platform/PlatformTools';
+import { TemplateOptions } from '../typings';
+import { OSA2 } from '../typings/swagger/openapi.types';
+import { Defaults } from './Defaults';
 
 /**
  * Swaggify Templates class
@@ -35,34 +35,34 @@ export class Templates {
         return JSON.stringify(
             {
                 swaggerDefinition: {
-                    swagger: "2.0",
+                    swagger: '2.0',
                     info: {
                         title: projectName,
                         description: `${projectName} API Documentation`,
-                        termsOfService: "http://swagger.io/terms/",
+                        termsOfService: 'http://swagger.io/terms/',
                         contact: {
-                            name: "API Support",
-                            url: "http://www.swagger.io/support",
-                            email: "support@swagger.io"
+                            name: 'API Support',
+                            url: 'http://www.swagger.io/support',
+                            email: 'support@swagger.io',
                         },
                         license: {
-                            name: "Apache 2.0",
-                            url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+                            name: 'Apache 2.0',
+                            url: 'http://www.apache.org/licenses/LICENSE-2.0.html',
                         },
-                        version: "1.0.0",
+                        version: '1.0.0',
                     },
-                    host: "api.example.com",
-                    basePath: "/v1",
-                    schemes: ["https"],
+                    host: 'api.example.com',
+                    basePath: '/v1',
+                    schemes: ['https'],
                     paths: {
-                        "/users": {
+                        '/users': {
                             get: {
-                                summary: "Returns a list of users.",
-                                description: "Optional extended description in Markdown.",
-                                produces: ["application/json"],
+                                summary: 'Returns a list of users.',
+                                description: 'Optional extended description in Markdown.',
+                                produces: ['application/json'],
                                 responses: {
                                     200: {
-                                        description: "OK",
+                                        description: 'OK',
                                     },
                                 },
                             },
@@ -85,24 +85,24 @@ export class Templates {
         return JSON.stringify(
             {
                 swaggerDefinition: {
-                    openapi: "3.0.0",
+                    openapi: '3.0.0',
                     info: {
                         title: projectName,
-                        description: "API description in Markdown.",
-                        version: "1.0.0",
+                        description: 'API description in Markdown.',
+                        version: '1.0.0',
                     },
-                    host: "api.example.com",
-                    basePath: "/v1",
-                    schemes: ["https"],
+                    host: 'api.example.com',
+                    basePath: '/v1',
+                    schemes: ['https'],
                     paths: {
-                        "/users": {
+                        '/users': {
                             get: {
-                                summary: "Returns a list of users.",
-                                description: "Optional extended description in Markdown.",
-                                produces: ["application/json"],
+                                summary: 'Returns a list of users.',
+                                description: 'Optional extended description in Markdown.',
+                                produces: ['application/json'],
                                 responses: {
                                     200: {
-                                        description: "OK",
+                                        description: 'OK',
                                     },
                                 },
                             },
