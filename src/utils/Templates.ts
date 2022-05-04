@@ -82,7 +82,7 @@ export class Templates {
      * @returns template
      */
     static getOSA3Template(projectName?: string): string {
-        const name: string = (projectName) ? projectName : PlatformTools.getProjectName();
+        const name: string = projectName ? projectName : PlatformTools.getProjectName();
         return JSON.stringify(
             {
                 swaggerDefinition: {
