@@ -11,9 +11,8 @@ export class Utility {
      * @param _class
      * @returns Target class properties
      */
-     static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
+    static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
-     
     static getClassProps(target: any, name?: string): TClassDef {
         const instance: typeof target = new target();
         const props: TClassProps = [];
