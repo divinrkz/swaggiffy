@@ -37,8 +37,8 @@ export class Templates {
                 swaggerDefinition: {
                     swagger: '2.0',
                     info: {
-                        title: projectName,
-                        description: `${projectName} API Documentation`,
+                        title: name,
+                        description: `${name} API Documentation`,
                         termsOfService: 'http://swagger.io/terms/',
                         contact: {
                             name: 'API Support',
@@ -82,13 +82,14 @@ export class Templates {
      * @returns template
      */
     static getOSA3Template(projectName?: string): string {
+        const name: string = (projectName) ? projectName : PlatformTools.getProjectName();
         return JSON.stringify(
             {
                 swaggerDefinition: {
                     openapi: '3.0.0',
                     info: {
-                        title: projectName,
-                        description: 'API description in Markdown.',
+                        title: name,
+                        description: `${name} API Documentation`,
                         version: '1.0.0',
                     },
                     host: 'api.example.com',
