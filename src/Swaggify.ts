@@ -65,13 +65,4 @@ export class Swaggify {
 
         return this;
     }
-
-    public async test(): Promise<void> {
-        try {
-            await Runner.generateSchemas();
-        }
-        catch (err: unknown) {
-            throw new SwaggifyError();
-        }
-    }
 }

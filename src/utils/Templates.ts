@@ -1,5 +1,6 @@
 import { PlatformTools } from "../platform/PlatformTools";
 import { TemplateOptions } from "../typings";
+import { OSA2 } from "../typings/swagger/openapi.types";
 import { Defaults } from "./Defaults";
 
 /**
@@ -37,7 +38,17 @@ export class Templates {
                     swagger: "2.0",
                     info: {
                         title: projectName,
-                        description: "API description in Markdown.",
+                        description: `${projectName} API Documentation`,
+                        termsOfService: "http://swagger.io/terms/",
+                        contact: {
+                            name: "API Support",
+                            url: "http://www.swagger.io/support",
+                            email: "support@swagger.io"
+                        },
+                        license: {
+                            name: "Apache 2.0",
+                            url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+                        },
                         version: "1.0.0",
                     },
                     host: "api.example.com",
