@@ -41,12 +41,12 @@ export class PlatformTools {
     //     });
     // }
 
-    static writeToFile(path: string, content: string) {           
-         try {
-                writeFileSync(path, content);
-              } catch (err) {
-                throw new SwaggifyError('Error writing to file');
-              }
+    static writeToFile(path: string, content: string) {
+        try {
+            writeFileSync(path, content);
+        } catch (err) {
+            throw new SwaggifyError('Error writing to file');
+        }
     }
 
     /**

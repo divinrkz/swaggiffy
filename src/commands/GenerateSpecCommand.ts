@@ -36,15 +36,16 @@ export class GenerateSpecCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = args.refresh ? true : false;
-            const template: string = 
-                    (args.openApiVersion != undefined)  ? (args.openApiVersion == '2.0') ? Templates.getOSA2Template()
-                    : (args.openApiVersion == '3.0') ? Templates.getOSA3Template() : '' : '';
-                
-            const specFile: string = await SetupRunner.generateSpecFile(
-                template, 
-                args.specFilePath as string | undefined,
-                override as boolean,
-            );
+            const template: string =
+                args.openApiVersion != undefined
+                    ? args.openApiVersion == '2.0'
+                        ? Templates.getOSA2Template()
+                        : args.openApiVersion == '3.0'
+                        ? Templates.getOSA3Template()
+                        : ''
+                    : '';
+
+            const specFile: string = await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined, override as boolean);
             console.log(`Created: ${FileUtils.cleanPath(specFile)}`);
             PlatformTools.logSuccess('Successfully generated');
         } catch (err) {
