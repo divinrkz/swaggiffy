@@ -13,7 +13,6 @@
     "watch": "./node_modules/.bin/tsc -w",
     "lint": "npx eslint . --ext .ts --fix  --resolve-plugins-relative-to .",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "husky install",
     "prepublish": "tsc"
   },
   "keywords": [
