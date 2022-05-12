@@ -1,6 +1,7 @@
 import * as yargs from 'yargs';
 import { PlatformTools } from '../platform/PlatformTools';
 import { SetupRunner } from '../runners/SetupRunner';
+import { TOpenApiVersion } from '../typings';
 import { FileUtils } from '../utils/FileUtils';
 import { Templates } from '../utils/Templates';
 
@@ -19,6 +20,12 @@ export class GenerateSpecCommand implements yargs.CommandModule {
                 type: 'string',
                 describe: 'File where the swagger specifications will be be created. Defaults to BASE_DIR/swagger/swagger.json .',
             })
+            .option('o', {
+                alias: 'openApiVersion',
+                type: 'string',
+                choices: ['2.0', '3.0'],
+                describe: 'Choose OpenAPI version, expected values are 2.0, 3.0',
+            })
             .option('r', {
                 alias: 'refresh',
                 type: 'boolean',
@@ -29,8 +36,12 @@ export class GenerateSpecCommand implements yargs.CommandModule {
     async handler(args: yargs.Arguments) {
         try {
             const override: boolean | undefined = args.refresh ? true : false;
+            const template: string = 
+                    (args.openApiVersion != undefined)  ? (args.openApiVersion == '2.0') ? Templates.getOSA2Template()
+                    : (args.openApiVersion == '3.0') ? Templates.getOSA3Template() : '' : '';
+                
             const specFile: string = await SetupRunner.generateSpecFile(
-                Templates.getOSA2Template(),
+                template, 
                 args.specFilePath as string | undefined,
                 override as boolean,
             );

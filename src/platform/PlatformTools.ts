@@ -1,6 +1,7 @@
-import { existsSync, readFileSync, writeFile } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import chalk from 'chalk';
 import { FileUtils } from '../utils/FileUtils';
+import { SwaggifyError } from '../errors/SwaggifyError';
 
 /**
  * Platform specific tools
@@ -31,13 +32,21 @@ export class PlatformTools {
     /**
      * Write content to a file
      */
-    static writeToFile(path: string, content: string): Promise<void> {
-        return new Promise<void>((ok, fail) => {
-            writeFile(path, content, (err) => {
-                if (err) fail(err);
-                ok();
-            });
-        });
+    // static writeToFile(path: string, content: string): Promise<void> {
+    //     return new Promise<void>((ok, fail) => {
+    //         writeFile(path, content, (err) => {
+    //             if (err) fail(err);
+    //             ok();
+    //         });
+    //     });
+    // }
+
+    static writeToFile(path: string, content: string) {           
+         try {
+                writeFileSync(path, content);
+              } catch (err) {
+                throw new SwaggifyError('Error writing to file');
+              }
     }
 
     /**

@@ -64,6 +64,7 @@ export class Utility {
             const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
 
             PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
+            ok()
         });
     }
 
