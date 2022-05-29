@@ -117,18 +117,11 @@ export enum ESchemas {
 /**
  * Mime Type Enum
  */
-export enum EMimeTypes {
-    'text/plain; charset=utf-8' = 'text/plain; charset=utf-8',
-    'application/json' = 'application/json',
-    'application/vnd.github+json' = 'application/vnd.github+json',
-    'application/vnd.github.v3+json' = 'application/vnd.github.v3+json',
-    'application/vnd.github.v3.raw+json' = 'application/vnd.github.v3.raw+json',
-    'application/vnd.github.v3.text+json' = 'application/vnd.github.v3.text+json',
-    'application/vnd.github.v3.html+json' = 'application/vnd.github.v3.html+json',
-    'application/vnd.github.v3.full+json' = 'application/vnd.github.v3.full+json',
-    'application/vnd.github.v3.diff' = 'application/vnd.github.v3.diff',
-    'application/vnd.github.v3.patch' = 'application/vnd.github.v3.patch',
-}
+export type EMimeTypes = 
+    'text/plain; charset=utf-8' |  'application/json' |  'application/vnd.github+json' | 'application/vnd.github.v3+json' 
+    | 'application/vnd.github.v3.raw+json' |  'application/vnd.github.v3.text+json' | 'application/vnd.github.v3.html+json' |
+    'application/vnd.github.v3.full+json' | 'application/vnd.github.v3.diff' | 'application/vnd.github.v3.patch'
+
 
 /**
  * Swagger Info Object
