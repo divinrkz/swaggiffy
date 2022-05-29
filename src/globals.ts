@@ -37,7 +37,6 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
 export function getAPIDefinitionMetadataStorage(): APIDefinitionMetadataStorage {
     const globalScope = PlatformTools.getGlobalVariable();
     if (!globalScope.apiDefinitionStorage) globalScope.apiDefinitionStorage = new APIDefinitionMetadataStorage();
-
     return globalScope.apiDefinitionStorage;
 }
 
@@ -47,7 +46,6 @@ export function getAPIDefinitionMetadataStorage(): APIDefinitionMetadataStorage 
 export function getConfigMetadataStorage(): ConfigMetadataStorage {
     const globalScope = PlatformTools.getGlobalVariable();
     if (!globalScope.configMetadataStorage) globalScope.configMetadataStorage = new ConfigMetadataStorage();
-
     return globalScope.configMetadataStorage;
 }
 

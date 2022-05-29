@@ -26,5 +26,6 @@ export class Runner {
 
     static execute(): void {
         this.generateSchemas();
+        this.generateAPIDefinitions();
     }
 }

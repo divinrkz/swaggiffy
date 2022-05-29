@@ -54,16 +54,15 @@ export class Utility {
         return JSON.stringify(parsed, null, 2);
     }
 
-    
     /**
      * Extracts Swagger Schema Object from JSON
      * @param swagger JSON Document
      * @params schema: new swaggified schemas
      * @returns schema object
      */
-     static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: APIPathDefinition): string {
+    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: APIPathDefinition): string {
         const parsed = JSON.parse(swaggerDoc.toString());
-        console.log(parsed);
+        console.log('Parsed', parsed);
         parsed.swaggerDefinition.paths = apiDefinition;
         return JSON.stringify(parsed, null, 2);
     }
@@ -91,7 +90,7 @@ export class Utility {
     static async swaggifyD(schema: APIPathDefinition) {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
-            const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
+            const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
 
             PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
             ok();
@@ -124,15 +123,16 @@ export class Utility {
         let definition: APIPathDefinition = <APIPathDefinition>{};
         for (const item of array) {
             definition = {
-                ...definition,
-                ...{ [item.name]: item.swaggerDefinition[item.name] },
+                ...item
             };
         }
+
+        console.log(definition)
 
         return definition;
     }
 
-    toSwaggerAPIDefinition;
+
 
     // static getTemplateOptionsFromStorage() {
     //     const options: TemplateOptions = {
