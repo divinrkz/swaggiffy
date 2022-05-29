@@ -217,15 +217,14 @@ export type ConfigurationProps = {
     relativePath?: boolean;
 };
 
-
 /**
  * Api Path Type
  */
 export type APIPathDefinition = {
     pathString: string;
-    method: "get" | "post" | "put" | "delete";
-    meta: ApiPathDescription
-}
+    method: 'get' | 'post' | 'put' | 'delete';
+    meta: ApiPathDescription;
+};
 
 export type ApiPathDescription = {
     summary: string;
@@ -233,5 +232,5 @@ export type ApiPathDescription = {
     parameters?: APIParameters;
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
-    responses: Record<string, {description: string}>
-}
+    responses: Record<string, { description: string }>;
+};
