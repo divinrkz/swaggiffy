@@ -62,4 +62,3 @@ export function createDefinition(router: express.Router) {
 }
 
 createDefinition(router);
-console.log(getAPIDefinitionMetadataStorage());

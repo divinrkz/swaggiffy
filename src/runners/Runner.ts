@@ -15,8 +15,7 @@ export class Runner {
         Utility.swaggify(swaggerSchemaDefinition);
     }
 
-
-        /**
+    /**
      * Generating apiDefinitions from global APIDefinitionMetadataStorage
      * @param schemas
      */
