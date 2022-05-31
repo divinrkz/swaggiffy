@@ -123,23 +123,9 @@ export class Utility {
         let definition: APIPathDefinition = <APIPathDefinition>{};
         for (const item of array) {
             definition = {
-                ...item,
+                ...item.apiDefinition,
             };
         }
-
-        console.log(definition);
-
         return definition;
     }
-
-    // static getTemplateOptionsFromStorage() {
-    //     const options: TemplateOptions = {
-    //         projectName: getConfigMetadataStorage(),
-    //         outFile: '',
-    //         apiRouteUrl: '',
-    //         configFile: '',
-    //         openApiVersion: '',
-    //         format: 'json'
-    //     };
-    // }
 }

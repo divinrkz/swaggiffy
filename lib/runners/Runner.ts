@@ -20,6 +20,7 @@ export class Runner {
      * @param schemas
      */
     static generateAPIDefinitions(): void {
+        console.log('generate')
         const pathDefinition: APIPathDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
         Utility.swaggifyD(pathDefinition);
     }
