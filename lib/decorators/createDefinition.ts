@@ -2,7 +2,6 @@ import * as express from 'express';
 import { APIPathDefinition } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
-import { Runner } from '../runners/Runner';
 
 const router = express.Router();
 
@@ -64,4 +63,4 @@ export function createDefinition(router: express.Router) {
 
 createDefinition(router);
 
-Runner.execute();
+// Runner.execute();

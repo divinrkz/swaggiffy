@@ -89,6 +89,7 @@ export class Utility {
      */
     static async swaggifyD(schema: APIPathDefinition) {
         return new Promise<void>((ok, fail) => {
+            
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
             const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
 
