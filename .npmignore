@@ -3,7 +3,7 @@ lib/
 .vscode
 docs/
 tsconfig.json
-__tests__/
+test/
 .prettierrc
 swaggify-samples/
 .eslintrc
