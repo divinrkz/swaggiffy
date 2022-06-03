@@ -2,8 +2,8 @@
   "swaggerDefinition": {
     "swagger": "2.0",
     "info": {
-      "title": "swaggify",
-      "description": "swaggify API Documentation",
+      "title": "swaggiffy",
+      "description": "swaggiffy API Documentation",
       "termsOfService": "http://swagger.io/terms/",
       "contact": {
         "name": "API Support",

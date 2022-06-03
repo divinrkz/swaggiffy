@@ -6,11 +6,11 @@ import { Templates } from '../utils/Templates';
 import { SetupRunner } from './SetupRunner';
 
 /**
- * Swaggify Initialization Runner
+ * Swaggiffy Initialization Runner
  */
 export class InitRunner {
     /**
-     * Extract Configurations from Swaggify config file
+     * Extract Configurations from Swaggiffy config file
      * @returns Promise<ConfigurationProps>
      */
     static async extractConfigurations(): Promise<ConfigurationProps> {

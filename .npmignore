@@ -5,7 +5,7 @@ docs/
 tsconfig.json
 test/
 .prettierrc
-swaggify-samples/
+swaggiffy-samples/
 .eslintrc
 pnpm-lock.yaml
 todos.md

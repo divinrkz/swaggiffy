@@ -10,7 +10,7 @@ import { Templates } from '../utils/Templates';
  */
 export class GenerateSpecCommand implements yargs.CommandModule {
     command = 'generate:spec';
-    describe = 'Generate swaggify specifications file.';
+    describe = 'Generate swaggiffy specifications file.';
     aliases = 'g:spec';
 
     builder(args: yargs.Argv) {

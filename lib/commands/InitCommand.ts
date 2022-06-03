@@ -8,11 +8,11 @@ import { ValidationUtils } from '../utils/ValidationUtils';
 import { Defaults } from '../utils/Defaults';
 
 /**
- * Swaggify generator
+ * Swaggiffy generator
  */
 export class InitCommand implements yargs.CommandModule {
     command = 'init';
-    describe = 'Builds and Generates necessarly config files for Swaggify inside the current directory.';
+    describe = 'Builds and Generates necessarly config files for Swaggiffy inside the current directory.';
 
     builder(args: yargs.Argv) {
         return args
@@ -68,7 +68,7 @@ export class InitCommand implements yargs.CommandModule {
                 args.refresh ? true : false,
             );
         } catch (err) {
-            PlatformTools.logCmdErr('Error when initializing swaggify.', err);
+            PlatformTools.logCmdErr('Error when initializing swaggiffy.', err);
             process.exit(1);
         }
     }

@@ -34,7 +34,7 @@ class App {
     }
 
     /**
-     * Runs and executes swaggify
+     * Runs and executes swaggiffy
      * @param swaggerEndPoint  swaggerEndPointUrl
      * @param swaggerDefinitionFile swaggerDefinitionFilePath
      */

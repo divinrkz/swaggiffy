@@ -4,11 +4,11 @@ import { OSA2 } from '../typings/swagger/openapi.types';
 import { Defaults } from './Defaults';
 
 /**
- * Swaggify Templates class
+ * Swaggiffy Templates class
  */
 export class Templates {
     /**
-     * Returns swaggify config file template
+     * Returns swaggiffy config file template
      * @param options
      * @returns
      */
