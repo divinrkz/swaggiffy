@@ -122,3 +122,5 @@ dist
 
 
 .husky/
+
+.rest
