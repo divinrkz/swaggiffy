@@ -117,18 +117,17 @@ export enum ESchemas {
 /**
  * Mime Type Enum
  */
-export enum EMimeTypes {
-    'text/plain; charset=utf-8' = 'text/plain; charset=utf-8',
-    'application/json' = 'application/json',
-    'application/vnd.github+json' = 'application/vnd.github+json',
-    'application/vnd.github.v3+json' = 'application/vnd.github.v3+json',
-    'application/vnd.github.v3.raw+json' = 'application/vnd.github.v3.raw+json',
-    'application/vnd.github.v3.text+json' = 'application/vnd.github.v3.text+json',
-    'application/vnd.github.v3.html+json' = 'application/vnd.github.v3.html+json',
-    'application/vnd.github.v3.full+json' = 'application/vnd.github.v3.full+json',
-    'application/vnd.github.v3.diff' = 'application/vnd.github.v3.diff',
-    'application/vnd.github.v3.patch' = 'application/vnd.github.v3.patch',
-}
+export type EMimeTypes =
+    | 'text/plain; charset=utf-8'
+    | 'application/json'
+    | 'application/vnd.github+json'
+    | 'application/vnd.github.v3+json'
+    | 'application/vnd.github.v3.raw+json'
+    | 'application/vnd.github.v3.text+json'
+    | 'application/vnd.github.v3.html+json'
+    | 'application/vnd.github.v3.full+json'
+    | 'application/vnd.github.v3.diff'
+    | 'application/vnd.github.v3.patch';
 
 /**
  * Swagger Info Object
@@ -215,4 +214,22 @@ export type ConfigurationProps = {
     apiRoute: PathString;
     format: TFormat;
     relativePath?: boolean;
+};
+
+/**
+ * Api Path Type
+ */
+export type APIPathDefinition = {
+    pathString: string;
+    method: 'get' | 'post' | 'put' | 'delete';
+    meta: ApiPathDescription;
+};
+
+export type ApiPathDescription = {
+    summary: string;
+    description: string;
+    parameters?: APIParameters;
+    produces: Array<EMimeTypes>;
+    consumes: Array<EMimeTypes>;
+    responses: Record<string, { description: string }>;
 };
