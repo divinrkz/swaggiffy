@@ -6,8 +6,8 @@
   "main": "build/compiled/index.js",
   "types": "build/compiled/index.d.ts",
   "scripts": {
-    "test": "rimraf ./build && tsc && mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
-    "test:fast": "mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
+    "test": "rimraf ./build && tsc && mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/__tests__",
+    "test:fast": "mocha",
     "dev": "ts-node ./src/index.ts",
     "compile": "rimraf ./build && tsc",
     "watch": "./node_modules/.bin/tsc -w",
@@ -46,8 +46,10 @@
     "@types/yargs": "^17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
+    "chai": "^4.3.6",
     "eslint": "^8.3.0",
     "husky": "^7.0.4",
+    "mocha": "^10.0.0",
     "openapi-types": "^11.0.0",
     "prettier": "^2.5.0",
     "typescript": "^4.5.2"
