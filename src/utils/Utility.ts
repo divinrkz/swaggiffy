@@ -123,16 +123,14 @@ export class Utility {
         let definition: APIPathDefinition = <APIPathDefinition>{};
         for (const item of array) {
             definition = {
-                ...item
+                ...item,
             };
         }
 
-        console.log(definition)
+        console.log(definition);
 
         return definition;
     }
-
-
 
     // static getTemplateOptionsFromStorage() {
     //     const options: TemplateOptions = {
