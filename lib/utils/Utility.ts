@@ -1,5 +1,5 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { APIPathDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
+import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
@@ -60,9 +60,8 @@ export class Utility {
      * @params schema: new swaggified schemas
      * @returns schema object
      */
-    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: APIPathDefinition): string {
+    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: SwaggerAPIDefinition): string {
         const parsed = JSON.parse(swaggerDoc.toString());
-        console.log('Parsed', parsed);
         parsed.swaggerDefinition.paths = apiDefinition;
         return JSON.stringify(parsed, null, 2);
     }
@@ -72,27 +71,14 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggify(schema: TSwaggerSchemaDef) {
+    static async swaggify(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION' | 'SCHEMA') {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
-            const updatedSchema: string = this.updateSchema(swaggerDoc, schema);
+            let definition: string = '';
+            if (type === 'DEFINITION') definition = this.updateAPIDefinition(swaggerDoc, schema as SwaggerAPIDefinition);
+            else if (type === 'SCHEMA') definition = this.updateSchema(swaggerDoc, schema as TSwaggerSchemaDef);
 
-            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
-            ok();
-        });
-    }
-
-    /**
-     * Generates swagger file from schemas
-     * @params schema
-     * @returns Promise<void>
-     */
-    static async swaggifyD(schema: APIPathDefinition) {
-        return new Promise<void>((ok, fail) => {
-            const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
-            const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
-
-            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
+            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, definition);
             ok();
         });
     }
@@ -119,27 +105,24 @@ export class Utility {
      * @param array APIDefinitionMetadata array
      * @returns JSON defined SwaggerSchema
      */
-    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): APIPathDefinition {
-        let definition: APIPathDefinition = <APIPathDefinition>{};
+    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): SwaggerAPIDefinition {
+        let apiDefinition: SwaggerAPIDefinition = <SwaggerAPIDefinition>{};
         for (const item of array) {
-            definition = {
-                ...item,
+            apiDefinition = {
+                ...apiDefinition,
+                ...{[item.apiDefinition.pathString]: {
+                    [item.apiDefinition.method]: {
+                        tags: item.apiDefinition.tags,
+                        operationId: item.apiDefinition.meta.operationId,
+                        summary: item.apiDefinition.meta.summary,
+                        description: item.apiDefinition.meta.description,
+                        parameters: item.apiDefinition.meta.parameters,
+                        consumes: item.apiDefinition.meta.consumes,
+                        produces: item.apiDefinition.meta.produces,
+                    },
+                }}
             };
         }
-
-        console.log(definition);
-
-        return definition;
+        return apiDefinition;
     }
-
-    // static getTemplateOptionsFromStorage() {
-    //     const options: TemplateOptions = {
-    //         projectName: getConfigMetadataStorage(),
-    //         outFile: '',
-    //         apiRouteUrl: '',
-    //         configFile: '',
-    //         openApiVersion: '',
-    //         format: 'json'
-    //     };
-    // }
 }

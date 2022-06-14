@@ -222,14 +222,22 @@ export type ConfigurationProps = {
 export type APIPathDefinition = {
     pathString: string;
     method: 'get' | 'post' | 'put' | 'delete';
+    tags: string[];
     meta: ApiPathDescription;
 };
 
 export type ApiPathDescription = {
     summary: string;
+    operationId: string;
     description: string;
     parameters?: APIParameters;
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
     responses: Record<string, { description: string }>;
+};
+
+export type SwaggerAPIDefinition = {
+    [x: string]: {
+        [x: 'get' | 'post' | 'put' | 'delete']: ApiPathDescription;
+    };
 };

@@ -2,31 +2,6 @@ import * as express from 'express';
 import { APIPathDefinition } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
-import { Runner } from '../runners/Runner';
-
-const router = express.Router();
-
-router.get('/', (req: any, res: any) => {
-    res.send('get all');
-});
-router.get('/recent', (req: any, res: any) => {
-    res.send('recents');
-});
-router.get('/:id', (req: any, res: any) => {
-    res.send('Get by Id');
-});
-
-router.post('/', (req: any, res: any) => {
-    res.send('Created');
-});
-
-router.put('/:id', (req: any, res: any) => {
-    res.send('Update');
-});
-
-router.delete('/:id', (req: any, res: any) => {
-    res.send('Delete');
-});
 
 /**
  * Create swagger path definition
@@ -41,10 +16,12 @@ export function createDefinition(router: express.Router) {
 
         const pathDefinition: APIPathDefinition = {
             pathString: path,
+            tags: [],
             method: method,
             meta: {
                 summary: '',
                 description: '',
+                operationId: `operation${getRandomArbitrary()}`,
                 produces: ['application/json'],
                 consumes: ['application/json'],
                 responses: {
@@ -62,6 +39,7 @@ export function createDefinition(router: express.Router) {
     });
 }
 
-createDefinition(router);
-
-Runner.execute();
+// Runner.execute();
+function getRandomArbitrary(min = 0, max = 100) {
+    return Math.random() * (max - min) + min;
+}

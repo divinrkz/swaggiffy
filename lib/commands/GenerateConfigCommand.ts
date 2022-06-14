@@ -46,7 +46,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
             {
                 projectName: projectName || 'new project',
                 openApiVersion: '2.0.0',
-                outFile: 'src/swagger.json',
+                outFile: 'lib/swagger.json',
                 apiRoute: '/api-docs',
                 format: 'json',
             },

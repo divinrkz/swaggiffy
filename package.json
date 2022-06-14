@@ -8,11 +8,11 @@
   "scripts": {
     "test": "rimraf ./build && tsc && mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/__tests__",
     "test:fast": "mocha",
-    "dev": "ts-node ./src/index.ts",
+    "dev": "ts-node ./lib/index.ts",
     "compile": "rimraf ./build && tsc",
     "watch": "./node_modules/.bin/tsc -w",
     "lint": "npx eslint . --ext .ts --fix  --resolve-plugins-relative-to .",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"lib/**/*.ts\""
   },
   "keywords": [
     "ts",
