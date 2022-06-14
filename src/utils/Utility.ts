@@ -1,9 +1,10 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
+import { APIPathDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
 import { getConfigMetadataStorage } from '../globals';
+import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 
 export class Utility {
     /**
@@ -54,6 +55,19 @@ export class Utility {
     }
 
     /**
+     * Extracts Swagger Schema Object from JSON
+     * @param swagger JSON Document
+     * @params schema: new swaggified schemas
+     * @returns schema object
+     */
+    static updateAPIDefinition(swaggerDoc: Buffer, apiDefinition: APIPathDefinition): string {
+        const parsed = JSON.parse(swaggerDoc.toString());
+        console.log('Parsed', parsed);
+        parsed.swaggerDefinition.paths = apiDefinition;
+        return JSON.stringify(parsed, null, 2);
+    }
+
+    /**
      * Generates swagger file from schemas
      * @params schema
      * @returns Promise<void>
@@ -69,11 +83,26 @@ export class Utility {
     }
 
     /**
+     * Generates swagger file from schemas
+     * @params schema
+     * @returns Promise<void>
+     */
+    static async swaggifyD(schema: APIPathDefinition) {
+        return new Promise<void>((ok, fail) => {
+            const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
+            const updatedSchema: string = this.updateAPIDefinition(swaggerDoc, schema);
+
+            PlatformTools.writeToFile(Utility.configStore.swaggerDefinitionFilePath, updatedSchema);
+            ok();
+        });
+    }
+
+    /**
      * Converts SchemaMetadata[] to plain JSON Object
      * @param array SchemaMetadata array
      * @returns JSON defined SwaggerSchema
      */
-    static compressArrToObj(array: SchemaMetadata[]): TSwaggerSchemaDef {
+    static toSwaggerSchema(array: SchemaMetadata[]): TSwaggerSchemaDef {
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
         for (const item of array) {
             definition = {
@@ -81,6 +110,24 @@ export class Utility {
                 ...{ [item.name]: item.swaggerDefinition[item.name] },
             };
         }
+
+        return definition;
+    }
+
+    /**
+     * Converts APIDefinitionMetadata[] to plain JSON Object
+     * @param array APIDefinitionMetadata array
+     * @returns JSON defined SwaggerSchema
+     */
+    static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): APIPathDefinition {
+        let definition: APIPathDefinition = <APIPathDefinition>{};
+        for (const item of array) {
+            definition = {
+                ...item,
+            };
+        }
+
+        console.log(definition);
 
         return definition;
     }

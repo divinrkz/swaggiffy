@@ -1,5 +1,8 @@
 import * as express from 'express';
 import { APIPathDefinition } from '../typings';
+import { getAPIDefinitionMetadataStorage } from '../globals';
+import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
+import { Runner } from '../runners/Runner';
 
 const router = express.Router();
 
@@ -25,16 +28,12 @@ router.delete('/:id', (req: any, res: any) => {
     res.send('Delete');
 });
 
-
-
-
 /**
  * Create swagger path definition
  * @param router Express router
  * @returns apiPathDefinitions {APIPathDefinition}
  */
-function createPathDefinition(router: express.Router) {
-    const pathDefinitions: APIPathDefinition[] = [];
+export function createDefinition(router: express.Router) {
     const paths = router.stack.filter((item) => item.route);
     paths.forEach((item) => {
         const method = item.route.stack[0].method.toLowerCase();
@@ -56,8 +55,13 @@ function createPathDefinition(router: express.Router) {
             },
         };
 
-        pathDefinitions.push(pathDefinition);
+        getAPIDefinitionMetadataStorage().apiDefinitions.push({
+            router,
+            apiDefinition: pathDefinition,
+        } as APIDefinitionMetadata);
     });
-    return pathDefinitions;
 }
 
+createDefinition(router);
+
+Runner.execute();
