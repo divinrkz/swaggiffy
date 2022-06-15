@@ -8,7 +8,7 @@ import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
  * @param router Express router
  * @returns apiPathDefinitions {APIPathDefinition}
  */
-export function createDefinition(router: express.Router) {
+export function registerDefinition(router: express.Router) {
     const paths = router.stack.filter((item) => item.route);
     paths.forEach((item) => {
         const method = item.route.stack[0].method.toLowerCase();
@@ -39,7 +39,6 @@ export function createDefinition(router: express.Router) {
     });
 }
 
-// Runner.execute();
 function getRandomArbitrary(min = 0, max = 100) {
     return Math.random() * (max - min) + min;
 }
