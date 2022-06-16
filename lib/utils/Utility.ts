@@ -110,17 +110,19 @@ export class Utility {
         for (const item of array) {
             apiDefinition = {
                 ...apiDefinition,
-                ...{[item.apiDefinition.pathString]: {
-                    [item.apiDefinition.method]: {
-                        tags: item.apiDefinition.tags,
-                        operationId: item.apiDefinition.meta.operationId,
-                        summary: item.apiDefinition.meta.summary,
-                        description: item.apiDefinition.meta.description,
-                        parameters: item.apiDefinition.meta.parameters,
-                        consumes: item.apiDefinition.meta.consumes,
-                        produces: item.apiDefinition.meta.produces,
+                ...{
+                    [item.apiDefinition.pathString]: {
+                        [item.apiDefinition.method]: {
+                            tags: item.apiDefinition.tags,
+                            operationId: item.apiDefinition.meta.operationId,
+                            summary: item.apiDefinition.meta.summary,
+                            description: item.apiDefinition.meta.description,
+                            parameters: item.apiDefinition.meta.parameters,
+                            consumes: item.apiDefinition.meta.consumes,
+                            produces: item.apiDefinition.meta.produces,
+                        },
                     },
-                }}
+                },
             };
         }
         return apiDefinition;
