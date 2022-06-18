@@ -24,8 +24,10 @@
     "paths": {
       "/": {
         "post": {
-          "tags": [],
-          "operationId": "operation79.23979967588568",
+          "tags": [
+            "Users"
+          ],
+          "operationId": "postfunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
           "summary": "",
           "description": "",
           "consumes": [
@@ -38,8 +40,10 @@
       },
       "/recent": {
         "get": {
-          "tags": [],
-          "operationId": "operation98.37983665220453",
+          "tags": [
+            "Users"
+          ],
+          "operationId": "getfunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
           "summary": "",
           "description": "",
           "consumes": [
@@ -52,8 +56,10 @@
       },
       "/:id": {
         "delete": {
-          "tags": [],
-          "operationId": "operation41.93152840687793",
+          "tags": [
+            "Users"
+          ],
+          "operationId": "deletefunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
           "summary": "",
           "description": "",
           "consumes": [
