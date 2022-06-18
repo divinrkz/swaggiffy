@@ -12,7 +12,8 @@
     "compile": "rimraf ./build && tsc",
     "watch": "./node_modules/.bin/tsc -w",
     "lint": "npx eslint . --ext .ts --fix  --resolve-plugins-relative-to .",
-    "format": "prettier --write \"lib/**/*.ts\""
+    "format": "prettier --write \"lib/**/*.ts\"",
+    "prepublish": "npm run compile && npm run format"
   },
   "keywords": [
     "ts",
