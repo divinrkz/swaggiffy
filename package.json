@@ -2,7 +2,7 @@
   "name": "swaggiffy",
   "displayName": "swaggiffy",
   "version": "0.1.0",
-  "description": "A zero-config Node.js Swagger Documentation",
+  "description": "A zero-config Node.js Swagger Documentation Generator.",
   "main": "build/compiled/index.js",
   "types": "build/compiled/index.d.ts",
   "scripts": {
@@ -17,6 +17,8 @@
   "keywords": [
     "ts",
     "js",
+    "auto-documentation",
+    "swaggiffy",
     "swagger",
     "docs",
     "nest"
