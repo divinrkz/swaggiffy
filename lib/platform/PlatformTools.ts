@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import chalk from 'chalk';
 import { FileUtils } from '../utils/FileUtils';
-import { SwaggifyError } from '../errors/SwaggifyError';
+import { SwaggiffyError } from '../errors/SwaggiffyError';
 
 /**
  * Platform specific tools
@@ -45,7 +45,7 @@ export class PlatformTools {
         try {
             writeFileSync(path, content);
         } catch (err) {
-            throw new SwaggifyError('Error writing to file');
+            throw new SwaggiffyError('Error writing to file');
         }
     }
 

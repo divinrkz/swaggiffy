@@ -71,7 +71,7 @@ export class Utility {
      * @params schema
      * @returns Promise<void>
      */
-    static async swaggify(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION' | 'SCHEMA') {
+    static async swaggiffy(schema: TSwaggerSchemaDef | SwaggerAPIDefinition, type: 'DEFINITION' | 'SCHEMA') {
         return new Promise<void>((ok, fail) => {
             const swaggerDoc: Buffer = PlatformTools.getFileContents(Utility.configStore.swaggerDefinitionFilePath);
             let definition: string = '';

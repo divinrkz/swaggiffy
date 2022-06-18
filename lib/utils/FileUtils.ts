@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, mkdirSync, writeFile, open } from 'fs';
 import * as path from 'path';
-import { SwaggifyError } from '../errors/SwaggifyError';
+import { SwaggiffyError } from '../errors/SwaggiffyError';
 import { PlatformTools } from '../platform/PlatformTools';
 import { ValidationUtils } from './ValidationUtils';
 
@@ -16,7 +16,7 @@ export class FileUtils {
             if (extra) {
                 if (!extra.throwable) return false;
             }
-            throw new SwaggifyError(`${extra ? extra.type : ''} File not found.`);
+            throw new SwaggiffyError(`${extra ? extra.type : ''} File not found.`);
         }
         return readFileSync(path);
     }

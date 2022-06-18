@@ -15,7 +15,7 @@ export class Defaults {
     public static SWAGGER_DEFINITION_FILE = './swagger/swagger.json';
 
     /**
-     * Default Swaggify Configuration File
+     * Default Swaggiffy Configuration File
      */
     public static SWAGGIFY_CONFIG_FILE = './swagger.config.json';
 

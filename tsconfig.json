@@ -19,6 +19,6 @@
   "include": ["lib"],
   "exclude": [
     "node_modules",
-    "**/__tests__/*"
+    "**/test/*"
   ]
 }

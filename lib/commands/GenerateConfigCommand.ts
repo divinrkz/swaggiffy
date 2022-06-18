@@ -8,7 +8,7 @@ import { FileUtils } from '../utils/FileUtils';
  */
 export class GenerateConfigCommand implements yargs.CommandModule {
     command = 'generate:config';
-    describe = 'Generate swaggify config file.';
+    describe = 'Generate swaggiffy config file.';
     aliases = 'g:config';
 
     builder(args: yargs.Argv) {
@@ -16,7 +16,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
             .option('path', {
                 alias: 'configFilePath',
                 type: 'string',
-                describe: 'File where the config file should be created. Defaults to BASE_DIR/swaggify.config.json .',
+                describe: 'File where the config file should be created. Defaults to BASE_DIR/swaggiffy.config.json .',
             })
             .option('r', {
                 alias: 'refresh',

@@ -2,14 +2,14 @@ import App from './app';
 import { PathString } from './typings';
 import { getConfigMetadataStorage } from './globals';
 import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
-import { SwaggifyError } from './errors/SwaggifyError';
+import { SwaggiffyError } from './errors/SwaggiffyError';
 import { InitRunner } from './runners/InitRunner';
 import { Runner } from './runners/Runner';
 
 /**
- * Swaggify base class
+ * Swaggiffy base class
  */
-export class Swaggify {
+export class Swaggiffy {
     private app: App;
     private configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
@@ -18,8 +18,8 @@ export class Swaggify {
     }
 
     /**
-     * Setups expressApplication with swaggify.
-     * @returns Swaggify
+     * Setups expressApplication with swaggiffy.
+     * @returns Swaggiffy
      */
     public setupExpress(expressApp: Express.Application): this {
         // this.configStore expressApplication in ConfigMetadataStorage.
@@ -30,8 +30,8 @@ export class Swaggify {
     /**
      * dsfa
      *
-     * Setups route endpoint url with swaggify.
-     * @returns Swaggify
+     * Setups route endpoint url with swaggiffy.
+     * @returns Swaggiffy
      */
     public setupRoute(routeEndPointUrl: PathString): this {
         this.configStore.swaggerEndPointUrl = routeEndPointUrl;
@@ -40,7 +40,7 @@ export class Swaggify {
 
     /**
      * Setups and Builds a swagger config file template in the specified directory and file.
-     * @returns Swaggify
+     * @returns Swaggiffy
      */
     public setupSwagger(filePath: string): this {
         this.configStore.swaggerDefinitionFilePath = this.configStore.relativePath ? process.cwd() + '/' + filePath : filePath;
@@ -49,18 +49,18 @@ export class Swaggify {
 
     /**
      * Swaggifies your application.
-     * @returns Swaggify
+     * @returns Swaggiffy
      */
-    public async swaggify(): Promise<this> {
+    public async swaggiffy(): Promise<this> {
         try {
             if (this.configStore.expressApplication === undefined || this.configStore.expressApplication === null)
-                throw new SwaggifyError('Express Application instance is undefined.');
+                throw new SwaggiffyError('Express Application instance is undefined.');
 
             await InitRunner.cacheGlobalConfigurations();
 
             this.app.init(this.configStore);
         } catch (err: unknown) {
-            throw new SwaggifyError();
+            throw new SwaggiffyError();
         }
 
         return this;

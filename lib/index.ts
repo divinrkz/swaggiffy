@@ -1,10 +1,10 @@
 // import 'reflect-metadata';
-import { Swaggify } from './Swaggify';
+import { Swaggiffy } from './Swaggiffy';
 import { registerDefinition, registerDefinitions } from './helpers/registerDefinition';
 // export * from './globals';
 // export * from './decorators/Schema';
-// export * from './errors/SwaggifyError';
-// export * from './Swaggify';
+// export * from './errors/SwaggiffyError';
+// export * from './Swaggiffy';
 
 const express = require('express');
 const app = express();
@@ -42,4 +42,4 @@ router.delete('/:id', (req: any, res: any) => {
 });
 
 registerDefinition({ router, tags: 'Users' });
-new Swaggify().setupExpress(app).swaggify();
+new Swaggiffy().setupExpress(app).swaggiffy();
