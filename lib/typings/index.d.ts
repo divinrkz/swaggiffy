@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as mongoose from 'mongoose';
 
 /**
  * Path String Type
@@ -256,7 +257,5 @@ export type APIRegisterMeta = {
     responses?: APIDocResponse;
 };
 
-
-
 // Parameter types
-export type SchemaTypes = mongoose.Schema | object;
+export type SchemaType = mongoose.Schema | { [key: string]: number | string | boolean | bigint |  object | Date | undefined | Function | symbol};

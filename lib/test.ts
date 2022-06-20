@@ -23,4 +23,4 @@ const schema = {
     },
 };
 
-console.log(registerSchema('UserSchema', schema));
+console.log(registerSchema(1));
