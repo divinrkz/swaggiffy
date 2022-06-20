@@ -129,22 +129,15 @@ export class Utility {
         return apiDefinition;
     }
 
-
     static extractType(func: Function) {
-        console.log(func.toString())
-        const str = func.toString()
+        console.log(func.toString());
+        const str = func.toString();
 
-        if (str.toLowerCase().includes('string'))
-            return 'string'
-        else if (str.toLowerCase().includes('number'))  
-            return 'number'
-        else if (str.toLowerCase().includes('boolean'))  
-            return 'boolean'
-        else if (str.toLowerCase().includes('date'))  
-            return 'string'
-        else if (str.toLowerCase().includes('objectid'))  
-            return 'string'
-        else if (str.toLowerCase().includes('uuid'))  
-            return 'string'        
+        if (str.toLowerCase().includes('string')) return 'string';
+        else if (str.toLowerCase().includes('number')) return 'number';
+        else if (str.toLowerCase().includes('boolean')) return 'boolean';
+        else if (str.toLowerCase().includes('date')) return 'string';
+        else if (str.toLowerCase().includes('objectid')) return 'string';
+        else if (str.toLowerCase().includes('uuid')) return 'string';
     }
 }

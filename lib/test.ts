@@ -1,8 +1,8 @@
-import { Schema } from './decorators/Schema'
+import { Schema } from './decorators/Schema';
 import { registerSchema } from './helpers/registerSchema';
 
 @Schema()
-class Test {   
+class Test {
     username: string;
     password: string;
 }
@@ -12,16 +12,15 @@ const schema = {
         type: 'string',
         ref: 'User',
         unique: true,
-        required: true
+        required: true,
     },
     authorNumber: {
         type: Number,
     },
     isDeleted: {
         type: Boolean,
-        default: false
-    }
-}
+        default: false,
+    },
+};
 
-
-console.log(registerSchema('UserSchema', schema))
+console.log(registerSchema('UserSchema', schema));

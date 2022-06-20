@@ -255,3 +255,8 @@ export type APIRegisterMeta = {
     consumes?: Array<EMimeTypes>;
     responses?: APIDocResponse;
 };
+
+
+
+// Parameter types
+export type SchemaTypes = mongoose.Schema | object;
