@@ -258,4 +258,8 @@ export type APIRegisterMeta = {
 };
 
 // Parameter types
-export type SchemaType = mongoose.Schema | { [key: string]: number | string | boolean | bigint |  object | Date | undefined | Function | symbol};
+export type SchemaType = 
+    mongoose.Schema | 
+    {
+         [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol
+    };

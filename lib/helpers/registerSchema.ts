@@ -5,15 +5,13 @@ import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 import { type } from 'os';
 import { Utility } from '../utils/Utility';
 
-
 /**
  * Create swagger schema definition
  * @returns schemaDefinition {SchemaDefinition}
  */
 
-
 export function registerSchema(schema: SchemaType) {
-    console.log(schema)
+    console.log(schema);
     const props: TClassProps = [];
     // for (const prop of Object.keys(obj)) {
     //     let _type;
