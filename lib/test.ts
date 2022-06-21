@@ -7,6 +7,21 @@ class Test {
     password: string;
 }
 
+const schema = {
+    user: {
+        type: 'string',
+        ref: 'User',
+        unique: true,
+        required: true
+    },
+    authorNumber: {
+        type: Number,
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
+    }
+}
 
 
-registerSchema('UserSchema', schema)
+console.log(registerSchema('UserSchema', schema))

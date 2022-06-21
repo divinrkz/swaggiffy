@@ -15,10 +15,10 @@ export class Utility {
     static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
     static getClassProps(target: any, name?: string): TClassDef {
-        console.log('Target', target)
+        console.log('Target', target);
         const instance: typeof target = new target();
         const props: TClassProps = [];
-        console.log(Object.keys(instance))
+        console.log(Object.keys(instance));
         for (const prop of Object.keys(instance)) {
             props.push({ prop, type: typeof instance[prop] });
         }
@@ -127,5 +127,24 @@ export class Utility {
             };
         }
         return apiDefinition;
+    }
+
+
+    static extractType(func: Function) {
+        console.log(func.toString())
+        const str = func.toString()
+
+        if (str.toLowerCase().includes('string'))
+            return 'string'
+        else if (str.toLowerCase().includes('number'))  
+            return 'number'
+        else if (str.toLowerCase().includes('boolean'))  
+            return 'boolean'
+        else if (str.toLowerCase().includes('date'))  
+            return 'string'
+        else if (str.toLowerCase().includes('objectid'))  
+            return 'string'
+        else if (str.toLowerCase().includes('uuid'))  
+            return 'string'        
     }
 }

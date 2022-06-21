@@ -10,10 +10,8 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
 export function Schema(name?: string): ClassDecorator {
     return (target) => {
         const classDef: TClassDef = Utility.getClassProps(target, name);
- 
 
         const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
-
 
         getSchemaMetadataStorage().schemas.push({
             target: target,
