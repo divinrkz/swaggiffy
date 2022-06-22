@@ -264,5 +264,4 @@ export type SchemaRegistryType =
           [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
       };
 
-
-export type SchemaRegistryOptions = { name?: string, required?: string[],  orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
+export type SchemaRegistryOptions = { name?: string; required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };

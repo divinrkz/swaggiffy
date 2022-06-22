@@ -8,19 +8,9 @@ class Test {
 }
 
 const schema = {
-    user: {
-        type: 'string',
-        ref: 'User',
-        unique: true,
-        required: true,
-    },
-    authorNumber: {
-        type: Number,
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false,
-    },
+    firstName: 'string',
+    lastName: 'string',
+    age: 15,
 };
 
-console.log(registerSchema(1));
+console.log(registerSchema(schema));
