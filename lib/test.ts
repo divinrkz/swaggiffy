@@ -13,4 +13,4 @@ const schema = {
     age: 15,
 };
 
-console.log(registerSchema(schema));
+registerSchema('User', schema);

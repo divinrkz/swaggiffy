@@ -257,11 +257,12 @@ export type APIRegisterMeta = {
     responses?: APIDocResponse;
 };
 
+export type SchemaRegistryObj = {
+    [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
+};
 // Parameter types
 export type SchemaRegistryType =
     | mongoose.Schema
-    | {
-          [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
-      };
+    | SchemaRegistryObj
 
-export type SchemaRegistryOptions = { name?: string; required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
+export type SchemaRegistryOptions = {  required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };

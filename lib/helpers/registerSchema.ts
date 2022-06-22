@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { APIPathDefinition, APIRegisterMeta, SchemaRegistryOptions, SchemaRegistryType, TClassDef, TClassProps } from '../typings';
+import { APIPathDefinition, APIRegisterMeta, SchemaRegistryOptions, SchemaRegistryType, TClassDef, TClassProps, TSwaggerSchema } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 import { type } from 'os';
@@ -7,6 +7,7 @@ import { Utility } from '../utils/Utility';
 import * as mongoose from 'mongoose';
 import { option } from 'yargs';
 import { SwaggiffyError } from '../errors/SwaggiffyError';
+import { SchemaExtractor } from '../extractors/schema.extractor';
 
 
 /**
@@ -15,10 +16,7 @@ import { SwaggiffyError } from '../errors/SwaggiffyError';
  */
 
 
-export function registerSchema(schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
-    console.log(schema)
-    const props: TClassProps = [];
-
+export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
     if (options) {
         if (options.orm === 'mongoose') {
             // generate mongoose schema
@@ -26,11 +24,18 @@ export function registerSchema(schema: SchemaRegistryType, options?: SchemaRegis
             throw new SwaggiffyError('Orm is not supported');
         }
     }
-    if (schema instanceof mongoose.Schema) {
-        
-    }
     else {
+        if (schema instanceof mongoose.Schema) {
+            // generate mongoose schema
+        }
+        else {
+            console.log('jere')
+            const objDef = SchemaExtractor.extractPlain(schema, name);
 
+            const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(objDef);
+            console.log(swaggerDefinition)
+            
+        }
     }
     // for (const prop of Object.keys(obj)) {
     //     let _type;

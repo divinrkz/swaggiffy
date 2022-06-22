@@ -140,4 +140,8 @@ export class Utility {
         else if (str.toLowerCase().includes('objectid')) return 'string';
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
+
+
+
+
 }
