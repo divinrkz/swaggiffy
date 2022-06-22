@@ -5,22 +5,19 @@
 // export * from './errors/SwaggiffyError';
 // export * from './Swaggiffy';
 
-import { registerSchema } from "./helpers/registerSchema";
-import { Swaggiffy } from "./Swaggiffy";
+import { registerSchema } from './helpers/registerSchema';
+import { Swaggiffy } from './Swaggiffy';
 
 const express = require('express');
 const app = express();
-
 
 app.listen(5008, () => {
     console.log('Server is running 2');
 });
 
- new Swaggiffy().setupExpress(app).swaggiffy();
+new Swaggiffy().setupExpress(app).swaggiffy();
 
-
-
- const schema = {
+const schema = {
     firstName: 'string',
     lastName: 'string',
     age: 15,

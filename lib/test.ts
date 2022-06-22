@@ -6,4 +6,3 @@ class Test {
     username: string;
     password: string;
 }
-
