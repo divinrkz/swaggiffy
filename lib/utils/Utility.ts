@@ -15,7 +15,7 @@ export class Utility {
     static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
     static getClassProps(target: any, name?: string): TClassDef {
-        console.log('Target', target);
+ 
         const instance: typeof target = new target();
         const props: TClassProps = [];
         console.log(Object.keys(instance));
@@ -32,7 +32,15 @@ export class Utility {
         let props: TSchemaProp = {};
 
         for (const prop of obj.props) {
-            props = Object.assign({ [prop.prop]: { type: prop.type } }, props);
+            props = Object.assign(
+                { 
+                    [prop.prop]: { 
+                        type: prop.type,
+                        example: prop.example,
+                        description: prop.description,
+                        required: prop.required
+                    }
+                }, props);
         }
 
         return <TSwaggerSchema>{
@@ -140,8 +148,4 @@ export class Utility {
         else if (str.toLowerCase().includes('objectid')) return 'string';
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
-
-
-
-
 }
