@@ -12,17 +12,16 @@ export class SchemaExtractor {
     static extractPlain(schema: SchemaRegistryObj, name?: string) {
         const props: TClassProps = [];
         for (const prop of Object.keys(schema)) {
-            props.push({ 
+            props.push({
                 prop,
                 type: typeof schema[prop],
-                required: true,
-                description: 'string',
-                example: 'string',
-                format: 'string',
-             });
+                required: undefined,
+                description: undefined,
+                example: undefined,
+                format: undefined,
+            });
         }
 
-    
-        return <TClassDef>{ name, props: props.reverse(),  };
+        return <TClassDef>{ name, props: props.reverse() };
     }
 }

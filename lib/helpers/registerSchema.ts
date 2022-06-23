@@ -37,7 +37,6 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
         }
     }
 
-    
     // for (const prop of Object.keys(obj)) {
     //     let _type;
 

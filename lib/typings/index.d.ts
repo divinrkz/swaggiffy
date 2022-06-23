@@ -28,8 +28,8 @@ export type TClassProp = {
     type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
     required?: boolean;
     description?: string;
-    format?: string
-    example?: string
+    format?: string;
+    example?: string;
 };
 
 /**

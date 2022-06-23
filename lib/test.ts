@@ -7,10 +7,3 @@ class Test {
     password: string;
 }
 
-const schema = {
-    firstName: 'string',
-    lastName: 'string',
-    age: 15,
-};
-
-registerSchema('User', schema);
