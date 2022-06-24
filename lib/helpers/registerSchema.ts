@@ -18,15 +18,16 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
 export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
     if (options) {
         if (options.orm === 'mongoose') {
-            // generate mongoose schema
             const extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
+            console.log(extractor)
         } else {
             throw new SwaggiffyError('Orm is not supported');
         }
     } else {
         if (schema instanceof mongoose.Schema) {
-            // generate mongoose schema
-            console.log('ok');
+            const extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
+            console.log(extractor)
+        
         } else {
             const extractor = SchemaExtractor.extractPlain(schema, name);
             const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);

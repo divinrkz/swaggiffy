@@ -49,7 +49,14 @@ export class SchemaExtractor {
         const props: TClassProps = [];
         console.log(Object.keys(instance));
         for (const prop of Object.keys(instance)) {
-            props.push({ prop, type: typeof instance[prop] });
+            props.push({
+                prop,
+                type: typeof instance[prop],
+                required: undefined,
+                description: undefined,
+                example: undefined,
+                format: undefined,
+            });
         }
         return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }
