@@ -27,11 +27,10 @@ export class SchemaExtractor {
     }
 
     static extractMongoose(schema: mongoose.Schema, name?: string) {
-    
         const props: TClassProps = [];
         for (const prop of Object.keys(schema.paths)) {
-            console.log(schema.paths[prop].instance)
-            const propType: string = Utility.castType(schema.paths[prop].instance)
+            console.log(schema.paths[prop].instance);
+            const propType: string = Utility.castType(schema.paths[prop].instance);
             props.push({
                 prop,
                 type: 'string',

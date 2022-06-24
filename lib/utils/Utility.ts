@@ -144,42 +144,40 @@ export class Utility {
     static castType(type: string): string {
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-            
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-            
-                case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-                        
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-            
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-              
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-                
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
-                break;
-            
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string'
+                return 'string';
                 break;
 
-        
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string';
+                break;
+
             default:
+                return 'string'
                 break;
         }
-        // if (type === mongoose.Schema.Types.String.toString()) 
     }
-
 }
