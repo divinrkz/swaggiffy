@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { SchemaRegistryObj, TClassDef, TClassProps } from '../typings';
 import { Utility } from '../utils/Utility';
 
@@ -24,4 +25,40 @@ export class SchemaExtractor {
 
         return <TClassDef>{ name, props: props.reverse() };
     }
+
+
+    static extractMongoose(schema: mongoose.Schema, name?: string) {
+       console.log(schema.paths);
+        // const props: TClassProps = [];
+        // for (const prop of Object.keys(schema)) {
+        //     const schemaProp = schema.path(prop);
+        //     props.push({
+        //         prop,
+        //         type: schemaProp.instance,
+        //         required: schemaProp.isRequired,
+        //         description: schemaProp.options.description,
+        //         example: schemaProp.options.example,
+        //         format: schemaProp.options.format,
+        //     });
+        // }
+
+        // return <TClassDef>{ name, props: props.reverse() };
+    }
+
+
+    
+    static extractClassProps(target: any, name?: string): TClassDef {
+        const instance: typeof target = new target();
+        const props: TClassProps = [];
+        console.log(Object.keys(instance));
+        for (const prop of Object.keys(instance)) {
+            props.push({ prop, type: typeof instance[prop] });
+        }
+        return <TClassDef>{ name: name || target.name, props: props.reverse() };
+    }
+
 }
+
+
+
+

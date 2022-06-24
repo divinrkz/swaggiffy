@@ -2,6 +2,7 @@ import { TClassDef, TSwaggerSchema } from '../typings';
 import { Utility } from '../utils/Utility';
 import { getSchemaMetadataStorage } from '../globals';
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
+import { SchemaExtractor } from '../extractors/schema.extractor';
 
 /**
  * Constructs a standard swagger definition from decorated class
@@ -9,13 +10,13 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
  */
 export function Schema(name?: string): ClassDecorator {
     return (target) => {
-        const classDef: TClassDef = Utility.getClassProps(target, name);
+        const extractor: TClassDef = SchemaExtractor.getClassProps(target, name);
 
-        const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(classDef);
+        const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
 
         getSchemaMetadataStorage().schemas.push({
             target: target,
-            name: classDef.name,
+            name: extractor.name,
             swaggerDefinition: swaggerDefinition,
         } as SchemaMetadata);
     };

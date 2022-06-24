@@ -24,3 +24,20 @@ const schema = {
 };
 
 registerSchema('User', schema);
+registerSchema('User1', schema);
+registerSchema('User2', schema);
+registerSchema('User3', schema);
+registerSchema('User4', schema);
+registerSchema('User5', schema);
+registerSchema('User6', schema);
+registerSchema('User7', schema);
+registerSchema('User8', schema);
+registerSchema('User9', schema);
+registerSchema('User10', schema);
+registerSchema('User', {
+
+        firstName: 'string',
+        lastName: 'string',
+        age: 15,
+        address: 'sdfadfa'
+});

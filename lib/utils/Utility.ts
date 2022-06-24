@@ -14,16 +14,6 @@ export class Utility {
      */
     static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
 
-    static getClassProps(target: any, name?: string): TClassDef {
-        const instance: typeof target = new target();
-        const props: TClassProps = [];
-        console.log(Object.keys(instance));
-        for (const prop of Object.keys(instance)) {
-            props.push({ prop, type: typeof instance[prop] });
-        }
-        return <TClassDef>{ name: name || target.name, props: props.reverse() };
-    }
-
     /**
      * Generate Swagger Schema Definition
      */
