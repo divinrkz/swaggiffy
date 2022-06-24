@@ -56,6 +56,9 @@ export type TSwaggerType = {
 /**
  * Swagger Schema Object Type
  */
+
+export type TSwaggerDataType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object';
+
 export type TSwaggerSchemaObject = {
     // type: "integer" | "number" | "string" | "boolean" | "file";
     type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';

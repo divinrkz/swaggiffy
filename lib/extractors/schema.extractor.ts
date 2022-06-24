@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SchemaRegistryObj, TClassDef, TClassProps } from '../typings';
+import { SchemaRegistryObj, TClassDef, TClassProps, TSwaggerType } from '../typings';
 import { Utility } from '../utils/Utility';
 
 /**
@@ -27,9 +27,20 @@ export class SchemaExtractor {
     }
 
     static extractMongoose(schema: mongoose.Schema, name?: string) {
-        console.log(schema.paths);
-        // const props: TClassProps = [];
-        // for (const prop of Object.keys(schema)) {
+    
+        const props: TClassProps = [];
+        for (const prop of Object.keys(schema.paths)) {
+            console.log(schema.paths[prop].instance)
+            const propType: string = Utility.castType(schema.paths[prop].instance)
+            props.push({
+                prop,
+                type: 'string',
+                required: undefined,
+                description: undefined,
+                example: undefined,
+                format: undefined,
+            });
+        }
         //     const schemaProp = schema.path(prop);
         //     props.push({
         //         prop,

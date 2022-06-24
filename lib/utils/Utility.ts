@@ -5,6 +5,7 @@ import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
 import { getConfigMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
+import mongoose from 'mongoose';
 
 export class Utility {
     /**
@@ -139,4 +140,46 @@ export class Utility {
         else if (str.toLowerCase().includes('objectid')) return 'string';
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
+
+    static castType(type: string): string {
+        switch (type) {
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+            
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+            
+                case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+                        
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+            
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+              
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+                
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+            
+            case mongoose.Schema.Types.String.schemaName:
+                return 'string'
+                break;
+
+        
+            default:
+                break;
+        }
+        // if (type === mongoose.Schema.Types.String.toString()) 
+    }
+
 }

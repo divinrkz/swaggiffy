@@ -19,15 +19,14 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
     if (options) {
         if (options.orm === 'mongoose') {
             const extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
-            console.log(extractor)
+            console.log(extractor);
         } else {
             throw new SwaggiffyError('Orm is not supported');
         }
     } else {
         if (schema instanceof mongoose.Schema) {
             const extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
-            console.log(extractor)
-        
+            console.log(extractor);
         } else {
             const extractor = SchemaExtractor.extractPlain(schema, name);
             const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
