@@ -1,5 +1,5 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
+import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerDataType, TSwaggerNumberFormats, TSwaggerSchema, TSwaggerSchemaDef, TSwaggerStringFormats } from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
@@ -141,43 +141,31 @@ export class Utility {
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
 
-    static castType(type: string): string {
+    static castType(type: string): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined] {
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+                return ['string', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.Boolean.schemaName:
+                return ['boolean', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.Buffer.schemaName:
+                return ['object', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.Mixed.schemaName:
+                return ['object', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.ObjectId.schemaName:
+                return ['string', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.Array.schemaName:
+                return ['array', undefined];
 
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
-
-            case mongoose.Schema.Types.String.schemaName:
-                return 'string';
-                break;
+            case mongoose.Schema.Types.Map.schemaName:
+                return ['object', undefined];
 
             default:
-                return 'string'
-                break;
+                return ['object', undefined]
         }
     }
 }

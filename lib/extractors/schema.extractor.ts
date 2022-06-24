@@ -29,15 +29,15 @@ export class SchemaExtractor {
     static extractMongoose(schema: mongoose.Schema, name?: string) {
         const props: TClassProps = [];
         for (const prop of Object.keys(schema.paths)) {
-            console.log(schema.paths[prop].instance);
-            const propType: string = Utility.castType(schema.paths[prop].instance);
+            // console.log(schema.paths[prop].instance);
+            const [propType, propFormat] = Utility.castType(schema.paths[prop].instance);
             props.push({
                 prop,
-                type: 'string',
+                type: propType,
                 required: undefined,
                 description: undefined,
                 example: undefined,
-                format: undefined,
+                format: propFormat,
             });
         }
         //     const schemaProp = schema.path(prop);
@@ -51,7 +51,7 @@ export class SchemaExtractor {
         //     });
         // }
 
-        // return <TClassDef>{ name, props: props.reverse() };
+        return <TClassDef>{ name, props: props.reverse() };
     }
 
     static extractClassProps(target: any, name?: string): TClassDef {
