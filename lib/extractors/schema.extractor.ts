@@ -26,9 +26,8 @@ export class SchemaExtractor {
         return <TClassDef>{ name, props: props.reverse() };
     }
 
-
     static extractMongoose(schema: mongoose.Schema, name?: string) {
-       console.log(schema.paths);
+        console.log(schema.paths);
         // const props: TClassProps = [];
         // for (const prop of Object.keys(schema)) {
         //     const schemaProp = schema.path(prop);
@@ -45,8 +44,6 @@ export class SchemaExtractor {
         // return <TClassDef>{ name, props: props.reverse() };
     }
 
-
-    
     static extractClassProps(target: any, name?: string): TClassDef {
         const instance: typeof target = new target();
         const props: TClassProps = [];
@@ -56,9 +53,4 @@ export class SchemaExtractor {
         }
         return <TClassDef>{ name: name || target.name, props: props.reverse() };
     }
-
 }
-
-
-
-

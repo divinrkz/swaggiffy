@@ -10,7 +10,7 @@ import { SchemaExtractor } from '../extractors/schema.extractor';
  */
 export function Schema(name?: string): ClassDecorator {
     return (target) => {
-        const extractor: TClassDef = SchemaExtractor.getClassProps(target, name);
+        const extractor: TClassDef = SchemaExtractor.extractClassProps(target, name);
 
         const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
 

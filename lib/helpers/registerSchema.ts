@@ -26,7 +26,7 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
     } else {
         if (schema instanceof mongoose.Schema) {
             // generate mongoose schema
-            console.log('ok')
+            console.log('ok');
         } else {
             const extractor = SchemaExtractor.extractPlain(schema, name);
             const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);

@@ -35,9 +35,8 @@ registerSchema('User8', schema);
 registerSchema('User9', schema);
 registerSchema('User10', schema);
 registerSchema('User', {
-
-        firstName: 'string',
-        lastName: 'string',
-        age: 15,
-        address: 'sdfadfa'
+    firstName: 'string',
+    lastName: 'string',
+    age: 15,
+    address: 'sdfadfa',
 });
