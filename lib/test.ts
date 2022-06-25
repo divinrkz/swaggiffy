@@ -10,7 +10,10 @@ class Test {
 }
 
 const schema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     binary: Buffer,
     living: Boolean,
     updated: { type: Date, default: Date.now },

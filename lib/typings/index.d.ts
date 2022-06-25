@@ -25,10 +25,10 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  */
 export type TClassProp = {
     prop: string;
-    type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
+    type: TSwaggerDataType
     required?: boolean;
     description?: string;
-    format?: string;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
     example?: string;
 };
 

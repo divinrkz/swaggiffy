@@ -1,5 +1,16 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerDataType, TSwaggerNumberFormats, TSwaggerSchema, TSwaggerSchemaDef, TSwaggerStringFormats } from '../typings';
+import {
+    APIPathDefinition,
+    SwaggerAPIDefinition,
+    TClassDef,
+    TClassProps,
+    TSchemaProp,
+    TSwaggerDataType,
+    TSwaggerNumberFormats,
+    TSwaggerSchema,
+    TSwaggerSchemaDef,
+    TSwaggerStringFormats,
+} from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
@@ -141,31 +152,65 @@ export class Utility {
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
 
-    static castType(type: string): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined] {
+    static castMongooseType(type: string): 
+    [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
+        console.log(mongoose.Schema.Types.ObjectId.schemaName)
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
-                return ['string', undefined];
+                return ['string', undefined, undefined, 'string'];
 
             case mongoose.Schema.Types.Boolean.schemaName:
-                return ['boolean', undefined];
+                return ['boolean', undefined, undefined, false];
 
             case mongoose.Schema.Types.Buffer.schemaName:
-                return ['object', undefined];
+                return ['object', undefined, undefined, undefined];
 
             case mongoose.Schema.Types.Mixed.schemaName:
-                return ['object', undefined];
+                return ['object', undefined, undefined, undefined];
 
-            case mongoose.Schema.Types.ObjectId.schemaName:
-                return ['string', undefined];
+            case 'ObjectID':
+                console.log('here')
+                return ['string', undefined, true, '507f1f77bcf86cd799439011'];
 
             case mongoose.Schema.Types.Array.schemaName:
-                return ['array', undefined];
+                return ['array', undefined, undefined, undefined];
 
             case mongoose.Schema.Types.Map.schemaName:
+                return ['object', undefined, undefined, undefined];
+
+            default:
+                return ['object', undefined, undefined, undefined];
+        }
+    }
+
+    static castJSType(type: string): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined] {
+        switch (type) {
+            case 'string':
+                return ['string', undefined];
+
+            case 'number':
+                return ['number', undefined];
+
+            case 'bigint':
+                return ['number', undefined];
+
+            case 'boolean':
+                return ['boolean', undefined];
+
+            case 'symbol':
+                return ['object', undefined];
+
+            case 'undefined':
+                return ['object', undefined];
+
+            case 'object':
+                return ['object', undefined];
+                
+            case 'function':
                 return ['object', undefined];
 
             default:
-                return ['object', undefined]
+                return ['object', undefined];
         }
     }
 }
