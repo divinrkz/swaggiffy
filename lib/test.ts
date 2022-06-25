@@ -12,7 +12,7 @@ class Test {
 const schema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     binary: Buffer,
     living: Boolean,

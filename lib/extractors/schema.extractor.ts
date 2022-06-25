@@ -10,7 +10,7 @@ export class SchemaExtractor {
      * Extract props from plain schema
      * @param schema Schema to extract
      */
-    static extractPlain(schema: SchemaRegistryObj, name?: string) {
+    static extractPlain(schema: SchemaRegistryObj, name?: string): TClassDef {
         const props: TClassProps = [];
         for (const prop of Object.keys(schema)) {
             const [propType, propFormat] = Utility.castJSType(typeof schema[prop]);
@@ -27,30 +27,20 @@ export class SchemaExtractor {
         return <TClassDef>{ name, props: props.reverse() };
     }
 
-    static extractMongoose(schema: mongoose.Schema, name?: string) {
+    static extractMongoose(schema: mongoose.Schema, name?: string): TClassDef {
         const props: TClassProps = [];
 
         for (const prop of Object.keys(schema.paths)) {
-
-            const [propType, propFormat, isRequired] = Utility.castMongooseType(schema.paths[prop].instance);
+            const [propType, propFormat, isRequired, example] = Utility.castMongooseType(schema.paths[prop].instance);
             props.push({
                 prop,
                 type: propType,
                 required: isRequired,
                 description: undefined,
-                example: undefined,
+                example: example,
                 format: propFormat,
             });
-            
         }
-        // props.push({
-        //     prop: '_id',
-        //     type: 'string',
-        //     required: true,
-        //     description: 'MongoDB _id',
-        //     example: '5c8f8f8f8f8f8f8f8f8f8f8'
-        // })
-
 
         return <TClassDef>{ name, props: props.reverse() };
     }

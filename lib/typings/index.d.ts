@@ -25,11 +25,11 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  */
 export type TClassProp = {
     prop: string;
-    type: TSwaggerDataType
+    type: TSwaggerDataType;
     required?: boolean;
     description?: string;
     format?: TSwaggerNumberFormats | TSwaggerStringFormats;
-    example?: string;
+    example?: string | number | boolean | object;
 };
 
 /**

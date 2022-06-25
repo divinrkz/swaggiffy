@@ -152,9 +152,10 @@ export class Utility {
         else if (str.toLowerCase().includes('uuid')) return 'string';
     }
 
-    static castMongooseType(type: string): 
-    [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
-        console.log(mongoose.Schema.Types.ObjectId.schemaName)
+    static castMongooseType(
+        type: string,
+    ): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
+        console.log(mongoose.Schema.Types.ObjectId.schemaName);
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
                 return ['string', undefined, undefined, 'string'];
@@ -169,7 +170,7 @@ export class Utility {
                 return ['object', undefined, undefined, undefined];
 
             case 'ObjectID':
-                console.log('here')
+                console.log('here');
                 return ['string', undefined, true, '507f1f77bcf86cd799439011'];
 
             case mongoose.Schema.Types.Array.schemaName:
@@ -205,7 +206,7 @@ export class Utility {
 
             case 'object':
                 return ['object', undefined];
-                
+
             case 'function':
                 return ['object', undefined];
 
