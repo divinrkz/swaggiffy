@@ -18,7 +18,6 @@ app.listen(5008, () => {
     console.log('Server is running 2');
 });
 
-
 const schema = {
     firstName: 'string',
     lastName: 'string',
@@ -27,13 +26,11 @@ const schema = {
 
 registerSchema('User1', schema);
 
-
 @Schema('User2')
 class Schema2 {
     username: string = 'test';
     password: string = 'test';
 }
-
 
 const schema3 = new mongoose.Schema({
     name: {

@@ -102,7 +102,7 @@ export class Utility {
      */
     static toSwaggerSchema(array: SchemaMetadata[]): TSwaggerSchemaDef {
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
-       
+
         for (const item of array) {
             definition = {
                 ...definition,
