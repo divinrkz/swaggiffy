@@ -23,7 +23,7 @@
       "https"
     ],
     "paths": {
-      "/users/": {
+      "/users": {
         "get": {
           "tags": [
             "Users"

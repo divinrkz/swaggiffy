@@ -32,7 +32,6 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 },
             },
         };
-        
 
         getAPIDefinitionMetadataStorage().apiDefinitions.push({
             router,

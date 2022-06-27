@@ -17,6 +17,7 @@ import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
 import { getConfigMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 import mongoose from 'mongoose';
+import { FileUtils } from './FileUtils';
 
 export class Utility {
     /**
@@ -121,46 +122,44 @@ export class Utility {
     static toSwaggerAPIDefinition(array: APIDefinitionMetadata[]): SwaggerAPIDefinition {
         let apiDefinition: SwaggerAPIDefinition = <SwaggerAPIDefinition>{};
 
-        const pathStrings: string[] = array.map(item => item.apiDefinition.pathString);
+        const pathStrings: string[] = array.map((item) => item.apiDefinition.pathString);
         const uniquePathStrings: string[] = Array.from(new Set(pathStrings));
 
         for (const pathString of uniquePathStrings) {
-            const methods = array.filter(item => item.apiDefinition.pathString === pathString);
+            const methods = array.filter((item) => item.apiDefinition.pathString === pathString);
             let apiDefinerObj: SwaggerAPIDefinition = <SwaggerAPIDefinition>{};
-            for (const method of methods) {    
+            for (const method of methods) {
                 apiDefinerObj = {
                     ...apiDefinerObj,
-                    ...{[method.apiDefinition.method]: {
-                        tags: method.apiDefinition.tags,
-                        operationId: method.apiDefinition.meta.operationId,
-                        summary: method.apiDefinition.meta.summary,
-                        description: method.apiDefinition.meta.description,
-                        parameters: method.apiDefinition.meta.parameters,
-                        consumes: method.apiDefinition.meta.consumes,
-                        produces: method.apiDefinition.meta.produces,
-                        responses: method.apiDefinition.meta.responses,
-                    }},
-                }
+                    ...{
+                        [method.apiDefinition.method]: {
+                            tags: method.apiDefinition.tags,
+                            operationId: method.apiDefinition.meta.operationId,
+                            summary: method.apiDefinition.meta.summary,
+                            description: method.apiDefinition.meta.description,
+                            parameters: method.apiDefinition.meta.parameters,
+                            consumes: method.apiDefinition.meta.consumes,
+                            produces: method.apiDefinition.meta.produces,
+                            responses: method.apiDefinition.meta.responses,
+                        },
+                    },
+                };
             }
 
             apiDefinition = {
                 ...apiDefinition,
-                ...{[pathString]: {
-                    ...apiDefinerObj
+                ...{
+                    [FileUtils.cleanPath(pathString)]: {
+                        ...apiDefinerObj,
+                    },
                 },
-            }
-            
-    
-            }    
+            };
         }
 
-            
-          
         return apiDefinition;
     }
 
     static extractType(func: Function) {
-        
         const str = func.toString();
 
         if (str.toLowerCase().includes('string')) return 'string';

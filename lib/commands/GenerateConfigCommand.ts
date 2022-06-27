@@ -48,7 +48,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
                 outFile: 'src/swagger.json',
                 apiHost: 'localhost:3000',
                 apiBaseUrl: '/api',
-                swaggerRoute: '/api-docs'
+                swaggerRoute: '/api-docs',
             },
             undefined,
             3,
@@ -68,7 +68,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
                 outFile: 'src/swagger.json',
                 apiHost: 'localhost:3000',
                 apiBaseUrl: '/api',
-                swaggerRoute: '/api-docs'
+                swaggerRoute: '/api-docs',
             },
             undefined,
             3,
