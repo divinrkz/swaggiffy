@@ -24,6 +24,7 @@ export class Runner {
     static generateAPIDefinitions(): void {
         const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
 
+        console.log(pathDefinition)
         Utility.swaggiffy(pathDefinition, 'DEFINITION');
         PlatformTools.logSuccess('Swagger API Definitions generated successfully');
     }

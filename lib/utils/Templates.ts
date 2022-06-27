@@ -55,8 +55,7 @@ export class Templates {
                     host: 'localhost:8080',
                     basePath: '/api',
                     schemes: ['http'],
-                    paths: {
-                    },
+                    paths: {},
                 },
                 apis: [],
             },

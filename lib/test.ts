@@ -24,16 +24,25 @@ router.get('/', (req: any, res: any) => {
 router.get('/recent', (req: any, res: any) => {
     res.send('recents');
 });
-router.get('/:id', (req: any, res: any) => {
-    res.send('Get by Id');
+
+router.get('/manipulate', (req: any, res: any) => {
+    res.send('recents');
 });
 
 router.post('/', (req: any, res: any) => {
     res.send('Created');
 });
 
+router.post('/manipulate', (req: any, res: any) => {
+    res.send('recents');
+});
+
 router.put('/:id', (req: any, res: any) => {
     res.send('Update');
+});
+
+router.put('/manipulate', (req: any, res: any) => {
+    res.send('recents');
 });
 
 router.delete('/:id', (req: any, res: any) => {

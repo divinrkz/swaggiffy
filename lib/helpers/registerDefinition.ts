@@ -32,6 +32,7 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 },
             },
         };
+        
 
         getAPIDefinitionMetadataStorage().apiDefinitions.push({
             router,
@@ -45,7 +46,3 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
 //         registerDefinition(_meta);
 //     });
 // }
-
-function getRandomArbitrary(min = 0, max = 100) {
-    return Math.random() * (max - min) + min;
-}

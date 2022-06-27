@@ -24,6 +24,24 @@
     ],
     "paths": {
       "/users/": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
         "post": {
           "tags": [
             "Users"
@@ -63,7 +81,81 @@
           }
         }
       },
+      "/users/manipulate": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
       "/users/:id": {
+        "put": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
         "delete": {
           "tags": [
             "Users"
