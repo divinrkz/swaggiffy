@@ -28,7 +28,13 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 responses: {
                     '200': {
                         description: 'OK',
+                        schema: {
+                            '$ref': `#/definitions/${options.mappedSchema}`,
+                        }
                     },
+                    '500': {
+                        description: 'Internal Server Error',
+                    }
                 },
             },
         };

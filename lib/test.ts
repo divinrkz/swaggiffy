@@ -50,7 +50,6 @@ router.delete('/:id', (req: any, res: any) => {
 });
 
 app.use('/users', router);
-console.log(app._router.stack);
 
-registerDefinition(router, { tags: 'Users', basePath: 'users' });
+registerDefinition(router, { tags: 'Users', basePath: 'users', mappedSchema: 'User' });
 new Swaggiffy().setupExpress(app).swaggiffy();

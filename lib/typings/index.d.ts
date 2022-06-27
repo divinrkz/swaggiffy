@@ -263,7 +263,7 @@ export type SwaggerAPIDefinition = {
     };
 };
 
-export type APIDocResponse = Record<string, { description: string }>;
+export type APIDocResponse = Record<string, { description: string, schema?: {'$ref': string} }>;
 
 export type APIRegisterMeta = {
     router: express.Router;
@@ -271,6 +271,7 @@ export type APIRegisterMeta = {
 
 export type APIDefinitionOptions = {
     basePath: string;
+    mappedSchema: string;
     summary?: string;
     description?: string;
     tags?: string;
