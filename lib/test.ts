@@ -5,8 +5,6 @@ import { registerDefinition } from './helpers/registerDefinition';
 import { registerSchema } from './helpers/registerSchema';
 import { Swaggiffy } from './Swaggiffy';
 
-
-
 const express = require('express');
 const app = express();
 
@@ -42,9 +40,8 @@ router.delete('/:id', (req: any, res: any) => {
     res.send('Delete');
 });
 
-
 app.use('/users', router);
 console.log(app._router.stack);
 
-registerDefinition(router, {tags: 'Users', basePath: 'users'});
+registerDefinition(router, { tags: 'Users', basePath: 'users' });
 new Swaggiffy().setupExpress(app).swaggiffy();

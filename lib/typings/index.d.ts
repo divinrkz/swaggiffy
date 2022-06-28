@@ -277,7 +277,7 @@ export type APIDefinitionOptions = {
     produces?: Array<EMimeTypes>;
     consumes?: Array<EMimeTypes>;
     responses?: APIDocResponse;
-}
+};
 
 export type SchemaRegistryObj = {
     [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
@@ -286,7 +286,6 @@ export type SchemaRegistryObj = {
 export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj;
 
 export type SchemaRegistryOptions = { required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
-
 
 export type APIDefinitionRegistryObj = {
     [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;

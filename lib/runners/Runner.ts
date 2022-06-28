@@ -23,7 +23,7 @@ export class Runner {
      */
     static generateAPIDefinitions(): void {
         const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
-        
+
         Utility.swaggiffy(pathDefinition, 'DEFINITION');
         PlatformTools.logSuccess('Swagger API Definitions generated successfully');
     }

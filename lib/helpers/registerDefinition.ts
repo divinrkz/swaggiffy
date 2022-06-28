@@ -15,7 +15,6 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
         const method = item.route.stack[0].method.toLowerCase();
         const path = item.route.path;
 
-
         const pathDefinition: APIPathDefinition = {
             pathString: `/${options.basePath}${path}`,
             tags: options.tags?.split(' ') || [],

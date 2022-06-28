@@ -52,22 +52,10 @@ export class Templates {
                         },
                         version: '1.0.0',
                     },
-                    host: 'api.example.com',
-                    basePath: '/v1',
-                    schemes: ['https'],
+                    host: 'localhost:8080',
+                    basePath: '/api',
+                    schemes: ['http'],
                     paths: {
-                        '/users': {
-                            get: {
-                                summary: 'Returns a list of users.',
-                                description: 'Optional extended description in Markdown.',
-                                produces: ['application/json'],
-                                responses: {
-                                    200: {
-                                        description: 'OK',
-                                    },
-                                },
-                            },
-                        },
                     },
                 },
                 apis: [],
@@ -91,25 +79,22 @@ export class Templates {
                     info: {
                         title: name,
                         description: `${name} API Documentation`,
+                        termsOfService: 'http://swagger.io/terms/',
+                        contact: {
+                            name: 'API Support',
+                            url: 'http://www.swagger.io/support',
+                            email: 'support@swagger.io',
+                        },
+                        license: {
+                            name: 'Apache 2.0',
+                            url: 'http://www.apache.org/licenses/LICENSE-2.0.html',
+                        },
                         version: '1.0.0',
                     },
-                    host: 'api.example.com',
-                    basePath: '/v1',
-                    schemes: ['https'],
-                    paths: {
-                        '/users': {
-                            get: {
-                                summary: 'Returns a list of users.',
-                                description: 'Optional extended description in Markdown.',
-                                produces: ['application/json'],
-                                responses: {
-                                    200: {
-                                        description: 'OK',
-                                    },
-                                },
-                            },
-                        },
-                    },
+                    host: 'localhost:8080',
+                    basePath: '/api',
+                    schemes: ['http'],
+                    paths: {},
                 },
                 apis: [],
             },
