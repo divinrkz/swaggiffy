@@ -249,7 +249,7 @@ export type APIPathDefinition = {
 
 export type ApiPathDescription = {
     summary: string;
-    operationId: string;
+    operationId?: string;
     description: string;
     parameters?: APIParameters;
     produces: Array<EMimeTypes>;
@@ -267,13 +267,17 @@ export type APIDocResponse = Record<string, { description: string }>;
 
 export type APIRegisterMeta = {
     router: express.Router;
+};
+
+export type APIDefinitionOptions = {
+    basePath: string;
     summary?: string;
     description?: string;
     tags?: string;
     produces?: Array<EMimeTypes>;
     consumes?: Array<EMimeTypes>;
     responses?: APIDocResponse;
-};
+}
 
 export type SchemaRegistryObj = {
     [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
@@ -282,3 +286,12 @@ export type SchemaRegistryObj = {
 export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj;
 
 export type SchemaRegistryOptions = { required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
+
+
+export type APIDefinitionRegistryObj = {
+    [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
+};
+// Parameter types
+export type APIDefinitionRegistryType = mongoose.Schema | SchemaRegistryObj;
+
+export type APIDefinitionRegistryOptions = { basePath: string };

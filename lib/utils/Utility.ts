@@ -133,6 +133,7 @@ export class Utility {
                             parameters: item.apiDefinition.meta.parameters,
                             consumes: item.apiDefinition.meta.consumes,
                             produces: item.apiDefinition.meta.produces,
+                            responses: item.apiDefinition.meta.responses,
                         },
                     },
                 },

@@ -16,105 +16,75 @@
       },
       "version": "1.0.0"
     },
-    "host": "api.example.com",
-    "basePath": "/v1",
+    "host": "localhost:5008",
+    "basePath": "/",
     "schemes": [
+      "http",
       "https"
     ],
-    "paths": {},
-    "definitions": {
-      "User1": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "age": {
-            "type": "number"
+    "paths": {
+      "/users/": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
           }
         }
       },
-      "User2": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
+      "/users/recent": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
           }
         }
       },
-      "User3": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "string"
-          },
-          "binary": {
-            "type": "object"
-          },
-          "living": {
-            "type": "boolean",
-            "example": false
-          },
-          "updated": {
-            "type": "object"
-          },
-          "age": {
-            "type": "object"
-          },
-          "array": {
-            "type": "array"
-          },
-          "ofString": {
-            "type": "array"
-          },
-          "ofNumber": {
-            "type": "array"
-          },
-          "ofDates": {
-            "type": "array"
-          },
-          "ofBuffer": {
-            "type": "array"
-          },
-          "ofBoolean": {
-            "type": "array"
-          },
-          "ofArrays": {
-            "type": "array"
-          },
-          "ofArrayOfNumbers": {
-            "type": "array"
-          },
-          "nested.stuff": {
-            "type": "string",
-            "example": "string"
-          },
-          "map": {
-            "type": "object"
-          },
-          "map.$*": {
-            "type": "object"
-          },
-          "mapOfString": {
-            "type": "object"
-          },
-          "mapOfString.$*": {
-            "type": "string",
-            "example": "string"
-          },
-          "_id": {
-            "type": "object"
+      "/users/:id": {
+        "delete": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
           }
         }
       }
-    }
+    },
+    "definitions": {}
   },
   "apis": []
 }
