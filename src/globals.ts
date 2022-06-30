@@ -31,11 +31,10 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
     return globalScope.schemaMetadataStorage;
 }
 
-
 /**
  * Returns globals schemametadata storage
  */
- export function getAPIDefinitionMetadataStorage(): APIDefinitionMetadataStorage {
+export function getAPIDefinitionMetadataStorage(): APIDefinitionMetadataStorage {
     const globalScope = PlatformTools.getGlobalVariable();
     if (!globalScope.apiDefinitionStorage) globalScope.apiDefinitionStorage = new APIDefinitionMetadataStorage();
 

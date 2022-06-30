@@ -1,18 +1,14 @@
-import { TSwaggerSchema } from '../../typings';
+import { APIPathDefinition, TSwaggerSchema } from '../../typings';
 
 export interface APIDefinitionMetadata {
     /**
-     * Class which owns the schema
+     * Router which owns the API Definition
      */
-    readonly target: any;
+    readonly router: any;
 
-    /**
-     * Name of Class owning the schema
-     */
-    readonly name: string;
 
     /**
      * Swagger Definition for the schema
      */
-    readonly swaggerDefinition: TSwaggerSchema;
+    readonly apiDefinition: APIPathDefinition;
 }

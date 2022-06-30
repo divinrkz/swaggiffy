@@ -57,7 +57,6 @@ export function createDefinition(router: express.Router) {
 
         pathDefinitions.push(pathDefinition);
 
-        
         getAPIDefinitionMetadataStorage().apiDefinitions.push({
             target: target,
             name: classDef.name,
