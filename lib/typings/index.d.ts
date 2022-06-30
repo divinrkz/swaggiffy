@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as mongoose from 'mongoose';
 
 /**
  * Path String Type
@@ -25,6 +26,10 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
 export type TClassProp = {
     prop: string;
     type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
+    required?: boolean;
+    description?: string;
+    format?: string;
+    example?: string;
 };
 
 /**
@@ -54,7 +59,7 @@ export type TSwaggerType = {
 export type TSwaggerSchemaObject = {
     // type: "integer" | "number" | "string" | "boolean" | "file";
     type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
-    // format?: any;
+    format?: any;
     // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
     title?: string;
@@ -63,6 +68,7 @@ export type TSwaggerSchemaObject = {
     // multipleOf?: any;
     maximum?: number;
     exclusiveMaximum?: number;
+    example?: any;
     minimum?: number;
     exclusiveMinimum?: number;
     maxLength?: number;
@@ -255,3 +261,11 @@ export type APIRegisterMeta = {
     consumes?: Array<EMimeTypes>;
     responses?: APIDocResponse;
 };
+
+export type SchemaRegistryObj = {
+    [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
+};
+// Parameter types
+export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj;
+
+export type SchemaRegistryOptions = { required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };

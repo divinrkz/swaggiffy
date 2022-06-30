@@ -21,57 +21,23 @@
     "schemes": [
       "https"
     ],
-    "paths": {
-      "/": {
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "operationId": "postfunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
-          "summary": "",
-          "description": "",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ]
-        }
-      },
-      "/recent": {
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "operationId": "getfunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
-          "summary": "",
-          "description": "",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ]
-        }
-      },
-      "/:id": {
-        "delete": {
-          "tags": [
-            "Users"
-          ],
-          "operationId": "deletefunction getRandomArbitrary(min = 0, max = 100) {\n    return Math.random() * (max - min) + min;\n}",
-          "summary": "",
-          "description": "",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ]
+    "paths": {},
+    "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          }
         }
       }
-    },
-    "definitions": {}
+    }
   },
   "apis": []
 }
