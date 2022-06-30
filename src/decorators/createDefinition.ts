@@ -33,7 +33,6 @@ router.delete('/:id', (req: any, res: any) => {
  * @returns apiPathDefinitions {APIPathDefinition}
  */
 export function createDefinition(router: express.Router) {
-    const pathDefinitions: APIPathDefinition[] = [];
     const paths = router.stack.filter((item) => item.route);
     paths.forEach((item) => {
         const method = item.route.stack[0].method.toLowerCase();
@@ -55,12 +54,9 @@ export function createDefinition(router: express.Router) {
             },
         };
 
-        pathDefinitions.push(pathDefinition);
-
         getAPIDefinitionMetadataStorage().apiDefinitions.push({
-            target: target,
-            name: classDef.name,
-            swaggerDefinition: swaggerDefinition,
+            router,
+            apiDefinition: pathDefinition,
         } as APIDefinitionMetadata);
     });
 }

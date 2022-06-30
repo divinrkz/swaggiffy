@@ -6,7 +6,6 @@ export interface APIDefinitionMetadata {
      */
     readonly router: any;
 
-
     /**
      * Swagger Definition for the schema
      */
