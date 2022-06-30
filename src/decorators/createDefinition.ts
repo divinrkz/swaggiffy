@@ -58,5 +58,7 @@ export function createDefinition(router: express.Router) {
             router,
             apiDefinition: pathDefinition,
         } as APIDefinitionMetadata);
+
+        console.log(getAPIDefinitionMetadataStorage());
     });
 }
