@@ -1,5 +1,6 @@
 import { PlatformTools } from './platform/PlatformTools';
 import { SchemaMetadataStorage } from './storage/SchemaMetadataStorage';
+import { APIDefinitionMetadataStorage } from './storage/APIDefinitionMetadataStorage';
 import { ConfigMetadataStorage } from './storage/ConfigMetadataStorage';
 import { ConfigurationProps } from './typings';
 
@@ -28,6 +29,17 @@ export function getSchemaMetadataStorage(): SchemaMetadataStorage {
     if (!globalScope.schemaMetadataStorage) globalScope.schemaMetadataStorage = new SchemaMetadataStorage();
 
     return globalScope.schemaMetadataStorage;
+}
+
+
+/**
+ * Returns globals schemametadata storage
+ */
+ export function getAPIDefinitionMetadataStorage(): APIDefinitionMetadataStorage {
+    const globalScope = PlatformTools.getGlobalVariable();
+    if (!globalScope.apiDefinitionStorage) globalScope.apiDefinitionStorage = new APIDefinitionMetadataStorage();
+
+    return globalScope.apiDefinitionStorage;
 }
 
 /**

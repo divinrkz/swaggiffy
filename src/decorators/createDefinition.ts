@@ -1,5 +1,7 @@
 import * as express from 'express';
 import { APIPathDefinition } from '../typings';
+import { getAPIDefinitionMetadataStorage } from '../globals';
+import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 
 const router = express.Router();
 
@@ -25,15 +27,12 @@ router.delete('/:id', (req: any, res: any) => {
     res.send('Delete');
 });
 
-
-
-
 /**
  * Create swagger path definition
  * @param router Express router
  * @returns apiPathDefinitions {APIPathDefinition}
  */
-function createPathDefinition(router: express.Router) {
+export function createDefinition(router: express.Router) {
     const pathDefinitions: APIPathDefinition[] = [];
     const paths = router.stack.filter((item) => item.route);
     paths.forEach((item) => {
@@ -57,7 +56,12 @@ function createPathDefinition(router: express.Router) {
         };
 
         pathDefinitions.push(pathDefinition);
-    });
-    return pathDefinitions;
-}
 
+        
+        getAPIDefinitionMetadataStorage().apiDefinitions.push({
+            target: target,
+            name: classDef.name,
+            swaggerDefinition: swaggerDefinition,
+        } as APIDefinitionMetadata);
+    });
+}
