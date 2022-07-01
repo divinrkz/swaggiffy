@@ -102,6 +102,7 @@ export class Utility {
      */
     static toSwaggerSchema(array: SchemaMetadata[]): TSwaggerSchemaDef {
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
+       
         for (const item of array) {
             definition = {
                 ...definition,
@@ -155,7 +156,6 @@ export class Utility {
     static castMongooseType(
         type: string,
     ): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
-        console.log(mongoose.Schema.Types.ObjectId.schemaName);
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
                 return ['string', undefined, undefined, 'string'];
@@ -169,8 +169,7 @@ export class Utility {
             case mongoose.Schema.Types.Mixed.schemaName:
                 return ['object', undefined, undefined, undefined];
 
-            case 'ObjectID':
-                console.log('here');
+            case mongoose.Schema.Types.Mixed.schemaName || 'ObjectID':
                 return ['string', undefined, true, '507f1f77bcf86cd799439011'];
 
             case mongoose.Schema.Types.Array.schemaName:

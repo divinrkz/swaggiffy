@@ -16,13 +16,11 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
  */
 
 export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
-    let extractor: TClassDef | undefined; 
-    let swaggerDefinition: TSwaggerSchema | undefined; 
-    
+    let extractor: TClassDef | undefined;
+
     if (options) {
         if (options.orm === 'mongoose') {
             extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
-  
         } else {
             throw new SwaggiffyError('Orm is not supported');
         }
@@ -31,10 +29,11 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
             extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
         } else {
             extractor = SchemaExtractor.extractPlain(schema, name);
-            swaggerDefinition = Utility.genSchemaDef(extractor)
         }
     }
-    
+
+    const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
+
     getSchemaMetadataStorage().schemas.push({
         target: extractor,
         name: name,
