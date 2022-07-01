@@ -1,10 +1,22 @@
 import { SchemaMetadata } from '../storage/types/SchemaMetadata';
-import { APIPathDefinition, SwaggerAPIDefinition, TClassDef, TClassProps, TSchemaProp, TSwaggerSchema, TSwaggerSchemaDef } from '../typings';
+import {
+    APIPathDefinition,
+    SwaggerAPIDefinition,
+    TClassDef,
+    TClassProps,
+    TSchemaProp,
+    TSwaggerDataType,
+    TSwaggerNumberFormats,
+    TSwaggerSchema,
+    TSwaggerSchemaDef,
+    TSwaggerStringFormats,
+} from '../typings';
 import { PlatformTools } from '../platform/PlatformTools';
 import { Defaults } from './Defaults';
 import { ConfigMetadataStorage } from '../storage/ConfigMetadataStorage';
 import { getConfigMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
+import mongoose from 'mongoose';
 
 export class Utility {
     /**
@@ -13,16 +25,6 @@ export class Utility {
      * @returns Target class properties
      */
     static configStore: ConfigMetadataStorage = getConfigMetadataStorage();
-
-    static getClassProps(target: any, name?: string): TClassDef {
-        const instance: typeof target = new target();
-        const props: TClassProps = [];
-        console.log(Object.keys(instance));
-        for (const prop of Object.keys(instance)) {
-            props.push({ prop, type: typeof instance[prop] });
-        }
-        return <TClassDef>{ name: name || target.name, props: props.reverse() };
-    }
 
     /**
      * Generate Swagger Schema Definition
@@ -100,6 +102,7 @@ export class Utility {
      */
     static toSwaggerSchema(array: SchemaMetadata[]): TSwaggerSchemaDef {
         let definition: TSwaggerSchemaDef = <TSwaggerSchemaDef>{};
+
         for (const item of array) {
             definition = {
                 ...definition,
@@ -148,5 +151,66 @@ export class Utility {
         else if (str.toLowerCase().includes('date')) return 'string';
         else if (str.toLowerCase().includes('objectid')) return 'string';
         else if (str.toLowerCase().includes('uuid')) return 'string';
+    }
+
+    static castMongooseType(
+        type: string,
+    ): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
+        switch (type) {
+            case mongoose.Schema.Types.String.schemaName:
+                return ['string', undefined, undefined, 'string'];
+
+            case mongoose.Schema.Types.Boolean.schemaName:
+                return ['boolean', undefined, undefined, false];
+
+            case mongoose.Schema.Types.Buffer.schemaName:
+                return ['object', undefined, undefined, undefined];
+
+            case mongoose.Schema.Types.Mixed.schemaName:
+                return ['object', undefined, undefined, undefined];
+
+            case mongoose.Schema.Types.Mixed.schemaName || 'ObjectID':
+                return ['string', undefined, true, '507f1f77bcf86cd799439011'];
+
+            case mongoose.Schema.Types.Array.schemaName:
+                return ['array', undefined, undefined, undefined];
+
+            case mongoose.Schema.Types.Map.schemaName:
+                return ['object', undefined, undefined, undefined];
+
+            default:
+                return ['object', undefined, undefined, undefined];
+        }
+    }
+
+    static castJSType(type: string): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined] {
+        switch (type) {
+            case 'string':
+                return ['string', undefined];
+
+            case 'number':
+                return ['number', undefined];
+
+            case 'bigint':
+                return ['number', undefined];
+
+            case 'boolean':
+                return ['boolean', undefined];
+
+            case 'symbol':
+                return ['object', undefined];
+
+            case 'undefined':
+                return ['object', undefined];
+
+            case 'object':
+                return ['object', undefined];
+
+            case 'function':
+                return ['object', undefined];
+
+            default:
+                return ['object', undefined];
+        }
     }
 }

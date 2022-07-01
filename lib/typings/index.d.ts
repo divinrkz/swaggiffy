@@ -25,11 +25,11 @@ export type TSchemaProp = Record<string, TSwaggerSchemaObject>;
  */
 export type TClassProp = {
     prop: string;
-    type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
+    type: TSwaggerDataType;
     required?: boolean;
     description?: string;
-    format?: string;
-    example?: string;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+    example?: string | number | boolean | object;
 };
 
 /**
@@ -56,10 +56,23 @@ export type TSwaggerType = {
 /**
  * Swagger Schema Object Type
  */
+
+export type TSwaggerDataType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object';
+
+/**
+ * Valid string formats
+ */
+export type TSwaggerStringFormats = 'date' | 'date-time' | 'password' | 'byte' | 'binary' | 'email' | 'uuid' | 'uri' | 'hostname' | 'ipv4' | 'ipv6';
+
+/**
+ * Valid swagger number formats
+ */
+export type TSwaggerNumberFormats = 'float' | 'double' | 'int32' | 'int64';
+
 export type TSwaggerSchemaObject = {
     // type: "integer" | "number" | "string" | "boolean" | "file";
-    type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'object' | 'date' | 'undefined' | 'function';
-    format?: any;
+    type: TSwaggerDataType;
+    format?: TSwaggerStringFormats | TSwaggerNumberFormats;
     // format?: typeof TOSAType extends "integer" ? TOSAType :  TOSAType extends "number" ? TNumberFormat : TOSAType extends "string" ? TStringFormat : string;
     $ref?: RefString;
     title?: string;

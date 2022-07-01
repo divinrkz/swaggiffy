@@ -23,7 +23,7 @@
     ],
     "paths": {},
     "definitions": {
-      "User": {
+      "User1": {
         "type": "object",
         "properties": {
           "firstName": {
@@ -34,6 +34,83 @@
           },
           "age": {
             "type": "number"
+          }
+        }
+      },
+      "User2": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "User3": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "string"
+          },
+          "binary": {
+            "type": "object"
+          },
+          "living": {
+            "type": "boolean",
+            "example": false
+          },
+          "updated": {
+            "type": "object"
+          },
+          "age": {
+            "type": "object"
+          },
+          "array": {
+            "type": "array"
+          },
+          "ofString": {
+            "type": "array"
+          },
+          "ofNumber": {
+            "type": "array"
+          },
+          "ofDates": {
+            "type": "array"
+          },
+          "ofBuffer": {
+            "type": "array"
+          },
+          "ofBoolean": {
+            "type": "array"
+          },
+          "ofArrays": {
+            "type": "array"
+          },
+          "ofArrayOfNumbers": {
+            "type": "array"
+          },
+          "nested.stuff": {
+            "type": "string",
+            "example": "string"
+          },
+          "map": {
+            "type": "object"
+          },
+          "map.$*": {
+            "type": "object"
+          },
+          "mapOfString": {
+            "type": "object"
+          },
+          "mapOfString.$*": {
+            "type": "string",
+            "example": "string"
+          },
+          "_id": {
+            "type": "object"
           }
         }
       }

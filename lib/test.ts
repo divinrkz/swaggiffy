@@ -1,8 +1,4 @@
-import { Schema } from './decorators/Schema';
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
+// import { Schema } from './decorators/Schema';
 import { registerSchema } from './helpers/registerSchema';
-
-@Schema()
-class Test {
-    username: string;
-    password: string;
-}

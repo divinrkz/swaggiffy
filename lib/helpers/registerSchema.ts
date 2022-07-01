@@ -16,35 +16,27 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
  */
 
 export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
+    let extractor: TClassDef | undefined;
+
     if (options) {
         if (options.orm === 'mongoose') {
-            // generate mongoose schema
+            extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
         } else {
             throw new SwaggiffyError('Orm is not supported');
         }
     } else {
         if (schema instanceof mongoose.Schema) {
-            // generate mongoose schema
+            extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
         } else {
-            const objDef = SchemaExtractor.extractPlain(schema, name);
-            const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(objDef);
-
-            getSchemaMetadataStorage().schemas.push({
-                target: objDef,
-                name: name,
-                swaggerDefinition,
-            } as SchemaMetadata);
+            extractor = SchemaExtractor.extractPlain(schema, name);
         }
     }
 
-    // for (const prop of Object.keys(obj)) {
-    //     let _type;
+    const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
 
-    //     if (typeof obj[prop] == 'object') {
-    //         if (typeof obj[prop].type == 'function') _type = Utility.extractType(obj[prop].type);
-    //         else _type = obj[prop].type || 'string';
-    //     } else _type = obj[prop].type || 'string';
-    //     props.push({ prop, type: _type });
-    // }
-    // return <TClassDef>{ name: name, props: props.reverse() };
+    getSchemaMetadataStorage().schemas.push({
+        target: extractor,
+        name: name,
+        swaggerDefinition,
+    } as SchemaMetadata);
 }
