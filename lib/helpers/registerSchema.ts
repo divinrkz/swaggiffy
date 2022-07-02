@@ -15,6 +15,12 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
  * @returns schemaDefinition {SchemaDefinition}
  */
 
+export type SchemaParam = {
+    name: string,
+    schema: SchemaRegistryType,
+    options?: SchemaRegistryOptions   
+}
+
 export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
     let extractor: TClassDef | undefined;
 
@@ -39,4 +45,32 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
         name: name,
         swaggerDefinition,
     } as SchemaMetadata);
+}
+
+export function registerSchemas(schemas: SchemaParam[]) {
+    let extractor: TClassDef | undefined;
+    for (const _schema of schemas) {
+        if (_schema.options) {
+            if (_schema.options.orm === 'mongoose') {
+                extractor = SchemaExtractor.extractMongoose(_schema.schema as mongoose.Schema, _schema.name);
+            } else {
+                throw new SwaggiffyError('Orm is not supported');
+            }
+        } else {
+            if (_schema.schema instanceof mongoose.Schema) {
+                extractor = SchemaExtractor.extractMongoose(_schema.schema as mongoose.Schema, _schema.name);
+            } else {
+                extractor = SchemaExtractor.extractPlain(_schema.schema, _schema.name);
+            }
+            
+        }
+
+        const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
+
+        getSchemaMetadataStorage().schemas.push({
+            target: extractor,
+            name: _schema.name,
+            swaggerDefinition,
+        } as SchemaMetadata);
+    }
 }
