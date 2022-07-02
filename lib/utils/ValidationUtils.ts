@@ -43,8 +43,7 @@ export class ValidationUtils {
         return routeUrl as PathString;
     }
 
-
-        /**
+    /**
      * Formats and cleans file path
      * @param pathString
      * @returns
@@ -52,13 +51,13 @@ export class ValidationUtils {
     static cleanSwaggerPathString(pathString: string): string {
         if (pathString.includes('/:')) {
             let split = pathString.split('/');
-            let map = split.map(path => path.startsWith(':') ? `{${path.substring(1)}}` : path);
-            pathString = map.join('/')
+            let map = split.map((path) => (path.startsWith(':') ? `{${path.substring(1)}}` : path));
+            pathString = map.join('/');
         }
-            let cleanPath: string = pathString;
-            if (pathString.startsWith('./')) cleanPath = pathString.replace('./', '');
-            if (pathString.endsWith('/')) cleanPath = pathString.slice(0, pathString.length - 1);
-            
-            return cleanPath;
+        let cleanPath: string = pathString;
+        if (pathString.startsWith('./')) cleanPath = pathString.replace('./', '');
+        if (pathString.endsWith('/')) cleanPath = pathString.slice(0, pathString.length - 1);
+
+        return cleanPath;
     }
 }

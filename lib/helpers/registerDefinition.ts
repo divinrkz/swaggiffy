@@ -15,16 +15,16 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
         const path = item.route.path;
 
         console.log(item.keys);
-        let parameters: APIParameters[] = []
-        let responses: APIDocResponse =  {}
-        
+        let parameters: APIParameters[] = [];
+        let responses: APIDocResponse = {};
+
         if (item.keys.length > 0) {
             for (const key of item.keys) {
                 parameters.push({
                     in: 'path',
-                    name: key.name,     
+                    name: key.name,
                     required: true,
-                    type: 'string'
+                    type: 'string',
                 });
             }
         }
@@ -33,12 +33,11 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
             parameters.push({
                 in: 'body',
                 name: 'body',
-                required: (method == 'post') ? true : false,
+                required: method == 'post' ? true : false,
                 schema: {
                     $ref: `#/definitions/${options.mappedSchema}`,
                 },
-            });  
-            
+            });
         }
 
         if (method == 'delete') {
@@ -50,17 +49,16 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                         properties: {
                             deleted: {
                                 type: 'boolean',
-                                example: true
-                            }
-                        }
-                    }
+                                example: true,
+                            },
+                        },
+                    },
                 },
                 '500': {
                     description: 'Internal Server Error',
                 },
-            }
-        }
-        else if (method == 'post' || method == 'put') {
+            };
+        } else if (method == 'post' || method == 'put') {
             responses = {
                 '201': {
                     description: 'Created',
@@ -71,7 +69,7 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 '500': {
                     description: 'Internal Server Error',
                 },
-            }
+            };
         } else {
             responses = {
                 '200': {
@@ -79,9 +77,9 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                     schema: {
                         type: 'array',
                         items: {
-                            $ref: `#/definitions/${options.mappedSchema}`
-                        }
-                    }
+                            $ref: `#/definitions/${options.mappedSchema}`,
+                        },
+                    },
                 },
                 '500': {
                     description: 'Internal Server Error',
@@ -90,12 +88,12 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                         properties: {
                             error: {
                                 type: 'string',
-                                example: 'Internal Server Error'
-                            }
-                        }
-                    }
+                                example: 'Internal Server Error',
+                            },
+                        },
+                    },
                 },
-            }
+            };
         }
 
         const pathDefinition: APIPathDefinition = {
@@ -109,7 +107,7 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 parameters: parameters,
                 produces: options.produces || ['application/json'],
                 consumes: options.consumes || ['application/json'],
-                responses
+                responses,
             },
         };
 

@@ -205,8 +205,8 @@ type APIParameters = {
     required: boolean;
     description?: string;
     schema?: {
-         $ref: string 
-    }
+        $ref: string;
+    };
     required?: boolean;
 };
 
@@ -270,12 +270,14 @@ export type SwaggerAPIDefinition = {
     };
 };
 
-export type APIDocResponse = Record<string, 
-{ 
-    description: string;
-    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
-    schema?: { $ref?: string, items?: { $ref: string }, type?: TSwaggerDataType, properties?: Record<string, TSwaggerSchemaObject>; };
-}>;
+export type APIDocResponse = Record<
+    string,
+    {
+        description: string;
+        format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+        schema?: { $ref?: string; items?: { $ref: string }; type?: TSwaggerDataType; properties?: Record<string, TSwaggerSchemaObject> };
+    }
+>;
 
 export type APIRegisterMeta = {
     router: express.Router;
