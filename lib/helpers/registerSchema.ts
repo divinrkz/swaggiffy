@@ -16,10 +16,10 @@ import { SchemaMetadata } from '../storage/types/SchemaMetadata';
  */
 
 export type SchemaParam = {
-    name: string,
-    schema: SchemaRegistryType,
-    options?: SchemaRegistryOptions   
-}
+    name: string;
+    schema: SchemaRegistryType;
+    options?: SchemaRegistryOptions;
+};
 
 export function registerSchema(name: string, schema: SchemaRegistryType, options?: SchemaRegistryOptions) {
     let extractor: TClassDef | undefined;
@@ -62,7 +62,6 @@ export function registerSchemas(schemas: SchemaParam[]) {
             } else {
                 extractor = SchemaExtractor.extractPlain(_schema.schema, _schema.name);
             }
-            
         }
 
         const swaggerDefinition: TSwaggerSchema = Utility.genSchemaDef(extractor);
