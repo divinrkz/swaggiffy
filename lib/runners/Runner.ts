@@ -3,6 +3,7 @@ import { Utility } from '../utils/Utility';
 import { APIPathDefinition, SwaggerAPIDefinition, TSwaggerSchemaDef } from '../typings';
 import * as path from 'path';
 import { PlatformTools } from '../platform/PlatformTools';
+import { FileUtils } from '../utils/FileUtils';
 
 /**
  * Runner Class
@@ -23,8 +24,11 @@ export class Runner {
      */
     static generateAPIDefinitions(): void {
         const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
+
         Utility.swaggiffy(pathDefinition, 'DEFINITION');
-        PlatformTools.logSuccess('Swagger API Schemas generated successfully');
+        
+        PlatformTools.logSuccess('Swagger API Definitions generated successfully');
+        
     }
 
     static execute(): void {

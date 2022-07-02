@@ -29,8 +29,7 @@ export class GenerateConfigCommand implements yargs.CommandModule {
         try {
             const override: boolean | undefined = args.refresh ? true : false;
             const configFile: string = await SetupRunner.generateConfigFile(GenerateConfigCommand.getOSA2Template(), override as boolean);
-            console.log(`Created: ${FileUtils.cleanPath(configFile)}`);
-            PlatformTools.logSuccess('Successfully generated');
+            PlatformTools.logSuccess('Successfully generated config file');
         } catch (err) {
             PlatformTools.logCmdErr('Error when generating config file: ', err);
         }
@@ -44,11 +43,12 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     protected static getOSA2Template(projectName?: string): string {
         return JSON.stringify(
             {
-                projectName: projectName || 'new project',
-                openApiVersion: '2.0.0',
-                outFile: 'lib/swagger.json',
-                apiRoute: '/api-docs',
-                format: 'json',
+                projectName: projectName || 'swaggiffy',
+                openApiVersion: '2.0',
+                outFile: 'src/swagger.json',
+                apiHost: 'localhost:3000',
+                apiBaseUrl: '/api',
+                swaggerRoute: '/api-docs',
             },
             undefined,
             3,
@@ -63,10 +63,12 @@ export class GenerateConfigCommand implements yargs.CommandModule {
     protected static getOSA3Template(projectName?: string): string {
         return JSON.stringify(
             {
-                projectName: projectName || 'new project',
+                projectName: projectName || 'swaggiffy',
                 openApiVersion: '3.0',
                 outFile: 'src/swagger.json',
-                apiRoute: '/api-docs',
+                apiHost: 'localhost:3000',
+                apiBaseUrl: '/api',
+                swaggerRoute: '/api-docs',
             },
             undefined,
             3,

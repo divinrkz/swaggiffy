@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
+import { type } from 'os';
 
 /**
  * Path String Type
@@ -199,7 +200,13 @@ type TagObject = {
 type APIParameters = {
     in: 'query' | 'header' | 'path' | 'formData' | 'body';
     name: string;
+    type?: TSwaggerDataType;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+    required: boolean;
     description?: string;
+    schema?: {
+         $ref: string 
+    }
     required?: boolean;
 };
 
@@ -249,9 +256,9 @@ export type APIPathDefinition = {
 
 export type ApiPathDescription = {
     summary: string;
-    operationId: string;
+    operationId?: string;
     description: string;
-    parameters?: APIParameters;
+    parameters?: APIParameters[];
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
     responses: APIDocResponse;
@@ -263,10 +270,20 @@ export type SwaggerAPIDefinition = {
     };
 };
 
-export type APIDocResponse = Record<string, { description: string }>;
+export type APIDocResponse = Record<string, 
+{ 
+    description: string;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+    schema?: { $ref?: string, items?: { $ref: string }, type?: TSwaggerDataType, properties?: Record<string, TSwaggerSchemaObject>; };
+}>;
 
 export type APIRegisterMeta = {
     router: express.Router;
+};
+
+export type APIDefinitionOptions = {
+    basePath: string;
+    mappedSchema: string;
     summary?: string;
     description?: string;
     tags?: string;
@@ -282,3 +299,11 @@ export type SchemaRegistryObj = {
 export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj;
 
 export type SchemaRegistryOptions = { required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
+
+export type APIDefinitionRegistryObj = {
+    [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
+};
+// Parameter types
+export type APIDefinitionRegistryType = mongoose.Schema | SchemaRegistryObj;
+
+export type APIDefinitionRegistryOptions = { basePath: string };
