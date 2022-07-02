@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
+import { type } from 'os';
 
 /**
  * Path String Type
@@ -199,7 +200,13 @@ type TagObject = {
 type APIParameters = {
     in: 'query' | 'header' | 'path' | 'formData' | 'body';
     name: string;
+    type?: TSwaggerDataType;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+    required: boolean;
     description?: string;
+    schema?: {
+         $ref: string 
+    }
     required?: boolean;
 };
 
@@ -251,7 +258,7 @@ export type ApiPathDescription = {
     summary: string;
     operationId?: string;
     description: string;
-    parameters?: APIParameters;
+    parameters?: APIParameters[];
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
     responses: APIDocResponse;
@@ -263,7 +270,12 @@ export type SwaggerAPIDefinition = {
     };
 };
 
-export type APIDocResponse = Record<string, { description: string, schema?: {'$ref': string} }>;
+export type APIDocResponse = Record<string, 
+{ 
+    description: string;
+    format?: TSwaggerNumberFormats | TSwaggerStringFormats;
+    schema?: { $ref?: string, items?: { $ref: string }, type?: TSwaggerDataType, properties?: Record<string, TSwaggerSchemaObject>; };
+}>;
 
 export type APIRegisterMeta = {
     router: express.Router;

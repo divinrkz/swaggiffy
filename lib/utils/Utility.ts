@@ -18,6 +18,7 @@ import { getConfigMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
 import mongoose from 'mongoose';
 import { FileUtils } from './FileUtils';
+import { ValidationUtils } from './ValidationUtils';
 
 export class Utility {
     /**
@@ -149,7 +150,7 @@ export class Utility {
             apiDefinition = {
                 ...apiDefinition,
                 ...{
-                    [FileUtils.cleanPath(pathString)]: {
+                    [ValidationUtils.cleanSwaggerPathString(pathString)]: {
                         ...apiDefinerObj,
                     },
                 },
