@@ -17,7 +17,7 @@ export class Defaults {
     /**
      * Default Swaggiffy Configuration File
      */
-    public static SWAGGIFY_CONFIG_FILE = './swagger.config.json';
+    public static SWAGGIFY_CONFIG_FILE = './swaggiffy.config.json';
 
     /**
      * Default Swagger Definition File Format
@@ -27,5 +27,5 @@ export class Defaults {
     /**
      * Default Swagger Definition File Format
      */
-    public static OPENAPI_VERSION: TOpenApiVersion = '3.0';
+    public static OPENAPI_VERSION: TOpenApiVersion = '2.0';
 }

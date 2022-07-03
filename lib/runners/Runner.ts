@@ -16,6 +16,7 @@ export class Runner {
     static generateSchemas(): void {
         const swaggerSchemaDefinition: TSwaggerSchemaDef = Utility.toSwaggerSchema(getSchemaMetadataStorage().schemas);
         Utility.swaggiffy(swaggerSchemaDefinition, 'SCHEMA');
+        PlatformTools.logSuccess('Swagger Schemas generated successfully');
     }
 
     /**
@@ -24,11 +25,8 @@ export class Runner {
      */
     static generateAPIDefinitions(): void {
         const pathDefinition: SwaggerAPIDefinition = Utility.toSwaggerAPIDefinition(getAPIDefinitionMetadataStorage().apiDefinitions);
-
         Utility.swaggiffy(pathDefinition, 'DEFINITION');
-        
         PlatformTools.logSuccess('Swagger API Definitions generated successfully');
-        
     }
 
     static execute(): void {

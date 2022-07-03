@@ -71,6 +71,10 @@ export class PlatformTools {
         console.log(chalk.green(message));
     }
 
+    static logWarn(message: string) {
+        console.log(chalk.yellow(message));
+    }
+
     // eslint-ignore/no-explicit-any
     static logCmdErr(message: string, err?: any) {
         console.log(chalk.black.bgRed(message));

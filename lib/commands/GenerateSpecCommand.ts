@@ -46,7 +46,7 @@ export class GenerateSpecCommand implements yargs.CommandModule {
                     : '';
 
             const specFile: string = await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined, override as boolean);
-            PlatformTools.logSuccess('Successfully generated');
+            PlatformTools.logSuccess('Successfully generated spec file');
         } catch (err) {
             PlatformTools.logCmdErr('Error when generating config file: ', err);
         }

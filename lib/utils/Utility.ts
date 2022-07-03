@@ -177,25 +177,22 @@ export class Utility {
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
                 return ['string', undefined, undefined, 'string'];
-
+            case mongoose.Schema.Types.Number.schemaName:
+                return ['number', undefined, undefined, 0];
+            case mongoose.Schema.Types.Date.schemaName:
+                return ['string', 'date', undefined, new Date().toLocaleString()];
             case mongoose.Schema.Types.Boolean.schemaName:
                 return ['boolean', undefined, undefined, false];
-
             case mongoose.Schema.Types.Buffer.schemaName:
                 return ['object', undefined, undefined, undefined];
-
             case mongoose.Schema.Types.Mixed.schemaName:
                 return ['object', undefined, undefined, undefined];
-
-            case mongoose.Schema.Types.Mixed.schemaName || 'ObjectID':
+            case 'ObjectID':
                 return ['string', undefined, true, '507f1f77bcf86cd799439011'];
-
             case mongoose.Schema.Types.Array.schemaName:
                 return ['array', undefined, undefined, undefined];
-
             case mongoose.Schema.Types.Map.schemaName:
                 return ['object', undefined, undefined, undefined];
-
             default:
                 return ['object', undefined, undefined, undefined];
         }
