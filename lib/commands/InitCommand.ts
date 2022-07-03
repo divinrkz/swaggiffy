@@ -34,6 +34,10 @@ export class InitCommand implements yargs.CommandModule {
                 alias: 'defFile',
                 describe: 'Swagger Definition output file path',
             })
+            .option('p', {
+                alias: 'port',
+                describe: 'Swagger port'
+            })
             .option('a', {
                 alias: 'apiRoute',
                 describe: 'Swagger Documentation API Route',
@@ -50,6 +54,7 @@ export class InitCommand implements yargs.CommandModule {
             getConfigMetadataStorage().appName = (args.name as string) || PlatformTools.getProjectName();
             getConfigMetadataStorage().openApiVersion = (args.openApiVersion as TOpenApiVersion) || Defaults.OPENAPI_VERSION;
             getConfigMetadataStorage().format = (args.format as TFormat) || Defaults.SWAGGER_DEFINITION_FORMAT;
+            getConfigMetadataStorage().appPort = (args.port as number) || Defaults.APP_PORT;
             getConfigMetadataStorage().swaggerDefinitionFilePath = (args.defFile as string)
                 ? ValidationUtils.validateFilePath(args.defFile as string, args.format as TFormat)
                 : Defaults.SWAGGER_DEFINITION_FILE;
@@ -62,6 +67,7 @@ export class InitCommand implements yargs.CommandModule {
                     projectName: getConfigMetadataStorage().appName,
                     outFile: getConfigMetadataStorage().swaggerDefinitionFilePath,
                     apiRouteUrl: getConfigMetadataStorage().swaggerEndPointUrl,
+                    appPort: getConfigMetadataStorage().appPort,
                     openApiVersion: getConfigMetadataStorage().openApiVersion,
                     format: getConfigMetadataStorage().format,
                 } as TemplateOptions),
@@ -71,11 +77,11 @@ export class InitCommand implements yargs.CommandModule {
             const template: string =
                 args.openApiVersion != undefined
                     ? args.openApiVersion == '2.0'
-                        ? Templates.getOSA2Template()
+                        ? Templates.getOSA2Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort)
                         : args.openApiVersion == '3.0'
-                        ? Templates.getOSA3Template()
-                        : Templates.getOSA2Template()
-                    : Templates.getOSA2Template();
+                        ? Templates.getOSA3Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort)
+                        : Templates.getOSA2Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort)
+                    : Templates.getOSA2Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort);
 
             await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined);
         } catch (err) {

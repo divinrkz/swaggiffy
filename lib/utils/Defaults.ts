@@ -25,6 +25,12 @@ export class Defaults {
     public static SWAGGER_DEFINITION_FORMAT: TFormat = 'json';
 
     /**
+     * App port
+     */
+    public static APP_PORT: number = 5008;
+
+
+    /**
      * Default Swagger Definition File Format
      */
     public static OPENAPI_VERSION: TOpenApiVersion = '2.0';

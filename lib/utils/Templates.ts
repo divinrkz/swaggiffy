@@ -31,7 +31,7 @@ export class Templates {
      * @param projectName Project Name
      * @returns template
      */
-    static getOSA2Template(projectName?: string): string {
+    static getOSA2Template(projectName?: string, port?: number): string {
         const name: string = projectName ? projectName : PlatformTools.getProjectName();
         return JSON.stringify(
             {
@@ -52,7 +52,7 @@ export class Templates {
                         },
                         version: '1.0.0',
                     },
-                    host: 'localhost:8080',
+                    host: `localhost:${port || '5008'}`,
                     basePath: '/',
                     schemes: ['http'],
                     securityDefinitions: {
@@ -76,7 +76,7 @@ export class Templates {
      * @param projectName Project Name
      * @returns template
      */
-    static getOSA3Template(projectName?: string): string {
+    static getOSA3Template(projectName?: string, port?: number): string {
         const name: string = projectName ? projectName : PlatformTools.getProjectName();
         return JSON.stringify(
             {
@@ -97,7 +97,7 @@ export class Templates {
                         },
                         version: '1.0.0',
                     },
-                    host: 'localhost:8080',
+                    host: `localhost:${port || '5008'}`,
                     basePath: '/',
                     schemes: ['http'],
                     paths: {},

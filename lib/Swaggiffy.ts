@@ -38,6 +38,17 @@ export class Swaggiffy {
         return this;
     }
 
+     /**
+     * dsfa
+     *
+     * Setups route endpoint url with swaggiffy.
+     * @returns Swaggiffy
+     */
+      public setupPort(port: number): this {
+        this.configStore.appPort = port;
+        return this;
+    }
+
     /**
      * Setups and Builds a swagger config file template in the specified directory and file.
      * @returns Swaggiffy

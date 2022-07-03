@@ -23,6 +23,12 @@ export class ConfigMetadataStorage {
      */
     openApiVersion: TOpenApiVersion;
 
+
+    /**
+     * App Port
+     */
+    appPort: number;
+
     /**
      * Swagger Documentation EndPoint Url
      */

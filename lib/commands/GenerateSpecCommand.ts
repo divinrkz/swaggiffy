@@ -1,4 +1,5 @@
 import * as yargs from 'yargs';
+import { getConfigMetadataStorage } from '../globals';
 import { PlatformTools } from '../platform/PlatformTools';
 import { SetupRunner } from '../runners/SetupRunner';
 import { TOpenApiVersion } from '../typings';
@@ -39,9 +40,9 @@ export class GenerateSpecCommand implements yargs.CommandModule {
             const template: string =
                 args.openApiVersion != undefined
                     ? args.openApiVersion == '2.0'
-                        ? Templates.getOSA2Template()
+                        ? Templates.getOSA2Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort)
                         : args.openApiVersion == '3.0'
-                        ? Templates.getOSA3Template()
+                        ? Templates.getOSA3Template(getConfigMetadataStorage().appName, getConfigMetadataStorage().appPort)
                         : ''
                     : Templates.getOSA2Template();
             const specFile: string = await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined, override as boolean);
