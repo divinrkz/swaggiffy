@@ -124,7 +124,7 @@ Checkout this repository for demo and additional examples.
 
 ### CONTRIBUTIONS
 
-You are welcome for contributions. Please read our [CONTRIBUTING.md](https://github.com/divinirakiza/swaggiffy/CONTRIBUTING.md) file.
+You are welcome for contributions. Please read our [CONTRIBUTING.md](https://github.com/divinirakiza/swaggiffy/blob/main/CONTRIBUTING.md) file.
 
 ### MAINTAINERS
 
