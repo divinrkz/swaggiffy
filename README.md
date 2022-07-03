@@ -65,8 +65,6 @@ Build Swaggiffy with your express app.
 new Swaggiffy().setupExpress(app).swaggiffy();
 ```
 
-Tada!, Now access `localhost:PORT/api-docs` to see swagger 😁.
-
 ### Using Swaggiffy
 
 #### Schema Registry
@@ -116,6 +114,28 @@ registerDefinitions([
     { tags: 'Users', mappedSchema: 'User', basePath: '/user' },
 ]);
 ```
+
+#### Run the App
+
+```bash
+node app.js
+```
+
+With nodemon we need to exclude files
+
+```bash
+nodemon --ignore '*swagger.json' app.js
+```
+
+or create a `nodemon.json` file with
+
+```json
+{
+    "ignore": ["*swagger.json"]
+}
+```
+
+Tada!, Now access `localhost:PORT/api-docs` to see swagger 😁.
 
 ### DEMO
 

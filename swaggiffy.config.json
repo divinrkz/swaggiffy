@@ -1,0 +1,7 @@
+{
+   "projectName": "swaggiffy",
+   "openApiVersion": "2.0",
+   "outFile": "./swagger/swagger.json",
+   "apiRoute": "/api-docs",
+   "format": "json"
+}
