@@ -1,6 +1,6 @@
-# Contributing to Swaggify
+# Contributing to Swaggiffy
 
-We would love for you to contribute to Swaggify and help make it even better!
+We would love for you to contribute to Swaggiffy and help make it even better!
 As a contributor, here are the guidelines we would like you to follow:
 
 -   [Question or Problem?](#question)
@@ -13,21 +13,21 @@ As a contributor, here are the guidelines we would like you to follow:
 
 There are several ways how you can ask your question:
 
--   You can create a question on [StackOverflow](https://stackoverflow.com/questions/tagged/swaggify) where the questions should be tagged with tag `Swaggify`.
--   You can ask on [Slack](https://join.slack.com/t/swaggify/shared_invite/zt-uu12ljeb-OH_0086I379fUDApYJHNuw)
--   You can create issue on [github](https://github.com/swaggify/issues)
+-   You can create a question on [StackOverflow](https://stackoverflow.com/questions/tagged/swaggiffy) where the questions should be tagged with tag `Swaggiffy`.
+-   You can ask on [Slack](https://join.slack.com/t/swaggiffy/shared_invite/zt-uu12ljeb-OH_0086I379fUDApYJHNuw)
+-   You can create issue on [github](https://github.com/swaggiffy/issues)
 
 Preferred way if you create your question on StackOverflow, or create a github issue.
 
 ## <a name="issue"></a> Found a security vulnerability?
 
 If you find a security vulnerability or something that should be discussed personally,
-please contact me within my [email](https://github.com/swaggify/swaggify/blob/main/package.json#L10).
+please contact me within my [email](https://github.com/swaggiffy/swaggiffy/blob/main/package.json#L10).
 
 ## <a name="issue"></a> Found a Bug?
 
 If you find a bug in the source code, you can help us by [submitting an issue](#submit-issue) to our
-[GitHub Repository](https://github.com/swaggify/swaggify).
+[GitHub Repository](https://github.com/swaggiffy/swaggiffy).
 Even better, you can [submit a Pull Request](#submit-pr) with a fix.
 
 ## <a name="feature"></a> Missing a Feature?
@@ -52,13 +52,13 @@ maybe an issue for your problem already exists and the discussion might inform y
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it.
 In order to reproduce bugs we ask you to provide a minimal code snippet that shows a reproduction of the problem.
 
-You can file new issues by filling out our [new issue form](https://github.com/swaggify/swaggify/issues/new).
+You can file new issues by filling out our [new issue form](https://github.com/swaggiffy/swaggiffy/issues/new).
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 
 Before you submit your Pull Request (PR) consider the following guidelines:
 
--   Search [GitHub](https://github.com/swaggify/swaggify/pulls) for an open or closed PR
+-   Search [GitHub](https://github.com/swaggiffy/swaggiffy/pulls) for an open or closed PR
     that relates to your submission. You don't want to duplicate effort.
 -   Make your changes in a new git branch:
 
@@ -67,7 +67,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     ```
 
 -   Create your patch, **including appropriate test cases**. Without tests your PR will not be accepted.
--   Run the full Swaggify test suite, as described in the [developer documentation](DEVELOPER.md), and ensure that all tests pass.
+-   Run the full Swaggiffy test suite, as described in the [developer documentation](DEVELOPER.md), and ensure that all tests pass.
 -   Commit your changes using a descriptive commit message that follows our [commit message conventions](#commit). Adherence to these conventions is necessary because release notes are automatically generated from these messages.
 
     ```shell
@@ -82,11 +82,11 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
--   In GitHub, send a pull request to `swaggify:main`.
+-   In GitHub, send a pull request to `swaggiffy:main`.
 -   If we suggest changes then:
 
     -   Make the required updates.
-    -   Re-run the Swaggify test suites to ensure tests are still passing.
+    -   Re-run the Swaggiffy test suites to ensure tests are still passing.
     -   Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
         ```shell
@@ -203,7 +203,7 @@ Implement new feature:
 ```
 feat: implement new magic decorator
 
-This new feature change bahviour of Swaggify to allow use new magic decorator...
+This new feature change bahviour of Swaggiffy to allow use new magic decorator...
 
 Closes: #22222
 ```
@@ -224,33 +224,33 @@ BREAKING CHANGE: description of breaking change in driver API
 
 ## Financial contributions
 
-We also welcome financial contributions in full transparency on our [open collective](https://opencollective.com/Swaggify).
+We also welcome financial contributions in full transparency on our [open collective](https://opencollective.com/Swaggiffy).
 Anyone can file an expense. If the expense makes sense for the development of the community, it will be "merged" in the ledger of our open collective by the core contributors and the person who filed the expense will be reimbursed.
 
 ## Credits
 
 ### Contributors
 
-Thank you to all the people who have already contributed to Swaggify!
-<a href="../../graphs/contributors"><img src="https://opencollective.com/Swaggify/contributors.svg?width=890" /></a>
+Thank you to all the people who have already contributed to Swaggiffy!
+<a href="../../graphs/contributors"><img src="https://opencollective.com/Swaggiffy/contributors.svg?width=890" /></a>
 
 ### Backers
 
-Thank you to all our backers! [[Become a backer](https://opencollective.com/Swaggify#backer)]
+Thank you to all our backers! [[Become a backer](https://opencollective.com/Swaggiffy#backer)]
 
-<a href="https://opencollective.com/Swaggify#backers" target="_blank"><img src="https://opencollective.com/Swaggify/backers.svg?width=890"></a>
+<a href="https://opencollective.com/Swaggiffy#backers" target="_blank"><img src="https://opencollective.com/Swaggiffy/backers.svg?width=890"></a>
 
 ### Sponsors
 
-Thank you to all our sponsors! (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/Swaggify#sponsor))
+Thank you to all our sponsors! (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/Swaggiffy#sponsor))
 
-<a href="https://opencollective.com/Swaggify/sponsor/0/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/1/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/2/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/3/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/4/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/5/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/6/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/7/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/8/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/Swaggify/sponsor/9/website" target="_blank"><img src="https://opencollective.com/Swaggify/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/0/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/1/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/2/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/3/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/4/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/5/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/6/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/7/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/8/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/Swaggiffy/sponsor/9/website" target="_blank"><img src="https://opencollective.com/Swaggiffy/sponsor/9/avatar.svg"></a>
