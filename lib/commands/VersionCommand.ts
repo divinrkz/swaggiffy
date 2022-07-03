@@ -26,7 +26,7 @@ export class VersionCommand implements yargs.CommandModule {
             PlatformTools.logCmdErr('No local installed Swaggiffy was found.');
         }
         if (globalNpmVersion) {
-            PlatformTools.logSuccess('Global installed Swaggiffy version: '+ globalNpmVersion);
+            PlatformTools.logSuccess('Global installed Swaggiffy version: ' + globalNpmVersion);
         } else {
             PlatformTools.logCmdErr('No global installed was found.');
         }

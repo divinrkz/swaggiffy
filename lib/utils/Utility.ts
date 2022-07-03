@@ -177,7 +177,7 @@ export class Utility {
         switch (type) {
             case mongoose.Schema.Types.String.schemaName:
                 return ['string', undefined, undefined, 'string'];
-             case mongoose.Schema.Types.Number.schemaName:
+            case mongoose.Schema.Types.Number.schemaName:
                 return ['number', undefined, undefined, 0];
             case mongoose.Schema.Types.Date.schemaName:
                 return ['string', 'date', undefined, new Date().toLocaleString()];
