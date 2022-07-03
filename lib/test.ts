@@ -56,4 +56,22 @@ app.use('/users', router);
 
 registerDefinition(router, { tags: 'Users', basePath: '/users', mappedSchema: 'User' });
 
+const schema3 = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+
+    age: {
+        type: Number,
+        required: true,
+    },
+
+    young: {
+        type: Boolean,
+        required: true,
+    },
+});
+registerSchema('User', schema3);
+
 new Swaggiffy().setupExpress(app).setupPort(5008).swaggiffy();
