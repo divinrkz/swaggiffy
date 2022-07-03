@@ -109,9 +109,9 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 responses,
                 security: [
                     {
-                        Bearer: ["global"]
-                    }
-                ]
+                        Bearer: ['global'],
+                    },
+                ],
             },
         };
 

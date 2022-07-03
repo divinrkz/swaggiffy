@@ -74,8 +74,8 @@ export class InitCommand implements yargs.CommandModule {
                         ? Templates.getOSA2Template()
                         : args.openApiVersion == '3.0'
                         ? Templates.getOSA3Template()
-                        : ''
-                    : '';
+                        : Templates.getOSA2Template()
+                    : Templates.getOSA2Template();
 
             await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined);
         } catch (err) {
