@@ -55,6 +55,13 @@ export class Templates {
                     host: 'localhost:8080',
                     basePath: '/api',
                     schemes: ['http'],
+                    securityDefinitions: {
+                        Bearer: {
+                          type: "apiKey",
+                          name: "Authorization",
+                          in: "header"
+                        }
+                    },
                     paths: {},
                 },
                 apis: [],
