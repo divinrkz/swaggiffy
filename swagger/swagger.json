@@ -16,12 +16,18 @@
       },
       "version": "1.0.0"
     },
-    "host": "localhost:8080",
-    "basePath": "/api",
+    "host": "localhost:5008",
+    "basePath": "/",
     "schemes": [
       "http"
     ],
-    
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
     "paths": {
       "/users": {
         "get": {
@@ -59,7 +65,14 @@
                 }
               }
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         },
         "post": {
           "tags": [
@@ -93,7 +106,14 @@
             "500": {
               "description": "Internal Server Error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         }
       },
       "/users/recent/{status}/name/{name}": {
@@ -145,7 +165,14 @@
                 }
               }
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         }
       },
       "/users/manipulate": {
@@ -184,7 +211,14 @@
                 }
               }
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         },
         "post": {
           "tags": [
@@ -218,7 +252,14 @@
             "500": {
               "description": "Internal Server Error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         }
       },
       "/users/{id}": {
@@ -260,7 +301,14 @@
             "500": {
               "description": "Internal Server Error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         },
         "delete": {
           "tags": [
@@ -298,7 +346,14 @@
             "500": {
               "description": "Internal Server Error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         }
       },
       "/users/manipulate/{name}/test": {
@@ -340,7 +395,14 @@
             "500": {
               "description": "Internal Server Error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": [
+                "global"
+              ]
+            }
+          ]
         }
       }
     },

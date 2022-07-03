@@ -53,13 +53,13 @@ export class Templates {
                         version: '1.0.0',
                     },
                     host: 'localhost:8080',
-                    basePath: '/api',
+                    basePath: '/',
                     schemes: ['http'],
-                    securityDefinitions: {
+                    securityDefinitions: { 
                         Bearer: {
-                          type: "apiKey",
-                          name: "Authorization",
-                          in: "header"
+                            type: "apiKey",
+                            name: "Authorization",
+                            in:"header"
                         }
                     },
                     paths: {},
@@ -98,9 +98,18 @@ export class Templates {
                         version: '1.0.0',
                     },
                     host: 'localhost:8080',
-                    basePath: '/api',
+                    basePath: '/',
                     schemes: ['http'],
                     paths: {},
+                    components: {
+                        securitySchemes: {
+                            bearerAuth: {
+                                type: "http",
+                                scheme: "bearer",
+                                bearerFormat: "JWT"
+                            }
+                        }
+                    }
                 },
                 apis: [],
             },

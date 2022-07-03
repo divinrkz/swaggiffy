@@ -1,16 +1,15 @@
-
 // import { registerDefinition } from './helpers/registerDefinition';
 // // import { Schema } from './decorators/Schema';
 import { registerSchema } from './helpers/registerSchema';
 
-const {Swaggiffy} = require('./Swaggiffy')
-const mongoose = require('mongoose')
-const { Schema } = require('mongoose')
+const { Swaggiffy } = require('./Swaggiffy');
+const mongoose = require('mongoose');
+const { Schema } = require('mongoose');
 const express = require('express');
-const {registerDefinition} = require('./helpers/registerDefinition')
+const { registerDefinition } = require('./helpers/registerDefinition');
 const app = express();
 
-console.log('dsfa')
+console.log('dsfa');
 app.listen(5008, () => {
     console.log('Server is running 2');
 });
@@ -22,6 +21,7 @@ app.get('/', (req: any, res: any) => {
 const router = express.Router();
 
 router.get('/', (req: any, res: any) => {
+    console.log(req.headers)
     res.send('get all');
 });
 router.get('/recent/:status/name/:name', (req: any, res: any) => {
@@ -62,4 +62,3 @@ const schema = {
 };
 registerSchema('User', schema);
 new Swaggiffy().setupExpress(app).swaggiffy();
-

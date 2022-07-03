@@ -107,6 +107,11 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
                 produces: options.produces || ['application/json'],
                 consumes: options.consumes || ['application/json'],
                 responses,
+                security: [
+                    {
+                        Bearer: ["global"]
+                    }
+                ]
             },
         };
 

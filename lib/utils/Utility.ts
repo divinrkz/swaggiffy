@@ -142,6 +142,7 @@ export class Utility {
                             consumes: method.apiDefinition.meta.consumes,
                             produces: method.apiDefinition.meta.produces,
                             responses: method.apiDefinition.meta.responses,
+                            security: method.apiDefinition.meta.security,
                         },
                     },
                 };

@@ -262,6 +262,7 @@ export type ApiPathDescription = {
     produces: Array<EMimeTypes>;
     consumes: Array<EMimeTypes>;
     responses: APIDocResponse;
+    security: Record<string, string[]>[]
 };
 
 export type SwaggerAPIDefinition = {
