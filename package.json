@@ -1,7 +1,7 @@
 {
     "name": "swaggiffy",
     "displayName": "swaggiffy",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A zero-config Node.js Swagger Documentation Generator.",
     "main": "build/compiled/index.js",
     "types": "build/compiled/index.d.ts",
@@ -66,15 +66,8 @@
         "reflect-metadata": "^0.1.13",
         "swagger-jsdoc": "^6.1.0",
         "swagger-ui-express": "^4.2.0",
-        "yargs": "^17.3.1"
-    },
-    "peerDependencies": {
+        "yargs": "^17.3.1",
         "chalk": "4.0.0"
-    },
-    "peerDependenciesMeta": {
-        "chalk": {
-            "optional": true
-        }
     },
     "husky": {
         "hooks": {

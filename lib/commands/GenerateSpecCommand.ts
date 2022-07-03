@@ -43,9 +43,9 @@ export class GenerateSpecCommand implements yargs.CommandModule {
                         : args.openApiVersion == '3.0'
                         ? Templates.getOSA3Template()
                         : ''
-                    : '';
-
+                    : Templates.getOSA2Template();
             const specFile: string = await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined, override as boolean);
+            
             PlatformTools.logSuccess('Successfully generated spec file');
         } catch (err) {
             PlatformTools.logCmdErr('Error when generating config file: ', err);
