@@ -71,11 +71,7 @@ const schema3 = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-
 });
 registerSchema('User', schema3);
 
-
 new Swaggiffy().setupExpress(app).setupPort(5008).swaggiffy();
-
-
