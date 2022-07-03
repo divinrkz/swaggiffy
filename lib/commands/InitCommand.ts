@@ -36,7 +36,7 @@ export class InitCommand implements yargs.CommandModule {
             })
             .option('p', {
                 alias: 'port',
-                describe: 'Swagger port'
+                describe: 'Swagger port',
             })
             .option('a', {
                 alias: 'apiRoute',

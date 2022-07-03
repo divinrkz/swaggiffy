@@ -40,7 +40,6 @@ router.post('/manipulate', (req: any, res: any) => {
     res.send('recents');
 });
 
-
 router.put('/:id', (req: any, res: any) => {
     res.send('Update');
 });

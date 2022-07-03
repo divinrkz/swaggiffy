@@ -38,13 +38,13 @@ export class Swaggiffy {
         return this;
     }
 
-     /**
+    /**
      * dsfa
      *
      * Setups route endpoint url with swaggiffy.
      * @returns Swaggiffy
      */
-      public setupPort(port: number): this {
+    public setupPort(port: number): this {
         this.configStore.appPort = port;
         return this;
     }

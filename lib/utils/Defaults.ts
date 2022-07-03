@@ -29,7 +29,6 @@ export class Defaults {
      */
     public static APP_PORT: number = 5008;
 
-
     /**
      * Default Swagger Definition File Format
      */

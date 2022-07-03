@@ -23,7 +23,6 @@ export class ConfigMetadataStorage {
      */
     openApiVersion: TOpenApiVersion;
 
-
     /**
      * App Port
      */
