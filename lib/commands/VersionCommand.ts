@@ -1,5 +1,6 @@
 import * as yargs from 'yargs';
 import { exec } from 'child_process';
+import { PlatformTools } from '../platform/PlatformTools';
 
 export class VersionCommand implements yargs.CommandModule {
     command = 'version';
@@ -20,18 +21,18 @@ export class VersionCommand implements yargs.CommandModule {
         const globalNpmVersion = (globalMatches && globalMatches[1] ? globalMatches[1] : '').replace(/"invalid"/gi, '').trim();
 
         if (localNpmVersion) {
-            console.log('Local installed version:', localNpmVersion);
+            PlatformTools.logSuccess(`Local installed version: ${localNpmVersion}`);
         } else {
-            console.log('No local installed Swaggiffy was found.');
+            PlatformTools.logCmdErr('No local installed Swaggiffy was found.');
         }
         if (globalNpmVersion) {
-            console.log('Global installed Swaggiffy version:', globalNpmVersion);
+            PlatformTools.logSuccess('Global installed Swaggiffy version: '+ globalNpmVersion);
         } else {
-            console.log('No global installed was found.');
+            PlatformTools.logCmdErr('No global installed was found.');
         }
 
         if (localNpmVersion && globalNpmVersion && localNpmVersion !== globalNpmVersion) {
-            console.log(
+            PlatformTools.logWarn(
                 'To avoid issues with CLI please make sure your global and local Swaggiffy versions match, ' +
                     'or you are using locally installed Swaggiffy instead of global one.',
             );

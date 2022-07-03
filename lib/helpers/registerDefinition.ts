@@ -14,7 +14,6 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
         const method = item.route.stack[0].method.toLowerCase();
         const path = item.route.path;
 
-        console.log(item.keys);
         let parameters: APIParameters[] = [];
         let responses: APIDocResponse = {};
 
@@ -97,7 +96,7 @@ export function registerDefinition(router: express.Router, options: APIDefinitio
         }
 
         const pathDefinition: APIPathDefinition = {
-            pathString: `/${options.basePath}${path}`,
+            pathString: `${options.basePath}${path}`,
             tags: options.tags?.split(' ') || [],
             method: method,
             meta: {

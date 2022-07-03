@@ -284,7 +284,7 @@ export type APIRegisterMeta = {
 };
 
 export type APIDefinitionOptions = {
-    basePath: string;
+    basePath: PathString;
     mappedSchema: string;
     summary?: string;
     description?: string;

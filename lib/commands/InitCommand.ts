@@ -67,6 +67,18 @@ export class InitCommand implements yargs.CommandModule {
                 } as TemplateOptions),
                 args.refresh ? true : false,
             );
+
+            const template: string =
+            args.openApiVersion != undefined
+                ? args.openApiVersion == '2.0'
+                    ? Templates.getOSA2Template()
+                    : args.openApiVersion == '3.0'
+                    ? Templates.getOSA3Template()
+                    : ''
+                : '';
+
+            await SetupRunner.generateSpecFile(template, args.specFilePath as string | undefined);
+
         } catch (err) {
             PlatformTools.logCmdErr('Error when initializing swaggiffy.', err);
             process.exit(1);

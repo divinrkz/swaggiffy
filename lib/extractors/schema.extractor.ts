@@ -48,7 +48,6 @@ export class SchemaExtractor {
     static extractClassProps(target: any, name?: string): TClassDef {
         const instance: typeof target = new target();
         const props: TClassProps = [];
-        console.log(Object.keys(instance));
         for (const prop of Object.keys(instance)) {
             const [propType, propFormat] = Utility.castJSType(typeof instance[prop]);
             props.push({
