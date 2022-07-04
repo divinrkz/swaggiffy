@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { type } from 'os';
+import { Model } from 'sequelize';
 
 /**
  * Path String Type
@@ -299,7 +300,7 @@ export type SchemaRegistryObj = {
     [key: string]: number | string | boolean | bigint | object | Date | undefined | Function | symbol;
 };
 // Parameter types
-export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj;
+export type SchemaRegistryType = mongoose.Schema | SchemaRegistryObj ;
 
 export type SchemaRegistryOptions = { required?: string[]; orm: 'mongoose' | 'sequelize' | 'prisma' | 'typeorm' };
 

@@ -199,6 +199,43 @@ export class Utility {
         }
     }
 
+    static castSequelizeType(
+        type: string,
+    ): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
+      console.log(type);
+        switch (type) {
+            
+            case 'STRING':
+                return ['string', undefined, undefined, 'string'];
+            case 'TEXT':
+                return ['string', undefined, undefined, 'string'];
+            case 'CITEXT':
+                return ['number', undefined, undefined, 0];
+            case 'DATE':
+                return ['string', 'date', undefined, new Date().toLocaleString()];
+            case 'DATEONLY':
+                return ['string', 'date', undefined, new Date().toLocaleString()];
+            case 'UUID':
+                return ['string', 'uuid', undefined, '78a208e0-01fc-4cc0-b533-de8c076a6bf8'];
+            case 'UUIDV4':
+                return ['string', 'uuid', undefined, '78a208e0-01fc-4cc0-b533-de8c076a6bf8'];
+            case 'BOOLEAN':
+                return ['boolean', undefined, undefined, false];
+            case 'FLOAT':
+                return ['number', 'float', undefined, 0.0];
+            case 'DOUBLE':
+                return ['number', 'double', undefined, 0.0];
+            case 'BIGINT':
+                return ['number', undefined, undefined, 0.0];
+            case 'DECIMAL':
+                return ['number', 'float', true, 0.0];
+            case 'INTEGER':
+                return ['number', undefined, true, 0.0];
+            default:
+                return ['object', undefined, undefined, undefined];
+        }
+    }
+
     static castJSType(type: string): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined] {
         switch (type) {
             case 'string':

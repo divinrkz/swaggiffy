@@ -4,74 +4,92 @@ import { registerSchema } from './helpers/registerSchema';
 
 const { Swaggiffy } = require('./Swaggiffy');
 const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
 const { Schema } = require('mongoose');
 const express = require('express');
 const { registerDefinition } = require('./helpers/registerDefinition');
 const app = express();
 
-console.log('dsfa');
-app.listen(5008, () => {
-    console.log('Server is running 2');
-});
+const sequelize = new Sequelize('sqlite::memory:');
 
-app.get('/', (req: any, res: any) => {
-    return res.send('Server is running');
-});
-
-const router = express.Router();
-
-router.get('/', (req: any, res: any) => {
-    console.log(req.headers);
-    res.send('get all');
-});
-router.get('/recent/:status/name/:name', (req: any, res: any) => {
-    res.send('recents');
-});
-
-router.get('/manipulate', (req: any, res: any) => {
-    res.send('recents');
-});
-
-router.post('/', (req: any, res: any) => {
-    res.send('Created');
-});
-
-router.post('/manipulate', (req: any, res: any) => {
-    res.send('recents');
-});
-
-router.put('/:id', (req: any, res: any) => {
-    res.send('Update');
-});
-
-router.put('/manipulate/:name/test', (req: any, res: any) => {
-    res.send('recents');
-});
-
-router.delete('/:id', (req: any, res: any) => {
-    res.send('Delete');
-});
-
-app.use('/users', router);
-
-registerDefinition(router, { tags: 'Users', basePath: '/users', mappedSchema: 'User' });
-
-const schema3 = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
+const User = sequelize.define(
+    'User',
+    {
+        // Model attributes are defined here
+        firstName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            // allowNull defaults to true
+        },
     },
-
-    age: {
-        type: Number,
-        required: true,
+    {
+        // Other model options go here
     },
+);
 
-    young: {
-        type: Boolean,
-        required: true,
+registerSchema('User', {
+    // Model attributes are defined here
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-});
-registerSchema('User', schema3);
+    lastName: {
+        type: DataTypes.UUIDV4
+    },
+    obj1: {
+        type: DataTypes.STRING.BINARY
+    },
+    obj2: {
+        type: DataTypes.TEXT
+    },
+    obj3: {
+        type: DataTypes.TEXT('tiny')
+    },
+    obj4: {
+        type: DataTypes.CITEXT
+    },
+    obj5: {
+        type: DataTypes.TSVECTOR
+    },
+    obj6: {
+        type: DataTypes.BOOLEAN
+    },
+    obj7: {
+        type: DataTypes.INTEGER
+    },
+    obj8: {
+        type: DataTypes.BIGINT
+    },
+    obj9: {
+        type: DataTypes.BIGINT(11)
+    },
+    obj10: {
+        type: DataTypes.FLOAT
+    },
+    obj11: {
+        type: DataTypes.FLOAT(11) 
+    },
+    obj12: {
+        type: DataTypes.REAL 
+    },
+    obj13: {
+        type: DataTypes.DOUBLE 
+    },
+    obj14: {
+        type: DataTypes.DECIMAL 
+    },
+    obj15: {
+        type: DataTypes.DATE 
+    },
+    obj16: {
+        type: DataTypes.DATEONLY 
+    },
+    OBJ17: {
+        type: DataTypes.UUID
+    }
+}, {orm: 'sequelize'});
 
 new Swaggiffy().setupExpress(app).setupPort(5008).swaggiffy();
