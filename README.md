@@ -35,7 +35,7 @@ to your preffered path specified in the configuration file.
 This is will generate both `swaggiffy.config.json` and `swagger/swagger.json` files.
 
 ```bash
-npx swaggiffy init
+npx swaggiffy init -p PORT
 ```
 
 Generate the config file only.
@@ -77,6 +77,7 @@ import { registerSchema, registerSchemas } from 'swaggiffy';
 
 registerSchema('Model Name 1', modelObj1); // for plain Js objects
 registerSchema('Model Name 2', modelObj2, { orm: 'mongoose' }); // for mongoose model
+registerSchema('Model Name 2', modelObj3, { orm: 'sequelize' }); // for sequelize model
 
 registerSchemas([  {'Model Name 1', modelObj1 }, {'Model Name 2', modelObj2, { orm: 'mongoose' }} ]); // for multiple schemas
 ```
