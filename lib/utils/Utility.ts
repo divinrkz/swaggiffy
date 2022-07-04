@@ -202,9 +202,8 @@ export class Utility {
     static castSequelizeType(
         type: string,
     ): [TSwaggerDataType, TSwaggerStringFormats | TSwaggerNumberFormats | undefined, boolean | undefined, string | number | boolean | undefined] {
-      console.log(type);
+        console.log(type);
         switch (type) {
-            
             case 'STRING':
                 return ['string', undefined, undefined, 'string'];
             case 'TEXT':

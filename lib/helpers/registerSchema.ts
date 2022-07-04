@@ -28,9 +28,8 @@ export function registerSchema(name: string, schema: SchemaRegistryType, options
         if (options.orm === 'mongoose') {
             extractor = SchemaExtractor.extractMongoose(schema as mongoose.Schema, name);
         } else if (options.orm === 'sequelize') {
-            extractor = SchemaExtractor.extractSequelize(schema, name)
-        }
-        else {
+            extractor = SchemaExtractor.extractSequelize(schema, name);
+        } else {
             throw new SwaggiffyError('Orm is not supported');
         }
     } else {

@@ -49,7 +49,6 @@ export class SchemaExtractor {
     static extractSequelize(schema: any, name?: string): TClassDef {
         const props: TClassProps = [];
         for (const prop of Object.keys(schema)) {
-          
             const [propType, propFormat, isRequired, example] = Utility.castSequelizeType(schema[prop].type.key);
             props.push({
                 prop,
@@ -57,13 +56,11 @@ export class SchemaExtractor {
                 required: isRequired,
                 description: undefined,
                 example: example,
-                format: propFormat
+                format: propFormat,
             });
-
-    
         }
 
-        console.log(props)
+        console.log(props);
         return <TClassDef>{ name, props: props.reverse() };
     }
     static extractClassProps(target: any, name?: string): TClassDef {
