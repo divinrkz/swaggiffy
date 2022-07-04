@@ -28,404 +28,85 @@
         "in": "header"
       }
     },
-    "paths": {
-      "/users": {
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/User"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "error": {
-                    "type": "string",
-                    "example": "Internal Server Error"
-                  }
-                }
-              }
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        },
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        }
-      },
-      "/users/recent/{status}/name/{name}": {
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "status",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "in": "path",
-              "name": "name",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/User"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "error": {
-                    "type": "string",
-                    "example": "Internal Server Error"
-                  }
-                }
-              }
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        }
-      },
-      "/users/manipulate": {
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/User"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "error": {
-                    "type": "string",
-                    "example": "Internal Server Error"
-                  }
-                }
-              }
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        },
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        }
-      },
-      "/users/{id}": {
-        "put": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "in": "body",
-              "name": "body",
-              "required": false,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        },
-        "delete": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "deleted": {
-                    "type": "boolean",
-                    "example": true
-                  }
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        }
-      },
-      "/users/manipulate/{name}/test": {
-        "put": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "name",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "in": "body",
-              "name": "body",
-              "required": false,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          },
-          "security": [
-            {
-              "Bearer": [
-                "global"
-              ]
-            }
-          ]
-        }
-      }
-    },
+    "paths": {},
     "definitions": {
       "User": {
         "type": "object",
         "properties": {
-          "name": {
+          "firstName": {
             "type": "string",
             "example": "string"
           },
-          "age": {
+          "lastName": {
+            "type": "string",
+            "example": "78a208e0-01fc-4cc0-b533-de8c076a6bf8"
+          },
+          "obj1": {
+            "type": "string",
+            "example": "string"
+          },
+          "obj2": {
+            "type": "string",
+            "example": "string"
+          },
+          "obj3": {
+            "type": "string",
+            "example": "string"
+          },
+          "obj4": {
             "type": "number",
             "example": 0
           },
-          "young": {
+          "obj5": {
+            "type": "object"
+          },
+          "obj6": {
             "type": "boolean",
             "example": false
           },
-          "_id": {
-            "type": "string",
-            "example": "507f1f77bcf86cd799439011",
+          "obj7": {
+            "type": "number",
+            "example": 0,
             "required": true
+          },
+          "obj8": {
+            "type": "number",
+            "example": 0
+          },
+          "obj9": {
+            "type": "number",
+            "example": 0
+          },
+          "obj10": {
+            "type": "number",
+            "example": 0
+          },
+          "obj11": {
+            "type": "number",
+            "example": 0
+          },
+          "obj12": {
+            "type": "object"
+          },
+          "obj13": {
+            "type": "object"
+          },
+          "obj14": {
+            "type": "number",
+            "example": 0,
+            "required": true
+          },
+          "obj15": {
+            "type": "string",
+            "example": "7/4/2022, 3:14:53 PM"
+          },
+          "obj16": {
+            "type": "string",
+            "example": "7/4/2022, 3:14:53 PM"
+          },
+          "OBJ17": {
+            "type": "string",
+            "example": "78a208e0-01fc-4cc0-b533-de8c076a6bf8"
           }
         }
       }

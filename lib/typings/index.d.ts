@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { type } from 'os';
+import { Model } from 'sequelize';
 
 /**
  * Path String Type
