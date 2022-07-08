@@ -47,7 +47,7 @@ npx swaggify generate:config
 Generate the spec file only.
 
 ```bash
-npx swaggify generate:spec
+npx swaggiffy generate:spec
 ```
 
 ### Instantiate Swaggify
