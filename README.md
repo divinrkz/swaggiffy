@@ -41,13 +41,13 @@ npx swaggiffy init -p PORT
 Generate the config file only.
 
 ```bash
-npx swaggify generate:config
+npx swaggiffy generate:config
 ```
 
 Generate the spec file only.
 
 ```bash
-npx swaggify generate:spec
+npx swaggiffy generate:spec
 ```
 
 ### Instantiate Swaggify
