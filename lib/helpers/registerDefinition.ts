@@ -2,6 +2,7 @@ import * as express from 'express';
 import { APIDefinitionOptions, APIDocResponse, APIParameters, APIPathDefinition, APIRegisterMeta } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
+import { NoControllerError } from '../errors/SwaggiffyError';
 
 /**
  * Create swagger path definition
@@ -9,7 +10,12 @@ import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
  * @returns apiPathDefinitions {APIPathDefinition}
  */
 export function registerDefinition(router: express.Router, options: APIDefinitionOptions) {
-    const paths = router.stack.filter((item) => item.route);
+    const paths = router.stack.filter((item) => {
+        if (!(item.route.stack.length > 0)) {
+            throw new SwaggiffyError('No controller provided');
+        }
+        return item.route;
+    });
     paths.forEach((item) => {
         const method = item.route.stack[0].method.toLowerCase();
         const path = item.route.path;
