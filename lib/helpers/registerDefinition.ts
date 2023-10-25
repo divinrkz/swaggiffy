@@ -2,7 +2,6 @@ import * as express from 'express';
 import { APIDefinitionOptions, APIDocResponse, APIParameters, APIPathDefinition, APIRegisterMeta } from '../typings';
 import { getAPIDefinitionMetadataStorage } from '../globals';
 import { APIDefinitionMetadata } from '../storage/types/APIDefinitionMetadata';
-import { NoControllerError } from '../errors/SwaggiffyError';
 
 /**
  * Create swagger path definition
